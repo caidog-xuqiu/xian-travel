@@ -1,0 +1,494 @@
+{
+  "generated_at": "2026-04-08T21:32:13",
+  "details_file": "eval_results\\amap_real_regression_details_20260408_210155.json",
+  "gold_file": "app\\data\\case_gold.json",
+  "metrics": {
+    "total_cases": 6,
+    "task_success_rate": 1.0,
+    "constraint_satisfaction_rate": 0.913,
+    "request_parsing_accuracy": {
+      "available": true,
+      "overall_rate": 0.9762,
+      "overall_correct": 41,
+      "overall_total": 42,
+      "per_field": {
+        "companion_type": {
+          "correct": 6,
+          "total": 6,
+          "rate": 1.0
+        },
+        "available_hours": {
+          "correct": 6,
+          "total": 6,
+          "rate": 1.0
+        },
+        "budget_level": {
+          "correct": 6,
+          "total": 6,
+          "rate": 1.0
+        },
+        "purpose": {
+          "correct": 6,
+          "total": 6,
+          "rate": 1.0
+        },
+        "need_meal": {
+          "correct": 6,
+          "total": 6,
+          "rate": 1.0
+        },
+        "walking_tolerance": {
+          "correct": 5,
+          "total": 6,
+          "rate": 0.8333
+        },
+        "weather": {
+          "correct": 6,
+          "total": 6,
+          "rate": 1.0
+        }
+      }
+    },
+    "amap_called_rate": 1.0,
+    "tool_success_rate": {
+      "geocode_success_rate": 0.0,
+      "search_success_rate": 0.0,
+      "nearby_success_rate": 0.0,
+      "weather_success_rate": 0.0,
+      "route_success_rate": 0.0
+    },
+    "tool_attempted_counts": {
+      "geocode": 2,
+      "search": 6,
+      "nearby": 0,
+      "weather": 6,
+      "route": 6
+    },
+    "tool_success_counts": {
+      "geocode": 0,
+      "search": 0,
+      "nearby": 0,
+      "weather": 0,
+      "route": 0
+    },
+    "fallback_rate": {
+      "geocode_fallback_rate": 1.0,
+      "search_fallback_rate": 1.0,
+      "nearby_fallback_rate": 0.0,
+      "weather_fallback_rate": 1.0,
+      "route_fallback_rate": 1.0,
+      "overall_fallback_rate": 1.0
+    },
+    "pairs_warning_rate": 1.0,
+    "candidate_variant_averages": {
+      "classic_first": {
+        "sample_count": 6,
+        "avg_total_duration": 45.8333,
+        "avg_cross_area_count": 0.1667,
+        "avg_meal_ratio": 0.3472,
+        "avg_stop_count": 3.0
+      },
+      "food_friendly": {
+        "sample_count": 6,
+        "avg_total_duration": 29.8333,
+        "avg_cross_area_count": 0.0,
+        "avg_meal_ratio": 0.5833,
+        "avg_stop_count": 1.8333
+      },
+      "relaxed_first": {
+        "sample_count": 6,
+        "avg_total_duration": 24.5,
+        "avg_cross_area_count": 0.0,
+        "avg_meal_ratio": 0.4167,
+        "avg_stop_count": 1.1667
+      }
+    },
+    "time_budget_fit_rate": 1.0,
+    "knowledge_used_rate": 1.0,
+    "explanation_consistency_rate": 1.0,
+    "counts": {
+      "task_success_cases": 6,
+      "pairs_warning_cases": 6,
+      "overall_fallback_cases": 6,
+      "knowledge_used_cases": 6,
+      "time_budget_fit_cases": 6,
+      "time_budget_applicable_cases": 6
+    },
+    "smoke_file": "eval_results\\amap_smoke_summary_20260408_210155.json",
+    "smoke_snapshot": {
+      "key_exists": true,
+      "key_tail": "62a7b4",
+      "geocode": {
+        "ok": false,
+        "http_status": 0,
+        "amap_status": null,
+        "amap_info": null,
+        "amap_infocode": null,
+        "count": null,
+        "request_params": {
+          "key": "ec35d0b32022ff3059b361386562a7b4",
+          "address": "西安市钟楼",
+          "city": "西安"
+        },
+        "raw_text_preview": null,
+        "exception_type": "ConnectionError",
+        "exception_message": "HTTPSConnectionPool(host='restapi.amap.com', port=443): Max retries exceeded with url: /v3/geocode/geo?key=ec35d0b32022ff3059b361386562a7b4&address=%E8%A5%BF%E5%AE%89%E5%B8%82%E9%92%9F%E6%A5%BC&city=%E8%A5%BF%E5%AE%89 (Caused by NewConnectionError(\"HTTPSConnection(host='restapi.amap.com', port=443): Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。\"))",
+        "request_url": "https://restapi.amap.com/v3/geocode/geo?key=ec35d0b32022ff3059b361386562a7b4&address=%E8%A5%BF%E5%AE%89%E5%B8%82%E9%92%9F%E6%A5%BC&city=%E8%A5%BF%E5%AE%89",
+        "timeout_seconds": [
+          5,
+          15
+        ],
+        "proxy_mode": "inherit_env",
+        "env_proxy_snapshot": {
+          "HTTP_PROXY": false,
+          "HTTPS_PROXY": false,
+          "NO_PROXY": false,
+          "REQUESTS_CA_BUNDLE": false,
+          "CURL_CA_BUNDLE": false
+        },
+        "result": {}
+      },
+      "keyword_search": {
+        "ok": false,
+        "http_status": 0,
+        "amap_status": null,
+        "amap_info": null,
+        "amap_infocode": null,
+        "count": null,
+        "request_params": {
+          "key": "ec35d0b32022ff3059b361386562a7b4",
+          "keywords": "钟楼",
+          "city": "西安",
+          "citylimit": "true",
+          "offset": 3,
+          "page": 1,
+          "extensions": "all"
+        },
+        "raw_text_preview": null,
+        "exception_type": "ConnectionError",
+        "exception_message": "HTTPSConnectionPool(host='restapi.amap.com', port=443): Max retries exceeded with url: /v3/place/text?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E9%92%9F%E6%A5%BC&city=%E8%A5%BF%E5%AE%89&citylimit=true&offset=3&page=1&extensions=all (Caused by NewConnectionError(\"HTTPSConnection(host='restapi.amap.com', port=443): Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。\"))",
+        "request_url": "https://restapi.amap.com/v3/place/text?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E9%92%9F%E6%A5%BC&city=%E8%A5%BF%E5%AE%89&citylimit=true&offset=3&page=1&extensions=all",
+        "timeout_seconds": [
+          5,
+          15
+        ],
+        "proxy_mode": "inherit_env",
+        "env_proxy_snapshot": {
+          "HTTP_PROXY": false,
+          "HTTPS_PROXY": false,
+          "NO_PROXY": false,
+          "REQUESTS_CA_BUNDLE": false,
+          "CURL_CA_BUNDLE": false
+        },
+        "result": []
+      },
+      "input_tips": {
+        "ok": false,
+        "http_status": 0,
+        "amap_status": null,
+        "amap_info": null,
+        "amap_infocode": null,
+        "count": null,
+        "request_params": {
+          "key": "ec35d0b32022ff3059b361386562a7b4",
+          "keywords": "大雁塔",
+          "city": "西安",
+          "citylimit": "true",
+          "datatype": "all"
+        },
+        "raw_text_preview": null,
+        "exception_type": "ConnectionError",
+        "exception_message": "HTTPSConnectionPool(host='restapi.amap.com', port=443): Max retries exceeded with url: /v3/assistant/inputtips?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E5%A4%A7%E9%9B%81%E5%A1%94&city=%E8%A5%BF%E5%AE%89&citylimit=true&datatype=all (Caused by NewConnectionError(\"HTTPSConnection(host='restapi.amap.com', port=443): Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。\"))",
+        "request_url": "https://restapi.amap.com/v3/assistant/inputtips?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E5%A4%A7%E9%9B%81%E5%A1%94&city=%E8%A5%BF%E5%AE%89&citylimit=true&datatype=all",
+        "timeout_seconds": [
+          5,
+          15
+        ],
+        "proxy_mode": "inherit_env",
+        "env_proxy_snapshot": {
+          "HTTP_PROXY": false,
+          "HTTPS_PROXY": false,
+          "NO_PROXY": false,
+          "REQUESTS_CA_BUNDLE": false,
+          "CURL_CA_BUNDLE": false
+        },
+        "result": []
+      },
+      "nearby_search": {
+        "ok": false,
+        "http_status": 0,
+        "amap_status": null,
+        "amap_info": null,
+        "amap_infocode": null,
+        "count": null,
+        "request_params": {
+          "key": "ec35d0b32022ff3059b361386562a7b4",
+          "location": "108.95,34.26",
+          "radius": 1000,
+          "sortrule": "distance",
+          "offset": 3,
+          "page": 1,
+          "extensions": "all",
+          "keywords": "餐厅"
+        },
+        "raw_text_preview": null,
+        "exception_type": "ConnectionError",
+        "exception_message": "HTTPSConnectionPool(host='restapi.amap.com', port=443): Max retries exceeded with url: /v3/place/around?key=ec35d0b32022ff3059b361386562a7b4&location=108.95%2C34.26&radius=1000&sortrule=distance&offset=3&page=1&extensions=all&keywords=%E9%A4%90%E5%8E%85 (Caused by NewConnectionError(\"HTTPSConnection(host='restapi.amap.com', port=443): Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。\"))",
+        "request_url": "https://restapi.amap.com/v3/place/around?key=ec35d0b32022ff3059b361386562a7b4&location=108.95%2C34.26&radius=1000&sortrule=distance&offset=3&page=1&extensions=all&keywords=%E9%A4%90%E5%8E%85",
+        "timeout_seconds": [
+          5,
+          15
+        ],
+        "proxy_mode": "inherit_env",
+        "env_proxy_snapshot": {
+          "HTTP_PROXY": false,
+          "HTTPS_PROXY": false,
+          "NO_PROXY": false,
+          "REQUESTS_CA_BUNDLE": false,
+          "CURL_CA_BUNDLE": false
+        },
+        "result": []
+      },
+      "weather": {
+        "error": "amap_network_error"
+      }
+    },
+    "knowledge_gain": {
+      "case_count": 6,
+      "averages": {
+        "avg_stop_count_delta": 0.0,
+        "avg_cross_area_count_delta": 0.0,
+        "avg_total_duration_minutes_delta": 7.8333,
+        "avg_constraint_satisfaction_rate_delta": 0.0556
+      },
+      "cases": [
+        {
+          "case_name": "ablation_01",
+          "with_knowledge": {
+            "stop_count": 3.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 175.0,
+            "constraint_satisfaction_rate": 0.8333
+          },
+          "without_knowledge": {
+            "stop_count": 4.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 221.0,
+            "constraint_satisfaction_rate": 0.5
+          },
+          "delta": {
+            "stop_count": -1.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": -46.0,
+            "constraint_satisfaction_rate": 0.3333
+          }
+        },
+        {
+          "case_name": "ablation_02",
+          "with_knowledge": {
+            "stop_count": 2.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 171.0,
+            "constraint_satisfaction_rate": 1.0
+          },
+          "without_knowledge": {
+            "stop_count": 2.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 169.0,
+            "constraint_satisfaction_rate": 1.0
+          },
+          "delta": {
+            "stop_count": 0.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 2.0,
+            "constraint_satisfaction_rate": 0.0
+          }
+        },
+        {
+          "case_name": "ablation_03",
+          "with_knowledge": {
+            "stop_count": 3.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 175.0,
+            "constraint_satisfaction_rate": 1.0
+          },
+          "without_knowledge": {
+            "stop_count": 2.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 108.0,
+            "constraint_satisfaction_rate": 1.0
+          },
+          "delta": {
+            "stop_count": 1.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 67.0,
+            "constraint_satisfaction_rate": 0.0
+          }
+        },
+        {
+          "case_name": "ablation_04",
+          "with_knowledge": {
+            "stop_count": 4.0,
+            "cross_area_count": 1.0,
+            "total_duration_minutes": 311.0,
+            "constraint_satisfaction_rate": 1.0
+          },
+          "without_knowledge": {
+            "stop_count": 4.0,
+            "cross_area_count": 1.0,
+            "total_duration_minutes": 311.0,
+            "constraint_satisfaction_rate": 1.0
+          },
+          "delta": {
+            "stop_count": 0.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 0.0,
+            "constraint_satisfaction_rate": 0.0
+          }
+        },
+        {
+          "case_name": "ablation_05",
+          "with_knowledge": {
+            "stop_count": 3.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 175.0,
+            "constraint_satisfaction_rate": 0.75
+          },
+          "without_knowledge": {
+            "stop_count": 2.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 108.0,
+            "constraint_satisfaction_rate": 0.75
+          },
+          "delta": {
+            "stop_count": 1.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 67.0,
+            "constraint_satisfaction_rate": 0.0
+          }
+        },
+        {
+          "case_name": "ablation_06",
+          "with_knowledge": {
+            "stop_count": 3.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 149.0,
+            "constraint_satisfaction_rate": 1.0
+          },
+          "without_knowledge": {
+            "stop_count": 4.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": 192.0,
+            "constraint_satisfaction_rate": 1.0
+          },
+          "delta": {
+            "stop_count": -1.0,
+            "cross_area_count": 0.0,
+            "total_duration_minutes": -43.0,
+            "constraint_satisfaction_rate": 0.0
+          }
+        }
+      ],
+      "with_knowledge": [
+        {
+          "case_name": "ablation_01",
+          "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+          "stop_count": 3,
+          "cross_area_count": 0,
+          "total_duration_minutes": 175.0,
+          "constraint_satisfaction_rate": 0.8333
+        },
+        {
+          "case_name": "ablation_02",
+          "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+          "stop_count": 2,
+          "cross_area_count": 0,
+          "total_duration_minutes": 171.0,
+          "constraint_satisfaction_rate": 1.0
+        },
+        {
+          "case_name": "ablation_03",
+          "text": "我在钟楼附近，只有3小时，想轻松一点",
+          "stop_count": 3,
+          "cross_area_count": 0,
+          "total_duration_minutes": 175.0,
+          "constraint_satisfaction_rate": 1.0
+        },
+        {
+          "case_name": "ablation_04",
+          "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+          "stop_count": 4,
+          "cross_area_count": 1,
+          "total_duration_minutes": 311.0,
+          "constraint_satisfaction_rate": 1.0
+        },
+        {
+          "case_name": "ablation_05",
+          "text": "下午想轻松一点，逛两个地方就行",
+          "stop_count": 3,
+          "cross_area_count": 0,
+          "total_duration_minutes": 175.0,
+          "constraint_satisfaction_rate": 0.75
+        },
+        {
+          "case_name": "ablation_06",
+          "text": "晚上在曲江附近，想约会吃饭看夜景，步行不要太多",
+          "stop_count": 3,
+          "cross_area_count": 0,
+          "total_duration_minutes": 149.0,
+          "constraint_satisfaction_rate": 1.0
+        }
+      ],
+      "without_knowledge": [
+        {
+          "case_name": "ablation_01",
+          "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+          "stop_count": 4,
+          "cross_area_count": 0,
+          "total_duration_minutes": 221.0,
+          "constraint_satisfaction_rate": 0.5
+        },
+        {
+          "case_name": "ablation_02",
+          "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+          "stop_count": 2,
+          "cross_area_count": 0,
+          "total_duration_minutes": 169.0,
+          "constraint_satisfaction_rate": 1.0
+        },
+        {
+          "case_name": "ablation_03",
+          "text": "我在钟楼附近，只有3小时，想轻松一点",
+          "stop_count": 2,
+          "cross_area_count": 0,
+          "total_duration_minutes": 108.0,
+          "constraint_satisfaction_rate": 1.0
+        },
+        {
+          "case_name": "ablation_04",
+          "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+          "stop_count": 4,
+          "cross_area_count": 1,
+          "total_duration_minutes": 311.0,
+          "constraint_satisfaction_rate": 1.0
+        },
+        {
+          "case_name": "ablation_05",
+          "text": "下午想轻松一点，逛两个地方就行",
+          "stop_count": 2,
+          "cross_area_count": 0,
+          "total_duration_minutes": 108.0,
+          "constraint_satisfaction_rate": 0.75
+        },
+        {
+          "case_name": "ablation_06",
+          "text": "晚上在曲江附近，想约会吃饭看夜景，步行不要太多",
+          "stop_count": 4,
+          "cross_area_count": 0,
+          "total_duration_minutes": 192.0,
+          "constraint_satisfaction_rate": 1.0
+        }
+      ]
+    }
+  }
+}

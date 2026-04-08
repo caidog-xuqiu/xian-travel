@@ -1,0 +1,85 @@
+[
+  {
+    "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+    "parsed_by": "llm",
+    "search_strategy": [
+      "relaxed",
+      "nearby",
+      "indoor",
+      "food"
+    ],
+    "search_round": 1,
+    "candidate_plans_count": 2,
+    "selected_by": "llm",
+    "selection_reason": "用户需求为陪父母、放松、含餐、步行耐受低、时间紧张，且提示少跨簇更优。relaxed_first方案类型为轻松优先，节奏轻松，步行低，含餐，跨簇次数为0，完全符合用户意图。classic_first方案目的为旅游，标签含博物馆和地标，更偏向经典游览，不如relaxed_first贴合放松需求。",
+    "selected_plan_stop_count": 2,
+    "selected_plan_cluster_seq": [
+      "小寨文博簇"
+    ]
+  },
+  {
+    "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+    "parsed_by": "llm",
+    "search_strategy": [
+      "night",
+      "food"
+    ],
+    "search_round": 2,
+    "candidate_plans_count": 3,
+    "selected_by": "llm",
+    "selection_reason": "用户需求为约会、含餐、步行耐受中等，且时间紧张（4小时），提示陪父母/轻松优先/时间紧张时少跨簇更优。relaxed_first方案节奏轻松、步行量低，符合约会场景的舒适需求，且无跨簇、含餐，时间利用高效。",
+    "selected_plan_stop_count": 2,
+    "selected_plan_cluster_seq": [
+      "曲江夜游簇"
+    ]
+  },
+  {
+    "text": "我在钟楼附近，只有3小时，想轻松一点",
+    "parsed_by": "llm",
+    "search_strategy": [
+      "classic",
+      "nearby",
+      "relaxed"
+    ],
+    "search_round": 1,
+    "candidate_plans_count": 2,
+    "selected_by": "llm",
+    "selection_reason": "用户需求为solo、relax、需餐食、低步行耐受、时间紧张，且提示强调少跨簇更优。两个方案均在同一簇内（无跨簇），但classic_first节奏更轻松、距离更短（1400m vs 1837m），且标签包含landmark更符合tourism目的，整体更贴合放松与时间紧张的需求。",
+    "selected_plan_stop_count": 2,
+    "selected_plan_cluster_seq": [
+      "城墙钟鼓楼簇"
+    ]
+  },
+  {
+    "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+    "parsed_by": "llm",
+    "search_strategy": [
+      "classic"
+    ],
+    "search_round": 2,
+    "candidate_plans_count": 2,
+    "selected_by": "llm",
+    "selection_reason": "用户需求为旅游、含餐、中等步行耐受，且提示陪父母/轻松优先/时间紧张时少跨簇更优。该方案节奏轻松、步行量低、跨簇次数为1，更符合轻松优先和少跨簇的意图。",
+    "selected_plan_stop_count": 4,
+    "selected_plan_cluster_seq": [
+      "小寨文博簇",
+      "大雁塔簇"
+    ]
+  },
+  {
+    "text": "下午想轻松一点，逛两个地方就行",
+    "parsed_by": "llm",
+    "search_strategy": [
+      "classic",
+      "relaxed"
+    ],
+    "search_round": 1,
+    "candidate_plans_count": 2,
+    "selected_by": "llm",
+    "selection_reason": "用户需求为solo、relax、需餐、步行容忍度低、时间紧张，且提示强调少跨簇更优。两个方案均满足含餐、轻松节奏、低步行、无跨簇，但classic_first更符合经典/文博偏好，且标签包含landmark，更契合放松旅游意图。",
+    "selected_plan_stop_count": 2,
+    "selected_plan_cluster_seq": [
+      "大雁塔簇"
+    ]
+  }
+]

@@ -1,0 +1,1486 @@
+[
+  {
+    "case_name": "case_01",
+    "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+    "selected_plan": "classic_first",
+    "selected_by": "fallback_rule",
+    "task_success": true,
+    "constraint_satisfaction": 0.8333,
+    "constraint_checks": {
+      "need_meal": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "need_meal=true 时应包含餐饮节点"
+      },
+      "available_hours": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "总时长不超过 available_hours"
+      },
+      "walking_tolerance": {
+        "applicable": true,
+        "satisfied": false,
+        "note": "低步行偏好应控制跨区、站点和单段时长"
+      },
+      "weather": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "雨天/高温应偏室内或低步行策略"
+      },
+      "companion_type": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "陪父母应偏低强度、少跨区"
+      },
+      "purpose": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "目的约束应与路线结构一致"
+      }
+    },
+    "request_context": {
+      "parsed_request": {
+        "companion_type": "parents",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "rainy",
+        "origin": "钟楼",
+        "origin_latitude": null,
+        "origin_longitude": null,
+        "origin_adcode": null,
+        "preferred_period": "midday",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "resolved": {
+        "companion_type": "parents",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "rainy",
+        "preferred_period": "midday"
+      }
+    },
+    "tool_usage": {
+      "amap_called": true,
+      "amap_sources_used": []
+    },
+    "tool_success": {
+      "geocode": false,
+      "search": false,
+      "nearby": false,
+      "weather": false,
+      "route": false
+    },
+    "tool_attempted": {
+      "geocode": false,
+      "search": true,
+      "nearby": false,
+      "weather": true,
+      "route": true
+    },
+    "fallback": {
+      "overall_fallback": true,
+      "overall_fallback_reasons": [
+        "weather_fallback_request",
+        "geocode_failed",
+        "amap_empty",
+        "route_fallback_local"
+      ],
+      "by_tool": {
+        "geocode": {
+          "fallback": true,
+          "reasons": [
+            "geocode_failed"
+          ]
+        },
+        "search": {
+          "fallback": true,
+          "reasons": [
+            "amap_empty"
+          ]
+        },
+        "nearby": {
+          "fallback": false,
+          "reasons": []
+        },
+        "weather": {
+          "fallback": true,
+          "reasons": [
+            "weather_fallback_request"
+          ]
+        },
+        "route": {
+          "fallback": true,
+          "reasons": [
+            "route_fallback_local"
+          ]
+        }
+      }
+    },
+    "pairs_warning": true,
+    "knowledge_used_count": 4,
+    "knowledge_ids": [
+      "k_parents_relaxed",
+      "k_rainy_indoor",
+      "k_parents_meal_rest",
+      "k_need_meal_anchor"
+    ],
+    "knowledge_bias": {
+      "prefer_indoor": true,
+      "prefer_single_cluster": true,
+      "prefer_low_walk": true,
+      "prefer_meal_experience": true,
+      "prefer_night_view": false,
+      "prefer_budget_friendly": false,
+      "avoid_too_many_stops": true,
+      "prefer_lively_places": false,
+      "weights": {
+        "prefer_indoor": 4,
+        "prefer_single_cluster": 5,
+        "prefer_low_walk": 7,
+        "prefer_meal_experience": 7,
+        "prefer_night_view": 0,
+        "prefer_budget_friendly": 0,
+        "avoid_too_many_stops": 4,
+        "prefer_lively_places": 0
+      }
+    },
+    "explanation_basis": [
+      "陪父母偏低强度：陪父母出行时控制步行强度，缩短连续移动，避免过多站点。",
+      "雨天优先室内点位：遇到雨天时，优先室内景点或室内商业体，减少纯户外停留时长。"
+    ],
+    "explanation_consistency": {
+      "applicable_count": 2,
+      "satisfied_count": 2,
+      "explanation_consistency_rate": 1.0,
+      "explanation_consistent": true,
+      "rules": [
+        {
+          "name": "天气/室内/低步行说明一致性",
+          "applicable": true,
+          "satisfied": true
+        },
+        {
+          "name": "陪父母/低强度说明一致性",
+          "applicable": true,
+          "satisfied": true
+        },
+        {
+          "name": "餐饮优先说明一致性",
+          "applicable": false,
+          "satisfied": null
+        }
+      ]
+    },
+    "time_budget_fit": true,
+    "route_stats": {
+      "stop_count": 3,
+      "meal_count": 1,
+      "sight_count": 2,
+      "meal_ratio": 0.3333,
+      "clusters": [
+        "城墙钟鼓楼簇"
+      ],
+      "areas": [
+        "城墙钟鼓楼"
+      ],
+      "cross_cluster_count": 0,
+      "cross_area_count": 0,
+      "leg_duration_sum": 43,
+      "max_leg_duration": 28,
+      "scheduled_duration_minutes": 175,
+      "total_duration_minutes": 175,
+      "is_night_route": false,
+      "has_valid_route": true
+    },
+    "debug_refs": {
+      "pairs_warning_logs": [
+        "候选质量告警：方案差异度不足（pairs=[('classic_first', 'relaxed_first'), ('classic_first', 'food_friendly'), ('relaxed_first', 'food_friendly')]）。"
+      ],
+      "fallback_logs": [
+        "amap_event tool=geocode attempted=False hit=False infocode=None fallback=geocode_failed",
+        "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, fallback_reason=llm_call_exception",
+        "amap_event tool=text_search attempted=True hit=False infocode=None fallback=amap_empty",
+        "Planning step=1: invalid action fallback -> SEARCH",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: search_candidate_skill, status=fallback, summary=search_results_count=30",
+        "Planning step=2: invalid action fallback -> GENERATE_CANDIDATES",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: generate_candidates_skill, status=fallback, summary=candidate_plans_count=3",
+        "Planning step=3: invalid action fallback -> FINISH",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=3 action=FINISH skill=select_plan_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: select_plan_skill, status=fallback, summary=finish_ready=true",
+        "amap_event tool=weather attempted=True hit=False infocode=None fallback=weather_fallback_request",
+        "amap weather called: source=fallback_request",
+        "skill invoked: amap_weather_skill, status=fallback, summary=fallback_request",
+        "已获取天气上下文（source=fallback_request）。",
+        "selector_local_rank_fallback: llm_selector_call_exception",
+        "LLM select diagnostics: llm_selector_called=True, llm_selector_raw_response_exists=False, llm_selector_json_parse_ok=False, llm_selector_schema_ok=False, llm_selector_retry_count=1, llm_selected_plan_valid=False, selector_error_type=network_exception, fallback_reason=llm_selector_call_exception",
+        "amap_event tool=route attempted=True hit=False infocode=None fallback=route_fallback_local",
+        "amap route called: route_source=fallback_local",
+        "skill invoked: amap_route_skill, status=fallback, summary=fallback_local",
+        "最终方案=classic_first，selected_by=fallback_rule。",
+        "skill invoked: select_plan_skill, status=fallback, summary=selected_by=fallback_rule"
+      ]
+    }
+  },
+  {
+    "case_name": "case_02",
+    "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+    "selected_plan": "classic_first",
+    "selected_by": "fallback_rule",
+    "task_success": true,
+    "constraint_satisfaction": 1.0,
+    "constraint_checks": {
+      "need_meal": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "need_meal=true 时应包含餐饮节点"
+      },
+      "available_hours": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "总时长不超过 available_hours"
+      },
+      "walking_tolerance": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "低步行偏好应控制跨区、站点和单段时长"
+      },
+      "weather": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "雨天/高温应偏室内或低步行策略"
+      },
+      "companion_type": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "陪父母应偏低强度、少跨区"
+      },
+      "purpose": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "目的约束应与路线结构一致"
+      }
+    },
+    "request_context": {
+      "parsed_request": {
+        "companion_type": "partner",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "dating",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "origin_latitude": null,
+        "origin_longitude": null,
+        "origin_adcode": null,
+        "preferred_period": "evening",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "resolved": {
+        "companion_type": "partner",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "dating",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "preferred_period": "evening"
+      }
+    },
+    "tool_usage": {
+      "amap_called": true,
+      "amap_sources_used": []
+    },
+    "tool_success": {
+      "geocode": false,
+      "search": false,
+      "nearby": false,
+      "weather": false,
+      "route": false
+    },
+    "tool_attempted": {
+      "geocode": false,
+      "search": true,
+      "nearby": false,
+      "weather": true,
+      "route": true
+    },
+    "fallback": {
+      "overall_fallback": true,
+      "overall_fallback_reasons": [
+        "weather_fallback_request",
+        "geocode_failed",
+        "amap_empty",
+        "route_fallback_local"
+      ],
+      "by_tool": {
+        "geocode": {
+          "fallback": true,
+          "reasons": [
+            "geocode_failed"
+          ]
+        },
+        "search": {
+          "fallback": true,
+          "reasons": [
+            "amap_empty"
+          ]
+        },
+        "nearby": {
+          "fallback": false,
+          "reasons": []
+        },
+        "weather": {
+          "fallback": true,
+          "reasons": [
+            "weather_fallback_request"
+          ]
+        },
+        "route": {
+          "fallback": true,
+          "reasons": [
+            "route_fallback_local"
+          ]
+        }
+      }
+    },
+    "pairs_warning": true,
+    "knowledge_used_count": 4,
+    "knowledge_ids": [
+      "k_dating_night_view",
+      "k_need_meal_anchor",
+      "k_parents_meal_rest",
+      "k_dating_low_walk"
+    ],
+    "knowledge_bias": {
+      "prefer_indoor": false,
+      "prefer_single_cluster": true,
+      "prefer_low_walk": true,
+      "prefer_meal_experience": true,
+      "prefer_night_view": true,
+      "prefer_budget_friendly": false,
+      "avoid_too_many_stops": true,
+      "prefer_lively_places": false,
+      "weights": {
+        "prefer_indoor": 0,
+        "prefer_single_cluster": 3,
+        "prefer_low_walk": 3,
+        "prefer_meal_experience": 11,
+        "prefer_night_view": 5,
+        "prefer_budget_friendly": 0,
+        "avoid_too_many_stops": 1,
+        "prefer_lively_places": 0
+      }
+    },
+    "explanation_basis": [
+      "约会优先夜景氛围：约会晚间优先夜景和拍照氛围点，并与晚餐顺路衔接。",
+      "需用餐时餐点为硬锚点：用户明确需要吃饭时，餐饮节点优先保留，不随意裁剪。"
+    ],
+    "explanation_consistency": {
+      "applicable_count": 1,
+      "satisfied_count": 1,
+      "explanation_consistency_rate": 1.0,
+      "explanation_consistent": true,
+      "rules": [
+        {
+          "name": "天气/室内/低步行说明一致性",
+          "applicable": false,
+          "satisfied": null
+        },
+        {
+          "name": "陪父母/低强度说明一致性",
+          "applicable": false,
+          "satisfied": null
+        },
+        {
+          "name": "餐饮优先说明一致性",
+          "applicable": true,
+          "satisfied": true
+        }
+      ]
+    },
+    "time_budget_fit": true,
+    "route_stats": {
+      "stop_count": 2,
+      "meal_count": 1,
+      "sight_count": 1,
+      "meal_ratio": 0.5,
+      "clusters": [
+        "曲江夜游簇"
+      ],
+      "areas": [
+        "曲江夜游"
+      ],
+      "cross_cluster_count": 0,
+      "cross_area_count": 0,
+      "leg_duration_sum": 49,
+      "max_leg_duration": 28,
+      "scheduled_duration_minutes": 171,
+      "total_duration_minutes": 171,
+      "is_night_route": true,
+      "has_valid_route": true
+    },
+    "debug_refs": {
+      "pairs_warning_logs": [
+        "候选质量告警：方案差异度不足（pairs=[('classic_first', 'food_friendly')]）。"
+      ],
+      "fallback_logs": [
+        "amap_event tool=geocode attempted=False hit=False infocode=None fallback=geocode_failed",
+        "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, fallback_reason=llm_call_exception",
+        "amap_event tool=text_search attempted=True hit=False infocode=None fallback=amap_empty",
+        "Planning step=1: invalid action fallback -> SEARCH",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: search_candidate_skill, status=fallback, summary=search_results_count=30",
+        "Planning step=2: invalid action fallback -> GENERATE_CANDIDATES",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: generate_candidates_skill, status=fallback, summary=candidate_plans_count=3",
+        "Planning step=3: invalid action fallback -> FINISH",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=3 action=FINISH skill=select_plan_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: select_plan_skill, status=fallback, summary=finish_ready=true",
+        "amap_event tool=weather attempted=True hit=False infocode=None fallback=weather_fallback_request",
+        "amap weather called: source=fallback_request",
+        "skill invoked: amap_weather_skill, status=fallback, summary=fallback_request",
+        "已获取天气上下文（source=fallback_request）。",
+        "selector_local_rank_fallback: llm_selector_call_exception",
+        "LLM select diagnostics: llm_selector_called=True, llm_selector_raw_response_exists=False, llm_selector_json_parse_ok=False, llm_selector_schema_ok=False, llm_selector_retry_count=1, llm_selected_plan_valid=False, selector_error_type=network_exception, fallback_reason=llm_selector_call_exception",
+        "amap_event tool=route attempted=True hit=False infocode=None fallback=route_fallback_local",
+        "amap route called: route_source=fallback_local",
+        "skill invoked: amap_route_skill, status=fallback, summary=fallback_local",
+        "最终方案=classic_first，selected_by=fallback_rule。",
+        "skill invoked: select_plan_skill, status=fallback, summary=selected_by=fallback_rule"
+      ]
+    }
+  },
+  {
+    "case_name": "case_03",
+    "text": "我在钟楼附近，只有3小时，想轻松一点",
+    "selected_plan": "classic_first",
+    "selected_by": "fallback_rule",
+    "task_success": true,
+    "constraint_satisfaction": 1.0,
+    "constraint_checks": {
+      "need_meal": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "need_meal=true 时应包含餐饮节点"
+      },
+      "available_hours": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "总时长不超过 available_hours"
+      },
+      "walking_tolerance": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "低步行偏好应控制跨区、站点和单段时长"
+      },
+      "weather": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "雨天/高温应偏室内或低步行策略"
+      },
+      "companion_type": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "陪父母应偏低强度、少跨区"
+      },
+      "purpose": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "目的约束应与路线结构一致"
+      }
+    },
+    "request_context": {
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 3.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "origin_latitude": null,
+        "origin_longitude": null,
+        "origin_adcode": null,
+        "preferred_period": null,
+        "origin_preference_mode": "nearby",
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "resolved": {
+        "companion_type": "solo",
+        "available_hours": 3.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "preferred_period": ""
+      }
+    },
+    "tool_usage": {
+      "amap_called": true,
+      "amap_sources_used": []
+    },
+    "tool_success": {
+      "geocode": false,
+      "search": false,
+      "nearby": false,
+      "weather": false,
+      "route": false
+    },
+    "tool_attempted": {
+      "geocode": true,
+      "search": true,
+      "nearby": false,
+      "weather": true,
+      "route": true
+    },
+    "fallback": {
+      "overall_fallback": true,
+      "overall_fallback_reasons": [
+        "nearby_failed:geocode_failed",
+        "geocode_failed",
+        "weather_fallback_request",
+        "route_fallback_local"
+      ],
+      "by_tool": {
+        "geocode": {
+          "fallback": true,
+          "reasons": [
+            "geocode_failed"
+          ]
+        },
+        "search": {
+          "fallback": true,
+          "reasons": [
+            "nearby_failed:geocode_failed"
+          ]
+        },
+        "nearby": {
+          "fallback": false,
+          "reasons": []
+        },
+        "weather": {
+          "fallback": true,
+          "reasons": [
+            "weather_fallback_request"
+          ]
+        },
+        "route": {
+          "fallback": true,
+          "reasons": [
+            "route_fallback_local"
+          ]
+        }
+      }
+    },
+    "pairs_warning": true,
+    "knowledge_used_count": 4,
+    "knowledge_ids": [
+      "k_parents_relaxed",
+      "k_short_time_3h",
+      "k_need_meal_anchor",
+      "k_low_walk_general"
+    ],
+    "knowledge_bias": {
+      "prefer_indoor": false,
+      "prefer_single_cluster": true,
+      "prefer_low_walk": true,
+      "prefer_meal_experience": true,
+      "prefer_night_view": false,
+      "prefer_budget_friendly": false,
+      "avoid_too_many_stops": true,
+      "prefer_lively_places": false,
+      "weights": {
+        "prefer_indoor": 0,
+        "prefer_single_cluster": 7,
+        "prefer_low_walk": 5,
+        "prefer_meal_experience": 5,
+        "prefer_night_view": 0,
+        "prefer_budget_friendly": 0,
+        "avoid_too_many_stops": 8,
+        "prefer_lively_places": 0
+      }
+    },
+    "explanation_basis": [
+      "陪父母偏低强度：陪父母出行时控制步行强度，缩短连续移动，避免过多站点。",
+      "3小时内行程压缩：可用时间约3小时时，优先2-3个核心节点并减少跨区域。"
+    ],
+    "explanation_consistency": {
+      "applicable_count": 1,
+      "satisfied_count": 1,
+      "explanation_consistency_rate": 1.0,
+      "explanation_consistent": true,
+      "rules": [
+        {
+          "name": "天气/室内/低步行说明一致性",
+          "applicable": false,
+          "satisfied": null
+        },
+        {
+          "name": "陪父母/低强度说明一致性",
+          "applicable": true,
+          "satisfied": true
+        },
+        {
+          "name": "餐饮优先说明一致性",
+          "applicable": false,
+          "satisfied": null
+        }
+      ]
+    },
+    "time_budget_fit": true,
+    "route_stats": {
+      "stop_count": 3,
+      "meal_count": 1,
+      "sight_count": 2,
+      "meal_ratio": 0.3333,
+      "clusters": [
+        "城墙钟鼓楼簇"
+      ],
+      "areas": [
+        "城墙钟鼓楼"
+      ],
+      "cross_cluster_count": 0,
+      "cross_area_count": 0,
+      "leg_duration_sum": 31,
+      "max_leg_duration": 16,
+      "scheduled_duration_minutes": 175,
+      "total_duration_minutes": 175,
+      "is_night_route": false,
+      "has_valid_route": true
+    },
+    "debug_refs": {
+      "pairs_warning_logs": [
+        "候选质量告警：方案差异度不足（pairs=[('classic_first', 'relaxed_first'), ('classic_first', 'food_friendly'), ('relaxed_first', 'food_friendly')]）。"
+      ],
+      "fallback_logs": [
+        "amap_event tool=geocode attempted=True hit=False infocode=None fallback=geocode_failed",
+        "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, fallback_reason=llm_call_exception",
+        "amap_event tool=text_search attempted=True hit=False infocode=None fallback=nearby_failed:geocode_failed",
+        "amap search fallback: nearby_failed:geocode_failed",
+        "skill invoked: amap_search_skill, status=fallback, summary=nearby_failed:geocode_failed",
+        "discovery notes: source=amap_web_search fallback_reason=nearby_failed:geocode_failed | source=amap_web_search mode=keyword | source=amap_web_search query_count=24 | candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic, nearby, relaxed | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:33, amap_web_search:0, merged=51",
+        "Planning step=1: invalid action fallback -> SEARCH",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: search_candidate_skill, status=fallback, summary=search_results_count=30",
+        "Planning step=2: invalid action fallback -> GENERATE_CANDIDATES",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: generate_candidates_skill, status=fallback, summary=candidate_plans_count=3",
+        "Planning step=3: invalid action fallback -> FINISH",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=3 action=FINISH skill=select_plan_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: select_plan_skill, status=fallback, summary=finish_ready=true",
+        "amap_event tool=weather attempted=True hit=False infocode=None fallback=weather_fallback_request",
+        "amap weather called: source=fallback_request",
+        "skill invoked: amap_weather_skill, status=fallback, summary=fallback_request",
+        "已获取天气上下文（source=fallback_request）。",
+        "selector_local_rank_fallback: llm_selector_call_exception",
+        "LLM select diagnostics: llm_selector_called=True, llm_selector_raw_response_exists=False, llm_selector_json_parse_ok=False, llm_selector_schema_ok=False, llm_selector_retry_count=1, llm_selected_plan_valid=False, selector_error_type=network_exception, fallback_reason=llm_selector_call_exception",
+        "amap_event tool=route attempted=True hit=False infocode=None fallback=route_fallback_local",
+        "amap route called: route_source=fallback_local",
+        "skill invoked: amap_route_skill, status=fallback, summary=fallback_local",
+        "最终方案=classic_first，selected_by=fallback_rule。",
+        "skill invoked: select_plan_skill, status=fallback, summary=selected_by=fallback_rule"
+      ]
+    }
+  },
+  {
+    "case_name": "case_04",
+    "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+    "selected_plan": "classic_first",
+    "selected_by": "fallback_rule",
+    "task_success": true,
+    "constraint_satisfaction": 1.0,
+    "constraint_checks": {
+      "need_meal": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "need_meal=true 时应包含餐饮节点"
+      },
+      "available_hours": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "总时长不超过 available_hours"
+      },
+      "walking_tolerance": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "低步行偏好应控制跨区、站点和单段时长"
+      },
+      "weather": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "雨天/高温应偏室内或低步行策略"
+      },
+      "companion_type": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "陪父母应偏低强度、少跨区"
+      },
+      "purpose": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "目的约束应与路线结构一致"
+      }
+    },
+    "request_context": {
+      "parsed_request": {
+        "companion_type": "friends",
+        "available_hours": 8.0,
+        "budget_level": "low",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "origin_latitude": null,
+        "origin_longitude": null,
+        "origin_adcode": null,
+        "preferred_period": null,
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "resolved": {
+        "companion_type": "friends",
+        "available_hours": 8.0,
+        "budget_level": "low",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "preferred_period": ""
+      }
+    },
+    "tool_usage": {
+      "amap_called": true,
+      "amap_sources_used": []
+    },
+    "tool_success": {
+      "geocode": false,
+      "search": false,
+      "nearby": false,
+      "weather": false,
+      "route": false
+    },
+    "tool_attempted": {
+      "geocode": false,
+      "search": true,
+      "nearby": false,
+      "weather": true,
+      "route": true
+    },
+    "fallback": {
+      "overall_fallback": true,
+      "overall_fallback_reasons": [
+        "weather_fallback_request",
+        "geocode_failed",
+        "amap_empty",
+        "route_fallback_local"
+      ],
+      "by_tool": {
+        "geocode": {
+          "fallback": true,
+          "reasons": [
+            "geocode_failed"
+          ]
+        },
+        "search": {
+          "fallback": true,
+          "reasons": [
+            "amap_empty"
+          ]
+        },
+        "nearby": {
+          "fallback": false,
+          "reasons": []
+        },
+        "weather": {
+          "fallback": true,
+          "reasons": [
+            "weather_fallback_request"
+          ]
+        },
+        "route": {
+          "fallback": true,
+          "reasons": [
+            "route_fallback_local"
+          ]
+        }
+      }
+    },
+    "pairs_warning": true,
+    "knowledge_used_count": 4,
+    "knowledge_ids": [
+      "k_need_meal_anchor",
+      "k_budget_low_value",
+      "k_friends_multi_spots",
+      "k_friends_lively"
+    ],
+    "knowledge_bias": {
+      "prefer_indoor": false,
+      "prefer_single_cluster": false,
+      "prefer_low_walk": false,
+      "prefer_meal_experience": true,
+      "prefer_night_view": false,
+      "prefer_budget_friendly": true,
+      "avoid_too_many_stops": false,
+      "prefer_lively_places": true,
+      "weights": {
+        "prefer_indoor": 0,
+        "prefer_single_cluster": 0,
+        "prefer_low_walk": 0,
+        "prefer_meal_experience": 6,
+        "prefer_night_view": 0,
+        "prefer_budget_friendly": 4,
+        "avoid_too_many_stops": 0,
+        "prefer_lively_places": 5
+      }
+    },
+    "explanation_basis": [
+      "需用餐时餐点为硬锚点：用户明确需要吃饭时，餐饮节点优先保留，不随意裁剪。",
+      "低预算优先性价比：预算低时优先高性价比餐饮与免票/低票价点位，控制整体开销。"
+    ],
+    "explanation_consistency": {
+      "applicable_count": 1,
+      "satisfied_count": 1,
+      "explanation_consistency_rate": 1.0,
+      "explanation_consistent": true,
+      "rules": [
+        {
+          "name": "天气/室内/低步行说明一致性",
+          "applicable": false,
+          "satisfied": null
+        },
+        {
+          "name": "陪父母/低强度说明一致性",
+          "applicable": false,
+          "satisfied": null
+        },
+        {
+          "name": "餐饮优先说明一致性",
+          "applicable": true,
+          "satisfied": true
+        }
+      ]
+    },
+    "time_budget_fit": true,
+    "route_stats": {
+      "stop_count": 4,
+      "meal_count": 1,
+      "sight_count": 3,
+      "meal_ratio": 0.25,
+      "clusters": [
+        "小寨文博簇",
+        "城墙钟鼓楼簇"
+      ],
+      "areas": [
+        "小寨文博",
+        "城墙钟鼓楼"
+      ],
+      "cross_cluster_count": 1,
+      "cross_area_count": 1,
+      "leg_duration_sum": 84,
+      "max_leg_duration": 28,
+      "scheduled_duration_minutes": 311,
+      "total_duration_minutes": 311,
+      "is_night_route": false,
+      "has_valid_route": true
+    },
+    "debug_refs": {
+      "pairs_warning_logs": [
+        "候选质量告警：方案差异度不足（pairs=[('relaxed_first', 'food_friendly')]）。"
+      ],
+      "fallback_logs": [
+        "amap_event tool=geocode attempted=False hit=False infocode=None fallback=geocode_failed",
+        "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, fallback_reason=llm_call_exception",
+        "amap_event tool=text_search attempted=True hit=False infocode=None fallback=amap_empty",
+        "Planning step=1: invalid action fallback -> SEARCH",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: search_candidate_skill, status=fallback, summary=search_results_count=30",
+        "Planning step=2: invalid action fallback -> GENERATE_CANDIDATES",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: generate_candidates_skill, status=fallback, summary=candidate_plans_count=3",
+        "Planning step=3: invalid action fallback -> FINISH",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=3 action=FINISH skill=select_plan_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: select_plan_skill, status=fallback, summary=finish_ready=true",
+        "amap_event tool=weather attempted=True hit=False infocode=None fallback=weather_fallback_request",
+        "amap weather called: source=fallback_request",
+        "skill invoked: amap_weather_skill, status=fallback, summary=fallback_request",
+        "已获取天气上下文（source=fallback_request）。",
+        "selector_local_rank_fallback: llm_selector_call_exception",
+        "LLM select diagnostics: llm_selector_called=True, llm_selector_raw_response_exists=False, llm_selector_json_parse_ok=False, llm_selector_schema_ok=False, llm_selector_retry_count=1, llm_selected_plan_valid=False, selector_error_type=network_exception, fallback_reason=llm_selector_call_exception",
+        "amap_event tool=route attempted=True hit=False infocode=None fallback=route_fallback_local",
+        "amap route called: route_source=fallback_local",
+        "skill invoked: amap_route_skill, status=fallback, summary=fallback_local",
+        "最终方案=classic_first，selected_by=fallback_rule。",
+        "skill invoked: select_plan_skill, status=fallback, summary=selected_by=fallback_rule"
+      ]
+    }
+  },
+  {
+    "case_name": "case_05",
+    "text": "下午想轻松一点，逛两个地方就行",
+    "selected_plan": "classic_first",
+    "selected_by": "fallback_rule",
+    "task_success": true,
+    "constraint_satisfaction": 0.75,
+    "constraint_checks": {
+      "need_meal": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "need_meal=true 时应包含餐饮节点"
+      },
+      "available_hours": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "总时长不超过 available_hours"
+      },
+      "walking_tolerance": {
+        "applicable": true,
+        "satisfied": false,
+        "note": "低步行偏好应控制跨区、站点和单段时长"
+      },
+      "weather": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "雨天/高温应偏室内或低步行策略"
+      },
+      "companion_type": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "陪父母应偏低强度、少跨区"
+      },
+      "purpose": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "目的约束应与路线结构一致"
+      }
+    },
+    "request_context": {
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "origin_latitude": null,
+        "origin_longitude": null,
+        "origin_adcode": null,
+        "preferred_period": "afternoon",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "resolved": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "preferred_period": "afternoon"
+      }
+    },
+    "tool_usage": {
+      "amap_called": true,
+      "amap_sources_used": []
+    },
+    "tool_success": {
+      "geocode": false,
+      "search": false,
+      "nearby": false,
+      "weather": false,
+      "route": false
+    },
+    "tool_attempted": {
+      "geocode": false,
+      "search": true,
+      "nearby": false,
+      "weather": true,
+      "route": true
+    },
+    "fallback": {
+      "overall_fallback": true,
+      "overall_fallback_reasons": [
+        "weather_fallback_request",
+        "geocode_failed",
+        "amap_empty",
+        "route_fallback_local"
+      ],
+      "by_tool": {
+        "geocode": {
+          "fallback": true,
+          "reasons": [
+            "geocode_failed"
+          ]
+        },
+        "search": {
+          "fallback": true,
+          "reasons": [
+            "amap_empty"
+          ]
+        },
+        "nearby": {
+          "fallback": false,
+          "reasons": []
+        },
+        "weather": {
+          "fallback": true,
+          "reasons": [
+            "weather_fallback_request"
+          ]
+        },
+        "route": {
+          "fallback": true,
+          "reasons": [
+            "route_fallback_local"
+          ]
+        }
+      }
+    },
+    "pairs_warning": true,
+    "knowledge_used_count": 4,
+    "knowledge_ids": [
+      "k_need_meal_anchor",
+      "k_parents_relaxed",
+      "k_low_walk_general",
+      "k_dating_night_view"
+    ],
+    "knowledge_bias": {
+      "prefer_indoor": false,
+      "prefer_single_cluster": true,
+      "prefer_low_walk": true,
+      "prefer_meal_experience": true,
+      "prefer_night_view": true,
+      "prefer_budget_friendly": false,
+      "avoid_too_many_stops": true,
+      "prefer_lively_places": false,
+      "weights": {
+        "prefer_indoor": 0,
+        "prefer_single_cluster": 5,
+        "prefer_low_walk": 5,
+        "prefer_meal_experience": 8,
+        "prefer_night_view": 4,
+        "prefer_budget_friendly": 0,
+        "avoid_too_many_stops": 6,
+        "prefer_lively_places": 0
+      }
+    },
+    "explanation_basis": [
+      "需用餐时餐点为硬锚点：用户明确需要吃饭时，餐饮节点优先保留，不随意裁剪。",
+      "陪父母偏低强度：陪父母出行时控制步行强度，缩短连续移动，避免过多站点。"
+    ],
+    "explanation_consistency": {
+      "applicable_count": 2,
+      "satisfied_count": 2,
+      "explanation_consistency_rate": 1.0,
+      "explanation_consistent": true,
+      "rules": [
+        {
+          "name": "天气/室内/低步行说明一致性",
+          "applicable": false,
+          "satisfied": null
+        },
+        {
+          "name": "陪父母/低强度说明一致性",
+          "applicable": true,
+          "satisfied": true
+        },
+        {
+          "name": "餐饮优先说明一致性",
+          "applicable": true,
+          "satisfied": true
+        }
+      ]
+    },
+    "time_budget_fit": true,
+    "route_stats": {
+      "stop_count": 3,
+      "meal_count": 1,
+      "sight_count": 2,
+      "meal_ratio": 0.3333,
+      "clusters": [
+        "城墙钟鼓楼簇"
+      ],
+      "areas": [
+        "城墙钟鼓楼"
+      ],
+      "cross_cluster_count": 0,
+      "cross_area_count": 0,
+      "leg_duration_sum": 43,
+      "max_leg_duration": 28,
+      "scheduled_duration_minutes": 175,
+      "total_duration_minutes": 175,
+      "is_night_route": false,
+      "has_valid_route": true
+    },
+    "debug_refs": {
+      "pairs_warning_logs": [
+        "候选质量告警：方案差异度不足（pairs=[('classic_first', 'relaxed_first')]）。"
+      ],
+      "fallback_logs": [
+        "amap_event tool=geocode attempted=False hit=False infocode=None fallback=geocode_failed",
+        "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, fallback_reason=llm_call_exception",
+        "amap_event tool=text_search attempted=True hit=False infocode=None fallback=amap_empty",
+        "Planning step=1: invalid action fallback -> SEARCH",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: search_candidate_skill, status=fallback, summary=search_results_count=30",
+        "Planning step=2: invalid action fallback -> GENERATE_CANDIDATES",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: generate_candidates_skill, status=fallback, summary=candidate_plans_count=3",
+        "Planning step=3: invalid action fallback -> FINISH",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=3 action=FINISH skill=select_plan_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: select_plan_skill, status=fallback, summary=finish_ready=true",
+        "amap_event tool=weather attempted=True hit=False infocode=None fallback=weather_fallback_request",
+        "amap weather called: source=fallback_request",
+        "skill invoked: amap_weather_skill, status=fallback, summary=fallback_request",
+        "已获取天气上下文（source=fallback_request）。",
+        "selector_local_rank_fallback: llm_selector_call_exception",
+        "LLM select diagnostics: llm_selector_called=True, llm_selector_raw_response_exists=False, llm_selector_json_parse_ok=False, llm_selector_schema_ok=False, llm_selector_retry_count=1, llm_selected_plan_valid=False, selector_error_type=network_exception, fallback_reason=llm_selector_call_exception",
+        "amap_event tool=route attempted=True hit=False infocode=None fallback=route_fallback_local",
+        "amap route called: route_source=fallback_local",
+        "skill invoked: amap_route_skill, status=fallback, summary=fallback_local",
+        "最终方案=classic_first，selected_by=fallback_rule。",
+        "skill invoked: select_plan_skill, status=fallback, summary=selected_by=fallback_rule"
+      ]
+    }
+  },
+  {
+    "case_name": "case_06",
+    "text": "晚上在曲江附近，想约会吃饭看夜景，步行不要太多",
+    "selected_plan": "classic_first",
+    "selected_by": "fallback_rule",
+    "task_success": true,
+    "constraint_satisfaction": 1.0,
+    "constraint_checks": {
+      "need_meal": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "need_meal=true 时应包含餐饮节点"
+      },
+      "available_hours": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "总时长不超过 available_hours"
+      },
+      "walking_tolerance": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "低步行偏好应控制跨区、站点和单段时长"
+      },
+      "weather": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "雨天/高温应偏室内或低步行策略"
+      },
+      "companion_type": {
+        "applicable": false,
+        "satisfied": null,
+        "note": "陪父母应偏低强度、少跨区"
+      },
+      "purpose": {
+        "applicable": true,
+        "satisfied": true,
+        "note": "目的约束应与路线结构一致"
+      }
+    },
+    "request_context": {
+      "parsed_request": {
+        "companion_type": "partner",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "dating",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "曲江",
+        "origin_latitude": null,
+        "origin_longitude": null,
+        "origin_adcode": null,
+        "preferred_period": "evening",
+        "origin_preference_mode": "nearby",
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "resolved": {
+        "companion_type": "partner",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "dating",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "preferred_period": "evening"
+      }
+    },
+    "tool_usage": {
+      "amap_called": true,
+      "amap_sources_used": []
+    },
+    "tool_success": {
+      "geocode": false,
+      "search": false,
+      "nearby": false,
+      "weather": false,
+      "route": false
+    },
+    "tool_attempted": {
+      "geocode": true,
+      "search": true,
+      "nearby": false,
+      "weather": true,
+      "route": true
+    },
+    "fallback": {
+      "overall_fallback": true,
+      "overall_fallback_reasons": [
+        "nearby_failed:geocode_failed",
+        "geocode_failed",
+        "weather_fallback_request",
+        "route_fallback_local"
+      ],
+      "by_tool": {
+        "geocode": {
+          "fallback": true,
+          "reasons": [
+            "geocode_failed"
+          ]
+        },
+        "search": {
+          "fallback": true,
+          "reasons": [
+            "nearby_failed:geocode_failed"
+          ]
+        },
+        "nearby": {
+          "fallback": false,
+          "reasons": []
+        },
+        "weather": {
+          "fallback": true,
+          "reasons": [
+            "weather_fallback_request"
+          ]
+        },
+        "route": {
+          "fallback": true,
+          "reasons": [
+            "route_fallback_local"
+          ]
+        }
+      }
+    },
+    "pairs_warning": true,
+    "knowledge_used_count": 4,
+    "knowledge_ids": [
+      "k_dating_night_view",
+      "k_need_meal_anchor",
+      "k_parents_meal_rest",
+      "k_dating_low_walk"
+    ],
+    "knowledge_bias": {
+      "prefer_indoor": false,
+      "prefer_single_cluster": true,
+      "prefer_low_walk": true,
+      "prefer_meal_experience": true,
+      "prefer_night_view": true,
+      "prefer_budget_friendly": false,
+      "avoid_too_many_stops": true,
+      "prefer_lively_places": false,
+      "weights": {
+        "prefer_indoor": 0,
+        "prefer_single_cluster": 3,
+        "prefer_low_walk": 3,
+        "prefer_meal_experience": 11,
+        "prefer_night_view": 5,
+        "prefer_budget_friendly": 0,
+        "avoid_too_many_stops": 1,
+        "prefer_lively_places": 0
+      }
+    },
+    "explanation_basis": [
+      "约会优先夜景氛围：约会晚间优先夜景和拍照氛围点，并与晚餐顺路衔接。",
+      "需用餐时餐点为硬锚点：用户明确需要吃饭时，餐饮节点优先保留，不随意裁剪。"
+    ],
+    "explanation_consistency": {
+      "applicable_count": 1,
+      "satisfied_count": 1,
+      "explanation_consistency_rate": 1.0,
+      "explanation_consistent": true,
+      "rules": [
+        {
+          "name": "天气/室内/低步行说明一致性",
+          "applicable": false,
+          "satisfied": null
+        },
+        {
+          "name": "陪父母/低强度说明一致性",
+          "applicable": false,
+          "satisfied": null
+        },
+        {
+          "name": "餐饮优先说明一致性",
+          "applicable": true,
+          "satisfied": true
+        }
+      ]
+    },
+    "time_budget_fit": true,
+    "route_stats": {
+      "stop_count": 3,
+      "meal_count": 1,
+      "sight_count": 2,
+      "meal_ratio": 0.3333,
+      "clusters": [
+        "曲江夜游簇"
+      ],
+      "areas": [
+        "曲江夜游"
+      ],
+      "cross_cluster_count": 0,
+      "cross_area_count": 0,
+      "leg_duration_sum": 25,
+      "max_leg_duration": 16,
+      "scheduled_duration_minutes": 149,
+      "total_duration_minutes": 149,
+      "is_night_route": true,
+      "has_valid_route": true
+    },
+    "debug_refs": {
+      "pairs_warning_logs": [
+        "候选质量告警：方案差异度不足（pairs=[('classic_first', 'relaxed_first'), ('classic_first', 'food_friendly'), ('relaxed_first', 'food_friendly')]）。"
+      ],
+      "fallback_logs": [
+        "amap_event tool=geocode attempted=True hit=False infocode=None fallback=geocode_failed",
+        "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, fallback_reason=llm_call_exception",
+        "amap_event tool=text_search attempted=True hit=False infocode=None fallback=nearby_failed:geocode_failed",
+        "amap search fallback: nearby_failed:geocode_failed",
+        "skill invoked: amap_search_skill, status=fallback, summary=nearby_failed:geocode_failed",
+        "discovery notes: source=amap_web_search fallback_reason=nearby_failed:geocode_failed | source=amap_web_search mode=keyword | source=amap_web_search query_count=24 | candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=night, food, nearby | area_scope_used=曲江夜游, 城墙钟鼓楼, 小寨文博, 大雁塔, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=曲江夜游, 大雁塔, 城墙钟鼓楼, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:42, amap_web_search:0, merged=60",
+        "Planning step=1: invalid action fallback -> SEARCH",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: search_candidate_skill, status=fallback, summary=search_results_count=30",
+        "Planning step=2: invalid action fallback -> GENERATE_CANDIDATES",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: generate_candidates_skill, status=fallback, summary=candidate_plans_count=3",
+        "Planning step=3: invalid action fallback -> FINISH",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair",
+        "Planning step=3 action=FINISH skill=select_plan_skill reason=Invalid planning action; fallback. args={}",
+        "skill invoked: select_plan_skill, status=fallback, summary=finish_ready=true",
+        "amap_event tool=weather attempted=True hit=False infocode=None fallback=weather_fallback_request",
+        "amap weather called: source=fallback_request",
+        "skill invoked: amap_weather_skill, status=fallback, summary=fallback_request",
+        "已获取天气上下文（source=fallback_request）。",
+        "selector_local_rank_fallback: llm_selector_call_exception",
+        "LLM select diagnostics: llm_selector_called=True, llm_selector_raw_response_exists=False, llm_selector_json_parse_ok=False, llm_selector_schema_ok=False, llm_selector_retry_count=1, llm_selected_plan_valid=False, selector_error_type=network_exception, fallback_reason=llm_selector_call_exception",
+        "amap_event tool=route attempted=True hit=False infocode=None fallback=route_fallback_local",
+        "amap route called: route_source=fallback_local",
+        "skill invoked: amap_route_skill, status=fallback, summary=fallback_local",
+        "最终方案=classic_first，selected_by=fallback_rule。",
+        "skill invoked: select_plan_skill, status=fallback, summary=selected_by=fallback_rule"
+      ]
+    }
+  }
+]

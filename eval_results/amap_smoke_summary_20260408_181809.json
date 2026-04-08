@@ -1,0 +1,138 @@
+{
+  "key_exists": true,
+  "key_tail": "62a7b4",
+  "geocode": {
+    "ok": false,
+    "http_status": 0,
+    "amap_status": null,
+    "amap_info": null,
+    "amap_infocode": null,
+    "count": null,
+    "request_params": {
+      "key": "ec35d0b32022ff3059b361386562a7b4",
+      "address": "西安市钟楼",
+      "city": "西安"
+    },
+    "raw_text_preview": null,
+    "exception_type": "ConnectionError",
+    "exception_message": "HTTPSConnectionPool(host='restapi.amap.com', port=443): Max retries exceeded with url: /v3/geocode/geo?key=ec35d0b32022ff3059b361386562a7b4&address=%E8%A5%BF%E5%AE%89%E5%B8%82%E9%92%9F%E6%A5%BC&city=%E8%A5%BF%E5%AE%89 (Caused by NewConnectionError(\"HTTPSConnection(host='restapi.amap.com', port=443): Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。\"))",
+    "request_url": "https://restapi.amap.com/v3/geocode/geo?key=ec35d0b32022ff3059b361386562a7b4&address=%E8%A5%BF%E5%AE%89%E5%B8%82%E9%92%9F%E6%A5%BC&city=%E8%A5%BF%E5%AE%89",
+    "timeout_seconds": [
+      5,
+      15
+    ],
+    "proxy_mode": "inherit_env",
+    "env_proxy_snapshot": {
+      "HTTP_PROXY": false,
+      "HTTPS_PROXY": false,
+      "NO_PROXY": false,
+      "REQUESTS_CA_BUNDLE": false,
+      "CURL_CA_BUNDLE": false
+    },
+    "result": {}
+  },
+  "keyword_search": {
+    "ok": false,
+    "http_status": 0,
+    "amap_status": null,
+    "amap_info": null,
+    "amap_infocode": null,
+    "count": null,
+    "request_params": {
+      "key": "ec35d0b32022ff3059b361386562a7b4",
+      "keywords": "钟楼",
+      "city": "西安",
+      "citylimit": "true",
+      "offset": 3,
+      "page": 1,
+      "extensions": "all"
+    },
+    "raw_text_preview": null,
+    "exception_type": "ConnectionError",
+    "exception_message": "HTTPSConnectionPool(host='restapi.amap.com', port=443): Max retries exceeded with url: /v3/place/text?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E9%92%9F%E6%A5%BC&city=%E8%A5%BF%E5%AE%89&citylimit=true&offset=3&page=1&extensions=all (Caused by NewConnectionError(\"HTTPSConnection(host='restapi.amap.com', port=443): Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。\"))",
+    "request_url": "https://restapi.amap.com/v3/place/text?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E9%92%9F%E6%A5%BC&city=%E8%A5%BF%E5%AE%89&citylimit=true&offset=3&page=1&extensions=all",
+    "timeout_seconds": [
+      5,
+      15
+    ],
+    "proxy_mode": "inherit_env",
+    "env_proxy_snapshot": {
+      "HTTP_PROXY": false,
+      "HTTPS_PROXY": false,
+      "NO_PROXY": false,
+      "REQUESTS_CA_BUNDLE": false,
+      "CURL_CA_BUNDLE": false
+    },
+    "result": []
+  },
+  "input_tips": {
+    "ok": false,
+    "http_status": 0,
+    "amap_status": null,
+    "amap_info": null,
+    "amap_infocode": null,
+    "count": null,
+    "request_params": {
+      "key": "ec35d0b32022ff3059b361386562a7b4",
+      "keywords": "大雁塔",
+      "city": "西安",
+      "citylimit": "true",
+      "datatype": "all"
+    },
+    "raw_text_preview": null,
+    "exception_type": "ConnectionError",
+    "exception_message": "HTTPSConnectionPool(host='restapi.amap.com', port=443): Max retries exceeded with url: /v3/assistant/inputtips?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E5%A4%A7%E9%9B%81%E5%A1%94&city=%E8%A5%BF%E5%AE%89&citylimit=true&datatype=all (Caused by NewConnectionError(\"HTTPSConnection(host='restapi.amap.com', port=443): Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。\"))",
+    "request_url": "https://restapi.amap.com/v3/assistant/inputtips?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E5%A4%A7%E9%9B%81%E5%A1%94&city=%E8%A5%BF%E5%AE%89&citylimit=true&datatype=all",
+    "timeout_seconds": [
+      5,
+      15
+    ],
+    "proxy_mode": "inherit_env",
+    "env_proxy_snapshot": {
+      "HTTP_PROXY": false,
+      "HTTPS_PROXY": false,
+      "NO_PROXY": false,
+      "REQUESTS_CA_BUNDLE": false,
+      "CURL_CA_BUNDLE": false
+    },
+    "result": []
+  },
+  "nearby_search": {
+    "ok": false,
+    "http_status": 0,
+    "amap_status": null,
+    "amap_info": null,
+    "amap_infocode": null,
+    "count": null,
+    "request_params": {
+      "key": "ec35d0b32022ff3059b361386562a7b4",
+      "location": "108.95,34.26",
+      "radius": 1000,
+      "sortrule": "distance",
+      "offset": 3,
+      "page": 1,
+      "extensions": "all",
+      "keywords": "餐厅"
+    },
+    "raw_text_preview": null,
+    "exception_type": "ConnectionError",
+    "exception_message": "HTTPSConnectionPool(host='restapi.amap.com', port=443): Max retries exceeded with url: /v3/place/around?key=ec35d0b32022ff3059b361386562a7b4&location=108.95%2C34.26&radius=1000&sortrule=distance&offset=3&page=1&extensions=all&keywords=%E9%A4%90%E5%8E%85 (Caused by NewConnectionError(\"HTTPSConnection(host='restapi.amap.com', port=443): Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。\"))",
+    "request_url": "https://restapi.amap.com/v3/place/around?key=ec35d0b32022ff3059b361386562a7b4&location=108.95%2C34.26&radius=1000&sortrule=distance&offset=3&page=1&extensions=all&keywords=%E9%A4%90%E5%8E%85",
+    "timeout_seconds": [
+      5,
+      15
+    ],
+    "proxy_mode": "inherit_env",
+    "env_proxy_snapshot": {
+      "HTTP_PROXY": false,
+      "HTTPS_PROXY": false,
+      "NO_PROXY": false,
+      "REQUESTS_CA_BUNDLE": false,
+      "CURL_CA_BUNDLE": false
+    },
+    "result": []
+  },
+  "weather": {
+    "error": "amap_network_error"
+  }
+}

@@ -1,0 +1,12 @@
+﻿.env
+.env.*
+!.env.example
+.venv/
+.pytest_cache/
+pytest-cache-files-*/
+__pycache__/
+*.py[cod]
+scripts/playground.pids.json
+app/data/agent_state.db
+app/data/*.db-shm
+app/data/*.db-wal

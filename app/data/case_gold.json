@@ -1,0 +1,80 @@
+﻿[
+  {
+    "case_id": "case_01",
+    "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+    "expected_parse": {
+      "companion_type": "parents",
+      "available_hours": 4.0,
+      "budget_level": "medium",
+      "purpose": "tourism",
+      "need_meal": true,
+      "walking_tolerance": "low",
+      "weather": "rainy"
+    }
+  },
+  {
+    "case_id": "case_02",
+    "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+    "expected_parse": {
+      "companion_type": "partner",
+      "available_hours": 4.0,
+      "budget_level": "medium",
+      "purpose": "dating",
+      "need_meal": true,
+      "walking_tolerance": "medium",
+      "weather": "sunny"
+    }
+  },
+  {
+    "case_id": "case_03",
+    "text": "我在钟楼附近，只有3小时，想轻松一点",
+    "expected_parse": {
+      "companion_type": "solo",
+      "available_hours": 3.0,
+      "budget_level": "medium",
+      "purpose": "relax",
+      "need_meal": true,
+      "walking_tolerance": "low",
+      "weather": "sunny"
+    }
+  },
+  {
+    "case_id": "case_04",
+    "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+    "expected_parse": {
+      "companion_type": "friends",
+      "available_hours": 8.0,
+      "budget_level": "low",
+      "purpose": "tourism",
+      "need_meal": true,
+      "walking_tolerance": "medium",
+      "weather": "sunny"
+    }
+  },
+  {
+    "case_id": "case_05",
+    "text": "下午想轻松一点，逛两个地方就行",
+    "expected_parse": {
+      "companion_type": "solo",
+      "available_hours": 4.0,
+      "budget_level": "medium",
+      "purpose": "relax",
+      "need_meal": true,
+      "walking_tolerance": "low",
+      "weather": "sunny"
+    }
+  },
+  {
+    "case_id": "case_06",
+    "text": "晚上在曲江附近，想约会吃饭看夜景，步行不要太多",
+    "expected_parse": {
+      "companion_type": "partner",
+      "available_hours": 4.0,
+      "budget_level": "medium",
+      "purpose": "dating",
+      "need_meal": true,
+      "walking_tolerance": "low",
+      "weather": "sunny"
+    }
+  }
+]

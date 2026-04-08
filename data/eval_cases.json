@@ -1,0 +1,52 @@
+[
+  {
+    "case_id": "parents_relax_meal_rainy_halfday",
+    "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+    "expected_focus": ["meal", "relax", "indoor"]
+  },
+  {
+    "case_id": "night_dating_meal_photo",
+    "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+    "expected_focus": ["night", "meal"]
+  },
+  {
+    "case_id": "nearby_short_relax_clocktower",
+    "text": "我在钟楼附近，只有3小时，想轻松一点",
+    "expected_focus": ["nearby", "relax"]
+  },
+  {
+    "case_id": "friends_day_low_budget_busy",
+    "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+    "expected_focus": ["budget", "friends"]
+  },
+  {
+    "case_id": "afternoon_relax_two_stops",
+    "text": "下午想轻松一点，逛两个地方就行",
+    "expected_focus": ["relax"]
+  },
+  {
+    "case_id": "hot_indoor_low_walk",
+    "text": "天气很热，不想走太多，想去室内为主的地方",
+    "expected_focus": ["indoor", "relax"]
+  },
+  {
+    "case_id": "midday_meal_then_visit",
+    "text": "中午前后出去吃点东西再逛逛",
+    "expected_focus": ["meal", "midday"]
+  },
+  {
+    "case_id": "after_dinner_night_walk_low",
+    "text": "晚饭后去曲江附近散散步，拍照看夜景，别走太多",
+    "expected_focus": ["night", "nearby", "relax"]
+  },
+  {
+    "case_id": "insufficient_info_should_clarify",
+    "text": "随便安排一下，想出去转转",
+    "expected_focus": ["clarification"]
+  },
+  {
+    "case_id": "parents_morning_museum",
+    "text": "上午陪爸妈逛文博点，尽量顺路，安排一顿饭",
+    "expected_focus": ["meal", "relax", "tourism"]
+  }
+]

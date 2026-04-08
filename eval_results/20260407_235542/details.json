@@ -1,0 +1,6496 @@
+{
+  "v2": [
+    {
+      "case_id": "parents_relax_meal_rainy_halfday",
+      "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+      "expected_focus": [
+        "meal",
+        "relax",
+        "indoor"
+      ],
+      "endpoint": "v2",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 0,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 1,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "小寨文博",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": false,
+          "total_distance_meters": 6500,
+          "total_duration_minutes": 28,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "无餐饮站",
+            "簇分布:小寨文博簇",
+            "区域分布:小寨文博",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:1"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "文博点位密度高，适合上午或雨天做室内优先安排。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "小寨文博",
+          "area_bias_note": "餐饮友好：优先餐饮密度更高区域，确保顺路用餐衔接。",
+          "has_meal": true,
+          "total_distance_meters": 7009,
+          "total_duration_minutes": 35,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:小寨文博簇",
+            "区域分布:小寨文博",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "文博点位密度高，适合上午或雨天做室内优先安排。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "小寨文博",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7009,
+          "total_duration_minutes": 35,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:小寨文博簇",
+            "区域分布:小寨文博",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "文博点位密度高，适合上午或雨天做室内优先安排。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "小寨文博",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "parents",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "rainy",
+        "origin": "钟楼",
+        "preferred_period": "midday",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 4.0 小时与 parents 同行，当前天气（请求参数 weather 兜底）为 rainy，推荐以 小寨文博簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "11:58-13:28",
+            "type": "sight",
+            "name": "陕西历史博物馆",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "室内友好，对陪父母更轻松，同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "13:35-14:35",
+            "type": "restaurant",
+            "name": "小寨清淡家常馆",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "步行（估算） 约7分钟",
+            "reason": "室内友好，对陪父母更轻松，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 509,
+            "estimated_duration_minutes": 7
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：rainy。",
+          "今日有雨，已优先室内点位并适度下调夜游点。",
+          "起点为 钟楼，预计路程约 7009 米，交通耗时约 35 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 240 分钟，当前已排入 185 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "better"
+    },
+    {
+      "case_id": "night_dating_meal_photo",
+      "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+      "expected_focus": [
+        "night",
+        "meal"
+      ],
+      "endpoint": "v2",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 0,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "餐饮友好：优先夜游区域与餐饮衔接，餐位尽量放在前中段。",
+          "has_meal": true,
+          "total_distance_meters": 7687,
+          "total_duration_minutes": 44,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 1,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 6500,
+          "total_duration_minutes": 28,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:1"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 6808,
+          "total_duration_minutes": 32,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "曲江夜游",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "partner",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "dating",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "evening",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 4.0 小时与 partner 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 曲江夜游簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "18:28-19:43",
+            "type": "restaurant",
+            "name": "曲江景观陕菜馆",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "更有氛围感，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "19:59-21:19",
+            "type": "sight",
+            "name": "大唐不夜城",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "步行（估算） 约16分钟",
+            "reason": "更有氛围感，同簇连续，减少折返",
+            "estimated_distance_meters": 1187,
+            "estimated_duration_minutes": 16
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 7687 米，交通耗时约 44 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 240 分钟，当前已排入 199 分钟。",
+          "检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。",
+          "夜游场景已优先保证晚间用餐与夜游点衔接。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "better"
+    },
+    {
+      "case_id": "nearby_short_relax_clocktower",
+      "text": "我在钟楼附近，只有3小时，想轻松一点",
+      "expected_focus": [
+        "nearby",
+        "relax"
+      ],
+      "endpoint": "v2",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 0,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 1735,
+          "total_duration_minutes": 23,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": true,
+          "cross_area_count": 1,
+          "area_transition_summary": "回民街 -> 城墙钟鼓楼",
+          "area_bias_note": "餐饮友好：优先餐饮密度更高区域，确保顺路用餐衔接。",
+          "has_meal": true,
+          "total_distance_meters": 1400,
+          "total_duration_minutes": 19,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:回民街 / 城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:1",
+            "区域覆盖与移动负担均衡",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺",
+            "餐饮选择更丰富"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。",
+            "餐饮密度高，适合把正餐或小吃安排在游览中前段。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 1735,
+          "total_duration_minutes": 23,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 3.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": "nearby",
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "09:16-10:01",
+            "type": "sight",
+            "name": "钟楼",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（步行（估算） 约16分钟）",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 1200,
+            "estimated_duration_minutes": 16
+          },
+          {
+            "time_slot": "10:08-11:08",
+            "type": "restaurant",
+            "name": "回坊泡馍馆",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约7分钟",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 535,
+            "estimated_duration_minutes": 7
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 1735 米，交通耗时约 23 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 128 分钟。",
+          "已优先考虑起点“钟楼”附近的首站候选。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "better"
+    },
+    {
+      "case_id": "friends_day_low_budget_busy",
+      "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+      "expected_focus": [
+        "budget",
+        "friends"
+      ],
+      "endpoint": "v2",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 0,
+      "candidate_count": 2,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 3,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "小寨文博",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 7213,
+          "total_duration_minutes": 38,
+          "rhythm": "轻松",
+          "budget_level": "low",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:中前段",
+            "簇分布:小寨文博簇",
+            "区域分布:小寨文博",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:3"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "文博点位密度高，适合上午或雨天做室内优先安排。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 4,
+          "clusters": [
+            "小寨文博簇",
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": true,
+          "cross_cluster_count": 1,
+          "cluster_transition_summary": "小寨文博簇 -> 城墙钟鼓楼簇",
+          "is_cross_area": true,
+          "cross_area_count": 1,
+          "area_transition_summary": "小寨文博 -> 回民街",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 11148,
+          "total_duration_minutes": 58,
+          "rhythm": "紧凑",
+          "budget_level": "low",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:中前段",
+            "簇分布:小寨文博簇 / 城墙钟鼓楼簇",
+            "区域分布:小寨文博 / 回民街",
+            "跨簇:1",
+            "跨区域:1",
+            "区域覆盖与移动负担均衡",
+            "节奏:紧凑",
+            "站点:4"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺",
+            "文博密度高",
+            "雨天室内友好",
+            "餐饮选择更丰富"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。",
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.3333,
+      "cross_area_count": 1,
+      "area_transition_summary": "小寨文博 -> 回民街",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "friends",
+        "available_hours": 8.0,
+        "budget_level": "low",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 8.0 小时与 friends 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 小寨文博簇 -> 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "09:28-10:58",
+            "type": "sight",
+            "name": "陕西历史博物馆",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "氛围热闹，同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "11:01-12:01",
+            "type": "restaurant",
+            "name": "文博蔬食面坊",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "步行（估算） 约3分钟",
+            "reason": "氛围热闹，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 200,
+            "estimated_duration_minutes": 3
+          },
+          {
+            "time_slot": "12:08-13:08",
+            "type": "sight",
+            "name": "小寨周边",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "步行（估算） 约7分钟",
+            "reason": "氛围热闹，同簇连续，减少折返",
+            "estimated_distance_meters": 513,
+            "estimated_duration_minutes": 7
+          },
+          {
+            "time_slot": "13:28-14:28",
+            "type": "sight",
+            "name": "回民街",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "地铁/打车（估算） 约20分钟",
+            "reason": "氛围热闹，同簇连续，减少折返",
+            "estimated_distance_meters": 3935,
+            "estimated_duration_minutes": 20
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 11148 米，交通耗时约 58 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 480 分钟，当前已排入 328 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 4 段已回退到简化交通规则（接口仍可用）。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "better"
+    },
+    {
+      "case_id": "afternoon_relax_two_stops",
+      "text": "下午想轻松一点，逛两个地方就行",
+      "expected_focus": [
+        "relax"
+      ],
+      "endpoint": "v2",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 0,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "大雁塔簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "大雁塔簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "大雁塔",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 6799,
+          "total_duration_minutes": 32,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:大雁塔簇",
+            "区域分布:大雁塔",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡"
+          ],
+          "knowledge_notes": [
+            "地标性强，适合经典路线或拍照打卡。"
+          ],
+          "place_context_note": "地标性强，适合经典路线或拍照打卡。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "小寨文博",
+          "area_bias_note": "餐饮友好：优先餐饮密度更高区域，确保顺路用餐衔接。",
+          "has_meal": true,
+          "total_distance_meters": 7009,
+          "total_duration_minutes": 35,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:小寨文博簇",
+            "区域分布:小寨文博",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "文博点位密度高，适合上午或雨天做室内优先安排。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7035,
+          "total_duration_minutes": 35,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "大雁塔",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "afternoon",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 大雁塔簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "14:28-15:28",
+            "type": "sight",
+            "name": "大慈恩寺周边",
+            "district_cluster": "大雁塔簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "15:32-16:37",
+            "type": "restaurant",
+            "name": "雁塔景观咖啡简餐",
+            "district_cluster": "大雁塔簇",
+            "transport_from_prev": "步行（估算） 约4分钟",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 299,
+            "estimated_duration_minutes": 4
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 6799 米，交通耗时约 32 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 157 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "better"
+    },
+    {
+      "case_id": "hot_indoor_low_walk",
+      "text": "天气很热，不想走太多，想去室内为主的地方",
+      "expected_focus": [
+        "indoor",
+        "relax"
+      ],
+      "endpoint": "v2",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 0,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 1,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "小寨文博",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": false,
+          "total_distance_meters": 6500,
+          "total_duration_minutes": 28,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "无餐饮站",
+            "簇分布:小寨文博簇",
+            "区域分布:小寨文博",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:1"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "文博点位密度高，适合上午或雨天做室内优先安排。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "小寨文博",
+          "area_bias_note": "餐饮友好：优先餐饮密度更高区域，确保顺路用餐衔接。",
+          "has_meal": true,
+          "total_distance_meters": 7009,
+          "total_duration_minutes": 35,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:小寨文博簇",
+            "区域分布:小寨文博",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "文博点位密度高，适合上午或雨天做室内优先安排。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "小寨文博",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7009,
+          "total_duration_minutes": 35,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:小寨文博簇",
+            "区域分布:小寨文博",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "文博点位密度高，适合上午或雨天做室内优先安排。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "小寨文博",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "hot",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 4.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 hot，推荐以 小寨文博簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "11:58-13:28",
+            "type": "sight",
+            "name": "陕西历史博物馆",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "室内友好，同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "13:35-14:35",
+            "type": "restaurant",
+            "name": "小寨清淡家常馆",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "步行（估算） 约7分钟",
+            "reason": "室内友好，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 509,
+            "estimated_duration_minutes": 7
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：hot。",
+          "当前高温，已优先室内点位并下调长时间户外停留。",
+          "起点为 钟楼，预计路程约 7009 米，交通耗时约 35 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 240 分钟，当前已排入 185 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "better"
+    },
+    {
+      "case_id": "midday_meal_then_visit",
+      "text": "中午前后出去吃点东西再逛逛",
+      "expected_focus": [
+        "meal",
+        "midday"
+      ],
+      "endpoint": "v2",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 0,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": true,
+          "cross_area_count": 1,
+          "area_transition_summary": "回民街 -> 城墙钟鼓楼",
+          "area_bias_note": "餐饮友好：优先餐饮密度更高区域，确保顺路用餐衔接。",
+          "has_meal": true,
+          "total_distance_meters": 6700,
+          "total_duration_minutes": 31,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:回民街 / 城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:1",
+            "区域覆盖与移动负担均衡",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺",
+            "餐饮选择更丰富"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。",
+            "餐饮密度高，适合把正餐或小吃安排在游览中前段。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 1,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "小寨文博",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": false,
+          "total_distance_meters": 6500,
+          "total_duration_minutes": 28,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "无餐饮站",
+            "簇分布:小寨文博簇",
+            "区域分布:小寨文博",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:1"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "文博点位密度高，适合上午或雨天做室内优先安排。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7035,
+          "total_duration_minutes": 35,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "midday",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 4.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "11:58-12:43",
+            "type": "sight",
+            "name": "钟楼",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "12:50-13:50",
+            "type": "restaurant",
+            "name": "回坊泡馍馆",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约7分钟",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 535,
+            "estimated_duration_minutes": 7
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 7035 米，交通耗时约 35 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 240 分钟，当前已排入 140 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "better"
+    },
+    {
+      "case_id": "after_dinner_night_walk_low",
+      "text": "晚饭后去曲江附近散散步，拍照看夜景，别走太多",
+      "expected_focus": [
+        "night",
+        "nearby",
+        "relax"
+      ],
+      "endpoint": "v2",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 0,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "餐饮友好：优先夜游区域与餐饮衔接，餐位尽量放在前中段。",
+          "has_meal": true,
+          "total_distance_meters": 2387,
+          "total_duration_minutes": 32,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 1,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 1200,
+          "total_duration_minutes": 16,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:1"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 1508,
+          "total_duration_minutes": 20,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "曲江夜游",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "曲江",
+        "preferred_period": "evening",
+        "origin_preference_mode": "nearby",
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 4.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 曲江夜游簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "18:16-19:31",
+            "type": "restaurant",
+            "name": "曲江景观陕菜馆",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "从起点前往（步行（估算） 约16分钟）",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 1200,
+            "estimated_duration_minutes": 16
+          },
+          {
+            "time_slot": "19:35-21:05",
+            "type": "sight",
+            "name": "大唐芙蓉园",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "步行（估算） 约4分钟",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 308,
+            "estimated_duration_minutes": 4
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 曲江，预计路程约 1508 米，交通耗时约 20 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 240 分钟，当前已排入 185 分钟。",
+          "检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。",
+          "夜游场景已优先保证晚间用餐与夜游点衔接。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "better"
+    },
+    {
+      "case_id": "insufficient_info_should_clarify",
+      "text": "随便安排一下，想出去转转",
+      "expected_focus": [
+        "clarification"
+      ],
+      "endpoint": "v2",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 0,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": true,
+          "cross_area_count": 1,
+          "area_transition_summary": "回民街 -> 城墙钟鼓楼",
+          "area_bias_note": "餐饮友好：优先餐饮密度更高区域，确保顺路用餐衔接。",
+          "has_meal": true,
+          "total_distance_meters": 6700,
+          "total_duration_minutes": 31,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:回民街 / 城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:1",
+            "区域覆盖与移动负担均衡",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺",
+            "餐饮选择更丰富"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。",
+            "餐饮密度高，适合把正餐或小吃安排在游览中前段。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 1,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "小寨文博",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": false,
+          "total_distance_meters": 6500,
+          "total_duration_minutes": 28,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "无餐饮站",
+            "簇分布:小寨文博簇",
+            "区域分布:小寨文博",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:1"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "文博点位密度高，适合上午或雨天做室内优先安排。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7035,
+          "total_duration_minutes": 35,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 4.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "09:28-10:13",
+            "type": "sight",
+            "name": "钟楼",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "10:20-11:20",
+            "type": "restaurant",
+            "name": "回坊泡馍馆",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约7分钟",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 535,
+            "estimated_duration_minutes": 7
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 7035 米，交通耗时约 35 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 240 分钟，当前已排入 140 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "better"
+    },
+    {
+      "case_id": "parents_morning_museum",
+      "text": "上午陪爸妈逛文博点，尽量顺路，安排一顿饭",
+      "expected_focus": [
+        "meal",
+        "relax",
+        "tourism"
+      ],
+      "endpoint": "v2",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 0,
+      "candidate_count": 2,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 1,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "小寨文博",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": false,
+          "total_distance_meters": 6500,
+          "total_duration_minutes": 28,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "无餐饮站",
+            "簇分布:小寨文博簇",
+            "区域分布:小寨文博",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:1"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "文博点位密度高，适合上午或雨天做室内优先安排。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "小寨文博",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7009,
+          "total_duration_minutes": 35,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:小寨文博簇",
+            "区域分布:小寨文博",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "文博点位密度高，适合上午或雨天做室内优先安排。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "小寨文博",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "parents",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "morning",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 4.0 小时与 parents 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 小寨文博簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "09:28-10:58",
+            "type": "sight",
+            "name": "陕西历史博物馆",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "对陪父母更轻松，同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "11:05-12:05",
+            "type": "restaurant",
+            "name": "小寨清淡家常馆",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "步行（估算） 约7分钟",
+            "reason": "对陪父母更轻松，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 509,
+            "estimated_duration_minutes": 7
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 7009 米，交通耗时约 35 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 240 分钟，当前已排入 185 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "better"
+    }
+  ],
+  "v3": [
+    {
+      "case_id": "parents_relax_meal_rainy_halfday",
+      "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+      "expected_focus": [
+        "meal",
+        "relax",
+        "indoor"
+      ],
+      "endpoint": "v3",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 2,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 6806,
+          "total_duration_minutes": 32,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 6806,
+          "total_duration_minutes": 32,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 46
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 11,
+        "小寨文博": 7,
+        "回民街": 4,
+        "电视塔会展": 4,
+        "高新": 4
+      },
+      "area_coverage_signal": 0.625,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "parents",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "rainy",
+        "origin": "钟楼",
+        "preferred_period": "midday",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 parents 同行，当前天气（请求参数 weather 兜底）为 rainy，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "11:58-12:48",
+            "type": "sight",
+            "name": "Bell Tower Deck",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "室内友好，对陪父母更轻松，同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "12:52-13:52",
+            "type": "restaurant",
+            "name": "Central Noodle House",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约4分钟",
+            "reason": "室内友好，对陪父母更轻松，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 306,
+            "estimated_duration_minutes": 4
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：rainy。",
+          "今日有雨，已优先室内点位并适度下调夜游点。",
+          "起点为 钟楼，预计路程约 6806 米，交通耗时约 32 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 142 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "night_dating_meal_photo",
+      "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+      "expected_focus": [
+        "night",
+        "meal"
+      ],
+      "endpoint": "v3",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "餐饮友好：优先夜游区域与餐饮衔接，餐位尽量放在前中段。",
+          "has_meal": true,
+          "total_distance_meters": 7086,
+          "total_duration_minutes": 36,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 1,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 6500,
+          "total_duration_minutes": 28,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:1"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7140,
+          "total_duration_minutes": 37,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 40
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 9,
+        "曲江夜游": 8,
+        "大雁塔": 6,
+        "小寨文博": 3,
+        "回民街": 4
+      },
+      "area_coverage_signal": 0.625,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "曲江夜游",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "partner",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "dating",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "evening",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 4.0 小时与 partner 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 曲江夜游簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "18:28-19:28",
+            "type": "restaurant",
+            "name": "Night City Photo Cafe",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "更有氛围感，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "19:36-20:56",
+            "type": "sight",
+            "name": "大唐不夜城",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "步行（估算） 约8分钟",
+            "reason": "更有氛围感，同簇连续，减少折返",
+            "estimated_distance_meters": 586,
+            "estimated_duration_minutes": 8
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 7086 米，交通耗时约 36 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 240 分钟，当前已排入 176 分钟。",
+          "检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。",
+          "夜游场景已优先保证晚间用餐与夜游点衔接。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "nearby_short_relax_clocktower",
+      "text": "我在钟楼附近，只有3小时，想轻松一点",
+      "expected_focus": [
+        "nearby",
+        "relax"
+      ],
+      "endpoint": "v3",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 2,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 1506,
+          "total_duration_minutes": 20,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 1735,
+          "total_duration_minutes": 23,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 32
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 13,
+        "小寨文博": 4,
+        "回民街": 1,
+        "大雁塔": 12
+      },
+      "area_coverage_signal": 0.5,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 3.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": "nearby",
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "09:16-10:06",
+            "type": "sight",
+            "name": "Bell Tower Deck",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（步行（估算） 约16分钟）",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 1200,
+            "estimated_duration_minutes": 16
+          },
+          {
+            "time_slot": "10:10-11:10",
+            "type": "restaurant",
+            "name": "Central Noodle House",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约4分钟",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 306,
+            "estimated_duration_minutes": 4
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 1506 米，交通耗时约 20 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 130 分钟。",
+          "已优先考虑起点“钟楼”附近的首站候选。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "friends_day_low_budget_busy",
+      "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+      "expected_focus": [
+        "budget",
+        "friends"
+      ],
+      "endpoint": "v3",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 3,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 7606,
+          "total_duration_minutes": 43,
+          "rhythm": "轻松",
+          "budget_level": "low",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:中前段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:3"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 4,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": true,
+          "cross_area_count": 1,
+          "area_transition_summary": "回民街 -> 城墙钟鼓楼",
+          "area_bias_note": "餐饮友好：优先餐饮密度更高区域，确保顺路用餐衔接。",
+          "has_meal": true,
+          "total_distance_meters": 7643,
+          "total_duration_minutes": 43,
+          "rhythm": "紧凑",
+          "budget_level": "low",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:中前段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:回民街 / 城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:1",
+            "区域覆盖与移动负担均衡",
+            "节奏:紧凑",
+            "站点:4"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺",
+            "餐饮选择更丰富"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。",
+            "餐饮密度高，适合把正餐或小吃安排在游览中前段。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 4,
+          "clusters": [
+            "小寨文博簇",
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": true,
+          "cross_cluster_count": 1,
+          "cluster_transition_summary": "小寨文博簇 -> 城墙钟鼓楼簇",
+          "is_cross_area": true,
+          "cross_area_count": 1,
+          "area_transition_summary": "小寨文博 -> 城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 10623,
+          "total_duration_minutes": 56,
+          "rhythm": "紧凑",
+          "budget_level": "low",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:中前段",
+            "簇分布:小寨文博簇 / 城墙钟鼓楼簇",
+            "区域分布:小寨文博 / 城墙钟鼓楼",
+            "跨簇:1",
+            "跨区域:1",
+            "区域覆盖与移动负担均衡",
+            "节奏:紧凑",
+            "站点:4"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺",
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。",
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 32
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 13,
+        "大雁塔": 12,
+        "回民街": 1,
+        "小寨文博": 4
+      },
+      "area_coverage_signal": 0.5,
+      "cross_area_signal": 0.3333,
+      "cross_area_count": 1,
+      "area_transition_summary": "小寨文博 -> 城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "friends",
+        "available_hours": 8.0,
+        "budget_level": "low",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 8.0 小时与 friends 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 小寨文博簇 -> 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "09:28-10:58",
+            "type": "sight",
+            "name": "陕西历史博物馆",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "氛围热闹，同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "11:01-12:01",
+            "type": "restaurant",
+            "name": "文博蔬食面坊",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "步行（估算） 约3分钟",
+            "reason": "氛围热闹，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 200,
+            "estimated_duration_minutes": 3
+          },
+          {
+            "time_slot": "12:08-13:08",
+            "type": "sight",
+            "name": "小寨周边",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "步行（估算） 约7分钟",
+            "reason": "氛围热闹，同簇连续，减少折返",
+            "estimated_distance_meters": 513,
+            "estimated_duration_minutes": 7
+          },
+          {
+            "time_slot": "13:26-14:11",
+            "type": "sight",
+            "name": "钟楼",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "地铁/打车（估算） 约18分钟",
+            "reason": "氛围热闹，同簇连续，减少折返",
+            "estimated_distance_meters": 3410,
+            "estimated_duration_minutes": 18
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 10623 米，交通耗时约 56 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 480 分钟，当前已排入 311 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 4 段已回退到简化交通规则（接口仍可用）。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "afternoon_relax_two_stops",
+      "text": "下午想轻松一点，逛两个地方就行",
+      "expected_focus": [
+        "relax"
+      ],
+      "endpoint": "v3",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 2,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 6806,
+          "total_duration_minutes": 32,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7035,
+          "total_duration_minutes": 35,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 32
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 13,
+        "大雁塔": 12,
+        "小寨文博": 4,
+        "电视塔会展": 1
+      },
+      "area_coverage_signal": 0.5,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "afternoon",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "14:28-15:18",
+            "type": "sight",
+            "name": "Bell Tower Deck",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "15:22-16:22",
+            "type": "restaurant",
+            "name": "Central Noodle House",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约4分钟",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 306,
+            "estimated_duration_minutes": 4
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 6806 米，交通耗时约 32 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 142 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "hot_indoor_low_walk",
+      "text": "天气很热，不想走太多，想去室内为主的地方",
+      "expected_focus": [
+        "indoor",
+        "relax"
+      ],
+      "endpoint": "v3",
+      "parsed_by": "unknown",
+      "selected_by": "unknown",
+      "clarification_needed": true,
+      "invalid_action_fallback": 0,
+      "candidate_count": 0,
+      "candidate_diversity_score": 0.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "",
+      "area_fit_hit": false,
+      "parsed_request": {},
+      "selected_plan": {},
+      "route_quality_hit": false,
+      "meal_intent_hit": false,
+      "night_intent_hit": false,
+      "nearby_intent_hit": false,
+      "relax_intent_hit": false,
+      "short_result_label": "needs_clarification"
+    },
+    {
+      "case_id": "midday_meal_then_visit",
+      "text": "中午前后出去吃点东西再逛逛",
+      "expected_focus": [
+        "meal",
+        "midday"
+      ],
+      "endpoint": "v3",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 6714,
+          "total_duration_minutes": 31,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7035,
+          "total_duration_minutes": 35,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": true,
+          "cross_area_count": 1,
+          "area_transition_summary": "回民街 -> 城墙钟鼓楼",
+          "area_bias_note": "餐饮友好：优先餐饮密度更高区域，确保顺路用餐衔接。",
+          "has_meal": true,
+          "total_distance_meters": 7137,
+          "total_duration_minutes": 36,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:回民街 / 城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:1",
+            "区域覆盖与移动负担均衡",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺",
+            "餐饮选择更丰富"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。",
+            "餐饮密度高，适合把正餐或小吃安排在游览中前段。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 32
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 9,
+        "小寨文博": 6,
+        "回民街": 5,
+        "大雁塔": 4,
+        "高新": 4,
+        "曲江夜游": 2
+      },
+      "area_coverage_signal": 0.75,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "midday",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "11:58-12:43",
+            "type": "sight",
+            "name": "钟楼",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "12:46-13:46",
+            "type": "restaurant",
+            "name": "Central Noodle House",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约3分钟",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 214,
+            "estimated_duration_minutes": 3
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 6714 米，交通耗时约 31 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 136 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "after_dinner_night_walk_low",
+      "text": "晚饭后去曲江附近散散步，拍照看夜景，别走太多",
+      "expected_focus": [
+        "night",
+        "nearby",
+        "relax"
+      ],
+      "endpoint": "v3",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "餐饮友好：优先夜游区域与餐饮衔接，餐位尽量放在前中段。",
+          "has_meal": true,
+          "total_distance_meters": 1678,
+          "total_duration_minutes": 22,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 2001,
+          "total_duration_minutes": 27,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7035,
+          "total_duration_minutes": 35,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 16
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "曲江夜游",
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "曲江夜游": 12,
+        "大雁塔": 4,
+        "城墙钟鼓楼": 5,
+        "小寨文博": 4,
+        "回民街": 1,
+        "浐灞未央": 4
+      },
+      "area_coverage_signal": 0.75,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "曲江夜游",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "曲江",
+        "preferred_period": "evening",
+        "origin_preference_mode": "nearby",
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 曲江夜游簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "18:16-19:16",
+            "type": "restaurant",
+            "name": "Qujiang Night Dinner",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "从起点前往（步行（估算） 约16分钟）",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 1200,
+            "estimated_duration_minutes": 16
+          },
+          {
+            "time_slot": "19:27-20:17",
+            "type": "sight",
+            "name": "Immersive Art Hall",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "步行（估算） 约11分钟",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 801,
+            "estimated_duration_minutes": 11
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 曲江，预计路程约 2001 米，交通耗时约 27 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 137 分钟。",
+          "检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。",
+          "夜游场景已优先保证晚间用餐与夜游点衔接。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "insufficient_info_should_clarify",
+      "text": "随便安排一下，想出去转转",
+      "expected_focus": [
+        "clarification"
+      ],
+      "endpoint": "v3",
+      "parsed_by": "unknown",
+      "selected_by": "unknown",
+      "clarification_needed": true,
+      "invalid_action_fallback": 0,
+      "candidate_count": 0,
+      "candidate_diversity_score": 0.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "",
+      "area_fit_hit": false,
+      "parsed_request": {},
+      "selected_plan": {},
+      "route_quality_hit": false,
+      "meal_intent_hit": false,
+      "night_intent_hit": false,
+      "nearby_intent_hit": false,
+      "relax_intent_hit": false,
+      "short_result_label": "needs_clarification"
+    },
+    {
+      "case_id": "parents_morning_museum",
+      "text": "上午陪爸妈逛文博点，尽量顺路，安排一顿饭",
+      "expected_focus": [
+        "meal",
+        "relax",
+        "tourism"
+      ],
+      "endpoint": "v3",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 2,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 6806,
+          "total_duration_minutes": 32,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 6806,
+          "total_duration_minutes": 32,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 48
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 13,
+        "大雁塔": 12,
+        "回民街": 5
+      },
+      "area_coverage_signal": 0.375,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "parents",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "morning",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 parents 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "09:28-10:18",
+            "type": "sight",
+            "name": "Bell Tower Deck",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "对陪父母更轻松，同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "10:22-11:22",
+            "type": "restaurant",
+            "name": "Central Noodle House",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约4分钟",
+            "reason": "对陪父母更轻松，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 306,
+            "estimated_duration_minutes": 4
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 6806 米，交通耗时约 32 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 142 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    }
+  ],
+  "v4_current": [
+    {
+      "case_id": "parents_relax_meal_rainy_halfday",
+      "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+      "expected_focus": [
+        "meal",
+        "relax",
+        "indoor"
+      ],
+      "endpoint": "v4_current",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 2,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 6806,
+          "total_duration_minutes": 32,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 6806,
+          "total_duration_minutes": 32,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 46
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 11,
+        "小寨文博": 7,
+        "回民街": 4,
+        "电视塔会展": 4,
+        "高新": 4
+      },
+      "area_coverage_signal": 0.625,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "parents",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "rainy",
+        "origin": "钟楼",
+        "preferred_period": "midday",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 parents 同行，当前天气（请求参数 weather 兜底）为 rainy，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "11:58-12:48",
+            "type": "sight",
+            "name": "Bell Tower Deck",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "室内友好，对陪父母更轻松，同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "12:52-13:52",
+            "type": "restaurant",
+            "name": "Central Noodle House",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约4分钟",
+            "reason": "室内友好，对陪父母更轻松，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 306,
+            "estimated_duration_minutes": 4
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：rainy。",
+          "今日有雨，已优先室内点位并适度下调夜游点。",
+          "起点为 钟楼，预计路程约 6806 米，交通耗时约 32 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 142 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "night_dating_meal_photo",
+      "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+      "expected_focus": [
+        "night",
+        "meal"
+      ],
+      "endpoint": "v4_current",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "餐饮友好：优先夜游区域与餐饮衔接，餐位尽量放在前中段。",
+          "has_meal": true,
+          "total_distance_meters": 7086,
+          "total_duration_minutes": 36,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 1,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 6500,
+          "total_duration_minutes": 28,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:1"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7140,
+          "total_duration_minutes": 37,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 40
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 9,
+        "曲江夜游": 8,
+        "大雁塔": 6,
+        "小寨文博": 3,
+        "回民街": 4
+      },
+      "area_coverage_signal": 0.625,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "曲江夜游",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "partner",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "dating",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "evening",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 4.0 小时与 partner 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 曲江夜游簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "18:28-19:28",
+            "type": "restaurant",
+            "name": "Night City Photo Cafe",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "更有氛围感，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "19:36-20:56",
+            "type": "sight",
+            "name": "大唐不夜城",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "步行（估算） 约8分钟",
+            "reason": "更有氛围感，同簇连续，减少折返",
+            "estimated_distance_meters": 586,
+            "estimated_duration_minutes": 8
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 7086 米，交通耗时约 36 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 240 分钟，当前已排入 176 分钟。",
+          "检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。",
+          "夜游场景已优先保证晚间用餐与夜游点衔接。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "nearby_short_relax_clocktower",
+      "text": "我在钟楼附近，只有3小时，想轻松一点",
+      "expected_focus": [
+        "nearby",
+        "relax"
+      ],
+      "endpoint": "v4_current",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 2,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 1506,
+          "total_duration_minutes": 20,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 1735,
+          "total_duration_minutes": 23,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 32
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 13,
+        "小寨文博": 4,
+        "回民街": 1,
+        "大雁塔": 12
+      },
+      "area_coverage_signal": 0.5,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 3.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": "nearby",
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "09:16-10:06",
+            "type": "sight",
+            "name": "Bell Tower Deck",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（步行（估算） 约16分钟）",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 1200,
+            "estimated_duration_minutes": 16
+          },
+          {
+            "time_slot": "10:10-11:10",
+            "type": "restaurant",
+            "name": "Central Noodle House",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约4分钟",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 306,
+            "estimated_duration_minutes": 4
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 1506 米，交通耗时约 20 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 130 分钟。",
+          "已优先考虑起点“钟楼”附近的首站候选。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "friends_day_low_budget_busy",
+      "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+      "expected_focus": [
+        "budget",
+        "friends"
+      ],
+      "endpoint": "v4_current",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 3,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 7606,
+          "total_duration_minutes": 43,
+          "rhythm": "轻松",
+          "budget_level": "low",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:中前段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:3"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 4,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": true,
+          "cross_area_count": 1,
+          "area_transition_summary": "回民街 -> 城墙钟鼓楼",
+          "area_bias_note": "餐饮友好：优先餐饮密度更高区域，确保顺路用餐衔接。",
+          "has_meal": true,
+          "total_distance_meters": 7643,
+          "total_duration_minutes": 43,
+          "rhythm": "紧凑",
+          "budget_level": "low",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:中前段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:回民街 / 城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:1",
+            "区域覆盖与移动负担均衡",
+            "节奏:紧凑",
+            "站点:4"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺",
+            "餐饮选择更丰富"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。",
+            "餐饮密度高，适合把正餐或小吃安排在游览中前段。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 4,
+          "clusters": [
+            "小寨文博簇",
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": true,
+          "cross_cluster_count": 1,
+          "cluster_transition_summary": "小寨文博簇 -> 城墙钟鼓楼簇",
+          "is_cross_area": true,
+          "cross_area_count": 1,
+          "area_transition_summary": "小寨文博 -> 城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 10623,
+          "total_duration_minutes": 56,
+          "rhythm": "紧凑",
+          "budget_level": "low",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:中前段",
+            "簇分布:小寨文博簇 / 城墙钟鼓楼簇",
+            "区域分布:小寨文博 / 城墙钟鼓楼",
+            "跨簇:1",
+            "跨区域:1",
+            "区域覆盖与移动负担均衡",
+            "节奏:紧凑",
+            "站点:4"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺",
+            "文博密度高",
+            "雨天室内友好"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。",
+            "文博点位密度高，适合上午或雨天做室内优先安排。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 32
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 13,
+        "大雁塔": 12,
+        "回民街": 1,
+        "小寨文博": 4
+      },
+      "area_coverage_signal": 0.5,
+      "cross_area_signal": 0.3333,
+      "cross_area_count": 1,
+      "area_transition_summary": "小寨文博 -> 城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "friends",
+        "available_hours": 8.0,
+        "budget_level": "low",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 8.0 小时与 friends 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 小寨文博簇 -> 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "09:28-10:58",
+            "type": "sight",
+            "name": "陕西历史博物馆",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "氛围热闹，同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "11:01-12:01",
+            "type": "restaurant",
+            "name": "文博蔬食面坊",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "步行（估算） 约3分钟",
+            "reason": "氛围热闹，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 200,
+            "estimated_duration_minutes": 3
+          },
+          {
+            "time_slot": "12:08-13:08",
+            "type": "sight",
+            "name": "小寨周边",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "步行（估算） 约7分钟",
+            "reason": "氛围热闹，同簇连续，减少折返",
+            "estimated_distance_meters": 513,
+            "estimated_duration_minutes": 7
+          },
+          {
+            "time_slot": "13:26-14:11",
+            "type": "sight",
+            "name": "钟楼",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "地铁/打车（估算） 约18分钟",
+            "reason": "氛围热闹，同簇连续，减少折返",
+            "estimated_distance_meters": 3410,
+            "estimated_duration_minutes": 18
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 10623 米，交通耗时约 56 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 480 分钟，当前已排入 311 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 4 段已回退到简化交通规则（接口仍可用）。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "afternoon_relax_two_stops",
+      "text": "下午想轻松一点，逛两个地方就行",
+      "expected_focus": [
+        "relax"
+      ],
+      "endpoint": "v4_current",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 2,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 6806,
+          "total_duration_minutes": 32,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7035,
+          "total_duration_minutes": 35,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 32
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 13,
+        "大雁塔": 12,
+        "小寨文博": 4,
+        "电视塔会展": 1
+      },
+      "area_coverage_signal": 0.5,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "afternoon",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "14:28-15:18",
+            "type": "sight",
+            "name": "Bell Tower Deck",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "15:22-16:22",
+            "type": "restaurant",
+            "name": "Central Noodle House",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约4分钟",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 306,
+            "estimated_duration_minutes": 4
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 6806 米，交通耗时约 32 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 142 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "hot_indoor_low_walk",
+      "text": "天气很热，不想走太多，想去室内为主的地方",
+      "expected_focus": [
+        "indoor",
+        "relax"
+      ],
+      "endpoint": "v4_current",
+      "parsed_by": "unknown",
+      "selected_by": "unknown",
+      "clarification_needed": true,
+      "invalid_action_fallback": 0,
+      "candidate_count": 0,
+      "candidate_diversity_score": 0.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "",
+      "area_fit_hit": false,
+      "parsed_request": {},
+      "selected_plan": {},
+      "route_quality_hit": false,
+      "meal_intent_hit": false,
+      "night_intent_hit": false,
+      "nearby_intent_hit": false,
+      "relax_intent_hit": false,
+      "short_result_label": "needs_clarification"
+    },
+    {
+      "case_id": "midday_meal_then_visit",
+      "text": "中午前后出去吃点东西再逛逛",
+      "expected_focus": [
+        "meal",
+        "midday"
+      ],
+      "endpoint": "v4_current",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 6714,
+          "total_duration_minutes": 31,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7035,
+          "total_duration_minutes": 35,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": true,
+          "cross_area_count": 1,
+          "area_transition_summary": "回民街 -> 城墙钟鼓楼",
+          "area_bias_note": "餐饮友好：优先餐饮密度更高区域，确保顺路用餐衔接。",
+          "has_meal": true,
+          "total_distance_meters": 7137,
+          "total_duration_minutes": 36,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:回民街 / 城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:1",
+            "区域覆盖与移动负担均衡",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺",
+            "餐饮选择更丰富"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。",
+            "餐饮密度高，适合把正餐或小吃安排在游览中前段。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 32
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 9,
+        "小寨文博": 6,
+        "回民街": 5,
+        "大雁塔": 4,
+        "高新": 4,
+        "曲江夜游": 2
+      },
+      "area_coverage_signal": 0.75,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "midday",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "11:58-12:43",
+            "type": "sight",
+            "name": "钟楼",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "12:46-13:46",
+            "type": "restaurant",
+            "name": "Central Noodle House",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约3分钟",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 214,
+            "estimated_duration_minutes": 3
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 6714 米，交通耗时约 31 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 136 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "after_dinner_night_walk_low",
+      "text": "晚饭后去曲江附近散散步，拍照看夜景，别走太多",
+      "expected_focus": [
+        "night",
+        "nearby",
+        "relax"
+      ],
+      "endpoint": "v4_current",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 3,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "餐饮友好：优先夜游区域与餐饮衔接，餐位尽量放在前中段。",
+          "has_meal": true,
+          "total_distance_meters": 1678,
+          "total_duration_minutes": 22,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link",
+            "meal_position",
+            "area_food_link"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏顺路餐饮，强调用餐衔接"
+        },
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "曲江夜游",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 2001,
+          "total_duration_minutes": 27,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "区域分布:曲江夜游",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "晚间氛围更强"
+          ],
+          "knowledge_notes": [
+            "晚间氛围更好，适合夜游与餐饮衔接。"
+          ],
+          "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 7035,
+          "total_duration_minutes": 35,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 16
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "曲江夜游",
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "曲江夜游": 12,
+        "大雁塔": 4,
+        "城墙钟鼓楼": 5,
+        "小寨文博": 4,
+        "回民街": 1,
+        "浐灞未央": 4
+      },
+      "area_coverage_signal": 0.75,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "曲江夜游",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "曲江",
+        "preferred_period": "evening",
+        "origin_preference_mode": "nearby",
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 曲江夜游簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "18:16-19:16",
+            "type": "restaurant",
+            "name": "Qujiang Night Dinner",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "从起点前往（步行（估算） 约16分钟）",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 1200,
+            "estimated_duration_minutes": 16
+          },
+          {
+            "time_slot": "19:27-20:17",
+            "type": "sight",
+            "name": "Immersive Art Hall",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "步行（估算） 约11分钟",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 801,
+            "estimated_duration_minutes": 11
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 曲江，预计路程约 2001 米，交通耗时约 27 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 137 分钟。",
+          "检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。",
+          "夜游场景已优先保证晚间用餐与夜游点衔接。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    },
+    {
+      "case_id": "insufficient_info_should_clarify",
+      "text": "随便安排一下，想出去转转",
+      "expected_focus": [
+        "clarification"
+      ],
+      "endpoint": "v4_current",
+      "parsed_by": "unknown",
+      "selected_by": "unknown",
+      "clarification_needed": true,
+      "invalid_action_fallback": 0,
+      "candidate_count": 0,
+      "candidate_diversity_score": 0.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [],
+      "data_quality_report": {},
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "discovery_source_coverage": 0.0,
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "area_coverage_signal": 0.0,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "",
+      "area_fit_hit": false,
+      "parsed_request": {},
+      "selected_plan": {},
+      "route_quality_hit": false,
+      "meal_intent_hit": false,
+      "night_intent_hit": false,
+      "nearby_intent_hit": false,
+      "relax_intent_hit": false,
+      "short_result_label": "needs_clarification"
+    },
+    {
+      "case_id": "parents_morning_museum",
+      "text": "上午陪爸妈逛文博点，尽量顺路，安排一顿饭",
+      "expected_focus": [
+        "meal",
+        "relax",
+        "tourism"
+      ],
+      "endpoint": "v4_current",
+      "parsed_by": "rule",
+      "selected_by": "fallback_rule",
+      "clarification_needed": false,
+      "invalid_action_fallback": 3,
+      "candidate_count": 2,
+      "candidate_diversity_score": 1.0,
+      "candidate_quality_signal": 1.0,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+          "has_meal": true,
+          "total_distance_meters": 6806,
+          "total_duration_minutes": 32,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:轻松",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk",
+            "fewer_cross_cluster"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "is_cross_area": false,
+          "cross_area_count": 0,
+          "area_transition_summary": "城墙钟鼓楼",
+          "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+          "has_meal": true,
+          "total_distance_meters": 6806,
+          "total_duration_minutes": 32,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "区域分布:城墙钟鼓楼",
+            "跨簇:0",
+            "跨区域:0",
+            "单区域更轻松",
+            "节奏:均衡",
+            "站点:2"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "knowledge_tags": [
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "knowledge_notes": [
+            "适合经典地标串联，步行与短距离换乘都比较友好。"
+          ],
+          "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 48
+      },
+      "discovery_source_coverage": 1.0,
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 13,
+        "大雁塔": 12,
+        "回民街": 5
+      },
+      "area_coverage_signal": 0.375,
+      "cross_area_signal": 0.0,
+      "cross_area_count": 0,
+      "area_transition_summary": "城墙钟鼓楼",
+      "area_fit_hit": true,
+      "parsed_request": {
+        "companion_type": "parents",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "morning",
+        "origin_preference_mode": null,
+        "parsed_by": "rule",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 parents 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "09:28-10:18",
+            "type": "sight",
+            "name": "Bell Tower Deck",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "对陪父母更轻松，同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "10:22-11:22",
+            "type": "restaurant",
+            "name": "Central Noodle House",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约4分钟",
+            "reason": "对陪父母更轻松，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 306,
+            "estimated_duration_minutes": 4
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 6806 米，交通耗时约 32 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 142 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "route_quality_hit": true,
+      "meal_intent_hit": true,
+      "night_intent_hit": true,
+      "nearby_intent_hit": true,
+      "relax_intent_hit": true,
+      "short_result_label": "equal"
+    }
+  ]
+}

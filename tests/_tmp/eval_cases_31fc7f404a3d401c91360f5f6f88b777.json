@@ -1,0 +1,1 @@
+[{"case_id": "c1", "text": "陪父母半天", "expected_focus": ["meal", "relax"]}, {"text": "晚上约会看夜景", "expected_focus": "night"}]

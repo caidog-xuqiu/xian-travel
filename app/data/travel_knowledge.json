@@ -1,0 +1,86 @@
+[
+  {
+    "id": "k_rainy_indoor",
+    "category": "weather",
+    "tags": ["rainy", "indoor", "low_walk"],
+    "title": "雨天优先室内点位",
+    "content": "遇到雨天时，优先室内景点或室内商业体，减少纯户外停留时长。"
+  },
+  {
+    "id": "k_rainy_short_transfer",
+    "category": "weather",
+    "tags": ["rainy", "single_cluster", "short_transfer"],
+    "title": "雨天减少跨区域",
+    "content": "雨天优先同区域串联，尽量避免跨区域长距离换乘。"
+  },
+  {
+    "id": "k_parents_relaxed",
+    "category": "companion",
+    "tags": ["parents", "low_walk", "avoid_many_stops", "single_cluster"],
+    "title": "陪父母偏低强度",
+    "content": "陪父母出行时控制步行强度，缩短连续移动，避免过多站点。"
+  },
+  {
+    "id": "k_parents_meal_rest",
+    "category": "companion",
+    "tags": ["parents", "meal", "rest_pacing"],
+    "title": "陪父母保留正餐",
+    "content": "陪父母场景建议保留明确用餐节点，节奏采用游览+休息交替。"
+  },
+  {
+    "id": "k_dating_night_view",
+    "category": "scene",
+    "tags": ["dating", "night", "photo", "meal"],
+    "title": "约会优先夜景氛围",
+    "content": "约会晚间优先夜景和拍照氛围点，并与晚餐顺路衔接。"
+  },
+  {
+    "id": "k_dating_low_walk",
+    "category": "scene",
+    "tags": ["dating", "low_walk", "single_cluster"],
+    "title": "约会减少折返",
+    "content": "约会路线优先单簇或少跨簇，减少路程消耗，把时间留给体验。"
+  },
+  {
+    "id": "k_friends_lively",
+    "category": "scene",
+    "tags": ["friends", "lively", "landmark"],
+    "title": "朋友出行偏热闹",
+    "content": "朋友同行可优先热闹街区和地标打卡，提升整体参与感。"
+  },
+  {
+    "id": "k_friends_multi_spots",
+    "category": "scene",
+    "tags": ["friends", "multi_spots", "balanced"],
+    "title": "朋友场景可适度多点位",
+    "content": "朋友场景可在可控步行范围内增加点位数量，提升逛街密度。"
+  },
+  {
+    "id": "k_need_meal_anchor",
+    "category": "meal",
+    "tags": ["meal", "meal_experience", "food_friendly"],
+    "title": "需用餐时餐点为硬锚点",
+    "content": "用户明确需要吃饭时，餐饮节点优先保留，不随意裁剪。"
+  },
+  {
+    "id": "k_low_walk_general",
+    "category": "mobility",
+    "tags": ["low_walk", "single_cluster", "avoid_many_stops"],
+    "title": "低步行耐受规则",
+    "content": "低步行耐受时，优先短动线、少折返、少站点。"
+  },
+  {
+    "id": "k_short_time_3h",
+    "category": "time",
+    "tags": ["short_time", "avoid_many_stops", "single_cluster"],
+    "title": "3小时内行程压缩",
+    "content": "可用时间约3小时时，优先2-3个核心节点并减少跨区域。"
+  },
+  {
+    "id": "k_budget_low_value",
+    "category": "budget",
+    "tags": ["budget_low", "budget_friendly", "food_friendly"],
+    "title": "低预算优先性价比",
+    "content": "预算低时优先高性价比餐饮与免票/低票价点位，控制整体开销。"
+  }
+]

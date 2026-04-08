@@ -1,0 +1,563 @@
+{
+  "run_at": "2026-04-08T00:19:37",
+  "cases": [
+    {
+      "case_id": "parents_rainy_halfday",
+      "text": "??????????????????????",
+      "results": {
+        "v2": {
+          "thread_id": "a2a51d6c-3955-4c8b-b758-4a9a47b4de3e",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v3": {
+          "thread_id": "c9e1971a-0e0f-45fd-aa47-516c820a28f6",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v4_current": {
+          "thread_id": "7345d44f-9a78-4e46-9265-fbdb86e91e70",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "night_dating",
+      "text": "??????????????????",
+      "results": {
+        "v2": {
+          "thread_id": "27b3ddbf-225e-4822-b1f1-24b69185a515",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v3": {
+          "thread_id": "5efafbf5-a391-42be-9056-0a83edab717f",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v4_current": {
+          "thread_id": "ac79720f-f252-4bf0-9263-2138ccf31c4f",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "nearby_clocktower_3h",
+      "text": "?????????3????????",
+      "results": {
+        "v2": {
+          "thread_id": "a0274f26-fb6b-4215-86cd-679498909e21",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v3": {
+          "thread_id": "f53ed773-3d2e-4718-9c61-61fa145c629f",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v4_current": {
+          "thread_id": "585d1b44-84ba-4078-81aa-692892fd3afc",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "friends_day_low_budget",
+      "text": "??????????????????????",
+      "results": {
+        "v2": {
+          "thread_id": "4b0ba6b8-a765-4edf-8616-271bede8b9c7",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v3": {
+          "thread_id": "b8a918fa-aa26-4524-9702-7e34e05b78e5",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v4_current": {
+          "thread_id": "624d520f-4f3a-4531-8ded-64404470b3f2",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "afternoon_relax",
+      "text": "???????????????",
+      "results": {
+        "v2": {
+          "thread_id": "b6a8cede-c8d8-4e0d-ab8b-852b1dda9b7f",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v3": {
+          "thread_id": "95e8e862-a099-482e-8a9f-24e1a695a959",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v4_current": {
+          "thread_id": "c6664937-e0d2-499f-976d-b8a899134cbd",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "qingming_question",
+      "text": "????????",
+      "results": {
+        "v2": {
+          "thread_id": "85f7718b-0feb-44a7-b4cc-2d07b7e15faa",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v3": {
+          "thread_id": "c48940c0-d070-489a-b3c7-14b419f12300",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v4_current": {
+          "thread_id": "8e7c51c6-5413-41f2-8cb7-f85f87f4c675",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        }
+      }
+    }
+  ],
+  "clarification_continue_demo": {
+    "seed": {
+      "thread_id": "d5e3483e-9b2d-4775-9d3e-c1fce2a89903",
+      "parsed_by": null,
+      "selected_by": "unknown",
+      "clarification_needed": true,
+      "clarification_question": "这次大概想安排多久？半天还是一天？",
+      "invalid_action_fallback": null,
+      "candidate_count": 0,
+      "route_stop_count": 0,
+      "planning_steps": 0,
+      "planning_actions": [],
+      "search_results_count": 0,
+      "reason_tags": [],
+      "selection_reason": null,
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "retrieved_knowledge_count": 0,
+      "knowledge_source_tags": [],
+      "data_quality_report": {},
+      "skill_trace_count": 0,
+      "debug_key_logs": [
+        "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+      ]
+    },
+    "continued": {
+      "thread_id": "d5e3483e-9b2d-4775-9d3e-c1fce2a89903",
+      "parsed_by": null,
+      "selected_by": "unknown",
+      "clarification_needed": true,
+      "clarification_question": "这次大概想安排多久？半天还是一天？",
+      "invalid_action_fallback": null,
+      "candidate_count": 0,
+      "route_stop_count": 0,
+      "planning_steps": 0,
+      "planning_actions": [],
+      "search_results_count": 0,
+      "reason_tags": [],
+      "selection_reason": null,
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "retrieved_knowledge_count": 0,
+      "knowledge_source_tags": [],
+      "data_quality_report": {},
+      "skill_trace_count": 0,
+      "debug_key_logs": [
+        "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+      ]
+    }
+  }
+}

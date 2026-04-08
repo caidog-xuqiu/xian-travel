@@ -1,0 +1,224 @@
+[
+  {
+    "text": "??????????????????????",
+    "parsed_by": null,
+    "selected_by": "unknown",
+    "amap_called": false,
+    "amap_sources_used": [],
+    "amap_geo_used": false,
+    "amap_route_used": false,
+    "amap_weather_used": false,
+    "route_source": null,
+    "weather_source": null,
+    "amap_fallback_reason": null,
+    "planning_history": [],
+    "candidate_plans_summary": [],
+    "selected_plan": null,
+    "readable_output": null,
+    "debug_logs": [
+      {
+        "ts": "2026-04-08T16:47:23",
+        "node": null,
+        "level": "info",
+        "message": "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill', 'amap_search_skill', 'amap_geocode_skill', 'amap_route_skill', 'amap_weather_skill']"
+      },
+      {
+        "ts": "2026-04-08T16:47:23",
+        "node": null,
+        "level": "info",
+        "message": "agent_chain=v4_current"
+      },
+      {
+        "ts": "2026-04-08T16:47:23",
+        "node": "analyze_query",
+        "level": "info",
+        "message": "缺少时间信息，触发澄清：时长。"
+      }
+    ]
+  },
+  {
+    "text": "??????????????????",
+    "parsed_by": null,
+    "selected_by": "unknown",
+    "amap_called": false,
+    "amap_sources_used": [],
+    "amap_geo_used": false,
+    "amap_route_used": false,
+    "amap_weather_used": false,
+    "route_source": null,
+    "weather_source": null,
+    "amap_fallback_reason": null,
+    "planning_history": [],
+    "candidate_plans_summary": [],
+    "selected_plan": null,
+    "readable_output": null,
+    "debug_logs": [
+      {
+        "ts": "2026-04-08T16:47:23",
+        "node": null,
+        "level": "info",
+        "message": "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill', 'amap_search_skill', 'amap_geocode_skill', 'amap_route_skill', 'amap_weather_skill']"
+      },
+      {
+        "ts": "2026-04-08T16:47:23",
+        "node": null,
+        "level": "info",
+        "message": "agent_chain=v4_current"
+      },
+      {
+        "ts": "2026-04-08T16:47:23",
+        "node": "analyze_query",
+        "level": "info",
+        "message": "缺少时间信息，触发澄清：时长。"
+      }
+    ]
+  },
+  {
+    "text": "?????????3????????",
+    "parsed_by": null,
+    "selected_by": "unknown",
+    "amap_called": false,
+    "amap_sources_used": [],
+    "amap_geo_used": false,
+    "amap_route_used": false,
+    "amap_weather_used": false,
+    "route_source": null,
+    "weather_source": null,
+    "amap_fallback_reason": null,
+    "planning_history": [],
+    "candidate_plans_summary": [],
+    "selected_plan": null,
+    "readable_output": null,
+    "debug_logs": [
+      {
+        "ts": "2026-04-08T16:47:24",
+        "node": null,
+        "level": "info",
+        "message": "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill', 'amap_search_skill', 'amap_geocode_skill', 'amap_route_skill', 'amap_weather_skill']"
+      },
+      {
+        "ts": "2026-04-08T16:47:24",
+        "node": null,
+        "level": "info",
+        "message": "agent_chain=v4_current"
+      },
+      {
+        "ts": "2026-04-08T16:47:24",
+        "node": "analyze_query",
+        "level": "info",
+        "message": "缺少时间信息，触发澄清：时长。"
+      }
+    ]
+  },
+  {
+    "text": "??????????????????????",
+    "parsed_by": null,
+    "selected_by": "unknown",
+    "amap_called": false,
+    "amap_sources_used": [],
+    "amap_geo_used": false,
+    "amap_route_used": false,
+    "amap_weather_used": false,
+    "route_source": null,
+    "weather_source": null,
+    "amap_fallback_reason": null,
+    "planning_history": [],
+    "candidate_plans_summary": [],
+    "selected_plan": null,
+    "readable_output": null,
+    "debug_logs": [
+      {
+        "ts": "2026-04-08T16:47:24",
+        "node": null,
+        "level": "info",
+        "message": "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill', 'amap_search_skill', 'amap_geocode_skill', 'amap_route_skill', 'amap_weather_skill']"
+      },
+      {
+        "ts": "2026-04-08T16:47:24",
+        "node": null,
+        "level": "info",
+        "message": "agent_chain=v4_current"
+      },
+      {
+        "ts": "2026-04-08T16:47:24",
+        "node": "analyze_query",
+        "level": "info",
+        "message": "缺少时间信息，触发澄清：时长。"
+      }
+    ]
+  },
+  {
+    "text": "???????????????",
+    "parsed_by": null,
+    "selected_by": "unknown",
+    "amap_called": false,
+    "amap_sources_used": [],
+    "amap_geo_used": false,
+    "amap_route_used": false,
+    "amap_weather_used": false,
+    "route_source": null,
+    "weather_source": null,
+    "amap_fallback_reason": null,
+    "planning_history": [],
+    "candidate_plans_summary": [],
+    "selected_plan": null,
+    "readable_output": null,
+    "debug_logs": [
+      {
+        "ts": "2026-04-08T16:47:24",
+        "node": null,
+        "level": "info",
+        "message": "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill', 'amap_search_skill', 'amap_geocode_skill', 'amap_route_skill', 'amap_weather_skill']"
+      },
+      {
+        "ts": "2026-04-08T16:47:24",
+        "node": null,
+        "level": "info",
+        "message": "agent_chain=v4_current"
+      },
+      {
+        "ts": "2026-04-08T16:47:24",
+        "node": "analyze_query",
+        "level": "info",
+        "message": "缺少时间信息，触发澄清：时长。"
+      }
+    ]
+  },
+  {
+    "text": "???????????????????????",
+    "parsed_by": null,
+    "selected_by": "unknown",
+    "amap_called": false,
+    "amap_sources_used": [],
+    "amap_geo_used": false,
+    "amap_route_used": false,
+    "amap_weather_used": false,
+    "route_source": null,
+    "weather_source": null,
+    "amap_fallback_reason": null,
+    "planning_history": [],
+    "candidate_plans_summary": [],
+    "selected_plan": null,
+    "readable_output": null,
+    "debug_logs": [
+      {
+        "ts": "2026-04-08T16:47:24",
+        "node": null,
+        "level": "info",
+        "message": "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill', 'amap_search_skill', 'amap_geocode_skill', 'amap_route_skill', 'amap_weather_skill']"
+      },
+      {
+        "ts": "2026-04-08T16:47:24",
+        "node": null,
+        "level": "info",
+        "message": "agent_chain=v4_current"
+      },
+      {
+        "ts": "2026-04-08T16:47:24",
+        "node": "analyze_query",
+        "level": "info",
+        "message": "缺少时间信息，触发澄清：时长。"
+      }
+    ]
+  }
+]

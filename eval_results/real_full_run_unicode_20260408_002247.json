@@ -1,0 +1,1918 @@
+{
+  "run_at": "2026-04-08T00:20:51",
+  "cases": [
+    {
+      "case_id": "parents_rainy_halfday",
+      "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+      "results": {
+        "v2": {
+          "thread_id": "bb4356ef-721e-4b93-8822-896133faf91d",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 2,
+          "route_stop_count": 2,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 30,
+          "reason_tags": [
+            "need_meal",
+            "low_walking_tolerance",
+            "fewer_cross_cluster",
+            "relaxed_priority",
+            "parents_companion",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "selection_reason": "用户需求为陪父母、轻松优先、需用餐、步行耐受低、可用时间4小时，方案relaxed_first符合轻松优先、含餐、步行低、跨簇/跨区域为0，更符合硬约束和用户意图；classic_first节奏均衡、步行中等，与轻松优先和低步行需求不一致。；适合拍照打卡。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 46
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 11,
+            "小寨文博": 7,
+            "回民街": 4,
+            "电视塔会展": 4,
+            "高新": 4
+          },
+          "retrieved_knowledge_count": 4,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 10,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_miss",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "候选偏好=['fewer_cross_cluster', 'prefer_origin_cluster_first', 'prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']。",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['relaxed', 'nearby', 'indoor', 'food']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:46",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:11, 小寨文博:7, 回民街:4, 电视塔会展:4, 高新:4",
+            "candidate discovery merge summary: before=64, after=64, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=relaxed, nearby, indoor, food | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:46, merged=64",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "已获取天气上下文（source=fallback_request）。",
+            "area-aware candidate generation started",
+            "area priority order used=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央",
+            "候选方案生成数=2。"
+          ]
+        },
+        "v3": {
+          "thread_id": "0b180801-6ba8-4a5a-8b6f-d8817aa9380a",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 2,
+          "route_stop_count": 2,
+          "planning_steps": 3,
+          "planning_actions": [
+            "SEARCH",
+            "GENERATE_CANDIDATES",
+            "REVISE"
+          ],
+          "search_results_count": 30,
+          "reason_tags": [
+            "need_meal",
+            "low_walking_tolerance",
+            "fewer_cross_cluster",
+            "relaxed_priority",
+            "time_constraint",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "selection_reason": "用户需求为陪父母、旅游、需用餐、步行耐受低、可用时间4小时，符合硬约束：need_meal=true时含餐方案优先；available_hours=4<5，不触发仅1站优先级降低；陪父母/轻松优先/时间紧张时，跨簇/跨区域更少方案更优，该方案跨簇0次、跨区域0次，节奏轻松、步行low，更符合轻松优先和低步行需求；经典优先方案步行medium，节奏均衡，不如轻松方案贴合用户意图。；适合拍照打卡。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 46
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 11,
+            "小寨文博": 7,
+            "回民街": 4,
+            "电视塔会展": 4,
+            "高新": 4
+          },
+          "retrieved_knowledge_count": 4,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 15,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "候选偏好=['fewer_cross_cluster', 'prefer_origin_cluster_first', 'prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']。",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['relaxed', 'nearby', 'indoor', 'food']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:46",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:11, 小寨文博:7, 回民街:4, 电视塔会展:4, 高新:4",
+            "candidate discovery merge summary: before=64, after=64, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=relaxed, nearby, indoor, food | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:46, merged=64",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search with low walking, rainy weather, and meal needs using current strategy args={'strategies': ['relaxed', 'nearby', 'indoor', 'food']}",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30"
+          ]
+        },
+        "v4_current": {
+          "thread_id": "33c799c5-ed5b-400c-a9cb-168499846933",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 2,
+          "route_stop_count": 2,
+          "planning_steps": 3,
+          "planning_actions": [
+            "SEARCH",
+            "GENERATE_CANDIDATES",
+            "REVISE"
+          ],
+          "search_results_count": 30,
+          "reason_tags": [
+            "need_meal",
+            "low_walking_tolerance",
+            "fewer_cross_cluster",
+            "relax_priority",
+            "time_constraint",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "selection_reason": "用户需求为陪父母、轻松优先、需用餐、步行容忍度低、可用时间4小时，方案relaxed_first符合轻松优先、含餐、低步行、单区域集中（跨簇0、跨区域0），减少移动负担，节奏舒缓，更贴合用户意图；classic_first虽含餐但节奏均衡、步行medium，且目的为tourism而非relax，优先级较低。；适合拍照打卡。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 46
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 11,
+            "小寨文博": 7,
+            "回民街": 4,
+            "电视塔会展": 4,
+            "高新": 4
+          },
+          "retrieved_knowledge_count": 4,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 15,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "候选偏好=['fewer_cross_cluster', 'prefer_origin_cluster_first', 'prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']。",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['relaxed', 'nearby', 'indoor', 'food']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:46",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:11, 小寨文博:7, 回民街:4, 电视塔会展:4, 高新:4",
+            "candidate discovery merge summary: before=64, after=64, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=relaxed, nearby, indoor, food | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:46, merged=64",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search needed to find indoor, relaxed, nearby options with food for rainy midday with parents. args={'strategies': ['relaxed', 'nearby', 'indoor', 'food']}",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "night_dating",
+      "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+      "results": {
+        "v2": {
+          "thread_id": "6987f773-cfa3-489c-ace8-5ad803d827aa",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 3,
+          "route_stop_count": 1,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 30,
+          "reason_tags": [
+            "need_meal",
+            "dating_scene",
+            "night_atmosphere",
+            "single_cluster",
+            "relaxed_pace",
+            "low_walking",
+            "晚间氛围更强"
+          ],
+          "selection_reason": "用户需求为约会场景且需要用餐，该方案位于曲江夜游簇，符合夜游氛围要求；站点数为1，跨簇和跨区域均为0，符合陪父母/轻松优先/时间紧张时少跨簇更优的提示；节奏轻松、步行量低，更符合约会场景的轻松氛围。；晚间氛围更强。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 40
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 9,
+            "曲江夜游": 8,
+            "大雁塔": 6,
+            "小寨文博": 3,
+            "回民街": 4
+          },
+          "retrieved_knowledge_count": 4,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "晚间氛围更强"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 10,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "候选偏好=['prioritize_night_view', 'include_meal_stop']。",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['night', 'food']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:40",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:9, 曲江夜游:8, 大雁塔:6, 小寨文博:3, 回民街:4",
+            "candidate discovery merge summary: before=58, after=58, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=night, food | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:40, merged=58",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "已获取天气上下文（source=fallback_request）。",
+            "area-aware candidate generation started",
+            "area priority order used=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央",
+            "候选方案生成数=3。"
+          ]
+        },
+        "v3": {
+          "thread_id": "9dcd0d90-a62b-4a0e-b45f-edbbc4305c0b",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 3,
+          "route_stop_count": 1,
+          "planning_steps": 3,
+          "planning_actions": [
+            "SEARCH",
+            "GENERATE_CANDIDATES",
+            "FINISH"
+          ],
+          "search_results_count": 30,
+          "reason_tags": [
+            "dating",
+            "need_meal",
+            "night_atmosphere",
+            "fewer_cross_cluster",
+            "relaxed_pace",
+            "晚间氛围更强"
+          ],
+          "selection_reason": "用户需求为约会场景且需用餐，该方案位于曲江夜游簇，满足夜游氛围和餐饮需求；站点数为1，跨簇和跨区域均为0，符合时间紧张时减少跨簇的提示；节奏轻松、步行量低，更符合约会场景的轻松氛围。；晚间氛围更强。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 40
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 9,
+            "曲江夜游": 8,
+            "大雁塔": 6,
+            "小寨文博": 3,
+            "回民街": 4
+          },
+          "retrieved_knowledge_count": 4,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "晚间氛围更强"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 13,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "候选偏好=['prioritize_night_view', 'include_meal_stop']。",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['night', 'food']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:40",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:9, 曲江夜游:8, 大雁塔:6, 小寨文博:3, 回民街:4",
+            "candidate discovery merge summary: before=58, after=58, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=night, food | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:40, merged=58",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "Planning step=1: action coerced GENERATE_CANDIDATES -> SEARCH (missing search_results)",
+            "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Search strategy already includes night and food, and search results are zero, so generate candidates to create initial plans. [auto-coerce: require SEARCH first] args={}",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+          ]
+        },
+        "v4_current": {
+          "thread_id": "a04c05e4-9bde-4803-824d-d89955794706",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 3,
+          "route_stop_count": 1,
+          "planning_steps": 3,
+          "planning_actions": [
+            "SEARCH",
+            "GENERATE_CANDIDATES",
+            "FINISH"
+          ],
+          "search_results_count": 30,
+          "reason_tags": [
+            "dating",
+            "need_meal",
+            "relaxed",
+            "low_walk",
+            "single_cluster",
+            "night_ambience",
+            "晚间氛围更强"
+          ],
+          "selection_reason": "用户需求为约会场景且需要用餐，该方案为单站点、轻松节奏、低步行强度，完全符合约会轻松氛围和用餐需求；同时位于曲江夜游簇，满足夜游氛围要求；跨簇和跨区域均为0，符合时间紧张时减少跨簇的提示。；晚间氛围更强。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 40
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 9,
+            "曲江夜游": 8,
+            "大雁塔": 6,
+            "小寨文博": 3,
+            "回民街": 4
+          },
+          "retrieved_knowledge_count": 4,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "晚间氛围更强"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 13,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "候选偏好=['prioritize_night_view', 'include_meal_stop']。",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['night', 'food']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:40",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:9, 曲江夜游:8, 大雁塔:6, 小寨文博:3, 回民街:4",
+            "candidate discovery merge summary: before=58, after=58, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=night, food | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:40, merged=58",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "Planning step=1: action coerced GENERATE_CANDIDATES -> SEARCH (missing search_results)",
+            "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Search strategy already set to ['night', 'food'] with zero results, so generate candidates based on current parameters. [auto-coerce: require SEARCH first] args={}",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "nearby_clocktower_3h",
+      "text": "我在钟楼附近，只有3小时，想轻松一点",
+      "results": {
+        "v2": {
+          "thread_id": "1c93978e-c2c6-4723-aee8-3bdf677de4a4",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 2,
+          "route_stop_count": 2,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 30,
+          "reason_tags": [
+            "need_meal",
+            "low_walking",
+            "single_cluster",
+            "relax_priority",
+            "short_time",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "selection_reason": "用户需求为solo、relax、need_meal=True、walking_tolerance=low、available_hours=3.0，方案relaxed_first符合轻松优先、含餐、低步行、单区域（无跨簇/跨区域）的硬约束，且节奏更舒缓，与用户意图最一致。；适合拍照打卡。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 32
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 13,
+            "小寨文博": 4,
+            "回民街": 1,
+            "大雁塔": 12
+          },
+          "retrieved_knowledge_count": 4,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 10,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "候选偏好=['prefer_origin_cluster_first', 'prioritize_relaxed_pacing', 'fewer_cross_cluster']。",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['classic', 'nearby', 'relaxed']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:32",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:13, 小寨文博:4, 回民街:1, 大雁塔:12",
+            "candidate discovery merge summary: before=50, after=50, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic, nearby, relaxed | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:32, merged=50",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "已获取天气上下文（source=fallback_request）。",
+            "area-aware candidate generation started",
+            "area priority order used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "候选方案生成数=2。"
+          ]
+        },
+        "v3": {
+          "thread_id": "acdf7568-f907-46ef-b00f-a28b31969586",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 2,
+          "route_stop_count": 2,
+          "planning_steps": 3,
+          "planning_actions": [
+            "SEARCH",
+            "GENERATE_CANDIDATES",
+            "REVISE"
+          ],
+          "search_results_count": 30,
+          "reason_tags": [
+            "need_meal",
+            "low_walk",
+            "fewer_cross_cluster",
+            "relax_priority",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "selection_reason": "用户需求为solo、relax、need_meal=True、walking_tolerance=low、available_hours=3.0，方案relaxed_first符合轻松优先、含餐、步行低、跨簇/跨区域为0，更贴合用户意图；classic_first节奏均衡且步行中等，与轻松优先和低步行容忍度不完全匹配。；适合拍照打卡。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 32
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 13,
+            "小寨文博": 4,
+            "回民街": 1,
+            "大雁塔": 12
+          },
+          "retrieved_knowledge_count": 4,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 15,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "候选偏好=['prefer_origin_cluster_first', 'prioritize_relaxed_pacing', 'fewer_cross_cluster']。",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['classic', 'nearby', 'relaxed']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:32",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:13, 小寨文博:4, 回民街:1, 大雁塔:12",
+            "candidate discovery merge summary: before=50, after=50, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic, nearby, relaxed | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:32, merged=50",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search needed to find suitable attractions for a solo traveler seeking relaxation with low walking and a meal stop. args={'strategies': ['classic']}",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30"
+          ]
+        },
+        "v4_current": {
+          "thread_id": "a6118de8-081d-4e06-81fa-e66dc6a59711",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 2,
+          "route_stop_count": 2,
+          "planning_steps": 3,
+          "planning_actions": [
+            "SEARCH",
+            "GENERATE_CANDIDATES",
+            "REVISE"
+          ],
+          "search_results_count": 30,
+          "reason_tags": [
+            "轻松优先",
+            "含餐",
+            "低步行",
+            "无跨簇",
+            "时间紧张",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "selection_reason": "用户需求为solo、relax、need_meal=True、walking_tolerance=low、available_hours=3.0，方案relaxed_first符合轻松优先、含餐、步行低、节奏轻松、无跨簇跨区域，更贴合用户意图；classic_first节奏均衡、步行中等，与轻松优先和低步行容忍度不完全匹配。；适合拍照打卡。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 32
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 13,
+            "小寨文博": 4,
+            "回民街": 1,
+            "大雁塔": 12
+          },
+          "retrieved_knowledge_count": 4,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 15,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "候选偏好=['prefer_origin_cluster_first', 'prioritize_relaxed_pacing', 'fewer_cross_cluster']。",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['classic', 'nearby', 'relaxed']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:32",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:13, 小寨文博:4, 回民街:1, 大雁塔:12",
+            "candidate discovery merge summary: before=50, after=50, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic, nearby, relaxed | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:32, merged=50",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search needed to find suitable locations for a solo, relaxed trip with low walking and a meal stop. args={'strategies': ['classic']}",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "friends_day_low_budget",
+      "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+      "results": {
+        "v2": {
+          "thread_id": "0cc59b1b-0763-4b05-80c6-ece823b842be",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 3,
+          "route_stop_count": 3,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 30,
+          "reason_tags": [
+            "need_meal",
+            "relaxed_priority",
+            "fewer_cross_cluster",
+            "low_walking",
+            "available_hours充足",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "selection_reason": "用户需求为朋友旅游、需用餐、可用时间8小时，方案relaxed_first符合轻松优先、含餐、跨簇/跨区域为0，避免了时间紧张和跨区域负担，且节奏舒缓适合朋友出游。；适合拍照打卡。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 32
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 13,
+            "大雁塔": 12,
+            "回民街": 1,
+            "小寨文博": 4
+          },
+          "retrieved_knowledge_count": 5,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 10,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['classic']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:32",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:13, 大雁塔:12, 回民街:1, 小寨文博:4",
+            "candidate discovery merge summary: before=50, after=50, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:32, merged=50",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "已获取天气上下文（source=fallback_request）。",
+            "area-aware candidate generation started",
+            "area priority order used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "候选方案生成数=3。",
+            "skill invoked: knowledge_enrichment_skill, status=success, summary=summary_hits=3"
+          ]
+        },
+        "v3": {
+          "thread_id": "9e7d9bf6-181d-407b-a391-e6870f36f4e5",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 3,
+          "route_stop_count": 3,
+          "planning_steps": 3,
+          "planning_actions": [
+            "SEARCH",
+            "GENERATE_CANDIDATES",
+            "REVISE"
+          ],
+          "search_results_count": 30,
+          "reason_tags": [
+            "need_meal",
+            "no_cross_cluster",
+            "relaxed_pace",
+            "low_walking",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "selection_reason": "用户需求为朋友旅游、需用餐、可用时间8小时，方案relaxed_first符合need_meal=true且跨簇/跨区域为0，避免了时间紧张时的跨簇降级，同时节奏轻松、步行低，更符合朋友旅游的轻松意图。；适合拍照打卡。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 32
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 13,
+            "大雁塔": 12,
+            "回民街": 1,
+            "小寨文博": 4
+          },
+          "retrieved_knowledge_count": 5,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 15,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['classic']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:32",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:13, 大雁塔:12, 回民街:1, 小寨文博:4",
+            "candidate discovery merge summary: before=50, after=50, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:32, merged=50",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search needed to generate candidate plans for friends tourism with sunny weather and meal requirement args={'strategies': ['classic']}",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30",
+            "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+          ]
+        },
+        "v4_current": {
+          "thread_id": "161de97b-4f00-4006-86f9-8304bde50c39",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 3,
+          "route_stop_count": 3,
+          "planning_steps": 3,
+          "planning_actions": [
+            "SEARCH",
+            "GENERATE_CANDIDATES",
+            "REVISE"
+          ],
+          "search_results_count": 30,
+          "reason_tags": [
+            "need_meal",
+            "relaxed_priority",
+            "fewer_cross_cluster",
+            "low_burden",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "selection_reason": "用户需求为朋友旅游、需用餐、步行耐受高、可用时间8小时，方案relaxed_first符合轻松优先、含餐、跨簇/跨区域0次，减少移动负担，节奏舒缓，适合朋友旅游且时间充裕；其他方案跨区域或跨簇更多，增加负担，且food_friendly节奏紧凑、classic_first跨簇跨区域，不符合轻松优先意图。；适合拍照打卡。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 32
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 13,
+            "大雁塔": 12,
+            "回民街": 1,
+            "小寨文博": 4
+          },
+          "retrieved_knowledge_count": 5,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 15,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['classic']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:32",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:13, 大雁塔:12, 回民街:1, 小寨文博:4",
+            "candidate discovery merge summary: before=50, after=50, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:32, merged=50",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Need to find initial options for friends tourism with high walking and meal needs args={'strategies': ['classic']}",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30",
+            "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "afternoon_relax",
+      "text": "下午想轻松一点，逛两个地方就行",
+      "results": {
+        "v2": {
+          "thread_id": "476fb602-a689-4794-887a-381e86228062",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 2,
+          "route_stop_count": 2,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 30,
+          "reason_tags": [
+            "轻松优先",
+            "含餐",
+            "低步行",
+            "无跨簇",
+            "节奏轻松",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "selection_reason": "用户需求为solo、relax、need_meal=true、walking_tolerance=low、available_hours=4.0，方案relaxed_first符合轻松优先、含餐、步行低、节奏轻松、无跨簇跨区域，更贴合用户意图；classic_first节奏均衡、步行中等，与轻松优先和低步行容忍度不完全匹配。；适合拍照打卡。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 32
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 13,
+            "大雁塔": 12,
+            "小寨文博": 4,
+            "电视塔会展": 1
+          },
+          "retrieved_knowledge_count": 4,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 10,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "候选偏好=['prioritize_relaxed_pacing', 'fewer_cross_cluster']。",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['classic', 'relaxed']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:32",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:13, 大雁塔:12, 小寨文博:4, 电视塔会展:1",
+            "candidate discovery merge summary: before=50, after=50, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic, relaxed | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:32, merged=50",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "已获取天气上下文（source=fallback_request）。",
+            "area-aware candidate generation started",
+            "area priority order used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "候选方案生成数=2。"
+          ]
+        },
+        "v3": {
+          "thread_id": "219c67dc-ba9c-41cb-ab2a-481ff7a543c4",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 2,
+          "route_stop_count": 2,
+          "planning_steps": 3,
+          "planning_actions": [
+            "SEARCH",
+            "GENERATE_CANDIDATES",
+            "FINISH"
+          ],
+          "search_results_count": 30,
+          "reason_tags": [
+            "need_meal",
+            "low_walking",
+            "single_cluster",
+            "relax_priority",
+            "available_hours_4",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "selection_reason": "用户需求为solo、relax、need_meal=True、walking_tolerance=low、available_hours=4.0，方案relaxed_first符合轻松优先、含餐、低步行、单区域（无跨簇/跨区域）的硬约束，且节奏更舒缓，与用户意图最一致。；适合拍照打卡。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 32
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 13,
+            "大雁塔": 12,
+            "小寨文博": 4,
+            "电视塔会展": 1
+          },
+          "retrieved_knowledge_count": 4,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 13,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "候选偏好=['prioritize_relaxed_pacing', 'fewer_cross_cluster']。",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['classic', 'relaxed']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:32",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:13, 大雁塔:12, 小寨文博:4, 电视塔会展:1",
+            "candidate discovery merge summary: before=50, after=50, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic, relaxed | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:32, merged=50",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "Planning step=1: action coerced GENERATE_CANDIDATES -> SEARCH (missing search_results)",
+            "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search results are empty, but we have a clear request for a relaxed solo afternoon plan with a meal and low walking in sunny weather. Using the current search strategy to generate candidate plans. [auto-coerce: require SEARCH first] args={}",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+          ]
+        },
+        "v4_current": {
+          "thread_id": "0379a894-32ef-4d6d-a516-eb3cbdf3f3cf",
+          "parsed_by": null,
+          "selected_by": "llm",
+          "clarification_needed": false,
+          "clarification_question": null,
+          "invalid_action_fallback": null,
+          "candidate_count": 2,
+          "route_stop_count": 2,
+          "planning_steps": 3,
+          "planning_actions": [
+            "SEARCH",
+            "GENERATE_CANDIDATES",
+            "FINISH"
+          ],
+          "search_results_count": 30,
+          "reason_tags": [
+            "need_meal",
+            "low_walking",
+            "single_cluster",
+            "relax_priority",
+            "short_time",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "selection_reason": "用户需求为solo、relax、need_meal=True、walking_tolerance=low、available_hours=4.0，方案relaxed_first符合轻松优先、含餐、低步行、单区域集中（无跨簇/跨区域）的硬约束，且节奏更舒缓，与用户意图最一致。；适合拍照打卡。",
+          "discovery_sources": [
+            "existing_poi_pipeline",
+            "local_extended_corpus"
+          ],
+          "discovered_source_counts": {
+            "existing_poi_pipeline": 18,
+            "local_extended_corpus": 32
+          },
+          "area_scope_used": [
+            "城墙钟鼓楼",
+            "小寨文博",
+            "大雁塔",
+            "曲江夜游",
+            "回民街",
+            "高新",
+            "电视塔会展",
+            "浐灞未央"
+          ],
+          "discovered_area_counts": {
+            "城墙钟鼓楼": 13,
+            "大雁塔": 12,
+            "小寨文博": 4,
+            "电视塔会展": 1
+          },
+          "retrieved_knowledge_count": 4,
+          "knowledge_source_tags": [
+            "summary_knowledge",
+            "mock_city_guide",
+            "适合拍照打卡",
+            "动线更顺"
+          ],
+          "data_quality_report": {
+            "total_input": 18,
+            "total_after_dedup": 18,
+            "quarantined_count": 0,
+            "issue_counts": {},
+            "source_distribution": {
+              "mock": 18
+            },
+            "trust_distribution": {
+              "medium": 18
+            },
+            "freshness_distribution": {
+              "unknown": 18
+            },
+            "quality_notes": [
+              "Data quality processed 18 -> dedup 18 -> usable 18.",
+              "Quarantined=0."
+            ],
+            "quality_fallback": false,
+            "fallback_reason": null
+          },
+          "skill_trace_count": 13,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+            "skill invoked: recall_memory_skill, status=success, summary=memory_hit",
+            "解析完成，来源=llm。",
+            "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+            "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+            "候选偏好=['prioritize_relaxed_pacing', 'fewer_cross_cluster']。",
+            "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+            "area priority order (intent)=['城墙钟鼓楼']",
+            "area priority seed=['城墙钟鼓楼']",
+            "data_quality started",
+            "data_quality totals: input=18, after_dedup=18, quarantined=0",
+            "candidate discovery started",
+            "candidate discovery strategies=['classic', 'relaxed']",
+            "candidate discovery consumes governed pool, count=18",
+            "candidate discovery discovered_count=30",
+            "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:32",
+            "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+            "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "candidate discovery area counts=城墙钟鼓楼:13, 大雁塔:12, 小寨文博:4, 电视塔会展:1",
+            "candidate discovery merge summary: before=50, after=50, dedup=0",
+            "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+            "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic, relaxed | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:32, merged=50",
+            "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+            "Planning step=1: action coerced GENERATE_CANDIDATES -> SEARCH (missing search_results)",
+            "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None",
+            "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search strategy is set, but no candidates have been generated yet. Need to create candidate plans based on the current relaxed purpose and low walking preference. [auto-coerce: require SEARCH first] args={}",
+            "dynamic_search uses discovery result first, count=30",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+            "搜索结果精炼完成，候选数=30。",
+            "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "qingming_question",
+      "text": "清明节我们去哪玩",
+      "results": {
+        "v2": {
+          "thread_id": "336c453f-a936-45ce-b846-be8cbe03a623",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v3": {
+          "thread_id": "c3f07b4a-74c7-4492-8d40-191f4393c504",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        },
+        "v4_current": {
+          "thread_id": "07f991aa-d35c-4ce5-ba14-33db5abbc46d",
+          "parsed_by": null,
+          "selected_by": "unknown",
+          "clarification_needed": true,
+          "clarification_question": "这次大概想安排多久？半天还是一天？",
+          "invalid_action_fallback": null,
+          "candidate_count": 0,
+          "route_stop_count": 0,
+          "planning_steps": 0,
+          "planning_actions": [],
+          "search_results_count": 0,
+          "reason_tags": [],
+          "selection_reason": null,
+          "discovery_sources": [],
+          "discovered_source_counts": {},
+          "area_scope_used": [],
+          "discovered_area_counts": {},
+          "retrieved_knowledge_count": 0,
+          "knowledge_source_tags": [],
+          "data_quality_report": {},
+          "skill_trace_count": 0,
+          "debug_key_logs": [
+            "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+          ]
+        }
+      }
+    }
+  ],
+  "clarification_continue_demo": {
+    "seed": {
+      "thread_id": "53e6727b-8069-48fe-8661-f554692c1e17",
+      "parsed_by": null,
+      "selected_by": "unknown",
+      "clarification_needed": true,
+      "clarification_question": "这次大概想安排多久？半天还是一天？",
+      "invalid_action_fallback": null,
+      "candidate_count": 0,
+      "route_stop_count": 0,
+      "planning_steps": 0,
+      "planning_actions": [],
+      "search_results_count": 0,
+      "reason_tags": [],
+      "selection_reason": null,
+      "discovery_sources": [],
+      "discovered_source_counts": {},
+      "area_scope_used": [],
+      "discovered_area_counts": {},
+      "retrieved_knowledge_count": 0,
+      "knowledge_source_tags": [],
+      "data_quality_report": {},
+      "skill_trace_count": 0,
+      "debug_key_logs": [
+        "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']"
+      ]
+    },
+    "continued": {
+      "thread_id": "53e6727b-8069-48fe-8661-f554692c1e17",
+      "parsed_by": null,
+      "selected_by": "llm",
+      "clarification_needed": false,
+      "clarification_question": null,
+      "invalid_action_fallback": null,
+      "candidate_count": 2,
+      "route_stop_count": 2,
+      "planning_steps": 3,
+      "planning_actions": [
+        "SEARCH",
+        "GENERATE_CANDIDATES",
+        "REVISE"
+      ],
+      "search_results_count": 30,
+      "reason_tags": [
+        "轻松优先",
+        "含餐",
+        "低步行",
+        "无跨簇",
+        "无跨区域",
+        "适合拍照打卡",
+        "动线更顺"
+      ],
+      "selection_reason": "用户需求为solo、relax、need_meal=True、walking_tolerance=low、available_hours=4.0，方案relaxed_first符合轻松优先、含餐、步行低、节奏轻松、无跨簇跨区域，更贴合用户意图；classic_first节奏均衡、步行中等，与轻松优先和低步行容忍度不完全匹配。；适合拍照打卡。",
+      "discovery_sources": [
+        "existing_poi_pipeline",
+        "local_extended_corpus"
+      ],
+      "discovered_source_counts": {
+        "existing_poi_pipeline": 18,
+        "local_extended_corpus": 32
+      },
+      "area_scope_used": [
+        "城墙钟鼓楼",
+        "小寨文博",
+        "大雁塔",
+        "曲江夜游",
+        "回民街",
+        "高新",
+        "电视塔会展",
+        "浐灞未央"
+      ],
+      "discovered_area_counts": {
+        "城墙钟鼓楼": 13,
+        "小寨文博": 4,
+        "回民街": 1,
+        "大雁塔": 12
+      },
+      "retrieved_knowledge_count": 4,
+      "knowledge_source_tags": [
+        "summary_knowledge",
+        "mock_city_guide",
+        "适合拍照打卡",
+        "动线更顺"
+      ],
+      "data_quality_report": {
+        "total_input": 18,
+        "total_after_dedup": 18,
+        "quarantined_count": 0,
+        "issue_counts": {},
+        "source_distribution": {
+          "mock": 18
+        },
+        "trust_distribution": {
+          "medium": 18
+        },
+        "freshness_distribution": {
+          "unknown": 18
+        },
+        "quality_notes": [
+          "Data quality processed 18 -> dedup 18 -> usable 18.",
+          "Quarantined=0."
+        ],
+        "quality_fallback": false,
+        "fallback_reason": null
+      },
+      "skill_trace_count": 14,
+      "debug_key_logs": [
+        "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill']",
+        "解析完成，来源=llm。",
+        "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm",
+        "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None",
+        "候选偏好=['prefer_origin_cluster_first', 'prioritize_relaxed_pacing', 'fewer_cross_cluster']。",
+        "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']",
+        "area priority order (intent)=['城墙钟鼓楼']",
+        "area priority seed=['城墙钟鼓楼']",
+        "data_quality started",
+        "data_quality totals: input=18, after_dedup=18, quarantined=0",
+        "candidate discovery started",
+        "candidate discovery strategies=['classic', 'nearby', 'relaxed']",
+        "candidate discovery consumes governed pool, count=18",
+        "candidate discovery discovered_count=30",
+        "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:32",
+        "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央",
+        "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+        "candidate discovery area counts=城墙钟鼓楼:13, 小寨文博:4, 回民街:1, 大雁塔:12",
+        "candidate discovery merge summary: before=50, after=50, dedup=0",
+        "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央",
+        "discovery notes: candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic, nearby, relaxed | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:32, merged=50",
+        "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None",
+        "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search needed to find suitable options given low walking, sunny weather, and need for meal. args={'strategies': ['classic']}",
+        "dynamic_search uses discovery result first, count=30",
+        "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+        "搜索结果精炼完成，候选数=30。",
+        "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30",
+        "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30",
+        "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      ]
+    }
+  }
+}

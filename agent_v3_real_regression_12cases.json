@@ -1,0 +1,219 @@
+[
+  {
+    "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+    "clarification_needed": false,
+    "parsed_by": "rule",
+    "planning_actions": [
+      "SEARCH",
+      "GENERATE_CANDIDATES",
+      "REVISE"
+    ],
+    "selected_by": "fallback_rule",
+    "candidate_count": 2,
+    "stop_count": 2,
+    "cluster_seq": [
+      "小寨文博簇"
+    ],
+    "planning_invalid_fallback": true,
+    "planning_coerced": false,
+    "selector_fallback": true,
+    "weather_fallback": true
+  },
+  {
+    "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+    "clarification_needed": false,
+    "parsed_by": "rule",
+    "planning_actions": [
+      "SEARCH",
+      "GENERATE_CANDIDATES",
+      "FINISH"
+    ],
+    "selected_by": "fallback_rule",
+    "candidate_count": 3,
+    "stop_count": 2,
+    "cluster_seq": [
+      "曲江夜游簇"
+    ],
+    "planning_invalid_fallback": true,
+    "planning_coerced": true,
+    "selector_fallback": true,
+    "weather_fallback": true
+  },
+  {
+    "text": "我在钟楼附近，只有3小时，想轻松一点",
+    "clarification_needed": false,
+    "parsed_by": "llm",
+    "planning_actions": [
+      "SEARCH",
+      "GENERATE_CANDIDATES",
+      "REVISE"
+    ],
+    "selected_by": "fallback_rule",
+    "candidate_count": 2,
+    "stop_count": 2,
+    "cluster_seq": [
+      "城墙钟鼓楼簇"
+    ],
+    "planning_invalid_fallback": false,
+    "planning_coerced": false,
+    "selector_fallback": true,
+    "weather_fallback": true
+  },
+  {
+    "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+    "clarification_needed": false,
+    "parsed_by": "rule",
+    "planning_actions": [
+      "SEARCH",
+      "GENERATE_CANDIDATES",
+      "FINISH"
+    ],
+    "selected_by": "fallback_rule",
+    "candidate_count": 3,
+    "stop_count": 4,
+    "cluster_seq": [
+      "小寨文博簇",
+      "城墙钟鼓楼簇"
+    ],
+    "planning_invalid_fallback": true,
+    "planning_coerced": true,
+    "selector_fallback": true,
+    "weather_fallback": true
+  },
+  {
+    "text": "下午想轻松一点，逛两个地方就行",
+    "clarification_needed": false,
+    "parsed_by": "rule",
+    "planning_actions": [
+      "SEARCH",
+      "GENERATE_CANDIDATES",
+      "FINISH"
+    ],
+    "selected_by": "llm",
+    "candidate_count": 2,
+    "stop_count": 2,
+    "cluster_seq": [
+      "大雁塔簇"
+    ],
+    "planning_invalid_fallback": false,
+    "planning_coerced": true,
+    "selector_fallback": false,
+    "weather_fallback": true
+  },
+  {
+    "text": "早上一个人想逛文博，5小时，不吃饭",
+    "clarification_needed": false,
+    "parsed_by": "llm",
+    "planning_actions": [
+      "SEARCH",
+      "GENERATE_CANDIDATES",
+      "FINISH"
+    ],
+    "selected_by": "llm",
+    "candidate_count": 2,
+    "stop_count": 2,
+    "cluster_seq": [
+      "小寨文博簇"
+    ],
+    "planning_invalid_fallback": false,
+    "planning_coerced": true,
+    "selector_fallback": false,
+    "weather_fallback": true
+  },
+  {
+    "text": "中午前后和朋友出发，想吃小吃再逛景点",
+    "clarification_needed": true,
+    "parsed_by": null,
+    "planning_actions": [],
+    "selected_by": "unknown",
+    "candidate_count": 0,
+    "stop_count": 0,
+    "cluster_seq": [],
+    "planning_invalid_fallback": false,
+    "planning_coerced": false,
+    "selector_fallback": true,
+    "weather_fallback": false
+  },
+  {
+    "text": "晚饭后带父母散步，不想走太多",
+    "clarification_needed": false,
+    "parsed_by": "llm",
+    "planning_actions": [
+      "SEARCH",
+      "GENERATE_CANDIDATES",
+      "FINISH"
+    ],
+    "selected_by": "llm",
+    "candidate_count": 3,
+    "stop_count": 2,
+    "cluster_seq": [
+      "曲江夜游簇"
+    ],
+    "planning_invalid_fallback": false,
+    "planning_coerced": true,
+    "selector_fallback": false,
+    "weather_fallback": true
+  },
+  {
+    "text": "从小寨出发，半天，预算高一点，想看经典景点",
+    "clarification_needed": false,
+    "parsed_by": "llm",
+    "planning_actions": [
+      "SEARCH",
+      "GENERATE_CANDIDATES",
+      "FINISH"
+    ],
+    "selected_by": "llm",
+    "candidate_count": 3,
+    "stop_count": 2,
+    "cluster_seq": [
+      "小寨文博簇"
+    ],
+    "planning_invalid_fallback": false,
+    "planning_coerced": true,
+    "selector_fallback": false,
+    "weather_fallback": true
+  },
+  {
+    "text": "下雨天和对象约会，想室内为主，顺便喝咖啡",
+    "clarification_needed": true,
+    "parsed_by": null,
+    "planning_actions": [],
+    "selected_by": "unknown",
+    "candidate_count": 0,
+    "stop_count": 0,
+    "cluster_seq": [],
+    "planning_invalid_fallback": false,
+    "planning_coerced": false,
+    "selector_fallback": true,
+    "weather_fallback": false
+  },
+  {
+    "text": "想在西安逛逛",
+    "clarification_needed": true,
+    "parsed_by": null,
+    "planning_actions": [],
+    "selected_by": "unknown",
+    "candidate_count": 0,
+    "stop_count": 0,
+    "cluster_seq": [],
+    "planning_invalid_fallback": false,
+    "planning_coerced": false,
+    "selector_fallback": true,
+    "weather_fallback": false
+  },
+  {
+    "text": "晚上去博物馆，还要看夜景，中午吃饭",
+    "clarification_needed": true,
+    "parsed_by": null,
+    "planning_actions": [],
+    "selected_by": "unknown",
+    "candidate_count": 0,
+    "stop_count": 0,
+    "cluster_seq": [],
+    "planning_invalid_fallback": false,
+    "planning_coerced": false,
+    "selector_fallback": true,
+    "weather_fallback": false
+  }
+]

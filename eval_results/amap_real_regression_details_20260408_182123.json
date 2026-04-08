@@ -1,0 +1,4543 @@
+[
+  {
+    "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+    "parsed_by": null,
+    "selected_by": "llm",
+    "amap_called": true,
+    "amap_sources_used": [
+      "amap_web_search",
+      "text_search"
+    ],
+    "amap_geo_used": false,
+    "amap_route_used": true,
+    "amap_weather_used": true,
+    "route_source": "amap",
+    "weather_source": "amap_weather",
+    "amap_fallback_reason": null,
+    "planning_history": [
+      {
+        "step": 1,
+        "action": "SEARCH",
+        "skill_name": "search_candidate_skill",
+        "reason": "Initial search needed to find indoor, food-friendly, relaxed options suitable for rainy midday with low walking for parents.",
+        "args": {
+          "strategies": [
+            "relaxed",
+            "nearby",
+            "indoor",
+            "food"
+          ]
+        },
+        "outcome_summary": "search_results_count=30"
+      },
+      {
+        "step": 2,
+        "action": "GENERATE_CANDIDATES",
+        "skill_name": "generate_candidates_skill",
+        "reason": "Invalid planning action; fallback.",
+        "args": {},
+        "outcome_summary": "candidate_plans_count=2"
+      },
+      {
+        "step": 3,
+        "action": "REVISE",
+        "skill_name": "generate_candidates_skill",
+        "reason": "Rainy weather and low walking preference require indoor focus, and meal need is unmet in current candidates",
+        "args": {
+          "revision_biases": [
+            "prioritize_indoor",
+            "include_meal_stop",
+            "prioritize_relaxed_pacing"
+          ]
+        },
+        "outcome_summary": "revision_biases=['prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing'], candidate_plans_count=2"
+      }
+    ],
+    "candidate_plans_summary": [
+      {
+        "plan_id": "relaxed_first",
+        "variant_label": "轻松优先",
+        "stop_count": 2,
+        "clusters": [
+          "城墙钟鼓楼簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "城墙钟鼓楼簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "城墙钟鼓楼",
+        "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+        "has_meal": true,
+        "total_distance_meters": 1343,
+        "total_duration_minutes": 16,
+        "rhythm": "轻松",
+        "budget_level": "medium",
+        "walking_tolerance": "low",
+        "purpose": "relax",
+        "diff_points": [
+          "餐位:后段",
+          "簇分布:城墙钟鼓楼簇",
+          "区域分布:城墙钟鼓楼",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:轻松",
+          "站点:2"
+        ],
+        "bias_tags": [
+          "relaxed",
+          "low_walk",
+          "fewer_cross_cluster"
+        ],
+        "knowledge_tags": [
+          "适合拍照打卡",
+          "动线更顺"
+        ],
+        "knowledge_notes": [
+          "适合经典地标串联，步行与短距离换乘都比较友好。"
+        ],
+        "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+        "note": "偏轻松少走路，节奏更舒缓"
+      },
+      {
+        "plan_id": "classic_first",
+        "variant_label": "经典优先",
+        "stop_count": 2,
+        "clusters": [
+          "城墙钟鼓楼簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "城墙钟鼓楼簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "城墙钟鼓楼",
+        "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+        "has_meal": true,
+        "total_distance_meters": 1343,
+        "total_duration_minutes": 16,
+        "rhythm": "均衡",
+        "budget_level": "medium",
+        "walking_tolerance": "medium",
+        "purpose": "tourism",
+        "diff_points": [
+          "餐位:后段",
+          "簇分布:城墙钟鼓楼簇",
+          "区域分布:城墙钟鼓楼",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:均衡",
+          "站点:2"
+        ],
+        "bias_tags": [
+          "classic",
+          "museum",
+          "landmark"
+        ],
+        "knowledge_tags": [
+          "适合拍照打卡",
+          "动线更顺"
+        ],
+        "knowledge_notes": [
+          "适合经典地标串联，步行与短距离换乘都比较友好。"
+        ],
+        "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+        "note": "偏经典/文博，优先核心点位"
+      }
+    ],
+    "selected_plan": {
+      "summary": "基于 3.0 小时与 parents 同行，当前天气（高德实时天气）为 阴，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于真实路线时长/距离）",
+      "route": [
+        {
+          "time_slot": "11:40-12:30",
+          "type": "sight",
+          "name": "Bell Tower Deck",
+          "district_cluster": "城墙钟鼓楼簇",
+          "transport_from_prev": "从起点前往（地铁/打车 约10分钟）",
+          "reason": "对陪父母更轻松，同簇连续，减少折返",
+          "estimated_distance_meters": 875,
+          "estimated_duration_minutes": 10
+        },
+        {
+          "time_slot": "12:36-13:36",
+          "type": "restaurant",
+          "name": "Central Noodle House",
+          "district_cluster": "城墙钟鼓楼簇",
+          "transport_from_prev": "步行 约6分钟",
+          "reason": "对陪父母更轻松，位于顺路簇内，减少绕行",
+          "estimated_distance_meters": 468,
+          "estimated_duration_minutes": 6
+        }
+      ],
+      "tips": [
+        "天气来源：高德实时天气；当前天气：阴；气温约 14.0°C；观测时间 2026-04-08 18:07:45。",
+        "当前天气对路线影响较小，仍按顺路与少折返为主。",
+        "起点为 钟楼，预计路程约 1343 米，交通耗时约 16 分钟。",
+        "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+        "时间预算 180 分钟，当前已排入 126 分钟。",
+        "当前路线未触发时间裁剪。",
+        "本次有 2 段使用高德真实路线估算。",
+        "已降低高步行强度点位，现场可继续按体力缩短停留。"
+      ]
+    },
+    "selection_reason": "用户需求为陪父母、旅游、需用餐、步行耐受低、可用时间4小时，符合硬约束：need_meal=true 时含餐方案优先；available_hours=4.0<5，不触发仅1站优先级降低；陪父母/轻松优先/时间紧张时，跨簇/跨区域更多方案降级，本方案跨簇=0、跨区域=0，更符合轻松少移动意图；标签含'low_walk'、'fewer_cross_cluster'，知识说明强调步行友好，与用户低步行耐受一致。；适合拍照打卡。",
+    "reason_tags": [
+      "need_meal",
+      "low_walking_tolerance",
+      "fewer_cross_cluster",
+      "relaxed_priority",
+      "time_constraint",
+      "适合拍照打卡",
+      "动线更顺"
+    ],
+    "readable_output": {
+      "title": "陪父母的西安半日路线",
+      "overview": "这次路线以 城墙钟鼓楼簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按午间节奏安排，起步约 11:30 左右，更利于正餐与游览顺路衔接。考虑到当前天气，路线更偏向室内或短时户外停留。并保留正餐安排。本次还参考了点位知识：适合拍照打卡。适合本次 4.0 小时出行。",
+      "schedule_text": "时段说明：午间更顺路安排用餐，已优先保留正餐位置。\n场景补充：适合经典地标串联，步行与短距离换乘都比较友好。\n11:40-12:30 前往 Bell Tower Deck（城墙钟鼓楼簇，景点）。这样安排主要因为：对陪父母更轻松，同簇连续，减少折返。从起点前往（地铁/打车 约10分钟）。安排在午间更顺路，也方便正餐自然插入中段。 下一段建议：步行 约6分钟。\n12:36-13:36 前往 Central Noodle House（城墙钟鼓楼簇，餐饮点）。这样安排主要因为：对陪父母更轻松，位于顺路簇内，减少绕行。步行 约6分钟。",
+      "transport_text": "全程预计约 1.3 公里，交通耗时约 16 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 1 段以步行为主，1 段为跨簇通行。",
+      "tips_text": "已按午间偏好安排，建议 11:30 左右 开始并按时用餐更顺。\n天气方面：天气来源：高德实时天气；当前天气：阴；气温约 14.0°C；观测时间 2026-04-08 18:07:45。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 180 分钟，当前已排入 126 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 1343 米，交通耗时约 16 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；本次有 2 段使用高德真实路线估算。；已降低高步行强度点位，现场可继续按体力缩短停留。\n场景信息：适合经典地标串联，步行与短距离换乘都比较友好。"
+    },
+    "amap_events": [
+      {
+        "amap_attempted": false,
+        "amap_tool": "geocode",
+        "amap_hit": false,
+        "amap_infocode": null,
+        "amap_fallback_reason": "geocode_failed",
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "text_search",
+        "amap_hit": true,
+        "amap_infocode": "10000",
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": "https://restapi.amap.com/v3/place/text?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E5%AE%A4%E5%86%85%E6%99%AF%E7%82%B9&city=%E8%A5%BF%E5%AE%89&citylimit=true&offset=20&page=1&extensions=all",
+        "timeout_seconds": [
+          5,
+          15
+        ],
+        "proxy_mode": "inherit_env",
+        "env_proxy_snapshot": {
+          "HTTP_PROXY": false,
+          "HTTPS_PROXY": false,
+          "NO_PROXY": false,
+          "REQUESTS_CA_BUNDLE": false,
+          "CURL_CA_BUNDLE": false
+        }
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "weather",
+        "amap_hit": true,
+        "amap_infocode": null,
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "route",
+        "amap_hit": true,
+        "amap_infocode": null,
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      }
+    ],
+    "debug_logs": [
+      {
+        "ts": "2026-04-08T18:21:24",
+        "node": null,
+        "level": "info",
+        "message": "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill', 'amap_search_skill', 'amap_geocode_skill', 'amap_route_skill', 'amap_weather_skill']"
+      },
+      {
+        "ts": "2026-04-08T18:21:24",
+        "node": null,
+        "level": "info",
+        "message": "agent_chain=v4_current"
+      },
+      {
+        "ts": "2026-04-08T18:21:24",
+        "node": "recall_memory",
+        "level": "info",
+        "message": "未找到历史偏好。"
+      },
+      {
+        "ts": "2026-04-08T18:21:24",
+        "node": "recall_memory",
+        "level": "info",
+        "message": "skill invoked: recall_memory_skill, status=success, summary=memory_miss"
+      },
+      {
+        "ts": "2026-04-08T18:21:28",
+        "node": "parse_request",
+        "level": "info",
+        "message": "amap_event tool=geocode attempted=False hit=False infocode=None fallback=geocode_failed"
+      },
+      {
+        "ts": "2026-04-08T18:21:28",
+        "node": "parse_request",
+        "level": "info",
+        "message": "解析完成，来源=llm。"
+      },
+      {
+        "ts": "2026-04-08T18:21:28",
+        "node": "parse_request",
+        "level": "info",
+        "message": "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm"
+      },
+      {
+        "ts": "2026-04-08T18:21:28",
+        "node": "parse_request",
+        "level": "info",
+        "message": "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:21:28",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "策略矩阵 primary=['relaxed', 'nearby', 'indoor', 'food'] secondary=[]。"
+      },
+      {
+        "ts": "2026-04-08T18:21:28",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "候选偏好=['fewer_cross_cluster', 'prefer_origin_cluster_first', 'prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']。"
+      },
+      {
+        "ts": "2026-04-08T18:21:28",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "策略说明=陪父母 + 低步行，优先轻松且少跨簇。 | 雨天/高温，优先室内点位。 | 午间出行且需要用餐，优先保留正餐。 | 放松/低步行诉求，优先轻松节奏。。"
+      },
+      {
+        "ts": "2026-04-08T18:21:28",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']"
+      },
+      {
+        "ts": "2026-04-08T18:21:28",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area priority order (intent)=['城墙钟鼓楼']"
+      },
+      {
+        "ts": "2026-04-08T18:21:28",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area priority seed=['城墙钟鼓楼']"
+      },
+      {
+        "ts": "2026-04-08T18:21:28",
+        "node": "data_quality",
+        "level": "info",
+        "message": "data_quality started"
+      },
+      {
+        "ts": "2026-04-08T18:21:31",
+        "node": "data_quality",
+        "level": "info",
+        "message": "data_quality totals: input=18, after_dedup=18, quarantined=0"
+      },
+      {
+        "ts": "2026-04-08T18:21:31",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery started"
+      },
+      {
+        "ts": "2026-04-08T18:21:31",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery strategies=['relaxed', 'nearby', 'indoor', 'food']"
+      },
+      {
+        "ts": "2026-04-08T18:21:31",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery consumes governed pool, count=18"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery discovered_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:46, amap_web_search:24"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area counts=城墙钟鼓楼:12, 小寨文博:6, 回民街:5, 电视塔会展:4, 高新:3"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap search called: mode=keyword, queries=24, mapped=24"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap_event tool=text_search attempted=True hit=True infocode=10000 fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap search success"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "skill invoked: amap_search_skill, status=success, summary=source_hits=24"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery merge summary: before=88, after=87, dedup=1"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "discovery notes: source=amap_web_search mode=keyword | source=amap_web_search query_count=24 | candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=relaxed, nearby, indoor, food | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:46, amap_web_search:24, merged=87"
+      },
+      {
+        "ts": "2026-04-08T18:21:34",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:21:37",
+        "node": "planning_loop",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:21:37",
+        "node": "planning_loop",
+        "level": "info",
+        "message": "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search needed to find indoor, food-friendly, relaxed options suitable for rainy midday with low walking for parents. args={'strategies': ['relaxed', 'nearby', 'indoor', 'food']}"
+      },
+      {
+        "ts": "2026-04-08T18:21:37",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "dynamic_search uses discovery result first, count=30"
+      },
+      {
+        "ts": "2026-04-08T18:21:37",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "dynamic_search finished, count=30, round=1"
+      },
+      {
+        "ts": "2026-04-08T18:21:38",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:21:38",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "搜索结果精炼完成，候选数=30。"
+      },
+      {
+        "ts": "2026-04-08T18:21:38",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:21:38",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:21:44",
+        "node": "refine_search_results",
+        "level": "warn",
+        "message": "Planning step=2: invalid action fallback -> GENERATE_CANDIDATES"
+      },
+      {
+        "ts": "2026-04-08T18:21:44",
+        "node": "refine_search_results",
+        "level": "warn",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=False, llm_json_parse_ok=False, llm_schema_ok=False, llm_action_valid=False, fallback_reason=planning_action_invalid_after_repair"
+      },
+      {
+        "ts": "2026-04-08T18:21:44",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill reason=Invalid planning action; fallback. args={}"
+      },
+      {
+        "ts": "2026-04-08T18:21:44",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area-aware candidate generation started"
+      },
+      {
+        "ts": "2026-04-08T18:21:44",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area priority order used=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:21:52",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选方案生成数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:21:52",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=summary_hits=2"
+      },
+      {
+        "ts": "2026-04-08T18:21:52",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "knowledge_layer called for summary, hits=2, notes=['适合经典地标串联，步行与短距离换乘都比较友好。']"
+      },
+      {
+        "ts": "2026-04-08T18:21:52",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选差异增强重试次数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:21:52",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "候选质量告警：方案差异度不足（pairs=[('classic_first', 'relaxed_first')]）。"
+      },
+      {
+        "ts": "2026-04-08T18:21:52",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "candidate cross-area stats=relaxed_first:cross_area=0 | classic_first:cross_area=0"
+      },
+      {
+        "ts": "2026-04-08T18:21:52",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "已按候选偏好排序=['fewer_cross_cluster', 'prefer_origin_cluster_first', 'prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']。"
+      },
+      {
+        "ts": "2026-04-08T18:21:52",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:21:52",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "skill invoked: generate_candidates_skill, status=fallback, summary=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:21:52",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill outcome=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:21:54",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:21:54",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=3 action=REVISE skill=generate_candidates_skill reason=Rainy weather and low walking preference require indoor focus, and meal need is unmet in current candidates args={'revision_biases': ['prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']}"
+      },
+      {
+        "ts": "2026-04-08T18:21:54",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area-aware candidate generation started"
+      },
+      {
+        "ts": "2026-04-08T18:21:54",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area priority order used=城墙钟鼓楼, 小寨文博, 电视塔会展, 高新, 回民街, 大雁塔, 曲江夜游, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:21:56",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选方案生成数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:21:56",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=summary_hits=2"
+      },
+      {
+        "ts": "2026-04-08T18:21:56",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "knowledge_layer called for summary, hits=2, notes=['适合经典地标串联，步行与短距离换乘都比较友好。']"
+      },
+      {
+        "ts": "2026-04-08T18:21:56",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选差异增强重试次数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:21:56",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "候选质量告警：方案差异度不足（pairs=[('classic_first', 'relaxed_first')]）。"
+      },
+      {
+        "ts": "2026-04-08T18:21:56",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "candidate cross-area stats=relaxed_first:cross_area=0 | classic_first:cross_area=0"
+      },
+      {
+        "ts": "2026-04-08T18:21:56",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "已按候选偏好排序=['fewer_cross_cluster', 'prefer_origin_cluster_first', 'prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']。"
+      },
+      {
+        "ts": "2026-04-08T18:21:57",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "已应用修正偏置=['prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']。"
+      },
+      {
+        "ts": "2026-04-08T18:21:57",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:21:57",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=revision_biases=['prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing'], candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:21:57",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=3 action=REVISE skill=generate_candidates_skill outcome=revision_biases=['prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing'], candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:21:57",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "Planning loop reached max steps=3."
+      },
+      {
+        "ts": "2026-04-08T18:21:57",
+        "node": "gather_context",
+        "level": "info",
+        "message": "amap_event tool=weather attempted=True hit=True infocode=None fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:21:57",
+        "node": "gather_context",
+        "level": "info",
+        "message": "amap weather called: source=amap_weather"
+      },
+      {
+        "ts": "2026-04-08T18:21:57",
+        "node": "gather_context",
+        "level": "info",
+        "message": "skill invoked: amap_weather_skill, status=success, summary=amap_weather"
+      },
+      {
+        "ts": "2026-04-08T18:21:57",
+        "node": "gather_context",
+        "level": "info",
+        "message": "已获取天气上下文（source=amap_weather）。"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "select_plan",
+        "level": "info",
+        "message": "LLM 选优成功。"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "select_plan",
+        "level": "info",
+        "message": "knowledge_layer hit for selection, tags=['适合拍照打卡', '动线更顺'], sources=['mock_city_guide']"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=selection_hits=2"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "select_plan",
+        "level": "info",
+        "message": "amap_event tool=route attempted=True hit=True infocode=None fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "select_plan",
+        "level": "info",
+        "message": "amap route called: route_source=amap"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: amap_route_skill, status=success, summary=amap"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "select_plan",
+        "level": "info",
+        "message": "selected plan area summary=cross_area=0, transition=城墙钟鼓楼"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "select_plan",
+        "level": "info",
+        "message": "最终方案=relaxed_first，selected_by=llm。"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: select_plan_skill, status=success, summary=selected_by=llm"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "render_output",
+        "level": "info",
+        "message": "文案渲染完成。"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "render_output",
+        "level": "info",
+        "message": "knowledge_layer used for readable_output, notes=['适合经典地标串联，步行与短距离换乘都比较友好。']"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "render_output",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=readable_knowledge_hit"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "render_output",
+        "level": "info",
+        "message": "skill invoked: render_response_skill, status=success, summary=readable_output_ready"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "finalize_memory",
+        "level": "info",
+        "message": "已写回偏好记忆。"
+      }
+    ]
+  },
+  {
+    "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+    "parsed_by": null,
+    "selected_by": "llm",
+    "amap_called": true,
+    "amap_sources_used": [
+      "amap_web_search",
+      "text_search"
+    ],
+    "amap_geo_used": false,
+    "amap_route_used": true,
+    "amap_weather_used": true,
+    "route_source": "amap",
+    "weather_source": "amap_weather",
+    "amap_fallback_reason": null,
+    "planning_history": [
+      {
+        "step": 1,
+        "action": "SEARCH",
+        "skill_name": "search_candidate_skill",
+        "reason": "Need to find initial options for evening dating with meal and night views in sunny weather",
+        "args": {
+          "strategies": [
+            "night",
+            "food"
+          ]
+        },
+        "outcome_summary": "search_results_count=30"
+      },
+      {
+        "step": 2,
+        "action": "GENERATE_CANDIDATES",
+        "skill_name": "generate_candidates_skill",
+        "reason": "Sufficient search results (30) for night and food criteria; ready to create dating plans for evening, sunny weather, medium walking, and meal requirement.",
+        "args": {},
+        "outcome_summary": "candidate_plans_count=2"
+      },
+      {
+        "step": 3,
+        "action": "FINISH",
+        "skill_name": "select_plan_skill",
+        "reason": "Sufficient search results (30) and low candidate plans (2) for dating scenario; need to create viable evening options with meal. [auto-coerce: duplicate GENERATE]",
+        "args": {},
+        "outcome_summary": "finish_ready=true"
+      }
+    ],
+    "candidate_plans_summary": [
+      {
+        "plan_id": "classic_first",
+        "variant_label": "经典优先",
+        "stop_count": 2,
+        "clusters": [
+          "曲江夜游簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "曲江夜游簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "曲江夜游",
+        "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+        "has_meal": true,
+        "total_distance_meters": 7130,
+        "total_duration_minutes": 49,
+        "rhythm": "均衡",
+        "budget_level": "medium",
+        "walking_tolerance": "medium",
+        "purpose": "tourism",
+        "diff_points": [
+          "餐位:前段",
+          "簇分布:曲江夜游簇",
+          "区域分布:曲江夜游",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:均衡",
+          "站点:2"
+        ],
+        "bias_tags": [
+          "classic",
+          "museum",
+          "landmark"
+        ],
+        "knowledge_tags": [
+          "晚间氛围更强"
+        ],
+        "knowledge_notes": [
+          "晚间氛围更好，适合夜游与餐饮衔接。"
+        ],
+        "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+        "note": "偏经典/文博，优先核心点位"
+      },
+      {
+        "plan_id": "relaxed_first",
+        "variant_label": "轻松优先",
+        "stop_count": 1,
+        "clusters": [
+          "曲江夜游簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "曲江夜游簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "曲江夜游",
+        "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+        "has_meal": true,
+        "total_distance_meters": 5800,
+        "total_duration_minutes": 31,
+        "rhythm": "轻松",
+        "budget_level": "medium",
+        "walking_tolerance": "low",
+        "purpose": "relax",
+        "diff_points": [
+          "餐位:前段",
+          "簇分布:曲江夜游簇",
+          "区域分布:曲江夜游",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:轻松",
+          "站点:1"
+        ],
+        "bias_tags": [
+          "relaxed",
+          "low_walk",
+          "fewer_cross_cluster"
+        ],
+        "knowledge_tags": [
+          "晚间氛围更强"
+        ],
+        "knowledge_notes": [
+          "晚间氛围更好，适合夜游与餐饮衔接。"
+        ],
+        "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+        "note": "偏轻松少走路，节奏更舒缓"
+      }
+    ],
+    "selected_plan": {
+      "summary": "基于 3.0 小时与 partner 同行，当前天气（高德实时天气）为 阴，推荐以 曲江夜游簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于真实路线时长/距离）",
+      "route": [
+        {
+          "time_slot": "18:31-19:31",
+          "type": "restaurant",
+          "name": "虎子水盆羊肉(翠华路总店)",
+          "district_cluster": "曲江夜游簇",
+          "transport_from_prev": "从起点前往（地铁/打车 约31分钟）",
+          "reason": "更有氛围感，位于顺路簇内，减少绕行",
+          "estimated_distance_meters": 5800,
+          "estimated_duration_minutes": 31
+        }
+      ],
+      "tips": [
+        "天气来源：高德实时天气；当前天气：阴；气温约 14.0°C；观测时间 2026-04-08 18:07:45。",
+        "当前天气对路线影响较小，仍按顺路与少折返为主。",
+        "起点为 钟楼，预计路程约 5800 米，交通耗时约 31 分钟。",
+        "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+        "时间预算 180 分钟，当前已排入 91 分钟。",
+        "检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。",
+        "夜游场景下当前时段可用候选有限，暂未形成完整多站行程。",
+        "已因时间限制裁剪 1 个后续点位（超预算即停止）。",
+        "本次有 1 段使用高德真实路线估算。",
+        "已降低高步行强度点位，现场可继续按体力缩短停留。"
+      ]
+    },
+    "selection_reason": "用户需求为约会场景且需用餐，该方案为单站点、轻松节奏、低步行量，符合约会轻松氛围；同时为单簇且无跨区域，减少移动负担，符合硬约束中陪父母/轻松优先/时间紧张时跨簇/跨区域更多方案应降级的要求；且覆盖曲江夜游簇，满足夜游氛围需求。；晚间氛围更强。",
+    "reason_tags": [
+      "约会场景",
+      "需用餐",
+      "轻松节奏",
+      "低步行量",
+      "单簇无跨区域",
+      "夜游氛围",
+      "晚间氛围更强"
+    ],
+    "readable_output": {
+      "title": "西安约会型半日路线",
+      "overview": "这次路线以 曲江夜游簇 为主，共 1 站，整体节奏偏轻松，优先顺路衔接、少折返。按晚间节奏安排，18:00 左右 后开始更合适，利于夜游与晚餐衔接。并保留正餐安排。本次还参考了点位知识：晚间氛围更强。适合本次 4.0 小时出行。",
+      "schedule_text": "时段说明：晚间更偏夜游节奏，已优先衔接夜景与晚餐。\n场景补充：晚间氛围更好，适合夜游与餐饮衔接。\n18:31-19:31 前往 虎子水盆羊肉(翠华路总店)（曲江夜游簇，餐饮点）。这样安排主要因为：更有氛围感，位于顺路簇内，减少绕行。从起点前往（地铁/打车 约31分钟）。放在晚间更符合夜游节奏，也更适合衔接拍照和晚餐安排。\n当前时段可用候选有限，本次先保留单站夜游点位。",
+      "transport_text": "全程预计约 5.8 公里，交通耗时约 31 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 0 段以步行为主，1 段为跨簇通行。",
+      "tips_text": "已按晚间偏好安排，建议 18:00 左右 后开始更顺，也便于衔接夜游与晚餐。\n天气方面：天气来源：高德实时天气；当前天气：阴；气温约 14.0°C；观测时间 2026-04-08 18:07:45。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 180 分钟，当前已排入 91 分钟。；已因时间限制裁剪 1 个后续点位（超预算即停止）。\n营业时间方面：夜游场景下当前时段可用候选有限，暂未形成完整多站行程。\n补充建议：起点为 钟楼，预计路程约 5800 米，交通耗时约 31 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。；本次有 1 段使用高德真实路线估算。；已降低高步行强度点位，现场可继续按体力缩短停留。\n场景信息：晚间氛围更好，适合夜游与餐饮衔接。"
+    },
+    "amap_events": [
+      {
+        "amap_attempted": false,
+        "amap_tool": "geocode",
+        "amap_hit": false,
+        "amap_infocode": null,
+        "amap_fallback_reason": "geocode_failed",
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "text_search",
+        "amap_hit": true,
+        "amap_infocode": "10000",
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": "https://restapi.amap.com/v3/place/text?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E6%9B%B2%E6%B1%9F+%E9%A4%90%E5%8E%85&city=%E8%A5%BF%E5%AE%89&citylimit=true&offset=20&page=1&extensions=all",
+        "timeout_seconds": [
+          5,
+          15
+        ],
+        "proxy_mode": "inherit_env",
+        "env_proxy_snapshot": {
+          "HTTP_PROXY": false,
+          "HTTPS_PROXY": false,
+          "NO_PROXY": false,
+          "REQUESTS_CA_BUNDLE": false,
+          "CURL_CA_BUNDLE": false
+        }
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "weather",
+        "amap_hit": true,
+        "amap_infocode": null,
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "route",
+        "amap_hit": true,
+        "amap_infocode": null,
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      }
+    ],
+    "debug_logs": [
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": null,
+        "level": "info",
+        "message": "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill', 'amap_search_skill', 'amap_geocode_skill', 'amap_route_skill', 'amap_weather_skill']"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": null,
+        "level": "info",
+        "message": "agent_chain=v4_current"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "recall_memory",
+        "level": "info",
+        "message": "未找到历史偏好。"
+      },
+      {
+        "ts": "2026-04-08T18:21:59",
+        "node": "recall_memory",
+        "level": "info",
+        "message": "skill invoked: recall_memory_skill, status=success, summary=memory_miss"
+      },
+      {
+        "ts": "2026-04-08T18:22:02",
+        "node": "parse_request",
+        "level": "info",
+        "message": "amap_event tool=geocode attempted=False hit=False infocode=None fallback=geocode_failed"
+      },
+      {
+        "ts": "2026-04-08T18:22:02",
+        "node": "parse_request",
+        "level": "info",
+        "message": "解析完成，来源=llm。"
+      },
+      {
+        "ts": "2026-04-08T18:22:02",
+        "node": "parse_request",
+        "level": "info",
+        "message": "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm"
+      },
+      {
+        "ts": "2026-04-08T18:22:02",
+        "node": "parse_request",
+        "level": "info",
+        "message": "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:02",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "策略矩阵 primary=['night'] secondary=['food']。"
+      },
+      {
+        "ts": "2026-04-08T18:22:02",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "候选偏好=['prioritize_night_view', 'include_meal_stop']。"
+      },
+      {
+        "ts": "2026-04-08T18:22:02",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "策略说明=晚间约会，优先夜游与晚餐衔接。。"
+      },
+      {
+        "ts": "2026-04-08T18:22:02",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']"
+      },
+      {
+        "ts": "2026-04-08T18:22:02",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area priority order (intent)=['城墙钟鼓楼']"
+      },
+      {
+        "ts": "2026-04-08T18:22:02",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area priority seed=['城墙钟鼓楼']"
+      },
+      {
+        "ts": "2026-04-08T18:22:02",
+        "node": "data_quality",
+        "level": "info",
+        "message": "data_quality started"
+      },
+      {
+        "ts": "2026-04-08T18:22:08",
+        "node": "data_quality",
+        "level": "info",
+        "message": "data_quality totals: input=229, after_dedup=229, quarantined=0"
+      },
+      {
+        "ts": "2026-04-08T18:22:08",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery started"
+      },
+      {
+        "ts": "2026-04-08T18:22:08",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery strategies=['night', 'food']"
+      },
+      {
+        "ts": "2026-04-08T18:22:08",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery consumes governed pool, count=229"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery discovered_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery source counts=existing_poi_pipeline:229, local_extended_corpus:42, amap_web_search:27"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area priority used=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area counts=城墙钟鼓楼:30"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap search called: mode=keyword, queries=24, mapped=27"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap_event tool=text_search attempted=True hit=True infocode=10000 fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap search success"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "skill invoked: amap_search_skill, status=success, summary=source_hits=27"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery merge summary: before=298, after=282, dedup=16"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area priority order=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "discovery notes: source=amap_web_search mode=keyword | source=amap_web_search query_count=24 | candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=night, food | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央 | sources=existing_poi_pipeline:229, local_extended_corpus:42, amap_web_search:27, merged=282"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "warn",
+        "message": "candidate discovery quality is weak; dynamic_search will fallback"
+      },
+      {
+        "ts": "2026-04-08T18:22:11",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:22:13",
+        "node": "planning_loop",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:13",
+        "node": "planning_loop",
+        "level": "info",
+        "message": "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Need to find initial options for evening dating with meal and night views in sunny weather args={'strategies': ['night', 'food']}"
+      },
+      {
+        "ts": "2026-04-08T18:22:13",
+        "node": "dynamic_search",
+        "level": "warn",
+        "message": "dynamic_search fallback to old path, reason=weak_quality"
+      },
+      {
+        "ts": "2026-04-08T18:22:13",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "dynamic_search finished, count=30, round=1"
+      },
+      {
+        "ts": "2026-04-08T18:22:13",
+        "node": "dynamic_search",
+        "level": "warn",
+        "message": "skill invoked: search_candidate_skill, status=fallback, summary=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:22:13",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "搜索结果精炼完成，候选数=30。"
+      },
+      {
+        "ts": "2026-04-08T18:22:13",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:22:13",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:22:14",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:14",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill reason=Sufficient search results (30) for night and food criteria; ready to create dating plans for evening, sunny weather, medium walking, and meal requirement. args={}"
+      },
+      {
+        "ts": "2026-04-08T18:22:14",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area-aware candidate generation started"
+      },
+      {
+        "ts": "2026-04-08T18:22:14",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area priority order used=城墙钟鼓楼, 曲江夜游, 大雁塔, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:22:21",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选方案生成数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:22:21",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=summary_hits=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:21",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "knowledge_layer called for summary, hits=2, notes=['晚间氛围更好，适合夜游与餐饮衔接。']"
+      },
+      {
+        "ts": "2026-04-08T18:22:21",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选差异增强重试次数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:22:21",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "候选质量告警：方案差异度不足（pairs=[('classic_first', 'relaxed_first')]）。"
+      },
+      {
+        "ts": "2026-04-08T18:22:21",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "candidate cross-area stats=classic_first:cross_area=0 | relaxed_first:cross_area=0"
+      },
+      {
+        "ts": "2026-04-08T18:22:21",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "已按候选偏好排序=['prioritize_night_view', 'include_meal_stop']。"
+      },
+      {
+        "ts": "2026-04-08T18:22:21",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:21",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:21",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill outcome=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:23",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "Planning step=3: action coerced GENERATE_CANDIDATES -> FINISH (duplicate generate)"
+      },
+      {
+        "ts": "2026-04-08T18:22:23",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:23",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=3 action=FINISH skill=select_plan_skill reason=Sufficient search results (30) and low candidate plans (2) for dating scenario; need to create viable evening options with meal. [auto-coerce: duplicate GENERATE] args={}"
+      },
+      {
+        "ts": "2026-04-08T18:22:23",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: select_plan_skill, status=success, summary=finish_ready=true"
+      },
+      {
+        "ts": "2026-04-08T18:22:23",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=3 finished."
+      },
+      {
+        "ts": "2026-04-08T18:22:23",
+        "node": "gather_context",
+        "level": "info",
+        "message": "amap_event tool=weather attempted=True hit=True infocode=None fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:23",
+        "node": "gather_context",
+        "level": "info",
+        "message": "amap weather called: source=amap_weather"
+      },
+      {
+        "ts": "2026-04-08T18:22:23",
+        "node": "gather_context",
+        "level": "info",
+        "message": "skill invoked: amap_weather_skill, status=success, summary=amap_weather"
+      },
+      {
+        "ts": "2026-04-08T18:22:23",
+        "node": "gather_context",
+        "level": "info",
+        "message": "已获取天气上下文（source=amap_weather）。"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "select_plan",
+        "level": "info",
+        "message": "LLM 选优成功。"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "select_plan",
+        "level": "info",
+        "message": "knowledge_layer hit for selection, tags=['晚间氛围更强'], sources=['mock_city_guide']"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=selection_hits=1"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "select_plan",
+        "level": "info",
+        "message": "amap_event tool=route attempted=True hit=True infocode=None fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "select_plan",
+        "level": "info",
+        "message": "amap route called: route_source=amap"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: amap_route_skill, status=success, summary=amap"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "select_plan",
+        "level": "info",
+        "message": "selected plan area summary=cross_area=0, transition=曲江夜游"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "select_plan",
+        "level": "info",
+        "message": "最终方案=relaxed_first，selected_by=llm。"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: select_plan_skill, status=success, summary=selected_by=llm"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "render_output",
+        "level": "info",
+        "message": "文案渲染完成。"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "render_output",
+        "level": "info",
+        "message": "knowledge_layer used for readable_output, notes=['晚间氛围更好，适合夜游与餐饮衔接。']"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "render_output",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=readable_knowledge_hit"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "render_output",
+        "level": "info",
+        "message": "skill invoked: render_response_skill, status=success, summary=readable_output_ready"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "finalize_memory",
+        "level": "info",
+        "message": "已写回偏好记忆。"
+      }
+    ]
+  },
+  {
+    "text": "我在钟楼附近，只有3小时，想轻松一点",
+    "parsed_by": null,
+    "selected_by": "llm",
+    "amap_called": true,
+    "amap_sources_used": [
+      "amap_web_search",
+      "text_search"
+    ],
+    "amap_geo_used": false,
+    "amap_route_used": true,
+    "amap_weather_used": true,
+    "route_source": "amap",
+    "weather_source": "amap_weather",
+    "amap_fallback_reason": "nearby_failed:float() argument must be a string or a real number, not 'NoneType'",
+    "planning_history": [
+      {
+        "step": 1,
+        "action": "SEARCH",
+        "skill_name": "search_candidate_skill",
+        "reason": "Initial search needed to find suitable options for a solo, relaxed trip with low walking and a meal stop.",
+        "args": {
+          "strategies": [
+            "classic"
+          ]
+        },
+        "outcome_summary": "search_results_count=30"
+      },
+      {
+        "step": 2,
+        "action": "GENERATE_CANDIDATES",
+        "skill_name": "generate_candidates_skill",
+        "reason": "Search results are sufficient (30), no candidates yet, and request needs meal and relaxed pacing.",
+        "args": {},
+        "outcome_summary": "candidate_plans_count=2"
+      },
+      {
+        "step": 3,
+        "action": "REVISE",
+        "skill_name": "generate_candidates_skill",
+        "reason": "Need to incorporate meal stop and adjust pacing for solo relaxation",
+        "args": {
+          "revision_biases": [
+            "include_meal_stop",
+            "prioritize_relaxed_pacing"
+          ]
+        },
+        "outcome_summary": "revision_biases=['include_meal_stop', 'prioritize_relaxed_pacing'], candidate_plans_count=2"
+      }
+    ],
+    "candidate_plans_summary": [
+      {
+        "plan_id": "relaxed_first",
+        "variant_label": "轻松优先",
+        "stop_count": 2,
+        "clusters": [
+          "城墙钟鼓楼簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "城墙钟鼓楼簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "城墙钟鼓楼",
+        "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+        "has_meal": true,
+        "total_distance_meters": 1343,
+        "total_duration_minutes": 16,
+        "rhythm": "轻松",
+        "budget_level": "medium",
+        "walking_tolerance": "low",
+        "purpose": "relax",
+        "diff_points": [
+          "餐位:后段",
+          "簇分布:城墙钟鼓楼簇",
+          "区域分布:城墙钟鼓楼",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:轻松",
+          "站点:2"
+        ],
+        "bias_tags": [
+          "relaxed",
+          "low_walk",
+          "fewer_cross_cluster"
+        ],
+        "knowledge_tags": [
+          "适合拍照打卡",
+          "动线更顺"
+        ],
+        "knowledge_notes": [
+          "适合经典地标串联，步行与短距离换乘都比较友好。"
+        ],
+        "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+        "note": "偏轻松少走路，节奏更舒缓"
+      },
+      {
+        "plan_id": "classic_first",
+        "variant_label": "经典优先",
+        "stop_count": 2,
+        "clusters": [
+          "城墙钟鼓楼簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "城墙钟鼓楼簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "城墙钟鼓楼",
+        "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+        "has_meal": true,
+        "total_distance_meters": 1163,
+        "total_duration_minutes": 19,
+        "rhythm": "均衡",
+        "budget_level": "medium",
+        "walking_tolerance": "medium",
+        "purpose": "tourism",
+        "diff_points": [
+          "餐位:后段",
+          "簇分布:城墙钟鼓楼簇",
+          "区域分布:城墙钟鼓楼",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:均衡",
+          "站点:2"
+        ],
+        "bias_tags": [
+          "classic",
+          "museum",
+          "landmark"
+        ],
+        "knowledge_tags": [
+          "适合拍照打卡",
+          "动线更顺"
+        ],
+        "knowledge_notes": [
+          "适合经典地标串联，步行与短距离换乘都比较友好。"
+        ],
+        "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+        "note": "偏经典/文博，优先核心点位"
+      }
+    ],
+    "selected_plan": {
+      "summary": "基于 3.0 小时与 solo 同行，当前天气（高德实时天气）为 阴，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于真实路线时长/距离）",
+      "route": [
+        {
+          "time_slot": "09:10-10:00",
+          "type": "sight",
+          "name": "Bell Tower Deck",
+          "district_cluster": "城墙钟鼓楼簇",
+          "transport_from_prev": "从起点前往（地铁/打车 约10分钟）",
+          "reason": "同簇连续，减少折返",
+          "estimated_distance_meters": 875,
+          "estimated_duration_minutes": 10
+        },
+        {
+          "time_slot": "10:06-11:06",
+          "type": "restaurant",
+          "name": "Central Noodle House",
+          "district_cluster": "城墙钟鼓楼簇",
+          "transport_from_prev": "步行 约6分钟",
+          "reason": "位于顺路簇内，减少绕行",
+          "estimated_distance_meters": 468,
+          "estimated_duration_minutes": 6
+        }
+      ],
+      "tips": [
+        "天气来源：高德实时天气；当前天气：阴；气温约 14.0°C；观测时间 2026-04-08 18:07:45。",
+        "当前天气对路线影响较小，仍按顺路与少折返为主。",
+        "起点为 钟楼，预计路程约 1343 米，交通耗时约 16 分钟。",
+        "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+        "时间预算 180 分钟，当前已排入 126 分钟。",
+        "已优先考虑起点“钟楼”附近的首站候选。",
+        "当前路线未触发时间裁剪。",
+        "本次有 2 段使用高德真实路线估算。",
+        "已降低高步行强度点位，现场可继续按体力缩短停留。"
+      ]
+    },
+    "selection_reason": "用户需求为solo、relax、need_meal=True、walking_tolerance=low、available_hours=3.0，方案relaxed_first符合轻松优先、含餐、低步行、单区域集中（跨簇0、跨区域0），避免跨簇和跨区域移动负担，节奏舒缓，更符合用户意图。；适合拍照打卡。",
+    "reason_tags": [
+      "轻松优先",
+      "含餐",
+      "低步行",
+      "单区域集中",
+      "节奏舒缓",
+      "适合拍照打卡",
+      "动线更顺"
+    ],
+    "readable_output": {
+      "title": "西安市区半日路线",
+      "overview": "这次路线以 城墙钟鼓楼簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。并保留正餐安排。本次还参考了点位知识：适合拍照打卡。适合本次 3.0 小时出行。",
+      "schedule_text": "场景补充：适合经典地标串联，步行与短距离换乘都比较友好。\n09:10-10:00 前往 Bell Tower Deck（城墙钟鼓楼簇，景点）。这样安排主要因为：同簇连续，减少折返。从起点前往（地铁/打车 约10分钟）。 下一段建议：步行 约6分钟。\n10:06-11:06 前往 Central Noodle House（城墙钟鼓楼簇，餐饮点）。这样安排主要因为：位于顺路簇内，减少绕行。步行 约6分钟。",
+      "transport_text": "全程预计约 1.3 公里，交通耗时约 16 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 1 段以步行为主，1 段为跨簇通行。",
+      "tips_text": "天气方面：天气来源：高德实时天气；当前天气：阴；气温约 14.0°C；观测时间 2026-04-08 18:07:45。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 180 分钟，当前已排入 126 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 1343 米，交通耗时约 16 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；已优先考虑起点“钟楼”附近的首站候选。；本次有 2 段使用高德真实路线估算。；已降低高步行强度点位，现场可继续按体力缩短停留。\n场景信息：适合经典地标串联，步行与短距离换乘都比较友好。"
+    },
+    "amap_events": [
+      {
+        "amap_attempted": true,
+        "amap_tool": "geocode",
+        "amap_hit": true,
+        "amap_infocode": "10000",
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": "https://restapi.amap.com/v3/geocode/geo?key=ec35d0b32022ff3059b361386562a7b4&address=%E9%92%9F%E6%A5%BC&city=%E8%A5%BF%E5%AE%89",
+        "timeout_seconds": [
+          5,
+          15
+        ],
+        "proxy_mode": "inherit_env",
+        "env_proxy_snapshot": {
+          "HTTP_PROXY": false,
+          "HTTPS_PROXY": false,
+          "NO_PROXY": false,
+          "REQUESTS_CA_BUNDLE": false,
+          "CURL_CA_BUNDLE": false
+        }
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "text_search",
+        "amap_hit": true,
+        "amap_infocode": "10000",
+        "amap_fallback_reason": "nearby_failed:float() argument must be a string or a real number, not 'NoneType'",
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": "https://restapi.amap.com/v3/place/text?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E5%9F%8E%E5%A2%99&city=%E8%A5%BF%E5%AE%89&citylimit=true&offset=20&page=1&extensions=all",
+        "timeout_seconds": [
+          5,
+          15
+        ],
+        "proxy_mode": "inherit_env",
+        "env_proxy_snapshot": {
+          "HTTP_PROXY": false,
+          "HTTPS_PROXY": false,
+          "NO_PROXY": false,
+          "REQUESTS_CA_BUNDLE": false,
+          "CURL_CA_BUNDLE": false
+        }
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "weather",
+        "amap_hit": true,
+        "amap_infocode": null,
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "route",
+        "amap_hit": true,
+        "amap_infocode": null,
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      }
+    ],
+    "debug_logs": [
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": null,
+        "level": "info",
+        "message": "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill', 'amap_search_skill', 'amap_geocode_skill', 'amap_route_skill', 'amap_weather_skill']"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": null,
+        "level": "info",
+        "message": "agent_chain=v4_current"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "recall_memory",
+        "level": "info",
+        "message": "未找到历史偏好。"
+      },
+      {
+        "ts": "2026-04-08T18:22:26",
+        "node": "recall_memory",
+        "level": "info",
+        "message": "skill invoked: recall_memory_skill, status=success, summary=memory_miss"
+      },
+      {
+        "ts": "2026-04-08T18:22:31",
+        "node": "parse_request",
+        "level": "info",
+        "message": "amap_event tool=geocode attempted=True hit=True infocode=10000 fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:31",
+        "node": "parse_request",
+        "level": "info",
+        "message": "解析完成，来源=llm。"
+      },
+      {
+        "ts": "2026-04-08T18:22:31",
+        "node": "parse_request",
+        "level": "info",
+        "message": "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm"
+      },
+      {
+        "ts": "2026-04-08T18:22:31",
+        "node": "parse_request",
+        "level": "info",
+        "message": "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:31",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "策略矩阵 primary=['classic'] secondary=['nearby', 'relaxed']。"
+      },
+      {
+        "ts": "2026-04-08T18:22:31",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "候选偏好=['prefer_origin_cluster_first', 'prioritize_relaxed_pacing', 'fewer_cross_cluster']。"
+      },
+      {
+        "ts": "2026-04-08T18:22:31",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "策略说明=识别到附近语义，优先起点邻近簇。 | 放松/低步行诉求，优先轻松节奏。 | 未命中特殊组合，采用基础策略。。"
+      },
+      {
+        "ts": "2026-04-08T18:22:31",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']"
+      },
+      {
+        "ts": "2026-04-08T18:22:31",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area priority order (intent)=['城墙钟鼓楼']"
+      },
+      {
+        "ts": "2026-04-08T18:22:32",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area priority seed=['城墙钟鼓楼']"
+      },
+      {
+        "ts": "2026-04-08T18:22:32",
+        "node": "data_quality",
+        "level": "info",
+        "message": "data_quality started"
+      },
+      {
+        "ts": "2026-04-08T18:22:33",
+        "node": "data_quality",
+        "level": "info",
+        "message": "data_quality totals: input=18, after_dedup=18, quarantined=0"
+      },
+      {
+        "ts": "2026-04-08T18:22:33",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery started"
+      },
+      {
+        "ts": "2026-04-08T18:22:33",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery strategies=['classic', 'nearby', 'relaxed']"
+      },
+      {
+        "ts": "2026-04-08T18:22:33",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery consumes governed pool, count=18"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery discovered_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:33, amap_web_search:25"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area counts=城墙钟鼓楼:15, 小寨文博:5, 回民街:1, 大雁塔:9"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap search called: mode=keyword, queries=24, mapped=25"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap_event tool=text_search attempted=True hit=True infocode=10000 fallback=nearby_failed:float() argument must be a string or a real number, not 'NoneType'"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "warn",
+        "message": "amap search fallback: nearby_failed:float() argument must be a string or a real number, not 'NoneType'"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "warn",
+        "message": "skill invoked: amap_search_skill, status=fallback, summary=nearby_failed:float() argument must be a string or a real number, not 'NoneType'"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery merge summary: before=76, after=76, dedup=0"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "discovery notes: source=amap_web_search fallback_reason=nearby_failed:float() argument must be a string or a real number, not 'NoneType' | source=amap_web_search mode=keyword | source=amap_web_search query_count=24 | candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic, nearby, relaxed | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:33, amap_web_search:25, merged=76"
+      },
+      {
+        "ts": "2026-04-08T18:22:36",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:22:37",
+        "node": "planning_loop",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:37",
+        "node": "planning_loop",
+        "level": "info",
+        "message": "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search needed to find suitable options for a solo, relaxed trip with low walking and a meal stop. args={'strategies': ['classic']}"
+      },
+      {
+        "ts": "2026-04-08T18:22:37",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "dynamic_search uses discovery result first, count=30"
+      },
+      {
+        "ts": "2026-04-08T18:22:37",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "dynamic_search finished, count=30, round=1"
+      },
+      {
+        "ts": "2026-04-08T18:22:38",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:22:38",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "搜索结果精炼完成，候选数=30。"
+      },
+      {
+        "ts": "2026-04-08T18:22:38",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:22:38",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:22:39",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:39",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill reason=Search results are sufficient (30), no candidates yet, and request needs meal and relaxed pacing. args={}"
+      },
+      {
+        "ts": "2026-04-08T18:22:39",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area-aware candidate generation started"
+      },
+      {
+        "ts": "2026-04-08T18:22:39",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area priority order used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:22:42",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选方案生成数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:22:42",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=summary_hits=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:42",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "knowledge_layer called for summary, hits=2, notes=['适合经典地标串联，步行与短距离换乘都比较友好。']"
+      },
+      {
+        "ts": "2026-04-08T18:22:42",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选差异增强重试次数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:22:42",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "候选质量告警：方案差异度不足（pairs=[('classic_first', 'relaxed_first')]）。"
+      },
+      {
+        "ts": "2026-04-08T18:22:42",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "candidate cross-area stats=relaxed_first:cross_area=0 | classic_first:cross_area=0"
+      },
+      {
+        "ts": "2026-04-08T18:22:42",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "已按候选偏好排序=['prefer_origin_cluster_first', 'prioritize_relaxed_pacing', 'fewer_cross_cluster']。"
+      },
+      {
+        "ts": "2026-04-08T18:22:42",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:42",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:42",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill outcome=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:43",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:43",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=3 action=REVISE skill=generate_candidates_skill reason=Need to incorporate meal stop and adjust pacing for solo relaxation args={'revision_biases': ['include_meal_stop', 'prioritize_relaxed_pacing']}"
+      },
+      {
+        "ts": "2026-04-08T18:22:43",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area-aware candidate generation started"
+      },
+      {
+        "ts": "2026-04-08T18:22:43",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area priority order used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选方案生成数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=summary_hits=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "knowledge_layer called for summary, hits=2, notes=['适合经典地标串联，步行与短距离换乘都比较友好。']"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选差异增强重试次数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "候选质量告警：方案差异度不足（pairs=[('classic_first', 'relaxed_first')]）。"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "candidate cross-area stats=relaxed_first:cross_area=0 | classic_first:cross_area=0"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "已按候选偏好排序=['prefer_origin_cluster_first', 'prioritize_relaxed_pacing', 'fewer_cross_cluster', 'include_meal_stop']。"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "已应用修正偏置=['include_meal_stop', 'prioritize_relaxed_pacing']。"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=revision_biases=['include_meal_stop', 'prioritize_relaxed_pacing'], candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=3 action=REVISE skill=generate_candidates_skill outcome=revision_biases=['include_meal_stop', 'prioritize_relaxed_pacing'], candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "Planning loop reached max steps=3."
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "gather_context",
+        "level": "info",
+        "message": "amap_event tool=weather attempted=True hit=True infocode=None fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "gather_context",
+        "level": "info",
+        "message": "amap weather called: source=amap_weather"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "gather_context",
+        "level": "info",
+        "message": "skill invoked: amap_weather_skill, status=success, summary=amap_weather"
+      },
+      {
+        "ts": "2026-04-08T18:22:46",
+        "node": "gather_context",
+        "level": "info",
+        "message": "已获取天气上下文（source=amap_weather）。"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "select_plan",
+        "level": "info",
+        "message": "LLM 选优成功。"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "select_plan",
+        "level": "info",
+        "message": "knowledge_layer hit for selection, tags=['适合拍照打卡', '动线更顺'], sources=['mock_city_guide']"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=selection_hits=2"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "select_plan",
+        "level": "info",
+        "message": "amap_event tool=route attempted=True hit=True infocode=None fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "select_plan",
+        "level": "info",
+        "message": "amap route called: route_source=amap"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: amap_route_skill, status=success, summary=amap"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "select_plan",
+        "level": "info",
+        "message": "selected plan area summary=cross_area=0, transition=城墙钟鼓楼"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "select_plan",
+        "level": "info",
+        "message": "最终方案=relaxed_first，selected_by=llm。"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: select_plan_skill, status=success, summary=selected_by=llm"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "render_output",
+        "level": "info",
+        "message": "文案渲染完成。"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "render_output",
+        "level": "info",
+        "message": "knowledge_layer used for readable_output, notes=['适合经典地标串联，步行与短距离换乘都比较友好。']"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "render_output",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=readable_knowledge_hit"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "render_output",
+        "level": "info",
+        "message": "skill invoked: render_response_skill, status=success, summary=readable_output_ready"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "finalize_memory",
+        "level": "info",
+        "message": "已写回偏好记忆。"
+      }
+    ]
+  },
+  {
+    "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+    "parsed_by": null,
+    "selected_by": "llm",
+    "amap_called": true,
+    "amap_sources_used": [
+      "amap_web_search",
+      "text_search"
+    ],
+    "amap_geo_used": false,
+    "amap_route_used": false,
+    "amap_weather_used": true,
+    "route_source": "fallback_local",
+    "weather_source": "amap_weather",
+    "amap_fallback_reason": "route_fallback_local",
+    "planning_history": [
+      {
+        "step": 1,
+        "action": "SEARCH",
+        "skill_name": "search_candidate_skill",
+        "reason": "Initial search needed to generate candidate plans for friends tourism with meal requirement",
+        "args": {
+          "strategies": [
+            "classic"
+          ]
+        },
+        "outcome_summary": "search_results_count=30"
+      },
+      {
+        "step": 2,
+        "action": "GENERATE_CANDIDATES",
+        "skill_name": "generate_candidates_skill",
+        "reason": "Sufficient search results available (30) to generate candidate plans for friends tourism with sunny weather and meal needs.",
+        "args": {},
+        "outcome_summary": "candidate_plans_count=3"
+      },
+      {
+        "step": 3,
+        "action": "FINISH",
+        "skill_name": "select_plan_skill",
+        "reason": "Sufficient search results available to generate candidate plans for friends tourism with meal needs. [auto-coerce: duplicate GENERATE]",
+        "args": {},
+        "outcome_summary": "finish_ready=true"
+      }
+    ],
+    "candidate_plans_summary": [
+      {
+        "plan_id": "food_friendly",
+        "variant_label": "餐饮友好",
+        "stop_count": 4,
+        "clusters": [
+          "城墙钟鼓楼簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "城墙钟鼓楼簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "城墙钟鼓楼",
+        "area_bias_note": "餐饮友好：优先餐饮密度更高区域，确保顺路用餐衔接。",
+        "has_meal": true,
+        "total_distance_meters": 1897,
+        "total_duration_minutes": 25,
+        "rhythm": "紧凑",
+        "budget_level": "low",
+        "walking_tolerance": "medium",
+        "purpose": "food",
+        "diff_points": [
+          "餐位:中前段",
+          "簇分布:城墙钟鼓楼簇",
+          "区域分布:城墙钟鼓楼",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:紧凑",
+          "站点:4"
+        ],
+        "bias_tags": [
+          "food",
+          "meal_link",
+          "meal_position",
+          "area_food_link"
+        ],
+        "knowledge_tags": [
+          "适合拍照打卡",
+          "动线更顺"
+        ],
+        "knowledge_notes": [
+          "适合经典地标串联，步行与短距离换乘都比较友好。"
+        ],
+        "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+        "note": "偏顺路餐饮，强调用餐衔接"
+      },
+      {
+        "plan_id": "relaxed_first",
+        "variant_label": "轻松优先",
+        "stop_count": 2,
+        "clusters": [
+          "城墙钟鼓楼簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "城墙钟鼓楼簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "城墙钟鼓楼",
+        "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+        "has_meal": true,
+        "total_distance_meters": 1343,
+        "total_duration_minutes": 16,
+        "rhythm": "轻松",
+        "budget_level": "low",
+        "walking_tolerance": "low",
+        "purpose": "relax",
+        "diff_points": [
+          "餐位:后段",
+          "簇分布:城墙钟鼓楼簇",
+          "区域分布:城墙钟鼓楼",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:轻松",
+          "站点:2"
+        ],
+        "bias_tags": [
+          "relaxed",
+          "low_walk",
+          "fewer_cross_cluster"
+        ],
+        "knowledge_tags": [
+          "适合拍照打卡",
+          "动线更顺"
+        ],
+        "knowledge_notes": [
+          "适合经典地标串联，步行与短距离换乘都比较友好。"
+        ],
+        "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+        "note": "偏轻松少走路，节奏更舒缓"
+      },
+      {
+        "plan_id": "classic_first",
+        "variant_label": "经典优先",
+        "stop_count": 4,
+        "clusters": [
+          "城墙钟鼓楼簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "城墙钟鼓楼簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "城墙钟鼓楼",
+        "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+        "has_meal": true,
+        "total_distance_meters": 2311,
+        "total_duration_minutes": 35,
+        "rhythm": "紧凑",
+        "budget_level": "low",
+        "walking_tolerance": "medium",
+        "purpose": "tourism",
+        "diff_points": [
+          "餐位:中前段",
+          "簇分布:城墙钟鼓楼簇",
+          "区域分布:城墙钟鼓楼",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:紧凑",
+          "站点:4"
+        ],
+        "bias_tags": [
+          "classic",
+          "museum",
+          "landmark"
+        ],
+        "knowledge_tags": [
+          "适合拍照打卡",
+          "动线更顺"
+        ],
+        "knowledge_notes": [
+          "适合经典地标串联，步行与短距离换乘都比较友好。"
+        ],
+        "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+        "note": "偏经典/文博，优先核心点位"
+      }
+    ],
+    "selected_plan": {
+      "summary": "基于 8.0 小时与 friends 同行，当前天气（高德实时天气）为 阴，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于真实路线时长/距离）",
+      "route": [
+        {
+          "time_slot": "09:08-09:53",
+          "type": "sight",
+          "name": "钟楼",
+          "district_cluster": "城墙钟鼓楼簇",
+          "transport_from_prev": "从起点前往（地铁/打车 约8分钟）",
+          "reason": "氛围热闹，同簇连续，减少折返",
+          "estimated_distance_meters": 320,
+          "estimated_duration_minutes": 8
+        },
+        {
+          "time_slot": "09:58-10:58",
+          "type": "restaurant",
+          "name": "Central Noodle House",
+          "district_cluster": "城墙钟鼓楼簇",
+          "transport_from_prev": "步行 约5分钟",
+          "reason": "氛围热闹，位于顺路簇内，减少绕行",
+          "estimated_distance_meters": 370,
+          "estimated_duration_minutes": 5
+        },
+        {
+          "time_slot": "11:03-11:48",
+          "type": "sight",
+          "name": "鼓楼",
+          "district_cluster": "城墙钟鼓楼簇",
+          "transport_from_prev": "步行（估算） 约5分钟",
+          "reason": "氛围热闹，同簇连续，减少折返",
+          "estimated_distance_meters": 382,
+          "estimated_duration_minutes": 5
+        },
+        {
+          "time_slot": "12:05-13:15",
+          "type": "sight",
+          "name": "城墙南门",
+          "district_cluster": "城墙钟鼓楼簇",
+          "transport_from_prev": "步行（估算） 约17分钟",
+          "reason": "氛围热闹，同簇连续，减少折返",
+          "estimated_distance_meters": 1239,
+          "estimated_duration_minutes": 17
+        }
+      ],
+      "tips": [
+        "天气来源：高德实时天气；当前天气：阴；气温约 14.0°C；观测时间 2026-04-08 18:07:45。",
+        "当前天气对路线影响较小，仍按顺路与少折返为主。",
+        "起点为 钟楼，预计路程约 2311 米，交通耗时约 35 分钟。",
+        "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+        "时间预算 480 分钟，当前已排入 255 分钟。",
+        "当前路线未触发时间裁剪。",
+        "本次有 2 段使用高德真实路线估算。",
+        "本次有 2 段已回退到简化交通规则（接口仍可用）。"
+      ]
+    },
+    "selection_reason": "用户需求为朋友旅游、需用餐、可用时间8小时，方案relaxed_first符合need_meal=true且节奏轻松、跨簇/跨区域为0，避免了硬约束中陪父母/轻松优先/时间紧张时跨簇更多方案降级的问题，同时站点少、步行低更符合轻松优先意图。；经约束复核后改选 classic_first，以更贴合核心意图。；适合拍照打卡。",
+    "reason_tags": [
+      "后置复核改选",
+      "need_meal",
+      "relaxed_priority",
+      "fewer_cross_cluster",
+      "low_walking",
+      "适合拍照打卡",
+      "动线更顺"
+    ],
+    "readable_output": {
+      "title": "朋友同行西安一日路线",
+      "overview": "这次路线以 城墙钟鼓楼簇 为主，共 4 站，整体节奏偏均衡，优先顺路衔接、少折返。并保留正餐安排。本次还参考了点位知识：适合拍照打卡。适合本次 8.0 小时出行。",
+      "schedule_text": "场景补充：适合经典地标串联，步行与短距离换乘都比较友好。\n09:08-09:53 前往 钟楼（城墙钟鼓楼簇，景点）。这样安排主要因为：氛围热闹，同簇连续，减少折返。从起点前往（地铁/打车 约8分钟）。 下一段建议：步行 约5分钟。\n09:58-10:58 前往 Central Noodle House（城墙钟鼓楼簇，餐饮点）。这样安排主要因为：氛围热闹，位于顺路簇内，减少绕行。步行 约5分钟。 下一段建议：步行（估算） 约5分钟。\n11:03-11:48 前往 鼓楼（城墙钟鼓楼簇，景点）。这样安排主要因为：氛围热闹，同簇连续，减少折返。步行（估算） 约5分钟。 下一段建议：步行（估算） 约17分钟。\n12:05-13:15 前往 城墙南门（城墙钟鼓楼簇，景点）。这样安排主要因为：氛围热闹，同簇连续，减少折返。步行（估算） 约17分钟。",
+      "transport_text": "全程预计约 2.3 公里，交通耗时约 35 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 3 段以步行为主，1 段为跨簇通行。",
+      "tips_text": "天气方面：天气来源：高德实时天气；当前天气：阴；气温约 14.0°C；观测时间 2026-04-08 18:07:45。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 480 分钟，当前已排入 255 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 2311 米，交通耗时约 35 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；本次有 2 段使用高德真实路线估算。；本次有 2 段已回退到简化交通规则（接口仍可用）。\n场景信息：适合经典地标串联，步行与短距离换乘都比较友好。"
+    },
+    "amap_events": [
+      {
+        "amap_attempted": false,
+        "amap_tool": "geocode",
+        "amap_hit": false,
+        "amap_infocode": null,
+        "amap_fallback_reason": "geocode_failed",
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "text_search",
+        "amap_hit": true,
+        "amap_infocode": "10000",
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": "https://restapi.amap.com/v3/place/text?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E5%9F%8E%E5%A2%99&city=%E8%A5%BF%E5%AE%89&citylimit=true&offset=20&page=1&extensions=all",
+        "timeout_seconds": [
+          5,
+          15
+        ],
+        "proxy_mode": "inherit_env",
+        "env_proxy_snapshot": {
+          "HTTP_PROXY": false,
+          "HTTPS_PROXY": false,
+          "NO_PROXY": false,
+          "REQUESTS_CA_BUNDLE": false,
+          "CURL_CA_BUNDLE": false
+        }
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "weather",
+        "amap_hit": true,
+        "amap_infocode": null,
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "route",
+        "amap_hit": false,
+        "amap_infocode": null,
+        "amap_fallback_reason": "route_fallback_local",
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      }
+    ],
+    "debug_logs": [
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": null,
+        "level": "info",
+        "message": "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill', 'amap_search_skill', 'amap_geocode_skill', 'amap_route_skill', 'amap_weather_skill']"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": null,
+        "level": "info",
+        "message": "agent_chain=v4_current"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "recall_memory",
+        "level": "info",
+        "message": "未找到历史偏好。"
+      },
+      {
+        "ts": "2026-04-08T18:22:49",
+        "node": "recall_memory",
+        "level": "info",
+        "message": "skill invoked: recall_memory_skill, status=success, summary=memory_miss"
+      },
+      {
+        "ts": "2026-04-08T18:22:51",
+        "node": "parse_request",
+        "level": "info",
+        "message": "amap_event tool=geocode attempted=False hit=False infocode=None fallback=geocode_failed"
+      },
+      {
+        "ts": "2026-04-08T18:22:51",
+        "node": "parse_request",
+        "level": "info",
+        "message": "解析完成，来源=llm。"
+      },
+      {
+        "ts": "2026-04-08T18:22:51",
+        "node": "parse_request",
+        "level": "info",
+        "message": "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm"
+      },
+      {
+        "ts": "2026-04-08T18:22:51",
+        "node": "parse_request",
+        "level": "info",
+        "message": "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:51",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "策略矩阵 primary=['classic'] secondary=[]。"
+      },
+      {
+        "ts": "2026-04-08T18:22:51",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "策略说明=未命中特殊组合，采用基础策略。。"
+      },
+      {
+        "ts": "2026-04-08T18:22:51",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']"
+      },
+      {
+        "ts": "2026-04-08T18:22:51",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area priority order (intent)=['城墙钟鼓楼']"
+      },
+      {
+        "ts": "2026-04-08T18:22:51",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area priority seed=['城墙钟鼓楼']"
+      },
+      {
+        "ts": "2026-04-08T18:22:51",
+        "node": "data_quality",
+        "level": "info",
+        "message": "data_quality started"
+      },
+      {
+        "ts": "2026-04-08T18:22:54",
+        "node": "data_quality",
+        "level": "info",
+        "message": "data_quality totals: input=18, after_dedup=18, quarantined=0"
+      },
+      {
+        "ts": "2026-04-08T18:22:54",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery started"
+      },
+      {
+        "ts": "2026-04-08T18:22:54",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery strategies=['classic']"
+      },
+      {
+        "ts": "2026-04-08T18:22:54",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery consumes governed pool, count=18"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery discovered_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:33, amap_web_search:25"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area counts=城墙钟鼓楼:15, 大雁塔:14, 小寨文博:1"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap search called: mode=keyword, queries=24, mapped=25"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap_event tool=text_search attempted=True hit=True infocode=10000 fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap search success"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "skill invoked: amap_search_skill, status=success, summary=source_hits=25"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery merge summary: before=76, after=76, dedup=0"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "discovery notes: source=amap_web_search mode=keyword | source=amap_web_search query_count=24 | candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:33, amap_web_search:25, merged=76"
+      },
+      {
+        "ts": "2026-04-08T18:22:57",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:00",
+        "node": "planning_loop",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:00",
+        "node": "planning_loop",
+        "level": "info",
+        "message": "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search needed to generate candidate plans for friends tourism with meal requirement args={'strategies': ['classic']}"
+      },
+      {
+        "ts": "2026-04-08T18:23:00",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "dynamic_search uses discovery result first, count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:00",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "dynamic_search finished, count=30, round=1"
+      },
+      {
+        "ts": "2026-04-08T18:23:00",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:00",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "搜索结果精炼完成，候选数=30。"
+      },
+      {
+        "ts": "2026-04-08T18:23:00",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:00",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:03",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:03",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill reason=Sufficient search results available (30) to generate candidate plans for friends tourism with sunny weather and meal needs. args={}"
+      },
+      {
+        "ts": "2026-04-08T18:23:03",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area-aware candidate generation started"
+      },
+      {
+        "ts": "2026-04-08T18:23:03",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area priority order used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:23:16",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选方案生成数=3。"
+      },
+      {
+        "ts": "2026-04-08T18:23:16",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=summary_hits=3"
+      },
+      {
+        "ts": "2026-04-08T18:23:16",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "knowledge_layer called for summary, hits=3, notes=['适合经典地标串联，步行与短距离换乘都比较友好。']"
+      },
+      {
+        "ts": "2026-04-08T18:23:16",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选差异增强重试次数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:23:16",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "候选质量告警：方案差异度不足（pairs=[('classic_first', 'relaxed_first'), ('classic_first', 'food_friendly'), ('relaxed_first', 'food_friendly')]）。"
+      },
+      {
+        "ts": "2026-04-08T18:23:16",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "candidate cross-area stats=food_friendly:cross_area=0 | relaxed_first:cross_area=0 | classic_first:cross_area=0"
+      },
+      {
+        "ts": "2026-04-08T18:23:16",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=3"
+      },
+      {
+        "ts": "2026-04-08T18:23:17",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=3"
+      },
+      {
+        "ts": "2026-04-08T18:23:17",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill outcome=candidate_plans_count=3"
+      },
+      {
+        "ts": "2026-04-08T18:23:17",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "Planning step=3: action coerced GENERATE_CANDIDATES -> FINISH (duplicate generate)"
+      },
+      {
+        "ts": "2026-04-08T18:23:17",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:17",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=3 action=FINISH skill=select_plan_skill reason=Sufficient search results available to generate candidate plans for friends tourism with meal needs. [auto-coerce: duplicate GENERATE] args={}"
+      },
+      {
+        "ts": "2026-04-08T18:23:17",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: select_plan_skill, status=success, summary=finish_ready=true"
+      },
+      {
+        "ts": "2026-04-08T18:23:17",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=3 finished."
+      },
+      {
+        "ts": "2026-04-08T18:23:18",
+        "node": "gather_context",
+        "level": "info",
+        "message": "amap_event tool=weather attempted=True hit=True infocode=None fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:18",
+        "node": "gather_context",
+        "level": "info",
+        "message": "amap weather called: source=amap_weather"
+      },
+      {
+        "ts": "2026-04-08T18:23:18",
+        "node": "gather_context",
+        "level": "info",
+        "message": "skill invoked: amap_weather_skill, status=success, summary=amap_weather"
+      },
+      {
+        "ts": "2026-04-08T18:23:18",
+        "node": "gather_context",
+        "level": "info",
+        "message": "已获取天气上下文（source=amap_weather）。"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "select_plan",
+        "level": "info",
+        "message": "LLM 选优成功。"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "select_plan",
+        "level": "info",
+        "message": "knowledge_layer hit for selection, tags=['适合拍照打卡', '动线更顺'], sources=['mock_city_guide']"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=selection_hits=2"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "select_plan",
+        "level": "warn",
+        "message": "amap_event tool=route attempted=True hit=False infocode=None fallback=route_fallback_local"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "select_plan",
+        "level": "info",
+        "message": "amap route called: route_source=fallback_local"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "select_plan",
+        "level": "warn",
+        "message": "skill invoked: amap_route_skill, status=fallback, summary=fallback_local"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "select_plan",
+        "level": "info",
+        "message": "selected plan area summary=cross_area=0, transition=城墙钟鼓楼"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "select_plan",
+        "level": "info",
+        "message": "最终方案=classic_first，selected_by=llm。"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: select_plan_skill, status=success, summary=selected_by=llm"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "render_output",
+        "level": "info",
+        "message": "文案渲染完成。"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "render_output",
+        "level": "info",
+        "message": "knowledge_layer used for readable_output, notes=['适合经典地标串联，步行与短距离换乘都比较友好。']"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "render_output",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=readable_knowledge_hit"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "render_output",
+        "level": "info",
+        "message": "skill invoked: render_response_skill, status=success, summary=readable_output_ready"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "finalize_memory",
+        "level": "info",
+        "message": "已写回偏好记忆。"
+      }
+    ]
+  },
+  {
+    "text": "下午想轻松一点，逛两个地方就行",
+    "parsed_by": null,
+    "selected_by": "llm",
+    "amap_called": true,
+    "amap_sources_used": [
+      "amap_web_search",
+      "text_search"
+    ],
+    "amap_geo_used": false,
+    "amap_route_used": true,
+    "amap_weather_used": true,
+    "route_source": "amap",
+    "weather_source": "amap_weather",
+    "amap_fallback_reason": null,
+    "planning_history": [
+      {
+        "step": 1,
+        "action": "SEARCH",
+        "skill_name": "search_candidate_skill",
+        "reason": "Initial search needed to find attractions matching relaxed solo purpose, sunny afternoon weather, low walking, and meal requirement",
+        "args": {
+          "strategies": [
+            "classic",
+            "relaxed"
+          ]
+        },
+        "outcome_summary": "search_results_count=30"
+      },
+      {
+        "step": 2,
+        "action": "GENERATE_CANDIDATES",
+        "skill_name": "generate_candidates_skill",
+        "reason": "Sufficient search results available (30) to generate candidate plans for a solo, relaxed afternoon outing with low walking and a meal stop.",
+        "args": {},
+        "outcome_summary": "candidate_plans_count=2"
+      },
+      {
+        "step": 3,
+        "action": "FINISH",
+        "skill_name": "select_plan_skill",
+        "reason": "Sufficient search results available to generate candidate plans for a relaxed solo afternoon with meal. [auto-coerce: duplicate GENERATE]",
+        "args": {},
+        "outcome_summary": "finish_ready=true"
+      }
+    ],
+    "candidate_plans_summary": [
+      {
+        "plan_id": "relaxed_first",
+        "variant_label": "轻松优先",
+        "stop_count": 2,
+        "clusters": [
+          "城墙钟鼓楼簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "城墙钟鼓楼簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "城墙钟鼓楼",
+        "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+        "has_meal": true,
+        "total_distance_meters": 1343,
+        "total_duration_minutes": 16,
+        "rhythm": "轻松",
+        "budget_level": "medium",
+        "walking_tolerance": "low",
+        "purpose": "relax",
+        "diff_points": [
+          "餐位:后段",
+          "簇分布:城墙钟鼓楼簇",
+          "区域分布:城墙钟鼓楼",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:轻松",
+          "站点:2"
+        ],
+        "bias_tags": [
+          "relaxed",
+          "low_walk",
+          "fewer_cross_cluster"
+        ],
+        "knowledge_tags": [
+          "适合拍照打卡",
+          "动线更顺"
+        ],
+        "knowledge_notes": [
+          "适合经典地标串联，步行与短距离换乘都比较友好。"
+        ],
+        "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+        "note": "偏轻松少走路，节奏更舒缓"
+      },
+      {
+        "plan_id": "classic_first",
+        "variant_label": "经典优先",
+        "stop_count": 2,
+        "clusters": [
+          "城墙钟鼓楼簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "城墙钟鼓楼簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "城墙钟鼓楼",
+        "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+        "has_meal": true,
+        "total_distance_meters": 1163,
+        "total_duration_minutes": 19,
+        "rhythm": "均衡",
+        "budget_level": "medium",
+        "walking_tolerance": "medium",
+        "purpose": "tourism",
+        "diff_points": [
+          "餐位:后段",
+          "簇分布:城墙钟鼓楼簇",
+          "区域分布:城墙钟鼓楼",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:均衡",
+          "站点:2"
+        ],
+        "bias_tags": [
+          "classic",
+          "museum",
+          "landmark"
+        ],
+        "knowledge_tags": [
+          "适合拍照打卡",
+          "动线更顺"
+        ],
+        "knowledge_notes": [
+          "适合经典地标串联，步行与短距离换乘都比较友好。"
+        ],
+        "place_context_note": "适合经典地标串联，步行与短距离换乘都比较友好。",
+        "note": "偏经典/文博，优先核心点位"
+      }
+    ],
+    "selected_plan": {
+      "summary": "基于 3.0 小时与 solo 同行，当前天气（高德实时天气）为 阴，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于真实路线时长/距离）",
+      "route": [
+        {
+          "time_slot": "14:10-15:00",
+          "type": "sight",
+          "name": "Bell Tower Deck",
+          "district_cluster": "城墙钟鼓楼簇",
+          "transport_from_prev": "从起点前往（地铁/打车 约10分钟）",
+          "reason": "同簇连续，减少折返",
+          "estimated_distance_meters": 875,
+          "estimated_duration_minutes": 10
+        },
+        {
+          "time_slot": "15:06-16:06",
+          "type": "restaurant",
+          "name": "Central Noodle House",
+          "district_cluster": "城墙钟鼓楼簇",
+          "transport_from_prev": "步行 约6分钟",
+          "reason": "位于顺路簇内，减少绕行",
+          "estimated_distance_meters": 468,
+          "estimated_duration_minutes": 6
+        }
+      ],
+      "tips": [
+        "天气来源：高德实时天气；当前天气：阴；气温约 14.0°C；观测时间 2026-04-08 18:07:45。",
+        "当前天气对路线影响较小，仍按顺路与少折返为主。",
+        "起点为 钟楼，预计路程约 1343 米，交通耗时约 16 分钟。",
+        "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+        "时间预算 180 分钟，当前已排入 126 分钟。",
+        "当前路线未触发时间裁剪。",
+        "本次有 2 段使用高德真实路线估算。",
+        "已降低高步行强度点位，现场可继续按体力缩短停留。"
+      ]
+    },
+    "selection_reason": "用户需求为solo、relax、need_meal=true、walking_tolerance=low、available_hours=4.0，方案relaxed_first符合轻松优先、含餐、步行低、跨簇/跨区域为0，更贴合用户意图；classic_first节奏均衡且步行中等，与轻松优先和低步行容忍度不完全匹配。；适合拍照打卡。",
+    "reason_tags": [
+      "need_meal=true",
+      "walking_tolerance=low",
+      "轻松优先",
+      "跨簇更少",
+      "单区域集中",
+      "适合拍照打卡",
+      "动线更顺"
+    ],
+    "readable_output": {
+      "title": "西安市区半日路线",
+      "overview": "这次路线以 城墙钟鼓楼簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按午后节奏安排，起步约 14:00 左右，整体会更偏轻松。并保留正餐安排。本次还参考了点位知识：适合拍照打卡。适合本次 4.0 小时出行。",
+      "schedule_text": "时段说明：午后节奏更轻松，停留以短时为主。\n场景补充：适合经典地标串联，步行与短距离换乘都比较友好。\n14:10-15:00 前往 Bell Tower Deck（城墙钟鼓楼簇，景点）。这样安排主要因为：同簇连续，减少折返。从起点前往（地铁/打车 约10分钟）。放在午后更合适，整体节奏会更轻松一些。 下一段建议：步行 约6分钟。\n15:06-16:06 前往 Central Noodle House（城墙钟鼓楼簇，餐饮点）。这样安排主要因为：位于顺路簇内，减少绕行。步行 约6分钟。",
+      "transport_text": "全程预计约 1.3 公里，交通耗时约 16 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 1 段以步行为主，1 段为跨簇通行。",
+      "tips_text": "已按午后偏好安排，建议 14:00 左右 开始更贴合节奏。\n天气方面：天气来源：高德实时天气；当前天气：阴；气温约 14.0°C；观测时间 2026-04-08 18:07:45。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 180 分钟，当前已排入 126 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 1343 米，交通耗时约 16 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；本次有 2 段使用高德真实路线估算。；已降低高步行强度点位，现场可继续按体力缩短停留。\n场景信息：适合经典地标串联，步行与短距离换乘都比较友好。"
+    },
+    "amap_events": [
+      {
+        "amap_attempted": false,
+        "amap_tool": "geocode",
+        "amap_hit": false,
+        "amap_infocode": null,
+        "amap_fallback_reason": "geocode_failed",
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "text_search",
+        "amap_hit": true,
+        "amap_infocode": "10000",
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": "https://restapi.amap.com/v3/place/text?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E5%9F%8E%E5%A2%99&city=%E8%A5%BF%E5%AE%89&citylimit=true&offset=20&page=1&extensions=all",
+        "timeout_seconds": [
+          5,
+          15
+        ],
+        "proxy_mode": "inherit_env",
+        "env_proxy_snapshot": {
+          "HTTP_PROXY": false,
+          "HTTPS_PROXY": false,
+          "NO_PROXY": false,
+          "REQUESTS_CA_BUNDLE": false,
+          "CURL_CA_BUNDLE": false
+        }
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "weather",
+        "amap_hit": true,
+        "amap_infocode": null,
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "route",
+        "amap_hit": true,
+        "amap_infocode": null,
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      }
+    ],
+    "debug_logs": [
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": null,
+        "level": "info",
+        "message": "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill', 'amap_search_skill', 'amap_geocode_skill', 'amap_route_skill', 'amap_weather_skill']"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": null,
+        "level": "info",
+        "message": "agent_chain=v4_current"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "recall_memory",
+        "level": "info",
+        "message": "未找到历史偏好。"
+      },
+      {
+        "ts": "2026-04-08T18:23:21",
+        "node": "recall_memory",
+        "level": "info",
+        "message": "skill invoked: recall_memory_skill, status=success, summary=memory_miss"
+      },
+      {
+        "ts": "2026-04-08T18:23:23",
+        "node": "parse_request",
+        "level": "info",
+        "message": "amap_event tool=geocode attempted=False hit=False infocode=None fallback=geocode_failed"
+      },
+      {
+        "ts": "2026-04-08T18:23:23",
+        "node": "parse_request",
+        "level": "info",
+        "message": "解析完成，来源=llm。"
+      },
+      {
+        "ts": "2026-04-08T18:23:23",
+        "node": "parse_request",
+        "level": "info",
+        "message": "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm"
+      },
+      {
+        "ts": "2026-04-08T18:23:23",
+        "node": "parse_request",
+        "level": "info",
+        "message": "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:23",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "策略矩阵 primary=['classic'] secondary=['relaxed']。"
+      },
+      {
+        "ts": "2026-04-08T18:23:23",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "候选偏好=['prioritize_relaxed_pacing', 'fewer_cross_cluster']。"
+      },
+      {
+        "ts": "2026-04-08T18:23:23",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "策略说明=放松/低步行诉求，优先轻松节奏。 | 未命中特殊组合，采用基础策略。。"
+      },
+      {
+        "ts": "2026-04-08T18:23:23",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area scope resolved=['城墙钟鼓楼', '小寨文博', '大雁塔', '曲江夜游', '回民街', '高新', '电视塔会展', '浐灞未央']"
+      },
+      {
+        "ts": "2026-04-08T18:23:23",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area priority order (intent)=['城墙钟鼓楼']"
+      },
+      {
+        "ts": "2026-04-08T18:23:23",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area priority seed=['城墙钟鼓楼']"
+      },
+      {
+        "ts": "2026-04-08T18:23:23",
+        "node": "data_quality",
+        "level": "info",
+        "message": "data_quality started"
+      },
+      {
+        "ts": "2026-04-08T18:23:24",
+        "node": "data_quality",
+        "level": "info",
+        "message": "data_quality totals: input=18, after_dedup=18, quarantined=0"
+      },
+      {
+        "ts": "2026-04-08T18:23:24",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery started"
+      },
+      {
+        "ts": "2026-04-08T18:23:24",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery strategies=['classic', 'relaxed']"
+      },
+      {
+        "ts": "2026-04-08T18:23:24",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery consumes governed pool, count=18"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery discovered_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:33, amap_web_search:25"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area scope used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area priority used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area counts=城墙钟鼓楼:15, 大雁塔:14, 小寨文博:1"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap search called: mode=keyword, queries=24, mapped=25"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap_event tool=text_search attempted=True hit=True infocode=10000 fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap search success"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "skill invoked: amap_search_skill, status=success, summary=source_hits=25"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery merge summary: before=76, after=76, dedup=0"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area priority order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "discovery notes: source=amap_web_search mode=keyword | source=amap_web_search query_count=24 | candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=classic, relaxed | area_scope_used=城墙钟鼓楼, 小寨文博, 大雁塔, 曲江夜游, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:33, amap_web_search:25, merged=76"
+      },
+      {
+        "ts": "2026-04-08T18:23:27",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:28",
+        "node": "planning_loop",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:28",
+        "node": "planning_loop",
+        "level": "info",
+        "message": "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search needed to find attractions matching relaxed solo purpose, sunny afternoon weather, low walking, and meal requirement args={'strategies': ['classic', 'relaxed']}"
+      },
+      {
+        "ts": "2026-04-08T18:23:28",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "dynamic_search uses discovery result first, count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:28",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "dynamic_search finished, count=30, round=1"
+      },
+      {
+        "ts": "2026-04-08T18:23:28",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:28",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "搜索结果精炼完成，候选数=30。"
+      },
+      {
+        "ts": "2026-04-08T18:23:28",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:28",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:29",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:29",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill reason=Sufficient search results available (30) to generate candidate plans for a solo, relaxed afternoon outing with low walking and a meal stop. args={}"
+      },
+      {
+        "ts": "2026-04-08T18:23:29",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area-aware candidate generation started"
+      },
+      {
+        "ts": "2026-04-08T18:23:29",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area priority order used=城墙钟鼓楼, 小寨文博, 大雁塔, 电视塔会展, 曲江夜游, 回民街, 高新, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:23:32",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选方案生成数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:23:32",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=summary_hits=2"
+      },
+      {
+        "ts": "2026-04-08T18:23:32",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "knowledge_layer called for summary, hits=2, notes=['适合经典地标串联，步行与短距离换乘都比较友好。']"
+      },
+      {
+        "ts": "2026-04-08T18:23:32",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选差异增强重试次数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:23:32",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "候选质量告警：方案差异度不足（pairs=[('classic_first', 'relaxed_first')]）。"
+      },
+      {
+        "ts": "2026-04-08T18:23:32",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "candidate cross-area stats=relaxed_first:cross_area=0 | classic_first:cross_area=0"
+      },
+      {
+        "ts": "2026-04-08T18:23:32",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "已按候选偏好排序=['prioritize_relaxed_pacing', 'fewer_cross_cluster']。"
+      },
+      {
+        "ts": "2026-04-08T18:23:32",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:23:32",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:23:32",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill outcome=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:23:37",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "Planning step=3: action coerced GENERATE_CANDIDATES -> FINISH (duplicate generate)"
+      },
+      {
+        "ts": "2026-04-08T18:23:37",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:37",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=3 action=FINISH skill=select_plan_skill reason=Sufficient search results available to generate candidate plans for a relaxed solo afternoon with meal. [auto-coerce: duplicate GENERATE] args={}"
+      },
+      {
+        "ts": "2026-04-08T18:23:37",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: select_plan_skill, status=success, summary=finish_ready=true"
+      },
+      {
+        "ts": "2026-04-08T18:23:37",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=3 finished."
+      },
+      {
+        "ts": "2026-04-08T18:23:37",
+        "node": "gather_context",
+        "level": "info",
+        "message": "amap_event tool=weather attempted=True hit=True infocode=None fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:37",
+        "node": "gather_context",
+        "level": "info",
+        "message": "amap weather called: source=amap_weather"
+      },
+      {
+        "ts": "2026-04-08T18:23:37",
+        "node": "gather_context",
+        "level": "info",
+        "message": "skill invoked: amap_weather_skill, status=success, summary=amap_weather"
+      },
+      {
+        "ts": "2026-04-08T18:23:37",
+        "node": "gather_context",
+        "level": "info",
+        "message": "已获取天气上下文（source=amap_weather）。"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "select_plan",
+        "level": "info",
+        "message": "LLM 选优成功。"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "select_plan",
+        "level": "info",
+        "message": "knowledge_layer hit for selection, tags=['适合拍照打卡', '动线更顺'], sources=['mock_city_guide']"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=selection_hits=2"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "select_plan",
+        "level": "info",
+        "message": "amap_event tool=route attempted=True hit=True infocode=None fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "select_plan",
+        "level": "info",
+        "message": "amap route called: route_source=amap"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: amap_route_skill, status=success, summary=amap"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "select_plan",
+        "level": "info",
+        "message": "selected plan area summary=cross_area=0, transition=城墙钟鼓楼"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "select_plan",
+        "level": "info",
+        "message": "最终方案=relaxed_first，selected_by=llm。"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: select_plan_skill, status=success, summary=selected_by=llm"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "render_output",
+        "level": "info",
+        "message": "文案渲染完成。"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "render_output",
+        "level": "info",
+        "message": "knowledge_layer used for readable_output, notes=['适合经典地标串联，步行与短距离换乘都比较友好。']"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "render_output",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=readable_knowledge_hit"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "render_output",
+        "level": "info",
+        "message": "skill invoked: render_response_skill, status=success, summary=readable_output_ready"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "finalize_memory",
+        "level": "info",
+        "message": "已写回偏好记忆。"
+      }
+    ]
+  },
+  {
+    "text": "晚上在曲江附近，想约会吃饭看夜景，步行不要太多",
+    "parsed_by": null,
+    "selected_by": "llm",
+    "amap_called": true,
+    "amap_sources_used": [
+      "amap_web_search",
+      "text_search"
+    ],
+    "amap_geo_used": false,
+    "amap_route_used": true,
+    "amap_weather_used": true,
+    "route_source": "amap",
+    "weather_source": "amap_weather",
+    "amap_fallback_reason": "nearby_failed:float() argument must be a string or a real number, not 'NoneType'",
+    "planning_history": [
+      {
+        "step": 1,
+        "action": "SEARCH",
+        "skill_name": "search_candidate_skill",
+        "reason": "Initial search needed to find options matching night, food, nearby, relaxed criteria for dating evening with low walking and meal.",
+        "args": {
+          "strategies": [
+            "night",
+            "food",
+            "nearby",
+            "relaxed"
+          ]
+        },
+        "outcome_summary": "search_results_count=30"
+      },
+      {
+        "step": 2,
+        "action": "GENERATE_CANDIDATES",
+        "skill_name": "generate_candidates_skill",
+        "reason": "Sufficient search results available (30) to generate candidate plans for a relaxed evening date with a meal.",
+        "args": {},
+        "outcome_summary": "candidate_plans_count=2"
+      },
+      {
+        "step": 3,
+        "action": "FINISH",
+        "skill_name": "select_plan_skill",
+        "reason": "Sufficient search results available to generate candidate plans for a dating evening with meal and relaxed pacing. [auto-coerce: duplicate GENERATE]",
+        "args": {},
+        "outcome_summary": "finish_ready=true"
+      }
+    ],
+    "candidate_plans_summary": [
+      {
+        "plan_id": "relaxed_first",
+        "variant_label": "轻松优先",
+        "stop_count": 2,
+        "clusters": [
+          "曲江夜游簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "曲江夜游簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "曲江夜游",
+        "area_bias_note": "轻松优先：尽量保持区域集中，减少跨区域移动负担。",
+        "has_meal": true,
+        "total_distance_meters": 5941,
+        "total_duration_minutes": 50,
+        "rhythm": "轻松",
+        "budget_level": "medium",
+        "walking_tolerance": "low",
+        "purpose": "relax",
+        "diff_points": [
+          "餐位:前段",
+          "簇分布:曲江夜游簇",
+          "区域分布:曲江夜游",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:轻松",
+          "站点:2"
+        ],
+        "bias_tags": [
+          "relaxed",
+          "low_walk",
+          "fewer_cross_cluster"
+        ],
+        "knowledge_tags": [
+          "晚间氛围更强"
+        ],
+        "knowledge_notes": [
+          "晚间氛围更好，适合夜游与餐饮衔接。"
+        ],
+        "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+        "note": "偏轻松少走路，节奏更舒缓"
+      },
+      {
+        "plan_id": "classic_first",
+        "variant_label": "经典优先",
+        "stop_count": 3,
+        "clusters": [
+          "曲江夜游簇"
+        ],
+        "is_cross_cluster": false,
+        "cross_cluster_count": 0,
+        "cluster_transition_summary": "曲江夜游簇",
+        "is_cross_area": false,
+        "cross_area_count": 0,
+        "area_transition_summary": "曲江夜游",
+        "area_bias_note": "经典优先：优先覆盖文博/地标区域，允许适度跨区域。",
+        "has_meal": true,
+        "total_distance_meters": 5784,
+        "total_duration_minutes": 50,
+        "rhythm": "均衡",
+        "budget_level": "medium",
+        "walking_tolerance": "medium",
+        "purpose": "tourism",
+        "diff_points": [
+          "餐位:中前段",
+          "簇分布:曲江夜游簇",
+          "区域分布:曲江夜游",
+          "跨簇:0",
+          "跨区域:0",
+          "单区域更轻松",
+          "节奏:均衡",
+          "站点:3"
+        ],
+        "bias_tags": [
+          "classic",
+          "museum",
+          "landmark"
+        ],
+        "knowledge_tags": [
+          "晚间氛围更强"
+        ],
+        "knowledge_notes": [
+          "晚间氛围更好，适合夜游与餐饮衔接。"
+        ],
+        "place_context_note": "晚间氛围更好，适合夜游与餐饮衔接。",
+        "note": "偏经典/文博，优先核心点位"
+      }
+    ],
+    "selected_plan": {
+      "summary": "基于 3.0 小时与 partner 同行，当前天气（高德实时天气）为 阴，推荐以 曲江夜游簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于真实路线时长/距离）",
+      "route": [
+        {
+          "time_slot": "18:27-19:27",
+          "type": "restaurant",
+          "name": "Night City Photo Cafe",
+          "district_cluster": "曲江夜游簇",
+          "transport_from_prev": "从起点前往（地铁/打车 约27分钟）",
+          "reason": "更有氛围感，位于顺路簇内，减少绕行",
+          "estimated_distance_meters": 4243,
+          "estimated_duration_minutes": 27
+        },
+        {
+          "time_slot": "19:50-20:40",
+          "type": "sight",
+          "name": "Immersive Art Hall",
+          "district_cluster": "曲江夜游簇",
+          "transport_from_prev": "步行 约23分钟",
+          "reason": "更有氛围感，同簇连续，减少折返",
+          "estimated_distance_meters": 1698,
+          "estimated_duration_minutes": 23
+        }
+      ],
+      "tips": [
+        "天气来源：高德实时天气；当前天气：阴；气温约 14.0°C；观测时间 2026-04-08 18:07:45。",
+        "当前天气对路线影响较小，仍按顺路与少折返为主。",
+        "起点为 曲江，预计路程约 5941 米，交通耗时约 50 分钟。",
+        "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+        "时间预算 180 分钟，当前已排入 160 分钟。",
+        "检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。",
+        "夜游场景已优先保证晚间用餐与夜游点衔接。",
+        "当前路线未触发时间裁剪。",
+        "本次有 2 段使用高德真实路线估算。",
+        "已降低高步行强度点位，现场可继续按体力缩短停留。"
+      ]
+    },
+    "selection_reason": "用户需求为约会场景且需用餐，该方案含餐、节奏轻松、步行低，且为单区域无跨簇，符合夜游氛围和轻松优先的硬约束；而classic_first方案步行中等、节奏均衡，虽含餐但更偏经典旅游，与约会意图契合度较低。；晚间氛围更强。",
+    "reason_tags": [
+      "need_meal",
+      "dating",
+      "low_walking",
+      "single_cluster",
+      "relaxed_pace",
+      "night_atmosphere",
+      "晚间氛围更强"
+    ],
+    "readable_output": {
+      "title": "西安约会型半日路线",
+      "overview": "这次路线以 曲江夜游簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按晚间节奏安排，18:00 左右 后开始更合适，利于夜游与晚餐衔接。并保留正餐安排。本次还参考了点位知识：晚间氛围更强。适合本次 4.0 小时出行。",
+      "schedule_text": "时段说明：晚间更偏夜游节奏，已优先衔接夜景与晚餐。\n本次已优先保证晚间用餐与夜游点顺路衔接。\n场景补充：晚间氛围更好，适合夜游与餐饮衔接。\n18:27-19:27 前往 Night City Photo Cafe（曲江夜游簇，餐饮点）。这样安排主要因为：更有氛围感，位于顺路簇内，减少绕行。从起点前往（地铁/打车 约27分钟）。放在晚间更符合夜游节奏，也更适合衔接拍照和晚餐安排。 下一段建议：步行 约23分钟。\n19:50-20:40 前往 Immersive Art Hall（曲江夜游簇，景点）。这样安排主要因为：更有氛围感，同簇连续，减少折返。步行 约23分钟。",
+      "transport_text": "全程预计约 5.9 公里，交通耗时约 50 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 1 段以步行为主，1 段为跨簇通行。",
+      "tips_text": "已按晚间偏好安排，建议 18:00 左右 后开始更顺，也便于衔接夜游与晚餐。\n天气方面：天气来源：高德实时天气；当前天气：阴；气温约 14.0°C；观测时间 2026-04-08 18:07:45。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 180 分钟，当前已排入 160 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 曲江，预计路程约 5941 米，交通耗时约 50 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。；夜游场景已优先保证晚间用餐与夜游点衔接。；本次有 2 段使用高德真实路线估算。；已降低高步行强度点位，现场可继续按体力缩短停留。\n场景信息：晚间氛围更好，适合夜游与餐饮衔接。"
+    },
+    "amap_events": [
+      {
+        "amap_attempted": true,
+        "amap_tool": "geocode",
+        "amap_hit": true,
+        "amap_infocode": "10000",
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": "https://restapi.amap.com/v3/geocode/geo?key=ec35d0b32022ff3059b361386562a7b4&address=%E6%9B%B2%E6%B1%9F&city=%E8%A5%BF%E5%AE%89",
+        "timeout_seconds": [
+          5,
+          15
+        ],
+        "proxy_mode": "inherit_env",
+        "env_proxy_snapshot": {
+          "HTTP_PROXY": false,
+          "HTTPS_PROXY": false,
+          "NO_PROXY": false,
+          "REQUESTS_CA_BUNDLE": false,
+          "CURL_CA_BUNDLE": false
+        }
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "text_search",
+        "amap_hit": true,
+        "amap_infocode": "10000",
+        "amap_fallback_reason": "nearby_failed:float() argument must be a string or a real number, not 'NoneType'",
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": "https://restapi.amap.com/v3/place/text?key=ec35d0b32022ff3059b361386562a7b4&keywords=%E6%9B%B2%E6%B1%9F+%E9%A4%90%E5%8E%85&city=%E8%A5%BF%E5%AE%89&citylimit=true&offset=20&page=1&extensions=all",
+        "timeout_seconds": [
+          5,
+          15
+        ],
+        "proxy_mode": "inherit_env",
+        "env_proxy_snapshot": {
+          "HTTP_PROXY": false,
+          "HTTPS_PROXY": false,
+          "NO_PROXY": false,
+          "REQUESTS_CA_BUNDLE": false,
+          "CURL_CA_BUNDLE": false
+        }
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "weather",
+        "amap_hit": true,
+        "amap_infocode": null,
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      },
+      {
+        "amap_attempted": true,
+        "amap_tool": "route",
+        "amap_hit": true,
+        "amap_infocode": null,
+        "amap_fallback_reason": null,
+        "exception_type": null,
+        "exception_message": null,
+        "request_url": null,
+        "timeout_seconds": null,
+        "proxy_mode": null,
+        "env_proxy_snapshot": null
+      }
+    ],
+    "debug_logs": [
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": null,
+        "level": "info",
+        "message": "active skills=['parse_request_skill', 'recall_memory_skill', 'search_candidate_skill', 'generate_candidates_skill', 'select_plan_skill', 'render_response_skill', 'knowledge_enrichment_skill', 'evaluation_skill', 'amap_search_skill', 'amap_geocode_skill', 'amap_route_skill', 'amap_weather_skill']"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": null,
+        "level": "info",
+        "message": "agent_chain=v4_current"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "recall_memory",
+        "level": "info",
+        "message": "未找到历史偏好。"
+      },
+      {
+        "ts": "2026-04-08T18:23:39",
+        "node": "recall_memory",
+        "level": "info",
+        "message": "skill invoked: recall_memory_skill, status=success, summary=memory_miss"
+      },
+      {
+        "ts": "2026-04-08T18:23:41",
+        "node": "parse_request",
+        "level": "info",
+        "message": "amap_event tool=geocode attempted=True hit=True infocode=10000 fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:41",
+        "node": "parse_request",
+        "level": "info",
+        "message": "解析完成，来源=llm。"
+      },
+      {
+        "ts": "2026-04-08T18:23:41",
+        "node": "parse_request",
+        "level": "info",
+        "message": "skill invoked: parse_request_skill, status=success, summary=parsed_by=llm"
+      },
+      {
+        "ts": "2026-04-08T18:23:41",
+        "node": "parse_request",
+        "level": "info",
+        "message": "LLM parse diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:41",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "策略矩阵 primary=['night'] secondary=['food', 'nearby', 'relaxed']。"
+      },
+      {
+        "ts": "2026-04-08T18:23:41",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "候选偏好=['prioritize_night_view', 'include_meal_stop', 'prefer_origin_cluster_first', 'prioritize_relaxed_pacing', 'fewer_cross_cluster']。"
+      },
+      {
+        "ts": "2026-04-08T18:23:41",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "策略说明=晚间约会，优先夜游与晚餐衔接。 | 识别到附近语义，优先起点邻近簇。 | 放松/低步行诉求，优先轻松节奏。。"
+      },
+      {
+        "ts": "2026-04-08T18:23:41",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area scope resolved=['曲江夜游', '城墙钟鼓楼', '小寨文博', '大雁塔', '回民街', '高新', '电视塔会展', '浐灞未央']"
+      },
+      {
+        "ts": "2026-04-08T18:23:41",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area priority order (intent)=['曲江夜游']"
+      },
+      {
+        "ts": "2026-04-08T18:23:41",
+        "node": "analyze_search_intent",
+        "level": "info",
+        "message": "area priority seed=['曲江夜游']"
+      },
+      {
+        "ts": "2026-04-08T18:23:41",
+        "node": "data_quality",
+        "level": "info",
+        "message": "data_quality started"
+      },
+      {
+        "ts": "2026-04-08T18:23:42",
+        "node": "data_quality",
+        "level": "info",
+        "message": "data_quality totals: input=18, after_dedup=18, quarantined=0"
+      },
+      {
+        "ts": "2026-04-08T18:23:42",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery started"
+      },
+      {
+        "ts": "2026-04-08T18:23:42",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery strategies=['night', 'food', 'nearby', 'relaxed']"
+      },
+      {
+        "ts": "2026-04-08T18:23:42",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery consumes governed pool, count=18"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery discovered_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery source counts=existing_poi_pipeline:18, local_extended_corpus:42, amap_web_search:27"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area scope used=曲江夜游, 城墙钟鼓楼, 小寨文博, 大雁塔, 回民街, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area priority used=曲江夜游, 大雁塔, 城墙钟鼓楼, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area counts=曲江夜游:12, 大雁塔:16, 城墙钟鼓楼:2"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap search called: mode=keyword, queries=24, mapped=27"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "amap_event tool=text_search attempted=True hit=True infocode=10000 fallback=nearby_failed:float() argument must be a string or a real number, not 'NoneType'"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "warn",
+        "message": "amap search fallback: nearby_failed:float() argument must be a string or a real number, not 'NoneType'"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "warn",
+        "message": "skill invoked: amap_search_skill, status=fallback, summary=nearby_failed:float() argument must be a string or a real number, not 'NoneType'"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery merge summary: before=87, after=86, dedup=1"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "candidate discovery area priority order=曲江夜游, 大雁塔, 城墙钟鼓楼, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "discovery notes: source=amap_web_search fallback_reason=nearby_failed:float() argument must be a string or a real number, not 'NoneType' | source=amap_web_search mode=keyword | source=amap_web_search query_count=24 | candidate discovery executed: multi-source merge + light governance + strategy ranking | discovery layer only discovers candidates; final itinerary remains in hard planning chain | strategies=night, food, nearby, relaxed | area_scope_used=曲江夜游, 城墙钟鼓楼, 小寨文博, 大雁塔, 回民街, 高新, 电视塔会展, 浐灞未央 | area_priority_order=曲江夜游, 大雁塔, 城墙钟鼓楼, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央 | sources=existing_poi_pipeline:18, local_extended_corpus:42, amap_web_search:27, merged=86"
+      },
+      {
+        "ts": "2026-04-08T18:23:45",
+        "node": "candidate_discovery",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=discovered_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:46",
+        "node": "planning_loop",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:46",
+        "node": "planning_loop",
+        "level": "info",
+        "message": "Planning step=1 action=SEARCH skill=search_candidate_skill reason=Initial search needed to find options matching night, food, nearby, relaxed criteria for dating evening with low walking and meal. args={'strategies': ['night', 'food', 'nearby', 'relaxed']}"
+      },
+      {
+        "ts": "2026-04-08T18:23:46",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "dynamic_search uses discovery result first, count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:46",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "dynamic_search finished, count=30, round=1"
+      },
+      {
+        "ts": "2026-04-08T18:23:46",
+        "node": "dynamic_search",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:46",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "搜索结果精炼完成，候选数=30。"
+      },
+      {
+        "ts": "2026-04-08T18:23:46",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "skill invoked: search_candidate_skill, status=success, summary=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:46",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning step=1 action=SEARCH skill=search_candidate_skill outcome=search_results_count=30"
+      },
+      {
+        "ts": "2026-04-08T18:23:49",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:23:49",
+        "node": "refine_search_results",
+        "level": "info",
+        "message": "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill reason=Sufficient search results available (30) to generate candidate plans for a relaxed evening date with a meal. args={}"
+      },
+      {
+        "ts": "2026-04-08T18:23:49",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area-aware candidate generation started"
+      },
+      {
+        "ts": "2026-04-08T18:23:49",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "area priority order used=曲江夜游, 大雁塔, 城墙钟鼓楼, 回民街, 小寨文博, 高新, 电视塔会展, 浐灞未央"
+      },
+      {
+        "ts": "2026-04-08T18:24:02",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选方案生成数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:24:02",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=summary_hits=2"
+      },
+      {
+        "ts": "2026-04-08T18:24:02",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "knowledge_layer called for summary, hits=2, notes=['晚间氛围更好，适合夜游与餐饮衔接。']"
+      },
+      {
+        "ts": "2026-04-08T18:24:02",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "候选差异增强重试次数=2。"
+      },
+      {
+        "ts": "2026-04-08T18:24:02",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "候选质量告警：方案差异度不足（pairs=[('classic_first', 'relaxed_first')]）。"
+      },
+      {
+        "ts": "2026-04-08T18:24:02",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "candidate cross-area stats=relaxed_first:cross_area=0 | classic_first:cross_area=0"
+      },
+      {
+        "ts": "2026-04-08T18:24:02",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "已按候选偏好排序=['prioritize_night_view', 'include_meal_stop', 'prefer_origin_cluster_first', 'prioritize_relaxed_pacing', 'fewer_cross_cluster']。"
+      },
+      {
+        "ts": "2026-04-08T18:24:03",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:24:03",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: generate_candidates_skill, status=success, summary=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:24:03",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=2 action=GENERATE_CANDIDATES skill=generate_candidates_skill outcome=candidate_plans_count=2"
+      },
+      {
+        "ts": "2026-04-08T18:24:04",
+        "node": "generate_candidates",
+        "level": "warn",
+        "message": "Planning step=3: action coerced GENERATE_CANDIDATES -> FINISH (duplicate generate)"
+      },
+      {
+        "ts": "2026-04-08T18:24:04",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning diagnostics: llm_called=True, llm_raw_response_exists=True, llm_json_parse_ok=True, llm_schema_ok=True, llm_action_valid=True, fallback_reason=None"
+      },
+      {
+        "ts": "2026-04-08T18:24:05",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=3 action=FINISH skill=select_plan_skill reason=Sufficient search results available to generate candidate plans for a dating evening with meal and relaxed pacing. [auto-coerce: duplicate GENERATE] args={}"
+      },
+      {
+        "ts": "2026-04-08T18:24:05",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "skill invoked: select_plan_skill, status=success, summary=finish_ready=true"
+      },
+      {
+        "ts": "2026-04-08T18:24:05",
+        "node": "generate_candidates",
+        "level": "info",
+        "message": "Planning step=3 finished."
+      },
+      {
+        "ts": "2026-04-08T18:24:05",
+        "node": "gather_context",
+        "level": "info",
+        "message": "amap_event tool=weather attempted=True hit=True infocode=None fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:24:05",
+        "node": "gather_context",
+        "level": "info",
+        "message": "amap weather called: source=amap_weather"
+      },
+      {
+        "ts": "2026-04-08T18:24:05",
+        "node": "gather_context",
+        "level": "info",
+        "message": "skill invoked: amap_weather_skill, status=success, summary=amap_weather"
+      },
+      {
+        "ts": "2026-04-08T18:24:05",
+        "node": "gather_context",
+        "level": "info",
+        "message": "已获取天气上下文（source=amap_weather）。"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "select_plan",
+        "level": "info",
+        "message": "LLM 选优成功。"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "select_plan",
+        "level": "info",
+        "message": "knowledge_layer hit for selection, tags=['晚间氛围更强'], sources=['mock_city_guide']"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=selection_hits=1"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "select_plan",
+        "level": "info",
+        "message": "amap_event tool=route attempted=True hit=True infocode=None fallback=None"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "select_plan",
+        "level": "info",
+        "message": "amap route called: route_source=amap"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: amap_route_skill, status=success, summary=amap"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "select_plan",
+        "level": "info",
+        "message": "selected plan area summary=cross_area=0, transition=曲江夜游"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "select_plan",
+        "level": "info",
+        "message": "最终方案=relaxed_first，selected_by=llm。"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "select_plan",
+        "level": "info",
+        "message": "skill invoked: select_plan_skill, status=success, summary=selected_by=llm"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "render_output",
+        "level": "info",
+        "message": "文案渲染完成。"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "render_output",
+        "level": "info",
+        "message": "knowledge_layer used for readable_output, notes=['晚间氛围更好，适合夜游与餐饮衔接。']"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "render_output",
+        "level": "info",
+        "message": "skill invoked: knowledge_enrichment_skill, status=success, summary=readable_knowledge_hit"
+      },
+      {
+        "ts": "2026-04-08T18:24:07",
+        "node": "render_output",
+        "level": "info",
+        "message": "skill invoked: render_response_skill, status=success, summary=readable_output_ready"
+      },
+      {
+        "ts": "2026-04-08T18:24:08",
+        "node": "finalize_memory",
+        "level": "info",
+        "message": "已写回偏好记忆。"
+      }
+    ]
+  }
+]

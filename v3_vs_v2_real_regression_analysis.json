@@ -1,0 +1,794 @@
+{
+  "generated_at": "2026-04-07T16:58:09",
+  "cases": [
+    {
+      "input": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+      "v2_status": 200,
+      "v3_status": 200,
+      "v2_parsed": {
+        "companion_type": "parents",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "rainy",
+        "origin": "钟楼",
+        "preferred_period": "midday",
+        "origin_preference_mode": null,
+        "parsed_by": "rule"
+      },
+      "v3_parsed": {
+        "companion_type": "parents",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "rainy",
+        "origin": "钟楼",
+        "preferred_period": "midday",
+        "origin_preference_mode": null,
+        "parsed_by": "rule"
+      },
+      "v2_route": {
+        "stop_count": 2,
+        "has_meal": true,
+        "clusters": [
+          "小寨文博簇"
+        ],
+        "cross_cluster_count": 0,
+        "stops": [
+          "陕西历史博物馆",
+          "小寨清淡家常馆"
+        ]
+      },
+      "v3_route": {
+        "stop_count": 2,
+        "has_meal": true,
+        "clusters": [
+          "城墙钟鼓楼簇"
+        ],
+        "cross_cluster_count": 0,
+        "stops": [
+          "鼓楼",
+          "回坊泡馍馆"
+        ]
+      },
+      "v2_selected_by": "fallback_rule",
+      "v3_selected_by": "fallback_rule",
+      "v2_selection_reason": "LLM 未启用或返回无效结果，已使用默认方案。",
+      "v3_selection_reason": "LLM 未启用或返回无效结果，已使用默认方案。",
+      "v3_reason_tags": [
+        "默认回退"
+      ],
+      "v3_planning_history": [
+        {
+          "step": 1,
+          "action": "SEARCH",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "search_results_count=18"
+        },
+        {
+          "step": 2,
+          "action": "GENERATE_CANDIDATES",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "candidate_plans_count=3"
+        },
+        {
+          "step": 3,
+          "action": "FINISH",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "finish_ready=true"
+        }
+      ],
+      "v3_candidate_summaries": [
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "has_meal": true,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "rhythm": "轻松",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "跨簇:0",
+            "节奏:轻松",
+            "站点:2"
+          ]
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "has_meal": true,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "rhythm": "均衡",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:小寨文博簇",
+            "跨簇:0",
+            "节奏:均衡",
+            "站点:2"
+          ]
+        },
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 1,
+          "has_meal": false,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "rhythm": "轻松",
+          "diff_points": [
+            "无餐饮站",
+            "簇分布:小寨文博簇",
+            "跨簇:0",
+            "节奏:轻松",
+            "站点:1"
+          ]
+        }
+      ],
+      "v2_readable_title": "陪父母的西安半日路线",
+      "v2_readable_overview": "这次路线以 小寨文博簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按午间节奏安排，起步约 11:30 左右，更利于正餐与游览顺路衔接。考虑到当前天气，路线更偏向室内或短时户外停留。并保留正餐安排。适合本次 4.0 小时出行。",
+      "v3_readable_title": "陪父母的西安半日路线",
+      "v3_readable_overview": "这次路线以 城墙钟鼓楼簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按午间节奏安排，起步约 11:30 左右，更利于正餐与游览顺路衔接。考虑到当前天气，路线更偏向室内或短时户外停留。并保留正餐安排。适合本次 4.0 小时出行。",
+      "fallback_flags": {
+        "v2_selection_fallback": true,
+        "v3_selection_fallback": true,
+        "v3_invalid_action_fallback_count": 3,
+        "v3_action_coerced_count": 0,
+        "v3_auto_repair_count": 0,
+        "v3_post_check_switch": false
+      },
+      "debug_log_key": [
+        "Planning step=1: invalid action fallback -> SEARCH",
+        "Planning step=1 action=SEARCH reason=Invalid planning action; fallback. args={}",
+        "Planning step=2: invalid action fallback -> GENERATE_CANDIDATES",
+        "Planning step=2 action=GENERATE_CANDIDATES reason=Invalid planning action; fallback. args={}",
+        "Planning step=3: invalid action fallback -> FINISH",
+        "Planning step=3 action=FINISH reason=Invalid planning action; fallback. args={}",
+        "已获取天气上下文（source=fallback_request）。",
+        "最终方案=food_friendly，selected_by=fallback_rule。"
+      ]
+    },
+    {
+      "input": "和对象晚上出去，想吃饭、拍照、逛夜景",
+      "v2_status": 200,
+      "v3_status": 200,
+      "v2_parsed": {
+        "companion_type": "partner",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "dating",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "evening",
+        "origin_preference_mode": null,
+        "parsed_by": "rule"
+      },
+      "v3_parsed": {
+        "companion_type": "partner",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "dating",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "evening",
+        "origin_preference_mode": null,
+        "parsed_by": "rule"
+      },
+      "v2_route": {
+        "stop_count": 2,
+        "has_meal": true,
+        "clusters": [
+          "曲江夜游簇"
+        ],
+        "cross_cluster_count": 0,
+        "stops": [
+          "曲江景观陕菜馆",
+          "大唐不夜城"
+        ]
+      },
+      "v3_route": {
+        "stop_count": 2,
+        "has_meal": true,
+        "clusters": [
+          "曲江夜游簇"
+        ],
+        "cross_cluster_count": 0,
+        "stops": [
+          "曲江景观陕菜馆",
+          "大唐不夜城"
+        ]
+      },
+      "v2_selected_by": "fallback_rule",
+      "v3_selected_by": "fallback_rule",
+      "v2_selection_reason": "LLM 未启用或返回无效结果，已使用默认方案。",
+      "v3_selection_reason": "LLM 未启用或返回无效结果，已使用默认方案。",
+      "v3_reason_tags": [
+        "默认回退"
+      ],
+      "v3_planning_history": [
+        {
+          "step": 1,
+          "action": "SEARCH",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "search_results_count=18"
+        },
+        {
+          "step": 2,
+          "action": "GENERATE_CANDIDATES",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "candidate_plans_count=3"
+        },
+        {
+          "step": 3,
+          "action": "FINISH",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "finish_ready=true"
+        }
+      ],
+      "v3_candidate_summaries": [
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "has_meal": true,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "rhythm": "均衡",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "跨簇:0",
+            "节奏:均衡",
+            "站点:2"
+          ]
+        },
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 1,
+          "has_meal": true,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "rhythm": "轻松",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:曲江夜游簇",
+            "跨簇:0",
+            "节奏:轻松",
+            "站点:1"
+          ]
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "has_meal": true,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "大雁塔簇"
+          ],
+          "rhythm": "均衡",
+          "diff_points": [
+            "餐位:前段",
+            "簇分布:大雁塔簇",
+            "跨簇:0",
+            "节奏:均衡",
+            "站点:2"
+          ]
+        }
+      ],
+      "v2_readable_title": "西安约会型半日路线",
+      "v2_readable_overview": "这次路线以 曲江夜游簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按晚间节奏安排，18:00 左右 后开始更合适，利于夜游与晚餐衔接。并保留正餐安排。适合本次 4.0 小时出行。",
+      "v3_readable_title": "西安约会型半日路线",
+      "v3_readable_overview": "这次路线以 曲江夜游簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按晚间节奏安排，18:00 左右 后开始更合适，利于夜游与晚餐衔接。并保留正餐安排。适合本次 4.0 小时出行。",
+      "fallback_flags": {
+        "v2_selection_fallback": true,
+        "v3_selection_fallback": true,
+        "v3_invalid_action_fallback_count": 3,
+        "v3_action_coerced_count": 0,
+        "v3_auto_repair_count": 0,
+        "v3_post_check_switch": false
+      },
+      "debug_log_key": [
+        "Planning step=1: invalid action fallback -> SEARCH",
+        "Planning step=1 action=SEARCH reason=Invalid planning action; fallback. args={}",
+        "Planning step=2: invalid action fallback -> GENERATE_CANDIDATES",
+        "Planning step=2 action=GENERATE_CANDIDATES reason=Invalid planning action; fallback. args={}",
+        "Planning step=3: invalid action fallback -> FINISH",
+        "Planning step=3 action=FINISH reason=Invalid planning action; fallback. args={}",
+        "已获取天气上下文（source=fallback_request）。",
+        "最终方案=food_friendly，selected_by=fallback_rule。"
+      ]
+    },
+    {
+      "input": "我在钟楼附近，只有3小时，想轻松一点",
+      "v2_status": 200,
+      "v3_status": 200,
+      "v2_parsed": {
+        "companion_type": "solo",
+        "available_hours": 3.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": "nearby",
+        "parsed_by": "rule"
+      },
+      "v3_parsed": {
+        "companion_type": "solo",
+        "available_hours": 3.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": "nearby",
+        "parsed_by": "rule"
+      },
+      "v2_route": {
+        "stop_count": 2,
+        "has_meal": true,
+        "clusters": [
+          "城墙钟鼓楼簇"
+        ],
+        "cross_cluster_count": 0,
+        "stops": [
+          "钟楼",
+          "回坊泡馍馆"
+        ]
+      },
+      "v3_route": {
+        "stop_count": 2,
+        "has_meal": true,
+        "clusters": [
+          "城墙钟鼓楼簇"
+        ],
+        "cross_cluster_count": 0,
+        "stops": [
+          "钟楼",
+          "钟楼面馆"
+        ]
+      },
+      "v2_selected_by": "fallback_rule",
+      "v3_selected_by": "fallback_rule",
+      "v2_selection_reason": "LLM 未启用或返回无效结果，已使用默认方案。",
+      "v3_selection_reason": "LLM 未启用或返回无效结果，已使用默认方案。",
+      "v3_reason_tags": [
+        "默认回退"
+      ],
+      "v3_planning_history": [
+        {
+          "step": 1,
+          "action": "SEARCH",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "search_results_count=18"
+        },
+        {
+          "step": 2,
+          "action": "GENERATE_CANDIDATES",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "candidate_plans_count=3"
+        },
+        {
+          "step": 3,
+          "action": "FINISH",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "finish_ready=true"
+        }
+      ],
+      "v3_candidate_summaries": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "has_meal": true,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "rhythm": "轻松",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "跨簇:0",
+            "节奏:轻松",
+            "站点:2"
+          ]
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "has_meal": true,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "rhythm": "轻松",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "跨簇:0",
+            "节奏:轻松",
+            "站点:2"
+          ]
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "has_meal": true,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "rhythm": "均衡",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "跨簇:0",
+            "节奏:均衡",
+            "站点:2"
+          ]
+        }
+      ],
+      "v2_readable_title": "西安市区半日路线",
+      "v2_readable_overview": "这次路线以 城墙钟鼓楼簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。并保留正餐安排。适合本次 3.0 小时出行。",
+      "v3_readable_title": "西安市区半日路线",
+      "v3_readable_overview": "这次路线以 城墙钟鼓楼簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。并保留正餐安排。适合本次 3.0 小时出行。",
+      "fallback_flags": {
+        "v2_selection_fallback": true,
+        "v3_selection_fallback": true,
+        "v3_invalid_action_fallback_count": 3,
+        "v3_action_coerced_count": 0,
+        "v3_auto_repair_count": 0,
+        "v3_post_check_switch": false
+      },
+      "debug_log_key": [
+        "Planning step=1: invalid action fallback -> SEARCH",
+        "Planning step=1 action=SEARCH reason=Invalid planning action; fallback. args={}",
+        "Planning step=2: invalid action fallback -> GENERATE_CANDIDATES",
+        "Planning step=2 action=GENERATE_CANDIDATES reason=Invalid planning action; fallback. args={}",
+        "Planning step=3: invalid action fallback -> FINISH",
+        "Planning step=3 action=FINISH reason=Invalid planning action; fallback. args={}",
+        "已获取天气上下文（source=fallback_request）。",
+        "最终方案=relaxed_first，selected_by=fallback_rule。"
+      ]
+    },
+    {
+      "input": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+      "v2_status": 200,
+      "v3_status": 200,
+      "v2_parsed": {
+        "companion_type": "friends",
+        "available_hours": 8.0,
+        "budget_level": "low",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": null,
+        "parsed_by": "rule"
+      },
+      "v3_parsed": {
+        "companion_type": "friends",
+        "available_hours": 8.0,
+        "budget_level": "low",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": null,
+        "parsed_by": "rule"
+      },
+      "v2_route": {
+        "stop_count": 4,
+        "has_meal": true,
+        "clusters": [
+          "小寨文博簇",
+          "城墙钟鼓楼簇"
+        ],
+        "cross_cluster_count": 1,
+        "stops": [
+          "陕西历史博物馆",
+          "文博蔬食面坊",
+          "小寨周边",
+          "回民街"
+        ]
+      },
+      "v3_route": {
+        "stop_count": 4,
+        "has_meal": true,
+        "clusters": [
+          "小寨文博簇",
+          "城墙钟鼓楼簇"
+        ],
+        "cross_cluster_count": 1,
+        "stops": [
+          "陕西历史博物馆",
+          "文博蔬食面坊",
+          "钟楼",
+          "鼓楼"
+        ]
+      },
+      "v2_selected_by": "fallback_rule",
+      "v3_selected_by": "fallback_rule",
+      "v2_selection_reason": "LLM 未启用或返回无效结果，已使用默认方案。",
+      "v3_selection_reason": "LLM 未启用或返回无效结果，已使用默认方案。",
+      "v3_reason_tags": [
+        "默认回退"
+      ],
+      "v3_planning_history": [
+        {
+          "step": 1,
+          "action": "SEARCH",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "search_results_count=18"
+        },
+        {
+          "step": 2,
+          "action": "GENERATE_CANDIDATES",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "candidate_plans_count=3"
+        },
+        {
+          "step": 3,
+          "action": "FINISH",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "finish_ready=true"
+        }
+      ],
+      "v3_candidate_summaries": [
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 4,
+          "has_meal": true,
+          "cross_cluster_count": 1,
+          "clusters": [
+            "小寨文博簇",
+            "城墙钟鼓楼簇"
+          ],
+          "rhythm": "紧凑",
+          "diff_points": [
+            "餐位:中前段",
+            "簇分布:小寨文博簇 / 城墙钟鼓楼簇",
+            "跨簇:1",
+            "节奏:紧凑",
+            "站点:4"
+          ]
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 4,
+          "has_meal": true,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "rhythm": "紧凑",
+          "diff_points": [
+            "餐位:中前段",
+            "簇分布:城墙钟鼓楼簇",
+            "跨簇:0",
+            "节奏:紧凑",
+            "站点:4"
+          ]
+        },
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 3,
+          "has_meal": true,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "rhythm": "轻松",
+          "diff_points": [
+            "餐位:中前段",
+            "簇分布:小寨文博簇",
+            "跨簇:0",
+            "节奏:轻松",
+            "站点:3"
+          ]
+        }
+      ],
+      "v2_readable_title": "朋友同行西安一日路线",
+      "v2_readable_overview": "这次路线以 小寨文博簇、城墙钟鼓楼簇 为主，共 4 站，整体节奏偏均衡，优先顺路衔接、少折返。并保留正餐安排。适合本次 8.0 小时出行。",
+      "v3_readable_title": "朋友同行西安一日路线",
+      "v3_readable_overview": "这次路线以 小寨文博簇、城墙钟鼓楼簇 为主，共 4 站，整体节奏偏均衡，优先顺路衔接、少折返。并保留正餐安排。适合本次 8.0 小时出行。",
+      "fallback_flags": {
+        "v2_selection_fallback": true,
+        "v3_selection_fallback": true,
+        "v3_invalid_action_fallback_count": 3,
+        "v3_action_coerced_count": 0,
+        "v3_auto_repair_count": 0,
+        "v3_post_check_switch": false
+      },
+      "debug_log_key": [
+        "Planning step=1: invalid action fallback -> SEARCH",
+        "Planning step=1 action=SEARCH reason=Invalid planning action; fallback. args={}",
+        "Planning step=2: invalid action fallback -> GENERATE_CANDIDATES",
+        "Planning step=2 action=GENERATE_CANDIDATES reason=Invalid planning action; fallback. args={}",
+        "Planning step=3: invalid action fallback -> FINISH",
+        "Planning step=3 action=FINISH reason=Invalid planning action; fallback. args={}",
+        "已获取天气上下文（source=fallback_request）。",
+        "最终方案=classic_first，selected_by=fallback_rule。"
+      ]
+    },
+    {
+      "input": "下午想轻松一点，逛两个地方就行",
+      "v2_status": 200,
+      "v3_status": 200,
+      "v2_parsed": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "afternoon",
+        "origin_preference_mode": null,
+        "parsed_by": "rule"
+      },
+      "v3_parsed": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "afternoon",
+        "origin_preference_mode": null,
+        "parsed_by": "rule"
+      },
+      "v2_route": {
+        "stop_count": 2,
+        "has_meal": true,
+        "clusters": [
+          "大雁塔簇"
+        ],
+        "cross_cluster_count": 0,
+        "stops": [
+          "大慈恩寺周边",
+          "雁塔景观咖啡简餐"
+        ]
+      },
+      "v3_route": {
+        "stop_count": 2,
+        "has_meal": true,
+        "clusters": [
+          "大雁塔簇"
+        ],
+        "cross_cluster_count": 0,
+        "stops": [
+          "大慈恩寺周边",
+          "雁塔景观咖啡简餐"
+        ]
+      },
+      "v2_selected_by": "fallback_rule",
+      "v3_selected_by": "fallback_rule",
+      "v2_selection_reason": "LLM 未启用或返回无效结果，已使用默认方案。",
+      "v3_selection_reason": "LLM 未启用或返回无效结果，已使用默认方案。",
+      "v3_reason_tags": [
+        "默认回退"
+      ],
+      "v3_planning_history": [
+        {
+          "step": 1,
+          "action": "SEARCH",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "search_results_count=18"
+        },
+        {
+          "step": 2,
+          "action": "GENERATE_CANDIDATES",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "candidate_plans_count=2"
+        },
+        {
+          "step": 3,
+          "action": "FINISH",
+          "reason": "Invalid planning action; fallback.",
+          "outcome_summary": "finish_ready=true"
+        }
+      ],
+      "v3_candidate_summaries": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "has_meal": true,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "大雁塔簇"
+          ],
+          "rhythm": "轻松",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:大雁塔簇",
+            "跨簇:0",
+            "节奏:轻松",
+            "站点:2"
+          ]
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "has_meal": true,
+          "cross_cluster_count": 0,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "rhythm": "均衡",
+          "diff_points": [
+            "餐位:后段",
+            "簇分布:城墙钟鼓楼簇",
+            "跨簇:0",
+            "节奏:均衡",
+            "站点:2"
+          ]
+        }
+      ],
+      "v2_readable_title": "西安市区半日路线",
+      "v2_readable_overview": "这次路线以 大雁塔簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按午后节奏安排，起步约 14:00 左右，整体会更偏轻松。并保留正餐安排。适合本次 4.0 小时出行。",
+      "v3_readable_title": "西安市区半日路线",
+      "v3_readable_overview": "这次路线以 大雁塔簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按午后节奏安排，起步约 14:00 左右，整体会更偏轻松。并保留正餐安排。适合本次 4.0 小时出行。",
+      "fallback_flags": {
+        "v2_selection_fallback": true,
+        "v3_selection_fallback": true,
+        "v3_invalid_action_fallback_count": 3,
+        "v3_action_coerced_count": 0,
+        "v3_auto_repair_count": 0,
+        "v3_post_check_switch": false
+      },
+      "debug_log_key": [
+        "Planning step=1: invalid action fallback -> SEARCH",
+        "Planning step=1 action=SEARCH reason=Invalid planning action; fallback. args={}",
+        "Planning step=2: invalid action fallback -> GENERATE_CANDIDATES",
+        "Planning step=2 action=GENERATE_CANDIDATES reason=Invalid planning action; fallback. args={}",
+        "Planning step=3: invalid action fallback -> FINISH",
+        "Planning step=3 action=FINISH reason=Invalid planning action; fallback. args={}",
+        "已获取天气上下文（source=fallback_request）。",
+        "最终方案=relaxed_first，selected_by=fallback_rule。"
+      ]
+    }
+  ]
+}

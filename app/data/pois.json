@@ -1,0 +1,471 @@
+{
+  "version": "v1-core-route-mock",
+  "city_scope": "xian_core_route_beilin_lianhu_yanta",
+  "supported_districts": [
+    "碑林区",
+    "莲湖区",
+    "雁塔区"
+  ],
+  "cluster_scope": [
+    "城墙钟鼓楼簇",
+    "小寨文博簇",
+    "大雁塔簇",
+    "曲江夜游簇"
+  ],
+  "note": "V1 为西安市区核心路线版，仅覆盖碑林区、莲湖区、雁塔区，按 4 个固定地理簇组织",
+  "pois": [
+    {
+      "id": "sight_clock_tower",
+      "name": "钟楼",
+      "kind": "sight",
+      "district_cluster": "城墙钟鼓楼簇",
+      "category": "landmark",
+      "indoor_or_outdoor": "outdoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "medium",
+      "walking_level": "medium",
+      "estimated_visit_minutes": 45,
+      "tags": [
+        "classic",
+        "landmark",
+        "photo"
+      ],
+      "photo_friendly": true,
+      "latitude": 34.259,
+      "longitude": 108.948
+    },
+    {
+      "id": "sight_drum_tower",
+      "name": "鼓楼",
+      "kind": "sight",
+      "district_cluster": "城墙钟鼓楼簇",
+      "category": "landmark",
+      "indoor_or_outdoor": "mixed",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "medium",
+      "walking_level": "medium",
+      "estimated_visit_minutes": 45,
+      "tags": [
+        "classic",
+        "history",
+        "photo"
+      ],
+      "photo_friendly": true,
+      "latitude": 34.261,
+      "longitude": 108.947
+    },
+    {
+      "id": "sight_muslim_street",
+      "name": "回民街",
+      "kind": "sight",
+      "district_cluster": "城墙钟鼓楼簇",
+      "category": "food_street",
+      "indoor_or_outdoor": "outdoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "medium",
+      "walking_level": "medium",
+      "estimated_visit_minutes": 60,
+      "tags": [
+        "food",
+        "lively",
+        "classic"
+      ],
+      "photo_friendly": true,
+      "latitude": 34.2632,
+      "longitude": 108.9449
+    },
+    {
+      "id": "sight_city_wall_south_gate",
+      "name": "城墙南门",
+      "kind": "sight",
+      "district_cluster": "城墙钟鼓楼簇",
+      "category": "historic_site",
+      "indoor_or_outdoor": "outdoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "medium",
+      "walking_level": "high",
+      "estimated_visit_minutes": 70,
+      "tags": [
+        "classic",
+        "history",
+        "landmark"
+      ],
+      "photo_friendly": true,
+      "latitude": 34.2511,
+      "longitude": 108.9532
+    },
+    {
+      "id": "sight_shaanxi_history_museum",
+      "name": "陕西历史博物馆",
+      "kind": "sight",
+      "district_cluster": "小寨文博簇",
+      "category": "museum",
+      "indoor_or_outdoor": "indoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "low",
+      "walking_level": "low",
+      "estimated_visit_minutes": 90,
+      "tags": [
+        "history",
+        "classic",
+        "indoor"
+      ],
+      "photo_friendly": false,
+      "latitude": 34.2246,
+      "longitude": 108.9604
+    },
+    {
+      "id": "sight_xiaozhai_block",
+      "name": "小寨周边",
+      "kind": "sight",
+      "district_cluster": "小寨文博簇",
+      "category": "city_walk",
+      "indoor_or_outdoor": "mixed",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "medium",
+      "walking_level": "medium",
+      "estimated_visit_minutes": 60,
+      "tags": [
+        "shopping",
+        "food",
+        "lively"
+      ],
+      "photo_friendly": true,
+      "latitude": 34.2292,
+      "longitude": 108.9568
+    },
+    {
+      "id": "sight_dayanta",
+      "name": "大雁塔",
+      "kind": "sight",
+      "district_cluster": "大雁塔簇",
+      "category": "landmark",
+      "indoor_or_outdoor": "mixed",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "medium",
+      "walking_level": "medium",
+      "estimated_visit_minutes": 80,
+      "tags": [
+        "classic",
+        "landmark",
+        "photo"
+      ],
+      "photo_friendly": true,
+      "latitude": 34.2216,
+      "longitude": 108.9645
+    },
+    {
+      "id": "sight_daciensi_area",
+      "name": "大慈恩寺周边",
+      "kind": "sight",
+      "district_cluster": "大雁塔簇",
+      "category": "cultural_area",
+      "indoor_or_outdoor": "mixed",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "medium",
+      "walking_level": "low",
+      "estimated_visit_minutes": 60,
+      "tags": [
+        "culture",
+        "photo",
+        "relax"
+      ],
+      "photo_friendly": true,
+      "latitude": 34.2199,
+      "longitude": 108.964
+    },
+    {
+      "id": "sight_tang_paradise",
+      "name": "大唐芙蓉园",
+      "kind": "sight",
+      "district_cluster": "曲江夜游簇",
+      "category": "park",
+      "indoor_or_outdoor": "outdoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "high",
+      "walking_level": "medium",
+      "estimated_visit_minutes": 90,
+      "tags": [
+        "night_view",
+        "photo",
+        "lively"
+      ],
+      "photo_friendly": true,
+      "latitude": 34.2163,
+      "longitude": 108.989
+    },
+    {
+      "id": "sight_datang_everbright_city",
+      "name": "大唐不夜城",
+      "kind": "sight",
+      "district_cluster": "曲江夜游簇",
+      "category": "night_street",
+      "indoor_or_outdoor": "outdoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "medium",
+      "walking_level": "medium",
+      "estimated_visit_minutes": 80,
+      "tags": [
+        "night_view",
+        "food",
+        "lively",
+        "photo"
+      ],
+      "photo_friendly": true,
+      "latitude": 34.2179,
+      "longitude": 108.9737
+    },
+    {
+      "id": "rest_hui_fang_lamb_soup",
+      "name": "回坊泡馍馆",
+      "kind": "restaurant",
+      "district_cluster": "城墙钟鼓楼簇",
+      "category": "local_cuisine",
+      "indoor_or_outdoor": "indoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": false,
+      "cost_level": "medium",
+      "walking_level": "low",
+      "estimated_visit_minutes": 60,
+      "tags": [
+        "food",
+        "proper_meal",
+        "local"
+      ],
+      "rating": 4.4,
+      "flavor_profile": [
+        "savory",
+        "hearty"
+      ],
+      "spicy_level": "low",
+      "queue_level": "medium",
+      "parking_friendly": false,
+      "latitude": 34.2625,
+      "longitude": 108.944
+    },
+    {
+      "id": "rest_bell_tower_noodle",
+      "name": "钟楼面馆",
+      "kind": "restaurant",
+      "district_cluster": "城墙钟鼓楼簇",
+      "category": "noodle",
+      "indoor_or_outdoor": "indoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": false,
+      "cost_level": "low",
+      "walking_level": "low",
+      "estimated_visit_minutes": 50,
+      "tags": [
+        "food",
+        "quick_meal",
+        "local"
+      ],
+      "rating": 4.2,
+      "flavor_profile": [
+        "wheat",
+        "savory"
+      ],
+      "spicy_level": "medium",
+      "queue_level": "low",
+      "parking_friendly": false,
+      "latitude": 34.2587,
+      "longitude": 108.9492
+    },
+    {
+      "id": "rest_xiaozhai_light_cuisine",
+      "name": "小寨清淡家常馆",
+      "kind": "restaurant",
+      "district_cluster": "小寨文博簇",
+      "category": "home_style",
+      "indoor_or_outdoor": "indoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "medium",
+      "walking_level": "low",
+      "estimated_visit_minutes": 60,
+      "tags": [
+        "food",
+        "proper_meal",
+        "light"
+      ],
+      "rating": 4.5,
+      "flavor_profile": [
+        "light",
+        "savory"
+      ],
+      "spicy_level": "low",
+      "queue_level": "low",
+      "parking_friendly": true,
+      "latitude": 34.2285,
+      "longitude": 108.9575
+    },
+    {
+      "id": "rest_museum_veggie_noodle",
+      "name": "文博蔬食面坊",
+      "kind": "restaurant",
+      "district_cluster": "小寨文博簇",
+      "category": "light_food",
+      "indoor_or_outdoor": "indoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "low",
+      "walking_level": "low",
+      "estimated_visit_minutes": 55,
+      "tags": [
+        "food",
+        "light",
+        "quick_meal"
+      ],
+      "rating": 4.3,
+      "flavor_profile": [
+        "light",
+        "vegetable"
+      ],
+      "spicy_level": "low",
+      "queue_level": "medium",
+      "parking_friendly": true,
+      "latitude": 34.2253,
+      "longitude": 108.9598
+    },
+    {
+      "id": "rest_dayanta_cafe_brunch",
+      "name": "雁塔景观咖啡简餐",
+      "kind": "restaurant",
+      "district_cluster": "大雁塔簇",
+      "category": "cafe_brunch",
+      "indoor_or_outdoor": "indoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "high",
+      "walking_level": "low",
+      "estimated_visit_minutes": 65,
+      "tags": [
+        "food",
+        "cafe",
+        "photo"
+      ],
+      "rating": 4.6,
+      "flavor_profile": [
+        "sweet",
+        "light"
+      ],
+      "spicy_level": "low",
+      "queue_level": "medium",
+      "parking_friendly": true,
+      "latitude": 34.2224,
+      "longitude": 108.9652
+    },
+    {
+      "id": "rest_ciensi_dessert_house",
+      "name": "慈恩甜品小馆",
+      "kind": "restaurant",
+      "district_cluster": "大雁塔簇",
+      "category": "dessert",
+      "indoor_or_outdoor": "indoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "medium",
+      "walking_level": "low",
+      "estimated_visit_minutes": 50,
+      "tags": [
+        "food",
+        "dessert",
+        "cafe"
+      ],
+      "rating": 4.4,
+      "flavor_profile": [
+        "sweet",
+        "light"
+      ],
+      "spicy_level": "low",
+      "queue_level": "low",
+      "parking_friendly": true,
+      "latitude": 34.2206,
+      "longitude": 108.9635
+    },
+    {
+      "id": "rest_qujiang_night_bbq",
+      "name": "曲江夜游烤串馆",
+      "kind": "restaurant",
+      "district_cluster": "曲江夜游簇",
+      "category": "bbq",
+      "indoor_or_outdoor": "mixed",
+      "parent_friendly": false,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "medium",
+      "walking_level": "low",
+      "estimated_visit_minutes": 70,
+      "tags": [
+        "food",
+        "lively",
+        "night_view"
+      ],
+      "rating": 4.3,
+      "flavor_profile": [
+        "smoky",
+        "spicy"
+      ],
+      "spicy_level": "high",
+      "queue_level": "high",
+      "parking_friendly": true,
+      "latitude": 34.2187,
+      "longitude": 108.9752
+    },
+    {
+      "id": "rest_qujiang_scenic_restaurant",
+      "name": "曲江景观陕菜馆",
+      "kind": "restaurant",
+      "district_cluster": "曲江夜游簇",
+      "category": "shaanxi_cuisine",
+      "indoor_or_outdoor": "indoor",
+      "parent_friendly": true,
+      "friend_friendly": true,
+      "couple_friendly": true,
+      "cost_level": "high",
+      "walking_level": "low",
+      "estimated_visit_minutes": 75,
+      "tags": [
+        "food",
+        "proper_meal",
+        "night_view"
+      ],
+      "rating": 4.7,
+      "flavor_profile": [
+        "savory",
+        "umami"
+      ],
+      "spicy_level": "medium",
+      "queue_level": "medium",
+      "parking_friendly": true,
+      "latitude": 34.2149,
+      "longitude": 108.9861
+    }
+  ]
+}

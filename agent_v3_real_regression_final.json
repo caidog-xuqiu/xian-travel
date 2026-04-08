@@ -1,0 +1,1863 @@
+[
+  {
+    "text": "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
+    "response": {
+      "thread_id": "fbcce4c5-b6be-49ae-8cdb-f2bab0801ae1",
+      "current_step": "finalize_memory",
+      "current_node": "finalize_memory",
+      "clarification_needed": false,
+      "clarification_question": null,
+      "parsed_request": {
+        "companion_type": "parents",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "rainy",
+        "origin": "钟楼",
+        "preferred_period": "midday",
+        "origin_preference_mode": null,
+        "parsed_by": "llm",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "search_intent": {
+        "companion_type": "parents",
+        "purpose": "relax",
+        "preferred_period": "midday",
+        "weather": "rainy",
+        "walking_tolerance": "low",
+        "need_meal": true,
+        "origin_preference_mode": null
+      },
+      "search_strategy": [
+        "relaxed",
+        "nearby",
+        "indoor",
+        "food"
+      ],
+      "candidate_biases": [
+        "fewer_cross_cluster",
+        "prefer_origin_cluster_first",
+        "prioritize_indoor",
+        "include_meal_stop",
+        "prioritize_relaxed_pacing"
+      ],
+      "strategy_notes": [
+        "陪父母 + 低步行，优先轻松且少跨簇。",
+        "雨天/高温，优先室内点位。",
+        "午间出行且需要用餐，优先保留正餐。",
+        "放松/低步行诉求，优先轻松节奏。"
+      ],
+      "search_round": 1,
+      "planning_history": [
+        {
+          "step": 1,
+          "action": "SEARCH",
+          "reason": "Initial search needed to find indoor, relaxed, nearby options with food for rainy midday with parents.",
+          "args": {
+            "strategy": [
+              "relaxed",
+              "nearby",
+              "indoor",
+              "food"
+            ]
+          },
+          "outcome_summary": "search_results_count=18"
+        },
+        {
+          "step": 2,
+          "action": "GENERATE_CANDIDATES",
+          "reason": "Search results are sufficient (18), and current step is 2, so proceed to generate candidate plans.",
+          "args": {},
+          "outcome_summary": "candidate_plans_count=2"
+        },
+        {
+          "step": 3,
+          "action": "REVISE",
+          "reason": "Rainy weather and low walking preference require indoor focus, and meal need is unmet in current candidates",
+          "args": {
+            "revision_biases": [
+              "prioritize_indoor",
+              "include_meal_stop",
+              "prioritize_relaxed_pacing"
+            ]
+          },
+          "outcome_summary": "revision_biases=['prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing'], candidate_plans_count=2"
+        }
+      ],
+      "search_results_count": 18,
+      "candidate_plans_count": 2,
+      "finish_ready": false,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "has_meal": true,
+          "total_distance_meters": 7009,
+          "total_duration_minutes": 35,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "含餐衔接",
+            "簇分布:小寨文博簇",
+            "节奏:轻松"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk"
+          ],
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "has_meal": true,
+          "total_distance_meters": 7009,
+          "total_duration_minutes": 35,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "tourism",
+          "diff_points": [
+            "含餐衔接",
+            "簇分布:小寨文博簇",
+            "节奏:轻松"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "selected_plan": {
+        "summary": "基于 4.0 小时与 parents 同行，当前天气（请求参数 weather 兜底）为 rainy，推荐以 小寨文博簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "11:58-13:28",
+            "type": "sight",
+            "name": "陕西历史博物馆",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "室内友好，对陪父母更轻松，同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "13:35-14:35",
+            "type": "restaurant",
+            "name": "小寨清淡家常馆",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "步行（估算） 约7分钟",
+            "reason": "室内友好，对陪父母更轻松，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 509,
+            "estimated_duration_minutes": 7
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：rainy。",
+          "今日有雨，已优先室内点位并适度下调夜游点。",
+          "起点为 钟楼，预计路程约 7009 米，交通耗时约 35 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 240 分钟，当前已排入 185 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "selection_reason": "用户需求为陪父母、放松、含餐、步行耐受低、时间紧张，且提示少跨簇更优。relaxed_first方案类型为轻松优先，节奏轻松，步行低，含餐，跨簇次数为0，完全符合用户意图；classic_first方案目的为tourism，标签含museum/landmark，更偏向经典游览，与放松需求不完全匹配。",
+      "reason_tags": [
+        "companions_parents",
+        "purpose_relax",
+        "need_meal",
+        "walking_tolerance_low",
+        "available_hours_short",
+        "low_cross_cluster"
+      ],
+      "selected_by": "llm",
+      "readable_output": {
+        "title": "陪父母的西安半日路线",
+        "overview": "这次路线以 小寨文博簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按午间节奏安排，起步约 11:30 左右，更利于正餐与游览顺路衔接。考虑到当前天气，路线更偏向室内或短时户外停留。并保留正餐安排。适合本次 4.0 小时出行。",
+        "schedule_text": "时段说明：午间更顺路安排用餐，已优先保留正餐位置。\n11:58-13:28 前往 陕西历史博物馆（小寨文博簇，景点）。这样安排主要因为：室内友好，对陪父母更轻松，同簇连续，减少折返。从起点前往（地铁/打车（估算） 约28分钟）。安排在午间更顺路，也方便正餐自然插入中段。 下一段建议：步行（估算） 约7分钟。\n13:35-14:35 前往 小寨清淡家常馆（小寨文博簇，餐饮点）。这样安排主要因为：室内友好，对陪父母更轻松，位于顺路簇内，减少绕行。步行（估算） 约7分钟。",
+        "transport_text": "全程预计约 7.0 公里，交通耗时约 35 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 1 段以步行为主，1 段为跨簇通行。",
+        "tips_text": "已按午间偏好安排，建议 11:30 左右 开始并按时用餐更顺。\n天气方面：天气来源：请求参数 weather 兜底；当前天气：rainy。；今日有雨，已优先室内点位并适度下调夜游点。\n时间方面：时间预算 240 分钟，当前已排入 185 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 7009 米，交通耗时约 35 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；本次有 2 段已回退到简化交通规则（接口仍可用）。；已降低高步行强度点位，现场可继续按体力缩短停留。"
+      },
+      "final_response": {
+        "selection_reason": "用户需求为陪父母、放松、含餐、步行耐受低、时间紧张，且提示少跨簇更优。relaxed_first方案类型为轻松优先，节奏轻松，步行低，含餐，跨簇次数为0，完全符合用户意图；classic_first方案目的为tourism，标签含museum/landmark，更偏向经典游览，与放松需求不完全匹配。",
+        "selected_by": "llm",
+        "readable_output": {
+          "title": "陪父母的西安半日路线",
+          "overview": "这次路线以 小寨文博簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按午间节奏安排，起步约 11:30 左右，更利于正餐与游览顺路衔接。考虑到当前天气，路线更偏向室内或短时户外停留。并保留正餐安排。适合本次 4.0 小时出行。",
+          "schedule_text": "时段说明：午间更顺路安排用餐，已优先保留正餐位置。\n11:58-13:28 前往 陕西历史博物馆（小寨文博簇，景点）。这样安排主要因为：室内友好，对陪父母更轻松，同簇连续，减少折返。从起点前往（地铁/打车（估算） 约28分钟）。安排在午间更顺路，也方便正餐自然插入中段。 下一段建议：步行（估算） 约7分钟。\n13:35-14:35 前往 小寨清淡家常馆（小寨文博簇，餐饮点）。这样安排主要因为：室内友好，对陪父母更轻松，位于顺路簇内，减少绕行。步行（估算） 约7分钟。",
+          "transport_text": "全程预计约 7.0 公里，交通耗时约 35 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 1 段以步行为主，1 段为跨簇通行。",
+          "tips_text": "已按午间偏好安排，建议 11:30 左右 开始并按时用餐更顺。\n天气方面：天气来源：请求参数 weather 兜底；当前天气：rainy。；今日有雨，已优先室内点位并适度下调夜游点。\n时间方面：时间预算 240 分钟，当前已排入 185 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 7009 米，交通耗时约 35 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；本次有 2 段已回退到简化交通规则（接口仍可用）。；已降低高步行强度点位，现场可继续按体力缩短停留。"
+        }
+      },
+      "errors": [],
+      "debug_logs": [
+        {
+          "ts": "2026-04-04T23:24:20",
+          "node": "recall_memory",
+          "level": "info",
+          "message": "未找到历史偏好。"
+        },
+        {
+          "ts": "2026-04-04T23:24:25",
+          "node": "parse_request",
+          "level": "info",
+          "message": "解析完成，来源=llm。"
+        },
+        {
+          "ts": "2026-04-04T23:24:25",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "策略矩阵 primary=['relaxed', 'nearby', 'indoor', 'food'] secondary=[]。"
+        },
+        {
+          "ts": "2026-04-04T23:24:25",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "候选偏好=['fewer_cross_cluster', 'prefer_origin_cluster_first', 'prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']。"
+        },
+        {
+          "ts": "2026-04-04T23:24:25",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "策略说明=陪父母 + 低步行，优先轻松且少跨簇。 | 雨天/高温，优先室内点位。 | 午间出行且需要用餐，优先保留正餐。 | 放松/低步行诉求，优先轻松节奏。。"
+        },
+        {
+          "ts": "2026-04-04T23:24:28",
+          "node": "planning_loop",
+          "level": "info",
+          "message": "Planning step=1 action=SEARCH reason=Initial search needed to find indoor, relaxed, nearby options with food for rainy midday with parents. args={'strategy': ['relaxed', 'nearby', 'indoor', 'food']}"
+        },
+        {
+          "ts": "2026-04-04T23:24:28",
+          "node": "dynamic_search",
+          "level": "info",
+          "message": "动态搜索完成，候选数=18，轮次=1。"
+        },
+        {
+          "ts": "2026-04-04T23:24:28",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "搜索结果精炼完成，候选数=18。"
+        },
+        {
+          "ts": "2026-04-04T23:24:28",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "Planning step=1 outcome=search_results_count=18"
+        },
+        {
+          "ts": "2026-04-04T23:24:34",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "Planning step=2 action=GENERATE_CANDIDATES reason=Search results are sufficient (18), and current step is 2, so proceed to generate candidate plans. args={}"
+        },
+        {
+          "ts": "2026-04-04T23:24:35",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "候选方案生成数=2。"
+        },
+        {
+          "ts": "2026-04-04T23:24:35",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "已按候选偏好排序=['fewer_cross_cluster', 'prefer_origin_cluster_first', 'prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']。"
+        },
+        {
+          "ts": "2026-04-04T23:24:35",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=2 outcome=candidate_plans_count=2"
+        },
+        {
+          "ts": "2026-04-04T23:24:37",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=3 action=REVISE reason=Rainy weather and low walking preference require indoor focus, and meal need is unmet in current candidates args={'revision_biases': ['prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']}"
+        },
+        {
+          "ts": "2026-04-04T23:24:38",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "候选方案生成数=2。"
+        },
+        {
+          "ts": "2026-04-04T23:24:38",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "已按候选偏好排序=['fewer_cross_cluster', 'prefer_origin_cluster_first', 'prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']。"
+        },
+        {
+          "ts": "2026-04-04T23:24:38",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "已应用修正偏置=['prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing']。"
+        },
+        {
+          "ts": "2026-04-04T23:24:38",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=3 outcome=revision_biases=['prioritize_indoor', 'include_meal_stop', 'prioritize_relaxed_pacing'], candidate_plans_count=2"
+        },
+        {
+          "ts": "2026-04-04T23:24:38",
+          "node": "generate_candidates",
+          "level": "warn",
+          "message": "Planning loop reached max steps=3."
+        },
+        {
+          "ts": "2026-04-04T23:24:38",
+          "node": "gather_context",
+          "level": "info",
+          "message": "已获取天气上下文（source=fallback_request）。"
+        },
+        {
+          "ts": "2026-04-04T23:24:41",
+          "node": "select_plan",
+          "level": "info",
+          "message": "LLM 选优成功。"
+        },
+        {
+          "ts": "2026-04-04T23:24:41",
+          "node": "select_plan",
+          "level": "info",
+          "message": "最终方案=relaxed_first，selected_by=llm。"
+        },
+        {
+          "ts": "2026-04-04T23:24:41",
+          "node": "render_output",
+          "level": "info",
+          "message": "文案渲染完成。"
+        },
+        {
+          "ts": "2026-04-04T23:24:41",
+          "node": "finalize_memory",
+          "level": "info",
+          "message": "已写回偏好记忆。"
+        }
+      ]
+    }
+  },
+  {
+    "text": "和对象晚上出去，想吃饭、拍照、逛夜景",
+    "response": {
+      "thread_id": "0d1a5c62-d7da-420c-8b01-94fbce93d492",
+      "current_step": "finalize_memory",
+      "current_node": "finalize_memory",
+      "clarification_needed": false,
+      "clarification_question": null,
+      "parsed_request": {
+        "companion_type": "partner",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "dating",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "evening",
+        "origin_preference_mode": null,
+        "parsed_by": "llm",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "search_intent": {
+        "companion_type": "partner",
+        "purpose": "dating",
+        "preferred_period": "evening",
+        "weather": "sunny",
+        "walking_tolerance": "medium",
+        "need_meal": true,
+        "origin_preference_mode": null
+      },
+      "search_strategy": [
+        "night",
+        "food"
+      ],
+      "candidate_biases": [
+        "prioritize_night_view",
+        "include_meal_stop"
+      ],
+      "strategy_notes": [
+        "晚间约会，优先夜游与晚餐衔接。"
+      ],
+      "search_round": 2,
+      "planning_history": [
+        {
+          "step": 1,
+          "action": "SEARCH",
+          "reason": "Initial search for dating activities with night and food focus",
+          "args": {
+            "strategy": [
+              "night",
+              "food"
+            ]
+          },
+          "outcome_summary": "search_results_count=18"
+        },
+        {
+          "step": 2,
+          "action": "GENERATE_CANDIDATES",
+          "reason": "Sufficient search results (18) for night and food criteria; ready to create dating plans for evening with meal.",
+          "args": {},
+          "outcome_summary": "candidate_plans_count=3"
+        },
+        {
+          "step": 3,
+          "action": "GENERATE_CANDIDATES",
+          "reason": "Sufficient search results (18) and existing candidates (3) are available; ready to generate refined dating plans for evening, sunny weather with meal stop.",
+          "args": {},
+          "outcome_summary": "candidate_plans_count=3"
+        }
+      ],
+      "search_results_count": 18,
+      "candidate_plans_count": 3,
+      "finish_ready": false,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "has_meal": true,
+          "total_distance_meters": 6808,
+          "total_duration_minutes": 32,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "含餐衔接",
+            "簇分布:曲江夜游簇",
+            "节奏:均衡"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "note": "偏经典/文博，优先核心点位"
+        },
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "has_meal": true,
+          "total_distance_meters": 6808,
+          "total_duration_minutes": 32,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "含餐衔接",
+            "簇分布:曲江夜游簇",
+            "节奏:轻松"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk"
+          ],
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "曲江夜游簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "曲江夜游簇",
+          "has_meal": true,
+          "total_distance_meters": 7687,
+          "total_duration_minutes": 44,
+          "rhythm": "均衡",
+          "budget_level": "medium",
+          "walking_tolerance": "medium",
+          "purpose": "food",
+          "diff_points": [
+            "含餐衔接",
+            "簇分布:曲江夜游簇",
+            "节奏:均衡"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link"
+          ],
+          "note": "偏顺路餐饮，兼顾用餐衔接"
+        }
+      ],
+      "selected_plan": {
+        "summary": "基于 4.0 小时与 partner 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 曲江夜游簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "18:28-19:43",
+            "type": "restaurant",
+            "name": "曲江景观陕菜馆",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "更有氛围感，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "19:47-21:17",
+            "type": "sight",
+            "name": "大唐芙蓉园",
+            "district_cluster": "曲江夜游簇",
+            "transport_from_prev": "步行（估算） 约4分钟",
+            "reason": "更有氛围感，同簇连续，减少折返",
+            "estimated_distance_meters": 308,
+            "estimated_duration_minutes": 4
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 6808 米，交通耗时约 32 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 240 分钟，当前已排入 197 分钟。",
+          "检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。",
+          "夜游场景已优先保证晚间用餐与夜游点衔接。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "selection_reason": "用户需求为约会目的、中等步行耐受、含餐，且提示陪父母/轻松优先时少跨簇更优。该方案节奏轻松、步行量低，符合约会场景的舒适需求，且无跨簇，符合提示。",
+      "reason_tags": [
+        "purpose_dating",
+        "walking_tolerance_medium",
+        "meal_required",
+        "relaxed_priority",
+        "no_cross_cluster"
+      ],
+      "selected_by": "llm",
+      "readable_output": {
+        "title": "西安约会型半日路线",
+        "overview": "这次路线以 曲江夜游簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按晚间节奏安排，18:00 左右 后开始更合适，利于夜游与晚餐衔接。并保留正餐安排。适合本次 4.0 小时出行。",
+        "schedule_text": "时段说明：晚间更偏夜游节奏，已优先衔接夜景与晚餐。\n本次已优先保证晚间用餐与夜游点顺路衔接。\n18:28-19:43 前往 曲江景观陕菜馆（曲江夜游簇，餐饮点）。这样安排主要因为：更有氛围感，位于顺路簇内，减少绕行。从起点前往（地铁/打车（估算） 约28分钟）。放在晚间更符合夜游节奏，也更适合衔接拍照和晚餐安排。 下一段建议：步行（估算） 约4分钟。\n19:47-21:17 前往 大唐芙蓉园（曲江夜游簇，景点）。这样安排主要因为：更有氛围感，同簇连续，减少折返。步行（估算） 约4分钟。",
+        "transport_text": "全程预计约 6.8 公里，交通耗时约 32 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 1 段以步行为主，1 段为跨簇通行。",
+        "tips_text": "已按晚间偏好安排，建议 18:00 左右 后开始更顺，也便于衔接夜游与晚餐。\n天气方面：天气来源：请求参数 weather 兜底；当前天气：sunny。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 240 分钟，当前已排入 197 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 6808 米，交通耗时约 32 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。；夜游场景已优先保证晚间用餐与夜游点衔接。；本次有 2 段已回退到简化交通规则（接口仍可用）。；已降低高步行强度点位，现场可继续按体力缩短停留。"
+      },
+      "final_response": {
+        "selection_reason": "用户需求为约会目的、中等步行耐受、含餐，且提示陪父母/轻松优先时少跨簇更优。该方案节奏轻松、步行量低，符合约会场景的舒适需求，且无跨簇，符合提示。",
+        "selected_by": "llm",
+        "readable_output": {
+          "title": "西安约会型半日路线",
+          "overview": "这次路线以 曲江夜游簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按晚间节奏安排，18:00 左右 后开始更合适，利于夜游与晚餐衔接。并保留正餐安排。适合本次 4.0 小时出行。",
+          "schedule_text": "时段说明：晚间更偏夜游节奏，已优先衔接夜景与晚餐。\n本次已优先保证晚间用餐与夜游点顺路衔接。\n18:28-19:43 前往 曲江景观陕菜馆（曲江夜游簇，餐饮点）。这样安排主要因为：更有氛围感，位于顺路簇内，减少绕行。从起点前往（地铁/打车（估算） 约28分钟）。放在晚间更符合夜游节奏，也更适合衔接拍照和晚餐安排。 下一段建议：步行（估算） 约4分钟。\n19:47-21:17 前往 大唐芙蓉园（曲江夜游簇，景点）。这样安排主要因为：更有氛围感，同簇连续，减少折返。步行（估算） 约4分钟。",
+          "transport_text": "全程预计约 6.8 公里，交通耗时约 32 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 1 段以步行为主，1 段为跨簇通行。",
+          "tips_text": "已按晚间偏好安排，建议 18:00 左右 后开始更顺，也便于衔接夜游与晚餐。\n天气方面：天气来源：请求参数 weather 兜底；当前天气：sunny。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 240 分钟，当前已排入 197 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 6808 米，交通耗时约 32 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；检测到夜游偏好，已按晚间起步（18:00）并优先尝试夜游簇点位。；夜游场景已优先保证晚间用餐与夜游点衔接。；本次有 2 段已回退到简化交通规则（接口仍可用）。；已降低高步行强度点位，现场可继续按体力缩短停留。"
+        }
+      },
+      "errors": [],
+      "debug_logs": [
+        {
+          "ts": "2026-04-04T23:24:41",
+          "node": "recall_memory",
+          "level": "info",
+          "message": "未找到历史偏好。"
+        },
+        {
+          "ts": "2026-04-04T23:24:44",
+          "node": "parse_request",
+          "level": "info",
+          "message": "解析完成，来源=llm。"
+        },
+        {
+          "ts": "2026-04-04T23:24:44",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "策略矩阵 primary=['night'] secondary=['food']。"
+        },
+        {
+          "ts": "2026-04-04T23:24:44",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "候选偏好=['prioritize_night_view', 'include_meal_stop']。"
+        },
+        {
+          "ts": "2026-04-04T23:24:44",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "策略说明=晚间约会，优先夜游与晚餐衔接。。"
+        },
+        {
+          "ts": "2026-04-04T23:24:47",
+          "node": "planning_loop",
+          "level": "info",
+          "message": "Planning step=1 action=SEARCH reason=Initial search for dating activities with night and food focus args={'strategy': ['night', 'food']}"
+        },
+        {
+          "ts": "2026-04-04T23:24:47",
+          "node": "dynamic_search",
+          "level": "info",
+          "message": "首轮候选不足，触发补搜。"
+        },
+        {
+          "ts": "2026-04-04T23:24:47",
+          "node": "dynamic_search",
+          "level": "info",
+          "message": "动态搜索完成，候选数=18，轮次=2。"
+        },
+        {
+          "ts": "2026-04-04T23:24:47",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "搜索结果精炼完成，候选数=18。"
+        },
+        {
+          "ts": "2026-04-04T23:24:47",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "Planning step=1 outcome=search_results_count=18"
+        },
+        {
+          "ts": "2026-04-04T23:24:50",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "Planning step=2 action=GENERATE_CANDIDATES reason=Sufficient search results (18) for night and food criteria; ready to create dating plans for evening with meal. args={}"
+        },
+        {
+          "ts": "2026-04-04T23:24:50",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "候选方案生成数=3。"
+        },
+        {
+          "ts": "2026-04-04T23:24:50",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "已按候选偏好排序=['prioritize_night_view', 'include_meal_stop']。"
+        },
+        {
+          "ts": "2026-04-04T23:24:50",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=2 outcome=candidate_plans_count=3"
+        },
+        {
+          "ts": "2026-04-04T23:24:54",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=3 action=GENERATE_CANDIDATES reason=Sufficient search results (18) and existing candidates (3) are available; ready to generate refined dating plans for evening, sunny weather with meal stop. args={}"
+        },
+        {
+          "ts": "2026-04-04T23:24:54",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "候选方案生成数=3。"
+        },
+        {
+          "ts": "2026-04-04T23:24:54",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "已按候选偏好排序=['prioritize_night_view', 'include_meal_stop']。"
+        },
+        {
+          "ts": "2026-04-04T23:24:54",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=3 outcome=candidate_plans_count=3"
+        },
+        {
+          "ts": "2026-04-04T23:24:54",
+          "node": "generate_candidates",
+          "level": "warn",
+          "message": "Planning loop reached max steps=3."
+        },
+        {
+          "ts": "2026-04-04T23:24:54",
+          "node": "gather_context",
+          "level": "info",
+          "message": "已获取天气上下文（source=fallback_request）。"
+        },
+        {
+          "ts": "2026-04-04T23:24:58",
+          "node": "select_plan",
+          "level": "info",
+          "message": "LLM 选优成功。"
+        },
+        {
+          "ts": "2026-04-04T23:24:58",
+          "node": "select_plan",
+          "level": "info",
+          "message": "最终方案=relaxed_first，selected_by=llm。"
+        },
+        {
+          "ts": "2026-04-04T23:24:58",
+          "node": "render_output",
+          "level": "info",
+          "message": "文案渲染完成。"
+        },
+        {
+          "ts": "2026-04-04T23:24:58",
+          "node": "finalize_memory",
+          "level": "info",
+          "message": "已写回偏好记忆。"
+        }
+      ]
+    }
+  },
+  {
+    "text": "我在钟楼附近，只有3小时，想轻松一点",
+    "response": {
+      "thread_id": "30a05c26-af5a-4a77-a176-bb042c5897c7",
+      "current_step": "finalize_memory",
+      "current_node": "finalize_memory",
+      "clarification_needed": false,
+      "clarification_question": null,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 3.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": "nearby",
+        "parsed_by": "llm",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "search_intent": {
+        "companion_type": "solo",
+        "purpose": "relax",
+        "preferred_period": null,
+        "weather": "sunny",
+        "walking_tolerance": "low",
+        "need_meal": true,
+        "origin_preference_mode": "nearby"
+      },
+      "search_strategy": [
+        "classic",
+        "nearby",
+        "relaxed"
+      ],
+      "candidate_biases": [
+        "prefer_origin_cluster_first",
+        "prioritize_relaxed_pacing",
+        "fewer_cross_cluster",
+        "include_meal_stop"
+      ],
+      "strategy_notes": [
+        "识别到附近语义，优先起点邻近簇。",
+        "放松/低步行诉求，优先轻松节奏。",
+        "未命中特殊组合，采用基础策略。"
+      ],
+      "search_round": 1,
+      "planning_history": [
+        {
+          "step": 1,
+          "action": "SEARCH",
+          "reason": "Initial search needed to find candidate activities matching solo, relax, sunny, low walking, and meal needs.",
+          "args": {
+            "search_strategy": [
+              "classic",
+              "nearby",
+              "relaxed"
+            ],
+            "filters": {
+              "companion": "solo",
+              "purpose": "relax",
+              "weather": "sunny",
+              "walking": "low",
+              "need_meal": true
+            }
+          },
+          "outcome_summary": "search_results_count=18"
+        },
+        {
+          "step": 2,
+          "action": "GENERATE_CANDIDATES",
+          "reason": "Search results are sufficient (18), no candidates yet, and request specifies solo, relax, sunny, low walking, and meal needs which align with current relaxed strategy.",
+          "args": {},
+          "outcome_summary": "candidate_plans_count=2"
+        },
+        {
+          "step": 3,
+          "action": "REVISE",
+          "reason": "Need to include a meal stop as required by need_meal=True, and adjust for relaxed pacing",
+          "args": {
+            "revision_biases": [
+              "include_meal_stop",
+              "prioritize_relaxed_pacing"
+            ]
+          },
+          "outcome_summary": "revision_biases=['include_meal_stop', 'prioritize_relaxed_pacing'], candidate_plans_count=2"
+        }
+      ],
+      "search_results_count": 18,
+      "candidate_plans_count": 2,
+      "finish_ready": false,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "has_meal": true,
+          "total_distance_meters": 1400,
+          "total_duration_minutes": 19,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "tourism",
+          "diff_points": [
+            "含餐衔接",
+            "簇分布:城墙钟鼓楼簇",
+            "节奏:轻松"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "note": "偏经典/文博，优先核心点位"
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "城墙钟鼓楼簇",
+          "has_meal": true,
+          "total_distance_meters": 1837,
+          "total_duration_minutes": 24,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "food",
+          "diff_points": [
+            "含餐衔接",
+            "簇分布:城墙钟鼓楼簇",
+            "节奏:轻松"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link"
+          ],
+          "note": "偏顺路餐饮，兼顾用餐衔接"
+        }
+      ],
+      "selected_plan": {
+        "summary": "基于 3.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 城墙钟鼓楼簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "09:16-10:01",
+            "type": "sight",
+            "name": "钟楼",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "从起点前往（步行（估算） 约16分钟）",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 1200,
+            "estimated_duration_minutes": 16
+          },
+          {
+            "time_slot": "10:04-11:04",
+            "type": "restaurant",
+            "name": "钟楼面馆",
+            "district_cluster": "城墙钟鼓楼簇",
+            "transport_from_prev": "步行（估算） 约3分钟",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 200,
+            "estimated_duration_minutes": 3
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 1400 米，交通耗时约 19 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 180 分钟，当前已排入 124 分钟。",
+          "已优先考虑起点“钟楼”附近的首站候选。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "selection_reason": "用户需求为solo、relax、需餐食、低步行耐受、时间紧张，且提示少跨簇更优。两个方案均在同一簇、含餐、低步行、轻松节奏，但classic_first交通时间更短（19min vs 24min），更符合时间紧张和放松优先的意图。",
+      "reason_tags": [
+        "solo",
+        "relax",
+        "meal_required",
+        "low_walking",
+        "time_constrained",
+        "single_cluster"
+      ],
+      "selected_by": "llm",
+      "readable_output": {
+        "title": "西安市区半日路线",
+        "overview": "这次路线以 城墙钟鼓楼簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。并保留正餐安排。适合本次 3.0 小时出行。",
+        "schedule_text": "09:16-10:01 前往 钟楼（城墙钟鼓楼簇，景点）。这样安排主要因为：同簇连续，减少折返。从起点前往（步行（估算） 约16分钟）。 下一段建议：步行（估算） 约3分钟。\n10:04-11:04 前往 钟楼面馆（城墙钟鼓楼簇，餐饮点）。这样安排主要因为：位于顺路簇内，减少绕行。步行（估算） 约3分钟。",
+        "transport_text": "全程预计约 1.4 公里，交通耗时约 19 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 2 段以步行为主，0 段为跨簇通行。",
+        "tips_text": "天气方面：天气来源：请求参数 weather 兜底；当前天气：sunny。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 180 分钟，当前已排入 124 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 1400 米，交通耗时约 19 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；已优先考虑起点“钟楼”附近的首站候选。；本次有 2 段已回退到简化交通规则（接口仍可用）。；已降低高步行强度点位，现场可继续按体力缩短停留。"
+      },
+      "final_response": {
+        "selection_reason": "用户需求为solo、relax、需餐食、低步行耐受、时间紧张，且提示少跨簇更优。两个方案均在同一簇、含餐、低步行、轻松节奏，但classic_first交通时间更短（19min vs 24min），更符合时间紧张和放松优先的意图。",
+        "selected_by": "llm",
+        "readable_output": {
+          "title": "西安市区半日路线",
+          "overview": "这次路线以 城墙钟鼓楼簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。并保留正餐安排。适合本次 3.0 小时出行。",
+          "schedule_text": "09:16-10:01 前往 钟楼（城墙钟鼓楼簇，景点）。这样安排主要因为：同簇连续，减少折返。从起点前往（步行（估算） 约16分钟）。 下一段建议：步行（估算） 约3分钟。\n10:04-11:04 前往 钟楼面馆（城墙钟鼓楼簇，餐饮点）。这样安排主要因为：位于顺路簇内，减少绕行。步行（估算） 约3分钟。",
+          "transport_text": "全程预计约 1.4 公里，交通耗时约 19 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 2 段以步行为主，0 段为跨簇通行。",
+          "tips_text": "天气方面：天气来源：请求参数 weather 兜底；当前天气：sunny。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 180 分钟，当前已排入 124 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 1400 米，交通耗时约 19 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；已优先考虑起点“钟楼”附近的首站候选。；本次有 2 段已回退到简化交通规则（接口仍可用）。；已降低高步行强度点位，现场可继续按体力缩短停留。"
+        }
+      },
+      "errors": [],
+      "debug_logs": [
+        {
+          "ts": "2026-04-04T23:24:58",
+          "node": "recall_memory",
+          "level": "info",
+          "message": "未找到历史偏好。"
+        },
+        {
+          "ts": "2026-04-04T23:25:02",
+          "node": "parse_request",
+          "level": "info",
+          "message": "解析完成，来源=llm。"
+        },
+        {
+          "ts": "2026-04-04T23:25:02",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "策略矩阵 primary=['classic'] secondary=['nearby', 'relaxed']。"
+        },
+        {
+          "ts": "2026-04-04T23:25:02",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "候选偏好=['prefer_origin_cluster_first', 'prioritize_relaxed_pacing', 'fewer_cross_cluster']。"
+        },
+        {
+          "ts": "2026-04-04T23:25:02",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "策略说明=识别到附近语义，优先起点邻近簇。 | 放松/低步行诉求，优先轻松节奏。 | 未命中特殊组合，采用基础策略。。"
+        },
+        {
+          "ts": "2026-04-04T23:25:05",
+          "node": "planning_loop",
+          "level": "info",
+          "message": "Planning step=1 action=SEARCH reason=Initial search needed to find candidate activities matching solo, relax, sunny, low walking, and meal needs. args={'search_strategy': ['classic', 'nearby', 'relaxed'], 'filters': {'companion': 'solo', 'purpose': 'relax', 'weather': 'sunny', 'walking': 'low', 'need_meal': True}}"
+        },
+        {
+          "ts": "2026-04-04T23:25:05",
+          "node": "dynamic_search",
+          "level": "info",
+          "message": "动态搜索完成，候选数=18，轮次=1。"
+        },
+        {
+          "ts": "2026-04-04T23:25:05",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "搜索结果精炼完成，候选数=18。"
+        },
+        {
+          "ts": "2026-04-04T23:25:05",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "Planning step=1 outcome=search_results_count=18"
+        },
+        {
+          "ts": "2026-04-04T23:25:09",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "Planning step=2 action=GENERATE_CANDIDATES reason=Search results are sufficient (18), no candidates yet, and request specifies solo, relax, sunny, low walking, and meal needs which align with current relaxed strategy. args={}"
+        },
+        {
+          "ts": "2026-04-04T23:25:09",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "候选方案生成数=2。"
+        },
+        {
+          "ts": "2026-04-04T23:25:09",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "已按候选偏好排序=['prefer_origin_cluster_first', 'prioritize_relaxed_pacing', 'fewer_cross_cluster']。"
+        },
+        {
+          "ts": "2026-04-04T23:25:09",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=2 outcome=candidate_plans_count=2"
+        },
+        {
+          "ts": "2026-04-04T23:25:14",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=3 action=REVISE reason=Need to include a meal stop as required by need_meal=True, and adjust for relaxed pacing args={'revision_biases': ['include_meal_stop', 'prioritize_relaxed_pacing']}"
+        },
+        {
+          "ts": "2026-04-04T23:25:14",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "候选方案生成数=2。"
+        },
+        {
+          "ts": "2026-04-04T23:25:14",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "已按候选偏好排序=['prefer_origin_cluster_first', 'prioritize_relaxed_pacing', 'fewer_cross_cluster', 'include_meal_stop']。"
+        },
+        {
+          "ts": "2026-04-04T23:25:14",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "已应用修正偏置=['include_meal_stop', 'prioritize_relaxed_pacing']。"
+        },
+        {
+          "ts": "2026-04-04T23:25:14",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=3 outcome=revision_biases=['include_meal_stop', 'prioritize_relaxed_pacing'], candidate_plans_count=2"
+        },
+        {
+          "ts": "2026-04-04T23:25:14",
+          "node": "generate_candidates",
+          "level": "warn",
+          "message": "Planning loop reached max steps=3."
+        },
+        {
+          "ts": "2026-04-04T23:25:14",
+          "node": "gather_context",
+          "level": "info",
+          "message": "已获取天气上下文（source=fallback_request）。"
+        },
+        {
+          "ts": "2026-04-04T23:25:17",
+          "node": "select_plan",
+          "level": "info",
+          "message": "LLM 选优成功。"
+        },
+        {
+          "ts": "2026-04-04T23:25:17",
+          "node": "select_plan",
+          "level": "info",
+          "message": "最终方案=classic_first，selected_by=llm。"
+        },
+        {
+          "ts": "2026-04-04T23:25:17",
+          "node": "render_output",
+          "level": "info",
+          "message": "文案渲染完成。"
+        },
+        {
+          "ts": "2026-04-04T23:25:17",
+          "node": "finalize_memory",
+          "level": "info",
+          "message": "已写回偏好记忆。"
+        }
+      ]
+    }
+  },
+  {
+    "text": "和朋友一天，预算低一点，想多逛几个热闹的地方",
+    "response": {
+      "thread_id": "efd99200-b3f6-40d4-a001-a290570c17e3",
+      "current_step": "finalize_memory",
+      "current_node": "finalize_memory",
+      "clarification_needed": false,
+      "clarification_question": null,
+      "parsed_request": {
+        "companion_type": "friends",
+        "available_hours": 8.0,
+        "budget_level": "low",
+        "purpose": "tourism",
+        "need_meal": true,
+        "walking_tolerance": "medium",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": null,
+        "origin_preference_mode": null,
+        "parsed_by": "llm",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "search_intent": {
+        "companion_type": "friends",
+        "purpose": "tourism",
+        "preferred_period": null,
+        "weather": "sunny",
+        "walking_tolerance": "medium",
+        "need_meal": true,
+        "origin_preference_mode": null
+      },
+      "search_strategy": [
+        "classic"
+      ],
+      "candidate_biases": [
+        "include_meal_stop",
+        "prioritize_relaxed_pacing"
+      ],
+      "strategy_notes": [
+        "未命中特殊组合，采用基础策略。"
+      ],
+      "search_round": 2,
+      "planning_history": [
+        {
+          "step": 1,
+          "action": "SEARCH",
+          "reason": "Initial search needed to generate candidate plans",
+          "args": {
+            "strategy": "classic"
+          },
+          "outcome_summary": "search_results_count=18"
+        },
+        {
+          "step": 2,
+          "action": "GENERATE_CANDIDATES",
+          "reason": "Sufficient search results available, need to generate candidate plans for friends tourism with meal requirement.",
+          "args": {},
+          "outcome_summary": "candidate_plans_count=2"
+        },
+        {
+          "step": 3,
+          "action": "REVISE",
+          "reason": "Need to include a meal stop as requested, and adjust for sunny weather and medium walking.",
+          "args": {
+            "revision_biases": [
+              "include_meal_stop",
+              "prioritize_relaxed_pacing"
+            ]
+          },
+          "outcome_summary": "revision_biases=['include_meal_stop', 'prioritize_relaxed_pacing'], candidate_plans_count=2"
+        }
+      ],
+      "search_results_count": 18,
+      "candidate_plans_count": 2,
+      "finish_ready": false,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "relaxed_first",
+          "variant_label": "轻松优先",
+          "stop_count": 4,
+          "clusters": [
+            "小寨文博簇",
+            "大雁塔簇"
+          ],
+          "is_cross_cluster": true,
+          "cross_cluster_count": 1,
+          "cluster_transition_summary": "小寨文博簇 -> 大雁塔簇",
+          "has_meal": true,
+          "total_distance_meters": 8440,
+          "total_duration_minutes": 50,
+          "rhythm": "轻松",
+          "budget_level": "low",
+          "walking_tolerance": "low",
+          "purpose": "relax",
+          "diff_points": [
+            "含餐衔接",
+            "簇分布:小寨文博簇 / 大雁塔簇",
+            "节奏:轻松"
+          ],
+          "bias_tags": [
+            "relaxed",
+            "low_walk"
+          ],
+          "note": "偏轻松少走路，节奏更舒缓"
+        },
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 4,
+          "clusters": [
+            "小寨文博簇",
+            "城墙钟鼓楼簇"
+          ],
+          "is_cross_cluster": true,
+          "cross_cluster_count": 1,
+          "cluster_transition_summary": "小寨文博簇 -> 城墙钟鼓楼簇",
+          "has_meal": true,
+          "total_distance_meters": 11148,
+          "total_duration_minutes": 58,
+          "rhythm": "紧凑",
+          "budget_level": "low",
+          "walking_tolerance": "medium",
+          "purpose": "tourism",
+          "diff_points": [
+            "含餐衔接",
+            "簇分布:小寨文博簇 / 城墙钟鼓楼簇",
+            "节奏:紧凑"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "note": "偏经典/文博，优先核心点位"
+        }
+      ],
+      "selected_plan": {
+        "summary": "基于 8.0 小时与 friends 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 小寨文博簇 -> 大雁塔簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "09:28-10:58",
+            "type": "sight",
+            "name": "陕西历史博物馆",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "氛围热闹，同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "11:01-12:01",
+            "type": "restaurant",
+            "name": "文博蔬食面坊",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "步行（估算） 约3分钟",
+            "reason": "氛围热闹，位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 200,
+            "estimated_duration_minutes": 3
+          },
+          {
+            "time_slot": "12:08-13:08",
+            "type": "sight",
+            "name": "小寨周边",
+            "district_cluster": "小寨文博簇",
+            "transport_from_prev": "步行（估算） 约7分钟",
+            "reason": "氛围热闹，同簇连续，减少折返",
+            "estimated_distance_meters": 513,
+            "estimated_duration_minutes": 7
+          },
+          {
+            "time_slot": "13:20-14:20",
+            "type": "sight",
+            "name": "大慈恩寺周边",
+            "district_cluster": "大雁塔簇",
+            "transport_from_prev": "地铁/打车（估算） 约12分钟",
+            "reason": "氛围热闹，同簇连续，减少折返",
+            "estimated_distance_meters": 1227,
+            "estimated_duration_minutes": 12
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 8440 米，交通耗时约 50 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 480 分钟，当前已排入 320 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 4 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "selection_reason": "用户需求为旅游、含餐、中等步行耐受，且提示陪父母/轻松优先时少跨簇更优。relaxed_first方案节奏轻松、步行低、跨簇次数1，更符合轻松优先和时间紧张的优化原则。",
+      "reason_tags": [
+        "轻松优先",
+        "少跨簇",
+        "步行低",
+        "含餐衔接"
+      ],
+      "selected_by": "llm",
+      "readable_output": {
+        "title": "朋友同行西安一日路线",
+        "overview": "这次路线以 小寨文博簇、大雁塔簇 为主，共 4 站，整体节奏偏均衡，优先顺路衔接、少折返。并保留正餐安排。适合本次 8.0 小时出行。",
+        "schedule_text": "09:28-10:58 前往 陕西历史博物馆（小寨文博簇，景点）。这样安排主要因为：氛围热闹，同簇连续，减少折返。从起点前往（地铁/打车（估算） 约28分钟）。 下一段建议：步行（估算） 约3分钟。\n11:01-12:01 前往 文博蔬食面坊（小寨文博簇，餐饮点）。这样安排主要因为：氛围热闹，位于顺路簇内，减少绕行。步行（估算） 约3分钟。 下一段建议：步行（估算） 约7分钟。\n12:08-13:08 前往 小寨周边（小寨文博簇，景点）。这样安排主要因为：氛围热闹，同簇连续，减少折返。步行（估算） 约7分钟。 下一段建议：地铁/打车（估算） 约12分钟。\n13:20-14:20 前往 大慈恩寺周边（大雁塔簇，景点）。这样安排主要因为：氛围热闹，同簇连续，减少折返。地铁/打车（估算） 约12分钟。",
+        "transport_text": "全程预计约 8.4 公里，交通耗时约 50 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 2 段以步行为主，2 段为跨簇通行。",
+        "tips_text": "天气方面：天气来源：请求参数 weather 兜底；当前天气：sunny。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 480 分钟，当前已排入 320 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 8440 米，交通耗时约 50 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；本次有 4 段已回退到简化交通规则（接口仍可用）。；已降低高步行强度点位，现场可继续按体力缩短停留。"
+      },
+      "final_response": {
+        "selection_reason": "用户需求为旅游、含餐、中等步行耐受，且提示陪父母/轻松优先时少跨簇更优。relaxed_first方案节奏轻松、步行低、跨簇次数1，更符合轻松优先和时间紧张的优化原则。",
+        "selected_by": "llm",
+        "readable_output": {
+          "title": "朋友同行西安一日路线",
+          "overview": "这次路线以 小寨文博簇、大雁塔簇 为主，共 4 站，整体节奏偏均衡，优先顺路衔接、少折返。并保留正餐安排。适合本次 8.0 小时出行。",
+          "schedule_text": "09:28-10:58 前往 陕西历史博物馆（小寨文博簇，景点）。这样安排主要因为：氛围热闹，同簇连续，减少折返。从起点前往（地铁/打车（估算） 约28分钟）。 下一段建议：步行（估算） 约3分钟。\n11:01-12:01 前往 文博蔬食面坊（小寨文博簇，餐饮点）。这样安排主要因为：氛围热闹，位于顺路簇内，减少绕行。步行（估算） 约3分钟。 下一段建议：步行（估算） 约7分钟。\n12:08-13:08 前往 小寨周边（小寨文博簇，景点）。这样安排主要因为：氛围热闹，同簇连续，减少折返。步行（估算） 约7分钟。 下一段建议：地铁/打车（估算） 约12分钟。\n13:20-14:20 前往 大慈恩寺周边（大雁塔簇，景点）。这样安排主要因为：氛围热闹，同簇连续，减少折返。地铁/打车（估算） 约12分钟。",
+          "transport_text": "全程预计约 8.4 公里，交通耗时约 50 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 2 段以步行为主，2 段为跨簇通行。",
+          "tips_text": "天气方面：天气来源：请求参数 weather 兜底；当前天气：sunny。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 480 分钟，当前已排入 320 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 8440 米，交通耗时约 50 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；本次有 4 段已回退到简化交通规则（接口仍可用）。；已降低高步行强度点位，现场可继续按体力缩短停留。"
+        }
+      },
+      "errors": [],
+      "debug_logs": [
+        {
+          "ts": "2026-04-04T23:25:17",
+          "node": "recall_memory",
+          "level": "info",
+          "message": "未找到历史偏好。"
+        },
+        {
+          "ts": "2026-04-04T23:25:20",
+          "node": "parse_request",
+          "level": "info",
+          "message": "解析完成，来源=llm。"
+        },
+        {
+          "ts": "2026-04-04T23:25:20",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "策略矩阵 primary=['classic'] secondary=[]。"
+        },
+        {
+          "ts": "2026-04-04T23:25:20",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "策略说明=未命中特殊组合，采用基础策略。。"
+        },
+        {
+          "ts": "2026-04-04T23:25:22",
+          "node": "planning_loop",
+          "level": "info",
+          "message": "Planning step=1 action=SEARCH reason=Initial search needed to generate candidate plans args={'strategy': 'classic'}"
+        },
+        {
+          "ts": "2026-04-04T23:25:22",
+          "node": "dynamic_search",
+          "level": "info",
+          "message": "首轮候选不足，触发补搜。"
+        },
+        {
+          "ts": "2026-04-04T23:25:22",
+          "node": "dynamic_search",
+          "level": "info",
+          "message": "动态搜索完成，候选数=18，轮次=2。"
+        },
+        {
+          "ts": "2026-04-04T23:25:22",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "搜索结果精炼完成，候选数=18。"
+        },
+        {
+          "ts": "2026-04-04T23:25:22",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "Planning step=1 outcome=search_results_count=18"
+        },
+        {
+          "ts": "2026-04-04T23:25:25",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "Planning step=2 action=GENERATE_CANDIDATES reason=Sufficient search results available, need to generate candidate plans for friends tourism with meal requirement. args={}"
+        },
+        {
+          "ts": "2026-04-04T23:25:25",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "候选方案生成数=2。"
+        },
+        {
+          "ts": "2026-04-04T23:25:25",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=2 outcome=candidate_plans_count=2"
+        },
+        {
+          "ts": "2026-04-04T23:25:28",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=3 action=REVISE reason=Need to include a meal stop as requested, and adjust for sunny weather and medium walking. args={'revision_biases': ['include_meal_stop', 'prioritize_relaxed_pacing']}"
+        },
+        {
+          "ts": "2026-04-04T23:25:28",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "候选方案生成数=2。"
+        },
+        {
+          "ts": "2026-04-04T23:25:28",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "已按候选偏好排序=['include_meal_stop', 'prioritize_relaxed_pacing']。"
+        },
+        {
+          "ts": "2026-04-04T23:25:28",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "已应用修正偏置=['include_meal_stop', 'prioritize_relaxed_pacing']。"
+        },
+        {
+          "ts": "2026-04-04T23:25:28",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=3 outcome=revision_biases=['include_meal_stop', 'prioritize_relaxed_pacing'], candidate_plans_count=2"
+        },
+        {
+          "ts": "2026-04-04T23:25:28",
+          "node": "generate_candidates",
+          "level": "warn",
+          "message": "Planning loop reached max steps=3."
+        },
+        {
+          "ts": "2026-04-04T23:25:28",
+          "node": "gather_context",
+          "level": "info",
+          "message": "已获取天气上下文（source=fallback_request）。"
+        },
+        {
+          "ts": "2026-04-04T23:25:31",
+          "node": "select_plan",
+          "level": "info",
+          "message": "LLM 选优成功。"
+        },
+        {
+          "ts": "2026-04-04T23:25:31",
+          "node": "select_plan",
+          "level": "info",
+          "message": "最终方案=relaxed_first，selected_by=llm。"
+        },
+        {
+          "ts": "2026-04-04T23:25:31",
+          "node": "render_output",
+          "level": "info",
+          "message": "文案渲染完成。"
+        },
+        {
+          "ts": "2026-04-04T23:25:31",
+          "node": "finalize_memory",
+          "level": "info",
+          "message": "已写回偏好记忆。"
+        }
+      ]
+    }
+  },
+  {
+    "text": "下午想轻松一点，逛两个地方就行",
+    "response": {
+      "thread_id": "8b3c22fc-12d1-4679-b189-bbbf27e7e849",
+      "current_step": "finalize_memory",
+      "current_node": "finalize_memory",
+      "clarification_needed": false,
+      "clarification_question": null,
+      "parsed_request": {
+        "companion_type": "solo",
+        "available_hours": 4.0,
+        "budget_level": "medium",
+        "purpose": "relax",
+        "need_meal": true,
+        "walking_tolerance": "low",
+        "weather": "sunny",
+        "origin": "钟楼",
+        "preferred_period": "afternoon",
+        "origin_preference_mode": null,
+        "parsed_by": "llm",
+        "has_car": false,
+        "transport_preference": "public_transit",
+        "traffic_sensitivity": "medium",
+        "taste_preferences": {
+          "avoid_spicy": false,
+          "prefer_light": false,
+          "avoid_heavy_flavor": false
+        },
+        "restaurant_rating_preference": "medium",
+        "parking_tolerance": "medium",
+        "avoid_queue": false,
+        "preferred_trip_style": "balanced"
+      },
+      "search_intent": {
+        "companion_type": "solo",
+        "purpose": "relax",
+        "preferred_period": "afternoon",
+        "weather": "sunny",
+        "walking_tolerance": "low",
+        "need_meal": true,
+        "origin_preference_mode": null
+      },
+      "search_strategy": [
+        "classic",
+        "relaxed"
+      ],
+      "candidate_biases": [
+        "prioritize_relaxed_pacing",
+        "fewer_cross_cluster"
+      ],
+      "strategy_notes": [
+        "放松/低步行诉求，优先轻松节奏。",
+        "未命中特殊组合，采用基础策略。"
+      ],
+      "search_round": 1,
+      "planning_history": [
+        {
+          "step": 1,
+          "action": "GENERATE_CANDIDATES",
+          "reason": "Initial search strategy set to classic and relaxed, but no search results yet. Need to generate candidates based on current parameters.",
+          "args": {
+            "search_strategy": [
+              "classic",
+              "relaxed"
+            ]
+          },
+          "outcome_summary": "candidate_plans_count=2"
+        },
+        {
+          "step": 2,
+          "action": "GENERATE_CANDIDATES",
+          "reason": "Search results are empty, but we have 2 candidate plans. Generate candidates to evaluate options for a relaxed solo afternoon with a meal.",
+          "args": {},
+          "outcome_summary": "candidate_plans_count=2"
+        },
+        {
+          "step": 3,
+          "action": "SEARCH",
+          "reason": "Invalid planning action; fallback.",
+          "args": {},
+          "outcome_summary": "search_results_count=18"
+        }
+      ],
+      "search_results_count": 18,
+      "candidate_plans_count": 2,
+      "finish_ready": false,
+      "candidate_plans_summary": [
+        {
+          "plan_id": "classic_first",
+          "variant_label": "经典优先",
+          "stop_count": 2,
+          "clusters": [
+            "大雁塔簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "大雁塔簇",
+          "has_meal": true,
+          "total_distance_meters": 6799,
+          "total_duration_minutes": 32,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "tourism",
+          "diff_points": [
+            "含餐衔接",
+            "簇分布:大雁塔簇",
+            "节奏:轻松"
+          ],
+          "bias_tags": [
+            "classic",
+            "museum",
+            "landmark"
+          ],
+          "note": "偏经典/文博，优先核心点位"
+        },
+        {
+          "plan_id": "food_friendly",
+          "variant_label": "餐饮友好",
+          "stop_count": 2,
+          "clusters": [
+            "小寨文博簇"
+          ],
+          "is_cross_cluster": false,
+          "cross_cluster_count": 0,
+          "cluster_transition_summary": "小寨文博簇",
+          "has_meal": true,
+          "total_distance_meters": 7009,
+          "total_duration_minutes": 35,
+          "rhythm": "轻松",
+          "budget_level": "medium",
+          "walking_tolerance": "low",
+          "purpose": "food",
+          "diff_points": [
+            "含餐衔接",
+            "簇分布:小寨文博簇",
+            "节奏:轻松"
+          ],
+          "bias_tags": [
+            "food",
+            "meal_link"
+          ],
+          "note": "偏顺路餐饮，兼顾用餐衔接"
+        }
+      ],
+      "selected_plan": {
+        "summary": "基于 4.0 小时与 solo 同行，当前天气（请求参数 weather 兜底）为 sunny，推荐以 大雁塔簇 为主的顺路行程，优先减少折返并安排正餐。（路线代价基于降级估算）",
+        "route": [
+          {
+            "time_slot": "14:28-15:28",
+            "type": "sight",
+            "name": "大慈恩寺周边",
+            "district_cluster": "大雁塔簇",
+            "transport_from_prev": "从起点前往（地铁/打车（估算） 约28分钟）",
+            "reason": "同簇连续，减少折返",
+            "estimated_distance_meters": 6500,
+            "estimated_duration_minutes": 28
+          },
+          {
+            "time_slot": "15:32-16:37",
+            "type": "restaurant",
+            "name": "雁塔景观咖啡简餐",
+            "district_cluster": "大雁塔簇",
+            "transport_from_prev": "步行（估算） 约4分钟",
+            "reason": "位于顺路簇内，减少绕行",
+            "estimated_distance_meters": 299,
+            "estimated_duration_minutes": 4
+          }
+        ],
+        "tips": [
+          "天气来源：请求参数 weather 兜底；当前天气：sunny。",
+          "当前天气对路线影响较小，仍按顺路与少折返为主。",
+          "起点为 钟楼，预计路程约 6799 米，交通耗时约 32 分钟。",
+          "同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。",
+          "时间预算 240 分钟，当前已排入 157 分钟。",
+          "当前路线未触发时间裁剪。",
+          "本次有 2 段已回退到简化交通规则（接口仍可用）。",
+          "已降低高步行强度点位，现场可继续按体力缩短停留。"
+        ]
+      },
+      "selection_reason": "用户需求为solo、relax、需餐、步行容忍度低、时间紧张，且提示强调少跨簇更优。两个方案均满足含餐、轻松节奏、低步行、无跨簇，但classic_first更符合经典旅游偏好，且标签包含landmark/museum，更契合放松游览意图。",
+      "reason_tags": [
+        "solo",
+        "relax",
+        "meal_required",
+        "low_walking",
+        "time_constrained",
+        "no_cluster_crossing",
+        "classic_preference"
+      ],
+      "selected_by": "llm",
+      "readable_output": {
+        "title": "西安市区半日路线",
+        "overview": "这次路线以 大雁塔簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按午后节奏安排，起步约 14:00 左右，整体会更偏轻松。并保留正餐安排。适合本次 4.0 小时出行。",
+        "schedule_text": "时段说明：午后节奏更轻松，停留以短时为主。\n14:28-15:28 前往 大慈恩寺周边（大雁塔簇，景点）。这样安排主要因为：同簇连续，减少折返。从起点前往（地铁/打车（估算） 约28分钟）。放在午后更合适，整体节奏会更轻松一些。 下一段建议：步行（估算） 约4分钟。\n15:32-16:37 前往 雁塔景观咖啡简餐（大雁塔簇，餐饮点）。这样安排主要因为：位于顺路簇内，减少绕行。步行（估算） 约4分钟。",
+        "transport_text": "全程预计约 6.8 公里，交通耗时约 32 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 1 段以步行为主，1 段为跨簇通行。",
+        "tips_text": "已按午后偏好安排，建议 14:00 左右 开始更贴合节奏。\n天气方面：天气来源：请求参数 weather 兜底；当前天气：sunny。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 240 分钟，当前已排入 157 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 6799 米，交通耗时约 32 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；本次有 2 段已回退到简化交通规则（接口仍可用）。；已降低高步行强度点位，现场可继续按体力缩短停留。"
+      },
+      "final_response": {
+        "selection_reason": "用户需求为solo、relax、需餐、步行容忍度低、时间紧张，且提示强调少跨簇更优。两个方案均满足含餐、轻松节奏、低步行、无跨簇，但classic_first更符合经典旅游偏好，且标签包含landmark/museum，更契合放松游览意图。",
+        "selected_by": "llm",
+        "readable_output": {
+          "title": "西安市区半日路线",
+          "overview": "这次路线以 大雁塔簇 为主，共 2 站，整体节奏偏轻松，优先顺路衔接、少折返。按午后节奏安排，起步约 14:00 左右，整体会更偏轻松。并保留正餐安排。适合本次 4.0 小时出行。",
+          "schedule_text": "时段说明：午后节奏更轻松，停留以短时为主。\n14:28-15:28 前往 大慈恩寺周边（大雁塔簇，景点）。这样安排主要因为：同簇连续，减少折返。从起点前往（地铁/打车（估算） 约28分钟）。放在午后更合适，整体节奏会更轻松一些。 下一段建议：步行（估算） 约4分钟。\n15:32-16:37 前往 雁塔景观咖啡简餐（大雁塔簇，餐饮点）。这样安排主要因为：位于顺路簇内，减少绕行。步行（估算） 约4分钟。",
+          "transport_text": "全程预计约 6.8 公里，交通耗时约 32 分钟。同簇段优先步行，跨簇段优先参考地铁/打车；本次约 1 段以步行为主，1 段为跨簇通行。",
+          "tips_text": "已按午后偏好安排，建议 14:00 左右 开始更贴合节奏。\n天气方面：天气来源：请求参数 weather 兜底；当前天气：sunny。；当前天气对路线影响较小，仍按顺路与少折返为主。\n时间方面：时间预算 240 分钟，当前已排入 157 分钟。；当前路线未触发时间裁剪。\n补充建议：起点为 钟楼，预计路程约 6799 米，交通耗时约 32 分钟。；同簇段优先步行，跨簇段优先参考真实路线时长后再决定交通方式。；本次有 2 段已回退到简化交通规则（接口仍可用）。；已降低高步行强度点位，现场可继续按体力缩短停留。"
+        }
+      },
+      "errors": [],
+      "debug_logs": [
+        {
+          "ts": "2026-04-04T23:25:31",
+          "node": "recall_memory",
+          "level": "info",
+          "message": "未找到历史偏好。"
+        },
+        {
+          "ts": "2026-04-04T23:25:35",
+          "node": "parse_request",
+          "level": "info",
+          "message": "解析完成，来源=llm。"
+        },
+        {
+          "ts": "2026-04-04T23:25:35",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "策略矩阵 primary=['classic'] secondary=['relaxed']。"
+        },
+        {
+          "ts": "2026-04-04T23:25:35",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "候选偏好=['prioritize_relaxed_pacing', 'fewer_cross_cluster']。"
+        },
+        {
+          "ts": "2026-04-04T23:25:35",
+          "node": "analyze_search_intent",
+          "level": "info",
+          "message": "策略说明=放松/低步行诉求，优先轻松节奏。 | 未命中特殊组合，采用基础策略。。"
+        },
+        {
+          "ts": "2026-04-04T23:25:38",
+          "node": "planning_loop",
+          "level": "info",
+          "message": "Planning step=1 action=GENERATE_CANDIDATES reason=Initial search strategy set to classic and relaxed, but no search results yet. Need to generate candidates based on current parameters. args={'search_strategy': ['classic', 'relaxed']}"
+        },
+        {
+          "ts": "2026-04-04T23:25:38",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "候选方案生成数=2。"
+        },
+        {
+          "ts": "2026-04-04T23:25:38",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "已按候选偏好排序=['prioritize_relaxed_pacing', 'fewer_cross_cluster']。"
+        },
+        {
+          "ts": "2026-04-04T23:25:38",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=1 outcome=candidate_plans_count=2"
+        },
+        {
+          "ts": "2026-04-04T23:25:41",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=2 action=GENERATE_CANDIDATES reason=Search results are empty, but we have 2 candidate plans. Generate candidates to evaluate options for a relaxed solo afternoon with a meal. args={}"
+        },
+        {
+          "ts": "2026-04-04T23:25:41",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "候选方案生成数=2。"
+        },
+        {
+          "ts": "2026-04-04T23:25:41",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "已按候选偏好排序=['prioritize_relaxed_pacing', 'fewer_cross_cluster']。"
+        },
+        {
+          "ts": "2026-04-04T23:25:41",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=2 outcome=candidate_plans_count=2"
+        },
+        {
+          "ts": "2026-04-04T23:25:44",
+          "node": "generate_candidates",
+          "level": "warn",
+          "message": "Planning step=3: invalid action fallback -> SEARCH"
+        },
+        {
+          "ts": "2026-04-04T23:25:44",
+          "node": "generate_candidates",
+          "level": "info",
+          "message": "Planning step=3 action=SEARCH reason=Invalid planning action; fallback. args={}"
+        },
+        {
+          "ts": "2026-04-04T23:25:44",
+          "node": "dynamic_search",
+          "level": "info",
+          "message": "动态搜索完成，候选数=18，轮次=1。"
+        },
+        {
+          "ts": "2026-04-04T23:25:44",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "搜索结果精炼完成，候选数=18。"
+        },
+        {
+          "ts": "2026-04-04T23:25:44",
+          "node": "refine_search_results",
+          "level": "info",
+          "message": "Planning step=3 outcome=search_results_count=18"
+        },
+        {
+          "ts": "2026-04-04T23:25:44",
+          "node": "refine_search_results",
+          "level": "warn",
+          "message": "Planning loop reached max steps=3."
+        },
+        {
+          "ts": "2026-04-04T23:25:44",
+          "node": "gather_context",
+          "level": "info",
+          "message": "已获取天气上下文（source=fallback_request）。"
+        },
+        {
+          "ts": "2026-04-04T23:25:48",
+          "node": "select_plan",
+          "level": "info",
+          "message": "LLM 选优成功。"
+        },
+        {
+          "ts": "2026-04-04T23:25:48",
+          "node": "select_plan",
+          "level": "info",
+          "message": "最终方案=classic_first，selected_by=llm。"
+        },
+        {
+          "ts": "2026-04-04T23:25:48",
+          "node": "render_output",
+          "level": "info",
+          "message": "文案渲染完成。"
+        },
+        {
+          "ts": "2026-04-04T23:25:48",
+          "node": "finalize_memory",
+          "level": "info",
+          "message": "已写回偏好记忆。"
+        }
+      ]
+    }
+  }
+]
