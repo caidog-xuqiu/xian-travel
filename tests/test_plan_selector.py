@@ -464,3 +464,49 @@ def test_area_aware_candidate_generation_separates_variants(monkeypatch) -> None
     assert by_id["relaxed_first"].cross_area_count <= by_id["classic_first"].cross_area_count
     assert by_id["food_friendly"].has_meal is True
     assert any(point.startswith("餐位:") for point in by_id["food_friendly"].diff_points)
+
+
+def test_relaxed_variant_prefers_park_sights_when_demand_tag_present() -> None:
+    request = _sample_request().model_copy(update={"walking_tolerance": "low"})
+    candidate_pois = [
+        {
+            "id": "s_park",
+            "name": "曲江池公园",
+            "kind": "sight",
+            "district_cluster": "曲江夜游簇",
+            "area_name": "曲江夜游",
+            "category": "park",
+            "walking_level": "low",
+            "_score": 80,
+        },
+        {
+            "id": "s_old",
+            "name": "钟楼",
+            "kind": "sight",
+            "district_cluster": "城墙钟鼓楼簇",
+            "area_name": "城墙钟鼓楼",
+            "category": "landmark",
+            "walking_level": "low",
+            "_score": 90,
+        },
+        {
+            "id": "r1",
+            "name": "曲江餐厅",
+            "kind": "restaurant",
+            "district_cluster": "曲江夜游簇",
+            "area_name": "曲江夜游",
+            "walking_level": "low",
+            "_score": 70,
+        },
+    ]
+
+    biased = plan_selector._variant_candidate_pois(
+        request,
+        "relaxed_first",
+        candidate_pois,
+        area_context={"search_strategy": ["park", "relaxed"], "demand_tags": ["park"]},
+    )
+    assert biased is not None
+    sights = [item for item in biased if item.get("kind") == "sight"]
+    assert sights
+    assert any("公园" in str(item.get("name")) for item in sights)

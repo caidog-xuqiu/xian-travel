@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Any, Dict, List
@@ -67,27 +67,26 @@ def resolve_strategy_matrix(state_or_request: Any) -> Dict[str, List[str]]:
     biases: List[str] = []
     notes: List[str] = []
 
-    # High-value rules:
     if context.companion_type == "parents" and context.walking_tolerance == "low":
         _append_unique(primary, ["relaxed", "nearby"])
         _append_unique(biases, ["fewer_cross_cluster", "prefer_origin_cluster_first"])
-        notes.append("陪父母 + 低步行，优先轻松且少跨簇。")
+        notes.append("陪父母且低步行，优先轻松并减少跨簇。")
 
     if context.weather in {"rainy", "hot"}:
         _append_unique(primary, ["indoor"])
         _append_unique(biases, ["prioritize_indoor"])
-        notes.append("雨天/高温，优先室内点位。")
+        notes.append("雨天或高温，优先室内候选。")
 
     if context.companion_type == "partner" and context.preferred_period == "evening":
         _append_unique(primary, ["night"])
         _append_unique(secondary, ["food"])
         _append_unique(biases, ["prioritize_night_view", "include_meal_stop"])
-        notes.append("晚间约会，优先夜游与晚餐衔接。")
+        notes.append("晚间约会，优先夜游与用餐衔接。")
 
     if context.need_meal and context.preferred_period == "midday":
         _append_unique(primary, ["food"])
         _append_unique(biases, ["include_meal_stop"])
-        notes.append("午间出行且需要用餐，优先保留正餐。")
+        notes.append("午间且需用餐，优先保留餐饮节点。")
 
     if context.purpose == "tourism" and context.preferred_period == "morning":
         _append_unique(primary, ["classic", "museum", "landmark"])
@@ -101,12 +100,15 @@ def resolve_strategy_matrix(state_or_request: Any) -> Dict[str, List[str]]:
         notes.append("识别到附近语义，优先起点邻近簇。")
 
     if context.purpose == "relax" or context.walking_tolerance == "low":
+        if context.purpose == "relax":
+            _append_unique(primary, ["relaxed"])
+            _append_unique(secondary, ["park"])
+            _append_unique(biases, ["prefer_park_scene"])
         _append_unique(biases, ["prioritize_relaxed_pacing", "fewer_cross_cluster"])
         if "relaxed" not in primary:
             _append_unique(secondary, ["relaxed"])
-        notes.append("放松/低步行诉求，优先轻松节奏。")
+        notes.append("轻松/低步行诉求，优先低强度与少折返。")
 
-    # Base fallback strategy:
     if not primary:
         if context.purpose == "food":
             _append_unique(primary, ["food"])

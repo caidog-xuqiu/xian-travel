@@ -35,6 +35,7 @@ from app.services import sqlite_store
 from app.services.weather_service import get_weather_context
 from app.services.knowledge_base import retrieve_knowledge
 from app.services.knowledge_adapter import build_knowledge_bias
+from app.services.demand_intent import extract_demand_profile
 
 MORNING_KEYWORDS = {"上午", "早上", "一早", "早晨"}
 MIDDAY_KEYWORDS = {"中午", "午饭前后", "中午前后", "午间"}
@@ -43,6 +44,18 @@ EVENING_KEYWORDS = {"晚上", "夜里", "夜间", "晚饭后", "吃完晚饭"}
 
 ORIGIN_HINT_WORDS = {"附近", "这边", "周边", "出发"}
 KNOWN_ORIGINS = {"钟楼", "小寨", "大雁塔", "曲江", "回民街"}
+PARK_KEYWORDS = {
+    "公园",
+    "湿地",
+    "湿地公园",
+    "植物园",
+    "森林公园",
+    "曲江池",
+    "绿道",
+    "草坪",
+    "散步",
+    "遛弯",
+}
 
 CLUSTER_BY_ORIGIN = {
     "钟楼": "城墙钟鼓楼簇",
@@ -90,9 +103,27 @@ def _period_conflict(text: str) -> bool:
 
 
 def _origin_unclear(text: str) -> bool:
+    if any(anchor in text for anchor in KNOWN_ORIGINS):
+        return False
+
+    explicit_origin_match = re.search(
+        r"(?:^|[，。；,\s])(?:我在|人在|目前在|起点在|从)([^，。；,\s]{2,30})",
+        text,
+    )
+    if explicit_origin_match:
+        explicit_place = str(explicit_origin_match.group(1) or "").strip()
+        generic_tokens = {"附近", "这边", "周边", "这里", "这儿", "市区", "市中心"}
+        if explicit_place and explicit_place not in generic_tokens:
+            return False
+
     if not any(word in text for word in ORIGIN_HINT_WORDS):
         return False
-    return not any(anchor in text for anchor in KNOWN_ORIGINS)
+    return True
+
+
+def _has_park_signal(text: str) -> bool:
+    text = str(text or "")
+    return any(keyword in text for keyword in PARK_KEYWORDS)
 
 
 def _build_origin_tip_keyword(text: str) -> str:
@@ -238,6 +269,7 @@ def _knowledge_bias_to_candidate_biases(knowledge_bias: Dict[str, Any]) -> List[
         ("prefer_budget_friendly", "prefer_budget_friendly"),
         ("avoid_too_many_stops", "avoid_too_many_stops"),
         ("prefer_lively_places", "prefer_lively_places"),
+        ("prefer_park_scene", "prefer_park_scene"),
     ]
     resolved: List[str] = []
     for bias_key, strategy_bias in mapping:
@@ -620,14 +652,40 @@ def analyze_search_intent(state: AgentState) -> AgentState:
     matrix = resolve_strategy_matrix(request)
     primary = list(matrix.get("primary_strategies", []))
     secondary = list(matrix.get("secondary_strategies", []))
+    candidate_biases = list(matrix.get("candidate_biases", []))
+    strategy_notes = list(matrix.get("notes", []))
+
+    demand_profile = extract_demand_profile(state.user_input or "", request=request)
+    demand_tags = list(demand_profile.get("demand_tags") or [])
+    demand_primary = list(demand_profile.get("primary_strategies") or [])
+    demand_secondary = list(demand_profile.get("secondary_strategies") or [])
+    demand_biases = list(demand_profile.get("candidate_biases") or [])
+    demand_notes = list(demand_profile.get("notes") or [])
+    demand_keywords = list(demand_profile.get("query_keywords") or [])
+
+    if demand_primary:
+        # Keep demand-derived primary strategies at the front.
+        primary = [*demand_primary, *[item for item in primary if item not in demand_primary]]
+    for item in demand_secondary:
+        if item not in secondary and item not in primary:
+            secondary.append(item)
+    for item in demand_biases:
+        if item not in candidate_biases:
+            candidate_biases.append(item)
+    for item in demand_notes:
+        if item not in strategy_notes:
+            strategy_notes.append(item)
+    if demand_tags:
+        intent["demand_tags"] = demand_tags
+
     strategy = primary + [item for item in secondary if item not in primary]
 
     state.search_intent = intent
     state.primary_strategies = primary
     state.secondary_strategies = secondary
     state.search_strategy = strategy
-    state.candidate_biases = list(matrix.get("candidate_biases", []))
-    state.strategy_notes = list(matrix.get("notes", []))
+    state.candidate_biases = candidate_biases
+    state.strategy_notes = strategy_notes
     _apply_local_knowledge_enrichment(state)
     state.search_round = 0
     area_scope_info = resolve_area_scope_from_request(request, state.user_input or "")
@@ -642,6 +700,8 @@ def analyze_search_intent(state: AgentState) -> AgentState:
     state.search_intent["area_origin"] = area_scope_info.get("origin_area")
     state.search_intent["knowledge_ids"] = list(state.knowledge_ids)
     state.search_intent["knowledge_bias"] = dict(state.knowledge_bias)
+    state.search_intent["demand_tags"] = demand_tags
+    state.search_intent["demand_keywords"] = demand_keywords
 
     _log(state, f"策略矩阵 primary={state.primary_strategies} secondary={state.secondary_strategies}。")
     if state.candidate_biases:
@@ -732,6 +792,7 @@ def candidate_discovery(state: AgentState) -> AgentState:
                 "secondary_strategies": state.secondary_strategies,
                 "base_pois": all_pois,
                 "area_scope_info": (state.search_intent or {}).get("area_scope_info"),
+                "demand_keywords": (state.search_intent or {}).get("demand_keywords") or [],
             },
             limits={"max_candidates": SEARCH_MAX_RESULTS},
             filters={},
@@ -1064,6 +1125,13 @@ def _apply_candidate_biases(
             clusters = list(getattr(summary, "clusters", []))
             if any(cluster in {"城墙钟鼓楼簇", "曲江夜游簇"} for cluster in clusters):
                 bias_score += 2
+        if "prefer_park_scene" in biases:
+            park_hits = 0
+            for stop in route:
+                stop_text = f"{getattr(stop, 'name', '')}{getattr(stop, 'reason', '')}"
+                if _has_park_signal(stop_text):
+                    park_hits += 1
+            bias_score += park_hits * 2
 
         stop_count = int(getattr(summary, "stop_count", 0)) if summary else 0
         distance = int(getattr(summary, "total_distance_meters", 0)) if summary else 0
@@ -1087,6 +1155,8 @@ def generate_candidates(state: AgentState) -> AgentState:
             "discovered_area_counts": state.discovered_area_counts,
             "area_coverage_summary": state.area_coverage_summary,
             "origin_area": (state.search_intent or {}).get("area_origin"),
+            "search_strategy": state.search_strategy,
+            "demand_tags": (state.search_intent or {}).get("demand_tags") or [],
         }
         try:
             state.candidate_plans = generate_candidate_plans(
@@ -1583,15 +1653,22 @@ def run_agent_v2(text: str, thread_id: str | None = None, user_key: str | None =
     return _response_from_state(state)
 
 
-def run_agent_v3(text: str, thread_id: str | None = None, user_key: str | None = None) -> AgentPlanResponse:
+def run_agent_v3(
+    text: str,
+    thread_id: str | None = None,
+    user_key: str | None = None,
+    fast_mode: bool = False,
+) -> AgentPlanResponse:
     state = AgentState(
         user_input=text,
         thread_id=thread_id or str(uuid.uuid4()),
         user_key=user_key,
         planning_loop_enabled=True,
-        planning_max_steps=3,
+        planning_max_steps=2 if fast_mode else 3,
     )
     _log(state, f"active skills={get_active_skills_for_agent()}")
+    if fast_mode:
+        _log(state, "agent-v3 fast_mode enabled")
 
     analyze_query(state)
     if state.clarification_needed:
@@ -1608,20 +1685,25 @@ def run_agent_v3(text: str, thread_id: str | None = None, user_key: str | None =
 
     analyze_search_intent(state)
     data_quality(state)
-    candidate_discovery(state)
-
-    run_planning_loop(
-        state,
-        dynamic_search_fn=dynamic_search,
-        refine_search_results_fn=refine_search_results,
-        generate_candidates_fn=generate_candidates,
-        logger=_log,
-    )
+    if fast_mode:
+        dynamic_search(state)
+        refine_search_results(state)
+        generate_candidates(state)
+    else:
+        candidate_discovery(state)
+        run_planning_loop(
+            state,
+            dynamic_search_fn=dynamic_search,
+            refine_search_results_fn=refine_search_results,
+            generate_candidates_fn=generate_candidates,
+            logger=_log,
+        )
 
     # Safety net: planning loop should never break the downstream chain.
     if not state.search_results:
         data_quality(state)
-        candidate_discovery(state)
+        if not fast_mode:
+            candidate_discovery(state)
         dynamic_search(state)
         refine_search_results(state)
     if not state.candidate_plans:

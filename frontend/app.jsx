@@ -1,84 +1,51 @@
-﻿const { useMemo, useState } = React;
+﻿const { useEffect, useMemo, useRef, useState } = React;
 
-const DEFAULT_FORM = {
-  text: "陪父母半天，不想太累，中午想吃饭，下雨也能玩",
-  companion_type: "solo",
-  available_hours: 4,
-  budget_level: "medium",
-  purpose: "tourism",
-  need_meal: true,
-  walking_tolerance: "medium",
-  weather: "sunny",
-  origin: "钟楼",
-  preferred_plan: "relaxed_first",
-};
-
-const MOCK_RESULT = {
-  selected_plan: {
-    summary: "mock：已生成一条轻松路线",
-    route: [
-      {
-        time_slot: "11:30-12:10",
-        type: "sight",
-        name: "钟楼",
-        district_cluster: "城墙钟鼓楼簇",
-        transport_from_prev: "起点步行",
-        reason: "地标打卡，步行较少",
-        estimated_distance_meters: 300,
-        estimated_duration_minutes: 10,
-      },
-      {
-        time_slot: "12:20-13:20",
-        type: "restaurant",
-        name: "老李家面(钟楼总店)",
-        district_cluster: "城墙钟鼓楼簇",
-        transport_from_prev: "步行 8 分钟",
-        reason: "顺路就餐",
-        estimated_distance_meters: 500,
-        estimated_duration_minutes: 8,
-      },
-    ],
-    tips: ["mock 模式返回，便于前端联调"],
+const START_MESSAGES = [
+  {
+    id: `agent-${Date.now()}`,
+    role: "agent",
+    text: "你好，我是你的西安行程助手。直接告诉我你的需求，我会自动规划路线；如果信息不够，我会继续追问。",
   },
-  selected_by: "mock",
-  itinerary_title: "Mock 半日路线",
-  total_duration_minutes: 78,
-  cross_area_count: 0,
+];
+
+const MOCK_PLAN = {
+  selectedBy: "mock",
+  title: "钟楼周边轻松半日路线（示例）",
+  totalDurationMinutes: 96,
+  crossAreaCount: 0,
   stops: [
     {
       time_slot: "11:30-12:10",
       type: "sight",
       name: "钟楼",
       district_cluster: "城墙钟鼓楼簇",
-      transport_from_prev: "起点步行",
-      reason: "地标打卡，步行较少",
+      transport_from_prev: "从起点前往（步行 约10分钟）",
+      reason: "地标打卡，步行负担低",
+      estimated_duration_minutes: 10,
     },
     {
       time_slot: "12:20-13:20",
       type: "restaurant",
       name: "老李家面(钟楼总店)",
       district_cluster: "城墙钟鼓楼簇",
-      transport_from_prev: "步行 8 分钟",
-      reason: "顺路就餐",
+      transport_from_prev: "步行 约8分钟",
+      reason: "顺路用餐，减少绕行",
+      estimated_duration_minutes: 8,
     },
   ],
-  knowledge_used_count: 3,
-  knowledge_ids: ["k_parents_relaxed", "k_need_meal_anchor", "k_short_time_3h"],
-  knowledge_bias: {
+  knowledgeUsedCount: 2,
+  knowledgeIds: ["k_parents_relaxed", "k_need_meal_anchor"],
+  knowledgeBias: {
     prefer_single_cluster: true,
     prefer_low_walk: true,
     prefer_meal_experience: true,
-    avoid_too_many_stops: true,
   },
-  explanation_basis: [
-    "陪父母偏低强度：减少连续移动和站点数。",
-    "需用餐时餐点为硬锚点：优先保留吃饭节点。",
-  ],
-  route_source: "mock",
-  weather_source: "mock",
-  raw: {
-    mode: "mock",
-  },
+  explanationBasis: ["陪父母优先低强度", "需要用餐时先保留餐饮节点"],
+  routeSource: "mock",
+  weatherSource: "mock",
+  selectionReason: "Mock 模式：用于页面联调。",
+  reasonTags: ["mock"],
+  raw: { mode: "mock" },
 };
 
 function toNumber(value, fallbackValue = 0) {
@@ -86,20 +53,13 @@ function toNumber(value, fallbackValue = 0) {
   return Number.isFinite(parsed) ? parsed : fallbackValue;
 }
 
-function sumDurationMinutes(route) {
-  if (!Array.isArray(route)) {
-    return 0;
-  }
-  return route.reduce((acc, item) => {
-    const minutes = toNumber(item?.estimated_duration_minutes, 0);
-    return acc + Math.max(0, minutes);
-  }, 0);
+function calcTotalMinutes(route) {
+  if (!Array.isArray(route)) return 0;
+  return route.reduce((sum, item) => sum + Math.max(0, toNumber(item?.estimated_duration_minutes, 0)), 0);
 }
 
-function estimateCrossAreaCount(route) {
-  if (!Array.isArray(route) || route.length === 0) {
-    return 0;
-  }
+function calcCrossArea(route) {
+  if (!Array.isArray(route) || route.length === 0) return 0;
   const clusters = new Set(
     route
       .map((item) => String(item?.district_cluster || "").trim())
@@ -108,345 +68,422 @@ function estimateCrossAreaCount(route) {
   return Math.max(0, clusters.size - 1);
 }
 
-function buildPlanPayload(form) {
-  const preferredTripStyle = form.preferred_plan === "relaxed_first" ? "relaxed" : "balanced";
-  const purpose =
-    form.preferred_plan === "food_friendly"
-      ? "food"
-      : form.preferred_plan === "classic_first"
-      ? "tourism"
-      : form.purpose;
+function inferRouteSource(route) {
+  if (!Array.isArray(route) || route.length === 0) return "unknown";
+  const hasEstimate = route.some((item) => String(item?.transport_from_prev || "").includes("估算"));
+  return hasEstimate ? "fallback_local" : "amap";
+}
 
-  return {
-    companion_type: form.companion_type,
-    available_hours: toNumber(form.available_hours, 4),
-    budget_level: form.budget_level,
-    purpose,
-    need_meal: Boolean(form.need_meal),
-    walking_tolerance: form.walking_tolerance,
-    weather: form.weather,
-    origin: form.origin || "钟楼",
-    preferred_trip_style: preferredTripStyle,
-  };
+function selectedByText(value) {
+  if (value === "llm") return "模型选优";
+  if (value === "fallback_rule") return "规则回退";
+  if (value === "timeout_degrade") return "超时降级";
+  if (value === "mock") return "演示模式";
+  return "未知";
+}
+
+function stopTypeText(type) {
+  return type === "restaurant" ? "餐饮" : "景点";
+}
+
+function routeSourceText(value) {
+  if (value === "amap") return "高德真实路线";
+  if (value === "fallback_local") return "本地估算回退";
+  if (value === "mock") return "演示模式";
+  return "未标注";
+}
+
+function weatherSourceText(value) {
+  if (value === "amap_weather") return "高德实时天气";
+  if (value === "fallback_request") return "请求参数兜底";
+  if (value === "mock") return "演示模式";
+  return "未标注";
+}
+
+function extractClarificationOptions(question) {
+  const text = String(question || "").trim();
+  const marker = "可参考：";
+  const index = text.indexOf(marker);
+  if (index < 0) return [];
+
+  let optionsText = text.slice(index + marker.length).trim();
+  optionsText = optionsText.replace(/[。！!？?]+$/g, "").trim();
+  if (!optionsText) return [];
+
+  let parts = optionsText.split("、");
+  if (parts.length <= 1) {
+    parts = optionsText.split("，");
+  }
+  return Array.from(
+    new Set(
+      parts
+        .map((item) => String(item || "").trim())
+        .map((item) => item.replace(/[。！!？?]+$/g, "").trim())
+        .filter(Boolean)
+    )
+  ).slice(0, 6);
+}
+
+function shouldInjectOrigin(text, originInput) {
+  const origin = String(originInput || "").trim();
+  if (!origin) return false;
+  const raw = String(text || "").trim();
+  if (!raw) return false;
+  const compactText = raw.replace(/\s+/g, "");
+  const compactOrigin = origin.replace(/\s+/g, "");
+  if (compactOrigin && compactText.includes(compactOrigin)) return false;
+  if (/(我在|人在|起点在|起点是|从.+出发|附近|这边|周边)/.test(raw)) return false;
+  return true;
 }
 
 async function readErrorMessage(response) {
   try {
     const data = await response.json();
-    if (typeof data?.detail === "string") {
-      return data.detail;
-    }
+    if (typeof data?.detail === "string") return data.detail;
     return JSON.stringify(data);
   } catch (_err) {
     try {
       const text = await response.text();
-      return text || response.statusText;
+      return text || response.statusText || "请求失败";
     } catch (_textErr) {
       return response.statusText || "请求失败";
     }
   }
 }
 
-function normalizeLiveResult(planData, agentData, agentNotice) {
-  const selectedPlan = agentData?.selected_plan || planData || {};
-  const route = Array.isArray(selectedPlan?.route) ? selectedPlan.route : [];
+async function postJson(url, payload) {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (!response.ok) {
+    const message = await readErrorMessage(response);
+    throw new Error(message || "请求失败");
+  }
+  return response.json();
+}
 
-  const crossAreaFromAgent = agentData?.selected_plan_area_summary?.cross_area_count;
-  const crossAreaCount =
-    typeof crossAreaFromAgent === "number" ? crossAreaFromAgent : estimateCrossAreaCount(route);
-
+function normalizeAgentPlan(agentData) {
+  const selectedPlan = agentData?.selected_plan || {};
+  const stops = Array.isArray(selectedPlan?.route) ? selectedPlan.route : [];
   return {
-    selected_plan: selectedPlan,
-    selected_by: agentData?.selected_by || "plan_only",
-    itinerary_title:
+    selectedBy: agentData?.selected_by || "unknown",
+    title:
       agentData?.readable_output?.title ||
-      (selectedPlan?.summary ? String(selectedPlan.summary) : "路线结果"),
-    total_duration_minutes: sumDurationMinutes(route),
-    cross_area_count: crossAreaCount,
-    stops: route,
-    knowledge_used_count: agentData?.knowledge_used_count || 0,
-    knowledge_ids: agentData?.knowledge_ids || [],
-    knowledge_bias: agentData?.knowledge_bias || {},
-    explanation_basis: agentData?.explanation_basis || [],
-    route_source: agentData?.route_source || "from_/plan",
-    weather_source: agentData?.weather_source || "request",
-    agent_notice: agentNotice || "",
-    raw: {
-      plan: planData,
-      agent: agentData,
-    },
+      String(selectedPlan?.summary || "已生成路线"),
+    totalDurationMinutes: calcTotalMinutes(stops),
+    crossAreaCount:
+      typeof agentData?.selected_plan_area_summary?.cross_area_count === "number"
+        ? agentData.selected_plan_area_summary.cross_area_count
+        : calcCrossArea(stops),
+    stops,
+    knowledgeUsedCount: toNumber(agentData?.knowledge_used_count, 0),
+    knowledgeIds: Array.isArray(agentData?.knowledge_ids) ? agentData.knowledge_ids : [],
+    knowledgeBias: agentData?.knowledge_bias || {},
+    explanationBasis: Array.isArray(agentData?.explanation_basis) ? agentData.explanation_basis : [],
+    routeSource: agentData?.route_source || inferRouteSource(stops),
+    weatherSource: agentData?.weather_source || "unknown",
+    selectionReason: String(agentData?.selection_reason || ""),
+    reasonTags: Array.isArray(agentData?.reason_tags) ? agentData.reason_tags : [],
+    raw: agentData,
   };
 }
 
 function App() {
   const [mode, setMode] = useState("live");
   const [apiBase, setApiBase] = useState("http://127.0.0.1:8000");
-  const [form, setForm] = useState(DEFAULT_FORM);
+  const [userKey, setUserKey] = useState(() => localStorage.getItem("xian_agent_user_key") || "playground_user");
+  const [originInput, setOriginInput] = useState(() => localStorage.getItem("xian_agent_origin") || "");
+  const [threadId, setThreadId] = useState("");
+  const [waitingClarification, setWaitingClarification] = useState(false);
+  const [clarificationOptions, setClarificationOptions] = useState([]);
+  const [inputText, setInputText] = useState("");
+  const [messages, setMessages] = useState(START_MESSAGES);
+  const [planView, setPlanView] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [result, setResult] = useState(null);
+  const messageEndRef = useRef(null);
 
-  const titleText = useMemo(() => {
-    return mode === "mock" ? "Mock 调试中" : "Live 联调中";
+  useEffect(() => {
+    localStorage.setItem("xian_agent_user_key", userKey || "playground_user");
+  }, [userKey]);
+
+  useEffect(() => {
+    localStorage.setItem("xian_agent_origin", originInput || "");
+  }, [originInput]);
+
+  useEffect(() => {
+    if (messageEndRef.current) {
+      messageEndRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  }, [messages, loading]);
+
+  const modeText = useMemo(() => {
+    if (mode === "live_fast") return "极速联调";
+    if (mode === "mock") return "Mock 演示";
+    return "实时联调";
   }, [mode]);
 
-  const updateField = (key, value) => {
-    setForm((prev) => ({ ...prev, [key]: value }));
+  const pushMessage = (role, text) => {
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: `${role}-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
+        role,
+        text,
+      },
+    ]);
   };
 
-  const handleSubmit = async () => {
-    setLoading(true);
+  const submitText = async (rawText) => {
+    const text = String(rawText || "").trim();
+    if (!text || loading) return;
+    const continueMode = waitingClarification && Boolean(threadId);
+    const injectedText =
+      !continueMode && shouldInjectOrigin(text, originInput)
+        ? `我在${String(originInput || "").trim()}。${text}`
+        : text;
+
+    pushMessage("user", text);
     setError("");
+    setLoading(true);
 
     try {
       if (mode === "mock") {
-        setResult(MOCK_RESULT);
+        setPlanView(MOCK_PLAN);
+        pushMessage("agent", "已生成示例路线（演示模式）。切到实时联调可调用真实智能体。");
+        setWaitingClarification(false);
+        setClarificationOptions([]);
         return;
       }
 
       const base = apiBase.replace(/\/$/, "");
-      const planPayload = buildPlanPayload(form);
-
-      const planResponse = await fetch(`${base}/plan`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(planPayload),
-      });
-
-      if (!planResponse.ok) {
-        const message = await readErrorMessage(planResponse);
-        throw new Error(`live 请求失败（/plan）: ${message}`);
-      }
-
-      const planData = await planResponse.json();
-
-      let agentData = null;
-      let agentNotice = "";
-      if (String(form.text || "").trim()) {
-        try {
-          const agentResponse = await fetch(`${base}/agent-plan-v3`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              text: form.text,
-              user_key: "playground_user",
-            }),
-          });
-
-          if (agentResponse.ok) {
-            agentData = await agentResponse.json();
-          } else {
-            const msg = await readErrorMessage(agentResponse);
-            agentNotice = `已拿到 /plan 结果，但 /agent-plan-v3 失败：${msg}`;
+      const endpoint = continueMode ? "/agent-plan/continue" : "/agent-plan-v3";
+      const payload = continueMode
+        ? {
+            thread_id: threadId,
+            clarification_answer: text,
           }
-        } catch (agentErr) {
-          agentNotice = `已拿到 /plan 结果，但 /agent-plan-v3 异常：${agentErr.message}`;
-        }
+        : {
+            text: injectedText,
+            thread_id: threadId || undefined,
+            user_key: String(userKey || "").trim() || "playground_user",
+            fast_mode: mode === "live_fast",
+          };
+
+      const agentData = await postJson(`${base}${endpoint}`, payload);
+      if (agentData?.thread_id) {
+        setThreadId(agentData.thread_id);
       }
 
-      setResult(normalizeLiveResult(planData, agentData, agentNotice));
+      if (agentData?.clarification_needed) {
+        setWaitingClarification(true);
+        const question =
+          String(agentData?.clarification_question || "") ||
+          "我还缺少关键出行信息，请继续补充。";
+        setClarificationOptions(extractClarificationOptions(question));
+        pushMessage("agent", question);
+        return;
+      }
+
+      setWaitingClarification(false);
+      setClarificationOptions([]);
+      const normalized = normalizeAgentPlan(agentData);
+      setPlanView(normalized);
+      pushMessage("agent", `路线已生成：${normalized.title}`);
     } catch (err) {
-      setResult(null);
-      setError(err?.message || "生成失败，请检查后端是否启动。\n页面仍可切换到 mock 模式继续测试。");
+      const message = err?.message || "请求失败，请检查后端是否已启动。";
+      setError(message);
+      pushMessage("agent", `本次生成失败：${message}`);
     } finally {
       setLoading(false);
     }
   };
 
+  const handleSend = async () => {
+    const text = String(inputText || "").trim();
+    if (!text || loading) return;
+    setInputText("");
+    await submitText(text);
+  };
+
+  const handlePickClarificationOption = async (optionText) => {
+    const text = String(optionText || "").trim();
+    if (!text || loading) return;
+    setInputText("");
+    await submitText(text);
+  };
+
+  const handleResetConversation = () => {
+    setMessages(START_MESSAGES);
+    setPlanView(null);
+    setThreadId("");
+    setWaitingClarification(false);
+    setClarificationOptions([]);
+    setError("");
+  };
+
   return (
     <div className="page">
       <header className="header">
-        <h1>西安 Agent Playground</h1>
-        <p>{titleText}</p>
+        <h1>西安路线规划助手</h1>
+        <p>
+          仅通过对话输入需求，系统自动规划；全程使用 API 实时返回，不做超时规则降级。
+        </p>
       </header>
 
-      <section className="panel">
-        <div className="row mode-row">
+      <section className="panel controls">
+        <div className="control-grid">
           <label>
-            <input
-              type="radio"
-              checked={mode === "live"}
-              onChange={() => setMode("live")}
-            />
-            live
+            运行模式
+            <div className="switch-row">
+              <button
+                type="button"
+                className={mode === "live" ? "chip active" : "chip"}
+                onClick={() => setMode("live")}
+              >
+                实时联调
+              </button>
+              <button
+                type="button"
+                className={mode === "live_fast" ? "chip active" : "chip"}
+                onClick={() => setMode("live_fast")}
+              >
+                极速联调
+              </button>
+              <button
+                type="button"
+                className={mode === "mock" ? "chip active" : "chip"}
+                onClick={() => setMode("mock")}
+              >
+                Mock 演示
+              </button>
+            </div>
           </label>
+
           <label>
+            后端地址
             <input
-              type="radio"
-              checked={mode === "mock"}
-              onChange={() => setMode("mock")}
+              value={apiBase}
+              onChange={(e) => setApiBase(e.target.value)}
+              placeholder="例如 http://127.0.0.1:8000"
             />
-            mock
           </label>
-          <input
-            className="api-input"
-            value={apiBase}
-            onChange={(e) => setApiBase(e.target.value)}
-            placeholder="后端地址，例如 http://127.0.0.1:8000"
+
+          <label>
+            记忆 ID（SQLite 持久化）
+            <input
+              value={userKey}
+              onChange={(e) => setUserKey(e.target.value)}
+              placeholder="例如 playground_user"
+            />
+          </label>
+
+          <label>
+            起点位置（专门填写）
+            <input
+              value={originInput}
+              onChange={(e) => setOriginInput(e.target.value)}
+              placeholder="例如 西安电子科技大学长安校区"
+            />
+          </label>
+        </div>
+
+        <div className="meta-row">
+          <span>当前模式：{modeText}</span>
+          <span>线程 ID：{threadId || "未建立"}</span>
+          <span>{waitingClarification ? "状态：等待你补充信息" : "状态：可直接提需求"}</span>
+          {originInput ? <span>已设置起点：{originInput}</span> : null}
+          <button type="button" className="minor-btn" onClick={handleResetConversation}>
+            新会话
+          </button>
+        </div>
+      </section>
+
+      <section className="panel chat-panel">
+        <div className="chat-list">
+          {messages.map((item) => (
+            <div key={item.id} className={`chat-item ${item.role}`}>
+              <div className="chat-role">{item.role === "user" ? "你" : "助手"}</div>
+              <div className="chat-bubble">{item.text}</div>
+            </div>
+          ))}
+          {loading ? (
+            <div className="chat-item agent">
+              <div className="chat-role">助手</div>
+              <div className="chat-bubble">正在规划中，请稍候...</div>
+            </div>
+          ) : null}
+          <div ref={messageEndRef} />
+        </div>
+
+        <div className="input-area">
+          <textarea
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+            placeholder="直接描述你的需求，例如：晚上在曲江附近，想约会吃饭看夜景，步行不要太多。"
           />
+          <button type="button" className="send-btn" onClick={handleSend} disabled={loading}>
+            {loading ? "规划中..." : waitingClarification ? "提交补充信息" : "开始规划"}
+          </button>
         </div>
-
-        <label className="block-label">自然语言需求</label>
-        <textarea
-          className="big-input"
-          value={form.text}
-          onChange={(e) => updateField("text", e.target.value)}
-          placeholder="请输入旅游需求..."
-        />
-
-        <div className="grid">
-          <label>
-            companion_type
-            <select
-              value={form.companion_type}
-              onChange={(e) => updateField("companion_type", e.target.value)}
-            >
-              <option value="solo">solo</option>
-              <option value="parents">parents</option>
-              <option value="friends">friends</option>
-              <option value="partner">partner</option>
-            </select>
-          </label>
-
-          <label>
-            available_hours
-            <input
-              type="number"
-              min="1"
-              max="24"
-              step="0.5"
-              value={form.available_hours}
-              onChange={(e) => updateField("available_hours", e.target.value)}
-            />
-          </label>
-
-          <label>
-            budget_level
-            <select
-              value={form.budget_level}
-              onChange={(e) => updateField("budget_level", e.target.value)}
-            >
-              <option value="low">low</option>
-              <option value="medium">medium</option>
-              <option value="high">high</option>
-            </select>
-          </label>
-
-          <label>
-            purpose
-            <select value={form.purpose} onChange={(e) => updateField("purpose", e.target.value)}>
-              <option value="tourism">tourism</option>
-              <option value="relax">relax</option>
-              <option value="food">food</option>
-              <option value="dating">dating</option>
-            </select>
-          </label>
-
-          <label>
-            need_meal
-            <select
-              value={String(form.need_meal)}
-              onChange={(e) => updateField("need_meal", e.target.value === "true")}
-            >
-              <option value="true">true</option>
-              <option value="false">false</option>
-            </select>
-          </label>
-
-          <label>
-            walking_tolerance
-            <select
-              value={form.walking_tolerance}
-              onChange={(e) => updateField("walking_tolerance", e.target.value)}
-            >
-              <option value="low">low</option>
-              <option value="medium">medium</option>
-              <option value="high">high</option>
-            </select>
-          </label>
-
-          <label>
-            weather
-            <select value={form.weather} onChange={(e) => updateField("weather", e.target.value)}>
-              <option value="sunny">sunny</option>
-              <option value="rainy">rainy</option>
-              <option value="hot">hot</option>
-              <option value="cold">cold</option>
-            </select>
-          </label>
-
-          <label>
-            origin
-            <input value={form.origin} onChange={(e) => updateField("origin", e.target.value)} />
-          </label>
-
-          <label>
-            preferred_plan
-            <select
-              value={form.preferred_plan}
-              onChange={(e) => updateField("preferred_plan", e.target.value)}
-            >
-              <option value="relaxed_first">relaxed_first</option>
-              <option value="classic_first">classic_first</option>
-              <option value="food_friendly">food_friendly</option>
-            </select>
-          </label>
-        </div>
-
-        <button className="submit" onClick={handleSubmit} disabled={loading}>
-          {loading ? "生成中..." : "生成路线"}
-        </button>
+        {waitingClarification && clarificationOptions.length > 0 ? (
+          <div className="clarify-options">
+            <div className="clarify-title">可直接点击补充：</div>
+            <div className="clarify-buttons">
+              {clarificationOptions.map((option) => (
+                <button
+                  key={option}
+                  type="button"
+                  className="clarify-btn"
+                  disabled={loading}
+                  onClick={() => handlePickClarificationOption(option)}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </section>
 
       {error ? <section className="error-box">{error}</section> : null}
 
-      <section className="panel result">
-        <h2>结果展示</h2>
-        {!result ? <p>尚未生成结果。</p> : null}
+      <section className="panel plan-panel">
+        <h2>规划信息（底部）</h2>
+        {!planView ? <p className="empty-tip">当前还没有可展示的路线。</p> : null}
 
-        {result ? (
+        {planView ? (
           <>
-            {result.agent_notice ? <div className="notice">{result.agent_notice}</div> : null}
-
-            <div className="kv">
-              <div><strong>selected_by:</strong> {String(result.selected_by)}</div>
-              <div><strong>itinerary.title:</strong> {String(result.itinerary_title)}</div>
-              <div><strong>total_duration_minutes:</strong> {String(result.total_duration_minutes)}</div>
-              <div><strong>cross_area_count:</strong> {String(result.cross_area_count)}</div>
-              <div><strong>route_source:</strong> {String(result.route_source)}</div>
-              <div><strong>weather_source:</strong> {String(result.weather_source)}</div>
-              <div><strong>knowledge_used_count:</strong> {String(result.knowledge_used_count)}</div>
+            <div className="summary-grid">
+              <div><strong>方案来源：</strong>{selectedByText(planView.selectedBy)}</div>
+              <div><strong>标题：</strong>{planView.title}</div>
+              <div><strong>总时长（分钟）：</strong>{planView.totalDurationMinutes}</div>
+              <div><strong>跨区域次数：</strong>{planView.crossAreaCount}</div>
+              <div><strong>路线来源：</strong>{routeSourceText(planView.routeSource)}</div>
+              <div><strong>天气来源：</strong>{weatherSourceText(planView.weatherSource)}</div>
             </div>
 
-            <h3>stops</h3>
-            <ul className="stops">
-              {Array.isArray(result.stops) && result.stops.length > 0 ? (
-                result.stops.map((stop, idx) => (
-                  <li key={`${stop.name}-${idx}`}>
-                    <div>
-                      <strong>{stop.time_slot || "--:--"}</strong> [{stop.type}] {stop.name}
+            <h3>路线图框</h3>
+            <div className="route-flow">
+              {Array.isArray(planView.stops) && planView.stops.length > 0 ? (
+                planView.stops.map((stop, index) => (
+                  <React.Fragment key={`${stop.name}-${index}`}>
+                    <div className="route-node">
+                      <div className="route-time">{stop.time_slot || "--:--"}</div>
+                      <div className="route-name">{stop.name}</div>
+                      <div className="route-meta">{stopTypeText(stop.type)} · {stop.district_cluster || "未标注区域"}</div>
+                      <div className="route-meta">{stop.transport_from_prev || ""}</div>
+                      <div className="route-reason">{stop.reason || ""}</div>
                     </div>
-                    <div>{stop.district_cluster || ""}</div>
-                    <div>{stop.transport_from_prev || ""}</div>
-                    <div>{stop.reason || ""}</div>
-                  </li>
+                    {index < planView.stops.length - 1 ? <div className="route-link">→</div> : null}
+                  </React.Fragment>
                 ))
               ) : (
-                <li>无站点</li>
+                <div className="empty-tip">无可展示站点</div>
               )}
-            </ul>
-
-            <h3>knowledge_ids</h3>
-            <pre>{JSON.stringify(result.knowledge_ids, null, 2)}</pre>
-
-            <h3>knowledge_bias</h3>
-            <pre>{JSON.stringify(result.knowledge_bias, null, 2)}</pre>
-
-            <h3>explanation_basis</h3>
-            <pre>{JSON.stringify(result.explanation_basis, null, 2)}</pre>
-
-            <h3>selected_plan</h3>
-            <pre>{JSON.stringify(result.selected_plan, null, 2)}</pre>
+            </div>
           </>
         ) : null}
       </section>
@@ -456,3 +493,4 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
+

@@ -73,3 +73,32 @@ def test_dynamic_search_rounds_and_strategy_matrix(monkeypatch) -> None:
     assert state.search_round >= 1
     assert state.search_results
     assert any("策略矩阵" in log.message for log in state.debug_logs)
+
+
+def test_analyze_search_intent_injects_demand_profile(monkeypatch) -> None:
+    monkeypatch.setenv("AGENT_DB_PATH", _temp_db_path())
+    request_payload = _sample_request().model_dump()
+    request_payload.update(
+        {
+            "companion_type": "solo",
+            "purpose": "tourism",
+            "preferred_period": None,
+            "walking_tolerance": "medium",
+            "need_meal": True,
+        }
+    )
+    request = PlanRequest(**request_payload)
+    state = agent_graph.AgentState(
+        user_input="想去公园散步，然后吃烧烤，晚上看看夜景",
+        parsed_request=request,
+        thread_id="t-demand",
+    )
+    agent_graph.analyze_search_intent(state)
+
+    assert "park" in state.search_strategy
+    assert "food" in state.search_strategy
+    assert "night" in state.search_strategy or "night" in state.secondary_strategies
+    assert "prefer_park_scene" in state.candidate_biases
+    assert state.search_intent is not None
+    assert "demand_tags" in state.search_intent
+    assert state.search_intent.get("demand_keywords")

@@ -50,3 +50,10 @@ def test_need_meal_midday_matrix() -> None:
     matrix = resolve_strategy_matrix(_request(need_meal=True, preferred_period="midday"))
     assert "food" in matrix["primary_strategies"]
     assert "include_meal_stop" in matrix["candidate_biases"]
+
+
+def test_relax_matrix_includes_relaxed_and_park_bias() -> None:
+    matrix = resolve_strategy_matrix(_request(purpose="relax"))
+    assert "relaxed" in matrix["primary_strategies"]
+    assert "park" in matrix["secondary_strategies"]
+    assert "prefer_park_scene" in matrix["candidate_biases"]

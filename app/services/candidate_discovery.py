@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List
@@ -44,8 +44,11 @@ _STRATEGY_AREA_HINTS: Dict[str, List[str]] = {
     "food": ["回民街", "小寨文博", "城墙钟鼓楼", "高新"],
     "indoor": ["小寨文博", "高新", "电视塔会展"],
     "relaxed": ["小寨文博", "电视塔会展", "城墙钟鼓楼"],
+    "park": ["曲江夜游", "大雁塔", "小寨文博", "浐灞未央"],
     "nearby": [],
 }
+
+_PARK_TEXT_HINTS = ("公园", "湿地", "植物园", "森林公园", "曲江池", "芙蓉园", "绿道", "park", "garden")
 
 
 @dataclass
@@ -64,7 +67,8 @@ class DiscoveryResult:
 
 
 def _contains_any(text: str, keywords: Iterable[str]) -> bool:
-    return any(keyword in text for keyword in keywords)
+    lowered = str(text or "").lower()
+    return any(str(keyword or "").lower() in lowered for keyword in keywords)
 
 
 def _origin_cluster_hint(origin_text: str) -> str | None:
@@ -114,8 +118,12 @@ def _strategy_score(
             score += 1
     if "relaxed" in strategies and str(poi.get("walking_level", "")) != "high":
         score += 2
+    if "park" in strategies:
+        if _contains_any(text, _PARK_TEXT_HINTS):
+            score += 4
+        elif kind == "sight":
+            score += 1
 
-    # Keep existing source slightly preferred when score ties.
     primary_source = str(poi.get("discovery_primary_source", ""))
     if primary_source == SOURCE_EXISTING:
         score += 1
@@ -133,18 +141,15 @@ def _resolve_area_priority(
 
     ordered: List[str] = []
 
-    # 1) Explicit priority from resolver (origin/mentioned areas first).
     for area in scope_info.get("priority_areas") or []:
         if area in scope and area not in ordered:
             ordered.append(area)
 
-    # 2) Strategy-driven area priority.
     for strategy in strategies:
         for area in _STRATEGY_AREA_HINTS.get(strategy, []):
             if area in scope and area not in ordered:
                 ordered.append(area)
 
-    # 3) Fill rest by scope order.
     for area in scope:
         if area not in ordered:
             ordered.append(area)
@@ -255,12 +260,7 @@ def discover_candidates(
     limits: Dict[str, Any] | None = None,
     filters: Dict[str, Any] | None = None,
 ) -> DiscoveryResult:
-    """Discover POI candidates from multiple local sources.
-
-    This module is intentionally discovery-layer only:
-    - It discovers and merges candidates from source adapters.
-    - It does not schedule routes or override hard constraints.
-    """
+    """Discover POI candidates from multiple local sources."""
 
     context = context or {}
     limits = limits or {}
@@ -293,6 +293,7 @@ def discover_candidates(
         "area_scope": area_scope_used,
         "source_meta": source_meta,
         "user_input": query,
+        "demand_keywords": list(context.get("demand_keywords") or []),
     }
 
     for source_name in source_order:
@@ -323,7 +324,6 @@ def discover_candidates(
     merge_result = merge_discovery_results(source_results)
     merged = list(merge_result.get("merged_pois") or [])
 
-    # Optional lightweight second quality pass for merged multi-source pool.
     governed, quality_report = _light_quality_governance(merged)
     if not governed:
         governed = merged

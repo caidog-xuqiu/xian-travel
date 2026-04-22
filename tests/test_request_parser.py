@@ -111,6 +111,11 @@ def test_parse_afternoon_period() -> None:
     assert req.preferred_period == "afternoon"
 
 
+def test_parse_park_intent_as_relax_purpose() -> None:
+    req = parse_free_text_to_plan_request("\u60f3\u53bb\u516c\u56ed\u6563\u6b65\uff0c\u987a\u4fbf\u5403\u70e7\u70e4")
+    assert req.purpose.value == "relax"
+
+
 def test_parse_multiple_periods_prefers_later() -> None:
     req = parse_free_text_to_plan_request("\u4e0a\u5348\u60f3\u901b\uff0c\u665a\u4e0a\u60f3\u5403\u996d")
     assert req.preferred_period == "evening"

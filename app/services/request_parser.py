@@ -99,6 +99,17 @@ DATING_KEYWORDS = {
     "\u60c5\u4fa3",
     "\u6d6a\u6f2b",
 }
+PARK_PURPOSE_KEYWORDS = {
+    "\u516c\u56ed",
+    "\u6e7f\u5730",
+    "\u6e7f\u5730\u516c\u56ed",
+    "\u690d\u7269\u56ed",
+    "\u68ee\u6797\u516c\u56ed",
+    "\u7eff\u9053",
+    "\u66f2\u6c5f\u6c60",
+    "\u6563\u6b65",
+    "\u905b\u516c\u56ed",
+}
 
 NO_MEAL_KEYWORDS = {
     "\u4e0d\u5403\u996d",
@@ -265,6 +276,8 @@ def _parse_budget_level(text: str) -> str:
 def _parse_purpose(text: str, companion_type: str) -> str:
     if companion_type == "partner" or _contains_any(text, DATING_KEYWORDS) or _contains_any(text, PARTNER_KEYWORDS):
         return "dating"
+    if _contains_any(text, PARK_PURPOSE_KEYWORDS):
+        return "relax"
     if _contains_any(text, RELAX_KEYWORDS):
         return "relax"
     if _contains_any(text, TOURISM_KEYWORDS):
@@ -359,6 +372,7 @@ def _parse_origin_and_preference(raw_text: str, normalized_text: str) -> tuple[s
         return anchor, "nearby"
 
     patterns = [
+        r"(?:^|[，。；,\s])(?:我在|人在|目前在|起点在)([^,\uff0c.\u3002;\uff1b\u3001\s]{2,30})",
         r"(?:\u4ece|\u7531)([^,\uff0c.\u3002;\uff1b\u3001\s]{1,20}?)(?:\u51fa\u53d1|\u5f00\u59cb|\u542f\u7a0b)",
         r"(?:\u8d77\u70b9(?:\u5728|\u662f)?)([^,\uff0c.\u3002;\uff1b\u3001\s]{1,20})",
         r"(?:\u5728)?([^,\uff0c.\u3002;\uff1b\u3001\s]{1,20}?)(?:\u9644\u8fd1|\u8fd9\u8fb9|\u5468\u8fb9)",
@@ -528,6 +542,14 @@ def parse_free_text_to_plan_request_with_debug(text: str) -> tuple[PlanRequest, 
         # 3) Keep rule need_meal=true when LLM sets false (known misjudgment).
         if rule_payload.get("need_meal") is True and merged.get("need_meal") is False:
             merged["need_meal"] = True
+        # 4) Keep park-like intent from rule parse when llm drifts to tourism.
+        if (
+            isinstance(text, str)
+            and _contains_any(_normalize_text(text), PARK_PURPOSE_KEYWORDS)
+            and rule_payload.get("purpose") == "relax"
+            and merged.get("purpose") in {"tourism", None}
+        ):
+            merged["purpose"] = "relax"
 
         # Re-attach geocode enhancement after merge (LLM may override origin text).
         enhanced, geo_debug = _enhance_origin_with_amap(

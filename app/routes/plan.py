@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+﻿from fastapi import APIRouter, HTTPException
 
 from app.models.schemas import (
     ItineraryResponse,
@@ -113,7 +113,18 @@ def agent_plan_v2(payload: AgentPlanV2Request) -> AgentPlanResponse:
 
 @router.post("/agent-plan-v3", response_model=AgentPlanResponse)
 def agent_plan_v3(payload: AgentPlanV3Request) -> AgentPlanResponse:
-    return run_agent_v3(text=payload.text, thread_id=payload.thread_id, user_key=payload.user_key)
+    if payload.fast_mode:
+        return run_agent_v3(
+            text=payload.text,
+            thread_id=payload.thread_id,
+            user_key=payload.user_key,
+            fast_mode=True,
+        )
+    return run_agent_v3(
+        text=payload.text,
+        thread_id=payload.thread_id,
+        user_key=payload.user_key,
+    )
 
 
 @router.post("/agent-plan/continue", response_model=AgentPlanResponse)

@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import json
 from pathlib import Path
@@ -35,15 +35,22 @@ _RESTAURANT_KEYWORDS = {
     "food",
     "restaurant",
     "cafe",
+    "bbq",
+    "烧烤",
 }
 
 _NIGHT_KEYWORDS = {"night", "夜", "不夜城", "曲江", "夜景"}
 _MUSEUM_KEYWORDS = {"museum", "博物馆", "文博", "展馆"}
 _CLASSIC_KEYWORDS = {"classic", "landmark", "钟楼", "鼓楼", "城墙", "大雁塔"}
+_PARK_KEYWORDS = {"park", "garden", "公园", "湿地", "植物园", "森林公园", "曲江池", "芙蓉园", "绿道"}
+
 _FOOD_QUERY_HINTS = ["回民街 餐厅", "小寨 餐厅", "大雁塔 餐厅", "曲江 餐厅"]
 _SIGHT_QUERY_HINTS = ["钟楼", "鼓楼", "城墙", "大雁塔", "博物馆", "景点"]
-_NIGHT_QUERY_HINTS = ["大唐不夜城", "曲江夜游", "夜景"]
+_NIGHT_QUERY_HINTS = ["大唐不夜城", "曲江 夜景", "夜游"]
 _INDOOR_QUERY_HINTS = ["博物馆", "展馆", "室内景点"]
+_PARK_QUERY_HINTS = ["西安 公园", "西安 城市公园", "西安 湿地公园", "曲江池", "大唐芙蓉园"]
+_BBQ_QUERY_HINTS = ["西安 烧烤", "西安 烤串", "西安 夜宵"]
+
 _QUERY_ALIAS_MAP = {
     "钟楼": "钟鼓楼",
     "回民街": "回民街 小吃",
@@ -104,7 +111,8 @@ def _load_local_extended_corpus() -> List[Dict[str, Any]]:
 
 
 def _contains_any(text: str, keywords: Iterable[str]) -> bool:
-    return any(word in text for word in keywords)
+    lowered = str(text or "").lower()
+    return any(str(word or "").lower() in lowered for word in keywords)
 
 
 def _filter_local_extended(
@@ -141,6 +149,8 @@ def _filter_local_extended(
             keep = True
         if not keep and "classic" in lowered and _contains_any(text, _CLASSIC_KEYWORDS):
             keep = True
+        if not keep and "park" in lowered and _contains_any(text, _PARK_KEYWORDS):
+            keep = True
         if keep:
             result.append(poi)
 
@@ -154,7 +164,12 @@ def _guess_kind_from_keyword(keyword: str) -> str:
     return "sight"
 
 
-def _build_amap_keywords(query: str, strategies: List[str], need_meal: bool) -> List[str]:
+def _build_amap_keywords(
+    query: str,
+    strategies: List[str],
+    need_meal: bool,
+    extra_keywords: List[str] | None = None,
+) -> List[str]:
     ordered: List[str] = []
 
     def _append_many(values: Iterable[str]) -> None:
@@ -163,27 +178,44 @@ def _build_amap_keywords(query: str, strategies: List[str], need_meal: bool) -> 
             if text and text not in ordered:
                 ordered.append(text)
 
+    lowered = {str(x).strip().lower() for x in strategies}
+    park_mode = "park" in lowered
+
     if query:
         _append_many([query])
-    lowered = {str(x).strip().lower() for x in strategies}
+    _append_many(extra_keywords or [])
+
     if "night" in lowered:
         _append_many(_NIGHT_QUERY_HINTS)
-    if "food" in lowered or need_meal:
+    if park_mode:
+        _append_many(_PARK_QUERY_HINTS)
+
+    if "food" in lowered:
         _append_many(_FOOD_QUERY_HINTS)
+    elif need_meal and not park_mode:
+        _append_many(_FOOD_QUERY_HINTS[:2])
+
     if "museum" in lowered:
         _append_many(["陕西历史博物馆", "博物馆", "文博"])
     if "classic" in lowered or "landmark" in lowered:
         _append_many(_SIGHT_QUERY_HINTS)
     if "indoor" in lowered:
         _append_many(_INDOOR_QUERY_HINTS)
+
+    if _contains_any(" ".join(extra_keywords or []), {"烧烤", "烤串", "bbq"}):
+        _append_many(_BBQ_QUERY_HINTS)
+
+    if park_mode and need_meal:
+        _append_many(["公园 附近 餐厅"])
+
     if not ordered:
         _append_many(_SIGHT_QUERY_HINTS + _FOOD_QUERY_HINTS)
-    return ordered[:8]
+    return ordered[:10]
 
 
 def _simplify_query(text: str) -> str:
     simplified = str(text or "").strip()
-    for word in ("附近", "周边", "这边", "出发", "开始"):
+    for word in ("附近", "周边", "这边", "出发", "开始", "安排", "路线"):
         simplified = simplified.replace(word, "")
     for src, tgt in _QUERY_ALIAS_MAP.items():
         if src in simplified:
@@ -226,18 +258,24 @@ def _extract_geocode_lat_lng(geo_debug: Dict[str, Any]) -> tuple[float, float] |
     return _parse_amap_location(first.get("location"))
 
 
-def _build_query_levels(query: str, strategies: List[str], need_meal: bool) -> List[List[str]]:
-    level1 = _build_amap_keywords(query, strategies, need_meal)
-    level2 = []
+def _build_query_levels(
+    query: str,
+    strategies: List[str],
+    need_meal: bool,
+    extra_keywords: List[str] | None = None,
+) -> List[List[str]]:
+    level1 = _build_amap_keywords(query, strategies, need_meal, extra_keywords=extra_keywords)
+    level2: List[str] = []
     for item in level1:
         simplified = _simplify_query(item)
         if simplified and simplified not in level2:
             level2.append(simplified)
-    level3 = []
+    level3: List[str] = []
     for item in level2 or level1:
         aliased = _ascii_alias_query(item)
         if aliased and aliased not in level3:
             level3.append(aliased)
+
     levels: List[List[str]] = []
     for level in (level1, level2, level3):
         if level:
@@ -249,7 +287,6 @@ def _map_amap_raw(raw: Dict[str, Any], preferred_kind: str) -> Dict[str, Any] | 
     mapped = _map_raw_poi(raw, kind=preferred_kind)
     if mapped is not None:
         return mapped
-    # Fallback to opposite kind to tolerate keyword ambiguity from text search.
     alt_kind = "restaurant" if preferred_kind == "sight" else "sight"
     return _map_raw_poi(raw, kind=alt_kind)
 
@@ -274,8 +311,11 @@ def _load_from_amap_web_search(
         area_scope_info = context.get("area_scope_info")
         if isinstance(area_scope_info, dict):
             area_scope = area_scope_info.get("areas") or []
+
     need_meal = bool(getattr(request_context, "need_meal", False))
-    keyword_levels = _build_query_levels(str(query or ""), strategies, need_meal)
+    extra_keywords = [str(x) for x in (context.get("demand_keywords") or []) if str(x)]
+    keyword_levels = _build_query_levels(str(query or ""), strategies, need_meal, extra_keywords=extra_keywords)
+
     if source_meta is not None:
         source_meta["query_count"] = sum(len(level) for level in keyword_levels)
         source_meta["search_mode"] = "keyword"
@@ -289,6 +329,7 @@ def _load_from_amap_web_search(
     nearby_used = False
     origin_mode = str(getattr(request_context, "origin_preference_mode", "") or "")
     origin_text = str(getattr(request_context, "origin", "") or "")
+
     if origin_mode == "nearby" and origin_text:
         try:
             lat_value = getattr(request_context, "origin_latitude", None)
@@ -304,9 +345,11 @@ def _load_from_amap_web_search(
                 if coords is None:
                     raise RuntimeError("geocode_invalid_location")
                 lat, lng = coords
+
             nearby_used = True
             if source_meta is not None:
                 source_meta["search_mode"] = "nearby"
+
             for level_index, keywords in enumerate(keyword_levels or [[]], start=1):
                 for keyword in keywords[:3]:
                     debug_payload = search_poi_nearby(

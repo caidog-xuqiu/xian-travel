@@ -109,6 +109,7 @@ class AgentPlanV3Request(BaseModel):
     text: str = Field(..., min_length=1)
     thread_id: str | None = None
     user_key: str | None = None
+    fast_mode: bool = False
 
 
 class AgentPlanContinueRequest(BaseModel):

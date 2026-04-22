@@ -29,6 +29,7 @@ _CLASSIC_AREA_PREFERENCE = ["城墙钟鼓楼", "小寨文博", "大雁塔", "曲
 _NIGHT_AREA_PREFERENCE = ["曲江夜游", "大雁塔", "城墙钟鼓楼"]
 _LIVELY_CLUSTER_HINTS = {"城墙钟鼓楼簇", "曲江夜游簇"}
 _LOW_COST_LEVELS = {"low"}
+_PARK_NAME_HINTS = ("公园", "湿地", "植物园", "森林公园", "曲江池", "芙蓉园", "park", "garden")
 
 
 def _kb_flag(knowledge_bias: Dict[str, Any] | None, key: str) -> bool:
@@ -42,6 +43,14 @@ def _poi_is_lively(poi: Dict[str, Any]) -> bool:
     tags = [str(t) for t in (poi.get("tags") or [])]
     text = f"{name}{category}{' '.join(tags)}"
     return cluster in _LIVELY_CLUSTER_HINTS or any(k in text for k in ("热闹", "夜游", "回民街", "钟楼", "鼓楼", "不夜城", "lively"))
+
+
+def _poi_is_park(poi: Dict[str, Any]) -> bool:
+    name = str(poi.get("name") or "")
+    category = str(poi.get("category") or "")
+    tags = [str(t) for t in (poi.get("tags") or [])]
+    text = f"{name} {category} {' '.join(tags)}".lower()
+    return any(k in text for k in _PARK_NAME_HINTS)
 
 
 def _unique_in_order(items: List[str]) -> List[str]:
@@ -452,6 +461,9 @@ def _variant_candidate_pois(
     prefer_lively_places = _kb_flag(knowledge_bias, "prefer_lively_places")
     prefer_single_cluster = _kb_flag(knowledge_bias, "prefer_single_cluster")
     prefer_night_view = _kb_flag(knowledge_bias, "prefer_night_view")
+    search_strategy = [str(x).strip().lower() for x in ((area_context or {}).get("search_strategy") or []) if str(x).strip()]
+    demand_tags = {str(x).strip().lower() for x in ((area_context or {}).get("demand_tags") or []) if str(x).strip()}
+    prefer_park_scene = _kb_flag(knowledge_bias, "prefer_park_scene") or ("park" in search_strategy) or ("park" in demand_tags)
 
     if prefer_low_walk:
         low_walk_items = [p for p in items if p.get("walking_level") != "high"]
@@ -470,6 +482,16 @@ def _variant_candidate_pois(
         )
     if prefer_lively_places:
         items.sort(key=lambda p: (1 if _poi_is_lively(p) else 0, float(p.get("_score") or 0)), reverse=True)
+    if prefer_park_scene:
+        park_candidates = [p for p in items if p.get("kind") == "sight" and _poi_is_park(p)]
+        if park_candidates:
+            items.sort(
+                key=lambda p: (
+                    0 if (p.get("kind") == "sight" and _poi_is_park(p)) else 1,
+                    0 if p.get("kind") == "sight" else 1,
+                    -float(p.get("_score") or 0),
+                )
+            )
 
     origin_cluster_hint = _infer_origin_cluster_hint(request.origin)
     origin_area_hint = _infer_origin_area_hint(request.origin)
@@ -477,9 +499,13 @@ def _variant_candidate_pois(
 
     if plan_id == "classic_first":
         classic_keywords = ("博物馆", "城墙", "钟楼", "鼓楼", "大雁塔", "地标", "文博", "landmark", "museum")
+        if prefer_park_scene:
+            classic_keywords = classic_keywords + _PARK_NAME_HINTS
         preferred_classic_areas = _unique_in_order(
             (_NIGHT_AREA_PREFERENCE if prefer_night_view else _CLASSIC_AREA_PREFERENCE) + area_priority_order
         )
+        if prefer_park_scene:
+            preferred_classic_areas = _unique_in_order(["曲江夜游", "大雁塔"] + preferred_classic_areas)
         area_rank = {area: idx for idx, area in enumerate(preferred_classic_areas)}
         classic_sights = [
             p
@@ -535,6 +561,10 @@ def _variant_candidate_pois(
 
     if plan_id == "relaxed_first":
         relaxed_pool = [p for p in items if p.get("walking_level") != "high"]
+        if prefer_park_scene:
+            park_first_pool = [p for p in relaxed_pool if p.get("kind") == "sight" and _poi_is_park(p)]
+            if park_first_pool:
+                relaxed_pool = park_first_pool + [p for p in relaxed_pool if p not in park_first_pool]
         preferred_areas: List[str] = []
         if origin_area_hint:
             preferred_areas.append(origin_area_hint)
@@ -545,13 +575,17 @@ def _variant_candidate_pois(
             keep_area_count = 2
         keep_areas = set(preferred_areas[:keep_area_count])
         area_filtered = [p for p in relaxed_pool if p.get("area_name") in keep_areas]
-        if area_filtered:
+        if area_filtered and not (prefer_park_scene and any(_poi_is_park(p) for p in relaxed_pool)):
             relaxed_pool = area_filtered
-        if origin_cluster_hint:
+        if origin_cluster_hint and not (prefer_park_scene and any(_poi_is_park(p) for p in relaxed_pool)):
             same_cluster = [p for p in relaxed_pool if p.get("district_cluster") == origin_cluster_hint]
             if same_cluster:
                 relaxed_pool = same_cluster
         relaxed_sights = [p for p in relaxed_pool if p.get("kind") == "sight"][:2]
+        if prefer_park_scene:
+            park_sights = [p for p in relaxed_pool if p.get("kind") == "sight" and _poi_is_park(p)]
+            if park_sights:
+                relaxed_sights = park_sights[:2]
         relaxed_restaurants = [p for p in relaxed_pool if p.get("kind") == "restaurant"][:1]
         if request.need_meal and relaxed_restaurants:
             relaxed_curated = relaxed_sights[:1] + relaxed_restaurants[:1]
@@ -584,6 +618,10 @@ def _variant_candidate_pois(
         sights_same_clusters = [
             p for p in items if p.get("kind") == "sight" and p.get("district_cluster") in keep_clusters
         ]
+        if prefer_park_scene:
+            park_sights = [p for p in sights_same_clusters if _poi_is_park(p)]
+            if park_sights:
+                sights_same_clusters = park_sights + [p for p in sights_same_clusters if p not in park_sights]
         max_sights = 1
         if sights_same_clusters:
             sights_same_clusters = sights_same_clusters[:max_sights]
