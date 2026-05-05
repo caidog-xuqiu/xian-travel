@@ -41,8 +41,31 @@ const MOCK_PLAN = {
     prefer_meal_experience: true,
   },
   explanationBasis: ["陪父母优先低强度", "需要用餐时先保留餐饮节点"],
+  totalScore: 8.2,
+  scoreBreakdown: {
+    total_score: 8.2,
+    constraint_score: 2.8,
+    plan_quality_score: 2.0,
+    user_feedback_score: 3.4,
+  },
+  retrievedCaseCount: 1,
+  retrievedCaseIds: [1],
+  retrievedCaseSummaries: [{ case_id: 1, query: "陪父母半天，中午吃饭", score: 8.1, selected_plan: "relaxed_first" }],
+  caseBias: { prefer_low_walk: true, prefer_meal_experience: true },
+  caseMemoryId: 1,
+  storedToCaseMemory: true,
+  storedReason: "high_score_and_constraints_met",
   routeSource: "mock",
   weatherSource: "mock",
+  searchMode: "llm_planned",
+  searchPlanSummary: "先找公园类地点，再围绕候选找烧烤；偏好靠近起点、少步行。",
+  searchRoundCount: 2,
+  searchRoundsDebug: [
+    { goal: "找公园", tool: "keyword_search", queries: ["公园", "城市公园"] },
+    { goal: "找烧烤", tool: "nearby_search", queries: ["烧烤", "烤肉"] },
+  ],
+  primaryIntents: ["park", "bbq"],
+  clarificationFromSearchPlanner: false,
   selectionReason: "Mock 模式：用于页面联调。",
   reasonTags: ["mock"],
   raw: { mode: "mock" },
@@ -167,6 +190,7 @@ async function postJson(url, payload) {
 function normalizeAgentPlan(agentData) {
   const selectedPlan = agentData?.selected_plan || {};
   const stops = Array.isArray(selectedPlan?.route) ? selectedPlan.route : [];
+  const scoreBreakdown = agentData?.score_breakdown || agentData?.final_response?.score_breakdown || {};
   return {
     selectedBy: agentData?.selected_by || "unknown",
     title:
@@ -182,8 +206,26 @@ function normalizeAgentPlan(agentData) {
     knowledgeIds: Array.isArray(agentData?.knowledge_ids) ? agentData.knowledge_ids : [],
     knowledgeBias: agentData?.knowledge_bias || {},
     explanationBasis: Array.isArray(agentData?.explanation_basis) ? agentData.explanation_basis : [],
+    totalScore: toNumber(agentData?.total_score ?? scoreBreakdown?.total_score, 0),
+    scoreBreakdown,
+    retrievedCaseCount: toNumber(agentData?.retrieved_case_count, 0),
+    retrievedCaseIds: Array.isArray(agentData?.retrieved_case_ids) ? agentData.retrieved_case_ids : [],
+    retrievedCaseSummaries: Array.isArray(agentData?.retrieved_case_summaries) ? agentData.retrieved_case_summaries : [],
+    caseBias: agentData?.case_bias || {},
+    caseMemoryUsed: Boolean(agentData?.case_memory_used),
+    caseMemoryId: agentData?.case_memory_id || null,
+    storedToCaseMemory: Boolean(agentData?.stored_to_case_memory),
+    storedReason: agentData?.stored_reason || "",
     routeSource: agentData?.route_source || inferRouteSource(stops),
     weatherSource: agentData?.weather_source || "unknown",
+    searchMode: agentData?.search_mode || "rule_based",
+    searchPlanSummary: agentData?.search_plan_summary || "",
+    searchRoundCount: toNumber(agentData?.search_round_count, 0),
+    searchRoundsDebug: Array.isArray(agentData?.search_rounds_debug) ? agentData.search_rounds_debug : [],
+    primaryIntents: Array.isArray(agentData?.search_plan_used?.primary_intents)
+      ? agentData.search_plan_used.primary_intents
+      : [],
+    clarificationFromSearchPlanner: Boolean(agentData?.clarification_from_search_planner),
     selectionReason: String(agentData?.selection_reason || ""),
     reasonTags: Array.isArray(agentData?.reason_tags) ? agentData.reason_tags : [],
     raw: agentData,
@@ -201,6 +243,10 @@ function App() {
   const [inputText, setInputText] = useState("");
   const [messages, setMessages] = useState(START_MESSAGES);
   const [planView, setPlanView] = useState(null);
+  const [userRating, setUserRating] = useState(0);
+  const [feedbackText, setFeedbackText] = useState("");
+  const [feedbackStatus, setFeedbackStatus] = useState("");
+  const [highScoreCases, setHighScoreCases] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const messageEndRef = useRef(null);
@@ -212,6 +258,29 @@ function App() {
   useEffect(() => {
     localStorage.setItem("xian_agent_origin", originInput || "");
   }, [originInput]);
+
+  const loadHighScoreCases = async () => {
+    if (mode === "mock") {
+      setHighScoreCases(MOCK_PLAN.retrievedCaseSummaries);
+      return;
+    }
+    try {
+      const base = apiBase.replace(/\/$/, "");
+      const params = new URLSearchParams();
+      if (String(userKey || "").trim()) params.set("user_key", String(userKey).trim());
+      params.set("limit", "6");
+      const response = await fetch(`${base}/route-memory?${params.toString()}`);
+      if (!response.ok) return;
+      const data = await response.json();
+      setHighScoreCases(Array.isArray(data?.items) ? data.items : []);
+    } catch (_err) {
+      setHighScoreCases([]);
+    }
+  };
+
+  useEffect(() => {
+    loadHighScoreCases();
+  }, [apiBase, userKey, mode]);
 
   useEffect(() => {
     if (messageEndRef.current) {
@@ -251,7 +320,10 @@ function App() {
 
     try {
       if (mode === "mock") {
-        setPlanView(MOCK_PLAN);
+        setPlanView({ ...MOCK_PLAN, userQuery: text });
+        setUserRating(0);
+        setFeedbackText("");
+        setFeedbackStatus("");
         pushMessage("agent", "已生成示例路线（演示模式）。切到实时联调可调用真实智能体。");
         setWaitingClarification(false);
         setClarificationOptions([]);
@@ -282,7 +354,11 @@ function App() {
         const question =
           String(agentData?.clarification_question || "") ||
           "我还缺少关键出行信息，请继续补充。";
-        setClarificationOptions(extractClarificationOptions(question));
+        setClarificationOptions(
+          Array.isArray(agentData?.clarification_options) && agentData.clarification_options.length > 0
+            ? agentData.clarification_options
+            : extractClarificationOptions(question)
+        );
         pushMessage("agent", question);
         return;
       }
@@ -290,7 +366,12 @@ function App() {
       setWaitingClarification(false);
       setClarificationOptions([]);
       const normalized = normalizeAgentPlan(agentData);
+      normalized.userQuery = injectedText;
       setPlanView(normalized);
+      setUserRating(0);
+      setFeedbackText("");
+      setFeedbackStatus("");
+      loadHighScoreCases();
       pushMessage("agent", `路线已生成：${normalized.title}`);
     } catch (err) {
       const message = err?.message || "请求失败，请检查后端是否已启动。";
@@ -322,6 +403,55 @@ function App() {
     setWaitingClarification(false);
     setClarificationOptions([]);
     setError("");
+  };
+
+  const submitFeedback = async () => {
+    if (!planView || !userRating) {
+      setFeedbackStatus("请选择 1 到 10 分后再提交。");
+      return;
+    }
+    setFeedbackStatus("正在提交评分...");
+    try {
+      if (mode === "mock") {
+        setFeedbackStatus("演示模式：评分已记录，已纳入高质量路线案例库。");
+        setPlanView((prev) => prev ? { ...prev, storedToCaseMemory: true } : prev);
+        return;
+      }
+      const base = apiBase.replace(/\/$/, "");
+      const data = await postJson(`${base}/route-feedback`, {
+        user_key: String(userKey || "").trim() || "playground_user",
+        user_query: planView.userQuery || "",
+        selected_plan: planView.raw?.selected_plan_area_summary?.plan_id || planView.selectedBy,
+        itinerary: planView.raw?.selected_plan || { route: planView.stops, summary: planView.title, tips: [] },
+        system_score_breakdown: planView.scoreBreakdown || {},
+        user_rating: userRating,
+        feedback_text: feedbackText,
+        case_memory_id: planView.caseMemoryId,
+        parsed_request: planView.raw?.parsed_request || {},
+        route_summary: {
+          ...(planView.raw?.selected_plan_area_summary || {}),
+          route_source: planView.routeSource,
+        },
+        knowledge_ids: planView.knowledgeIds || [],
+        knowledge_bias: planView.knowledgeBias || {},
+      });
+      setPlanView((prev) =>
+        prev
+          ? {
+              ...prev,
+              totalScore: toNumber(data?.final_total_score, prev.totalScore),
+              scoreBreakdown: data?.score_breakdown || prev.scoreBreakdown,
+              storedToCaseMemory: Boolean(data?.stored_to_case_memory),
+              caseMemoryId: data?.case_memory_id || prev.caseMemoryId,
+              storedReason: data?.stored_reason || prev.storedReason,
+            }
+          : prev
+      );
+      setFeedbackStatus(data?.stored_to_case_memory ? "评分已提交，已纳入高质量路线案例库。" : "评分已提交。");
+      loadHighScoreCases();
+    } catch (err) {
+      setFeedbackStatus(`评分提交失败：${err?.message || "请检查后端接口"}`);
+    }
   };
 
   return (
@@ -465,6 +595,67 @@ function App() {
               <div><strong>天气来源：</strong>{weatherSourceText(planView.weatherSource)}</div>
             </div>
 
+            <div className="search-strategy-card">
+              <h3>搜索策略</h3>
+              <div className="summary-grid compact">
+                <div><strong>搜索模式：</strong>{planView.searchMode === "llm_planned" ? "模型规划搜索" : "规则兜底搜索"}</div>
+                <div><strong>主要诉求：</strong>{planView.primaryIntents?.length ? planView.primaryIntents.join("、") : "未标注"}</div>
+                <div><strong>搜索轮次：</strong>{planView.searchRoundCount || 0}</div>
+                <div><strong>主动追问：</strong>{planView.clarificationFromSearchPlanner ? "由搜索规划触发" : "未触发"}</div>
+              </div>
+              <p className="strategy-summary">{planView.searchPlanSummary || "本次未返回搜索策略摘要。"}</p>
+              {Array.isArray(planView.searchRoundsDebug) && planView.searchRoundsDebug.length > 0 ? (
+                <div className="strategy-rounds">
+                  {planView.searchRoundsDebug.slice(0, 3).map((round, index) => (
+                    <span key={`${round.tool || "tool"}-${index}`}>
+                      第 {index + 1} 轮：{(round.queries || []).slice(0, 3).join("、") || round.tool || "搜索"}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="score-card">
+              <div className="score-head">
+                <h3>路线评分</h3>
+                <div className="score-number">{toNumber(planView.totalScore, 0).toFixed(1)} / 10</div>
+              </div>
+              <div className="score-parts">
+                <span>约束满足：{toNumber(planView.scoreBreakdown?.constraint_score, 0).toFixed(1)} / 2.9</span>
+                <span>规划质量：{toNumber(planView.scoreBreakdown?.plan_quality_score, 0).toFixed(1)} / 2.1</span>
+                <span>用户反馈：{toNumber(planView.scoreBreakdown?.user_feedback_score, 0).toFixed(1)} / 5</span>
+              </div>
+              <div className="store-tip">
+                {planView.storedToCaseMemory || toNumber(planView.totalScore, 0) >= 8
+                  ? "已纳入高质量路线案例库"
+                  : "分数达到 8 分后可纳入高质量路线案例库"}
+              </div>
+              <div className="rating-row" aria-label="用户评分">
+                {Array.from({ length: 10 }, (_, index) => index + 1).map((score) => (
+                  <button
+                    key={score}
+                    type="button"
+                    className={userRating === score ? "rating-btn active" : "rating-btn"}
+                    onClick={() => setUserRating(score)}
+                  >
+                    {score}
+                  </button>
+                ))}
+              </div>
+              <textarea
+                className="feedback-input"
+                value={feedbackText}
+                onChange={(e) => setFeedbackText(e.target.value)}
+                placeholder="可选：写一句你对这条路线的反馈。"
+              />
+              <div className="feedback-actions">
+                <button type="button" className="minor-btn primary" onClick={submitFeedback}>
+                  提交评分
+                </button>
+                {feedbackStatus ? <span>{feedbackStatus}</span> : null}
+              </div>
+            </div>
+
             <h3>路线图框</h3>
             <div className="route-flow">
               {Array.isArray(planView.stops) && planView.stops.length > 0 ? (
@@ -487,10 +678,33 @@ function App() {
           </>
         ) : null}
       </section>
+
+      <section className="panel memory-panel">
+        <h2>我的历史高分路线</h2>
+        {highScoreCases.length === 0 ? (
+          <p className="empty-tip">还没有历史高分案例。</p>
+        ) : (
+          <div className="memory-list">
+            {highScoreCases.map((item) => (
+              <div key={item.case_id || item.caseId} className="memory-item">
+                <div className="memory-top">
+                  <strong>#{item.case_id || item.caseId}</strong>
+                  <span>{toNumber(item.score, 0).toFixed(1)} 分</span>
+                </div>
+                <div className="memory-query">{item.query || "未记录需求"}</div>
+                <div className="route-meta">
+                  {item.selected_plan || "未标注方案"} · {item.created_at || "刚刚"}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
     </div>
   );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
+
 

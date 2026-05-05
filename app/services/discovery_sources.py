@@ -1,6 +1,7 @@
 ﻿from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 
@@ -258,6 +259,201 @@ def _extract_geocode_lat_lng(geo_debug: Dict[str, Any]) -> tuple[float, float] |
     return _parse_amap_location(first.get("location"))
 
 
+def _poi_lat_lng(poi: Dict[str, Any] | None) -> tuple[float, float] | None:
+    if not isinstance(poi, dict):
+        return None
+    try:
+        lat = float(poi.get("latitude"))
+        lng = float(poi.get("longitude"))
+    except (TypeError, ValueError):
+        return None
+    return lat, lng
+
+
+def _distance_meters(lat1: float, lng1: float, lat2: float, lng2: float) -> int:
+    radius = 6371000.0
+    phi1 = math.radians(lat1)
+    phi2 = math.radians(lat2)
+    d_phi = math.radians(lat2 - lat1)
+    d_lambda = math.radians(lng2 - lng1)
+    a = math.sin(d_phi / 2) ** 2 + math.cos(phi1) * math.cos(phi2) * math.sin(d_lambda / 2) ** 2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return int(radius * c)
+
+
+def _round_query_matches(poi: Dict[str, Any], queries: List[str]) -> bool:
+    if not queries:
+        return True
+    text = " ".join(
+        [
+            str(poi.get("name") or ""),
+            str(poi.get("category") or ""),
+            " ".join(str(tag) for tag in (poi.get("tags") or [])),
+            str(poi.get("district_cluster") or ""),
+            str(poi.get("area_name") or ""),
+        ]
+    ).lower()
+    kind = str(poi.get("kind") or "")
+    for query in queries:
+        q = str(query or "").strip().lower()
+        if not q:
+            continue
+        if q in text:
+            return True
+        if _contains_any(q, _RESTAURANT_KEYWORDS) and kind == "restaurant":
+            return True
+        if _contains_any(q, _PARK_KEYWORDS) and (kind == "sight" or _contains_any(text, _PARK_KEYWORDS)):
+            return True
+    return False
+
+
+def _with_round_metadata(
+    poi: Dict[str, Any],
+    *,
+    round_index: int,
+    around_poi: Dict[str, Any] | None = None,
+    distance_to_anchor_m: int | None = None,
+) -> Dict[str, Any]:
+    item = dict(poi)
+    item["derived_round"] = round_index
+    if around_poi:
+        item["anchor_poi_id"] = str(around_poi.get("id") or "")
+        item["anchor_poi_name"] = str(around_poi.get("name") or "")
+        item["distance_to_anchor_m"] = distance_to_anchor_m
+    return item
+
+
+def _local_round_search(
+    round_spec: Dict[str, Any],
+    context: Dict[str, Any],
+    *,
+    around_poi: Dict[str, Any] | None,
+    round_index: int,
+) -> List[Dict[str, Any]]:
+    queries = [str(q) for q in (round_spec.get("queries") or []) if str(q)]
+    radius = int(round_spec.get("radius_meters") or 1800)
+    base_pois = list(context.get("base_pois") or [])
+    local_pois = base_pois + _load_local_extended_corpus()
+    anchor_coords = _poi_lat_lng(around_poi)
+    results: List[Dict[str, Any]] = []
+    for poi in local_pois:
+        if not isinstance(poi, dict):
+            continue
+        distance = None
+        if around_poi and anchor_coords:
+            coords = _poi_lat_lng(poi)
+            if coords is None:
+                continue
+            distance = _distance_meters(anchor_coords[0], anchor_coords[1], coords[0], coords[1])
+            if distance > radius:
+                continue
+        if not _round_query_matches(poi, queries):
+            continue
+        results.append(
+            _with_round_metadata(
+                poi,
+                round_index=round_index,
+                around_poi=around_poi,
+                distance_to_anchor_m=distance,
+            )
+        )
+    results.sort(key=lambda item: (int(item.get("distance_to_anchor_m") or 0), -float(item.get("_score") or 0)))
+    return results[: int(round_spec.get("max_results") or 5)]
+
+
+def run_search_round(
+    round_spec: Dict[str, Any],
+    context: Dict[str, Any] | None = None,
+    *,
+    around_poi: Dict[str, Any] | None = None,
+    round_index: int = 1,
+) -> Dict[str, Any]:
+    """Execute one structured search round and keep the output observable."""
+    context = context or {}
+    tool = str(round_spec.get("tool") or "keyword_search")
+    queries = [str(q).strip() for q in (round_spec.get("queries") or []) if str(q).strip()]
+    max_results = int(round_spec.get("max_results") or 5)
+    radius = int(round_spec.get("radius_meters") or 1800)
+    source_meta: Dict[str, Any] = {"tool": tool, "queries": queries, "round_index": round_index}
+    results: List[Dict[str, Any]] = []
+
+    if tool == "keyword_search":
+        for query in queries or [str(context.get("query") or "")]:
+            round_context = dict(context)
+            round_context.setdefault("source_meta", {})
+            pois = load_candidates_from_source(SOURCE_LOCAL_EXTENDED, query=query, context=round_context)
+            pois += load_candidates_from_source(SOURCE_EXISTING, query=query, context=round_context)
+            pois += load_candidates_from_source(SOURCE_AMAP_WEB, query=query, context=round_context)
+            results.extend(_with_round_metadata(poi, round_index=round_index) for poi in pois if isinstance(poi, dict))
+            source_meta.update(round_context.get("source_meta") or {})
+
+    elif tool == "nearby_search":
+        anchor_coords = _poi_lat_lng(around_poi)
+        key, key_error = load_valid_amap_api_key("AMAP_API_KEY")
+        if key and anchor_coords:
+            merged_raw: List[Dict[str, Any]] = []
+            for query in queries:
+                try:
+                    payload = search_poi_nearby(
+                        lat=anchor_coords[0],
+                        lng=anchor_coords[1],
+                        keyword=query,
+                        radius=radius,
+                        limit=max_results,
+                        debug=True,
+                    )
+                    if isinstance(payload, dict):
+                        merged_raw.extend(payload.get("result") or [])
+                        source_meta.update(
+                            {
+                                "amap_status": payload.get("amap_status"),
+                                "amap_info": payload.get("amap_info"),
+                                "amap_infocode": payload.get("amap_infocode"),
+                                "request_url": payload.get("request_url"),
+                                "fallback_reason": payload.get("fallback_reason"),
+                            }
+                        )
+                    elif isinstance(payload, list):
+                        merged_raw.extend([item for item in payload if isinstance(item, dict)])
+                except Exception as exc:
+                    source_meta["fallback_reason"] = f"nearby_failed:{exc}"
+            for raw in merged_raw:
+                mapped = _map_amap_raw(raw, preferred_kind=_guess_kind_from_keyword(str(raw.get("type") or raw.get("name") or "")))
+                if mapped is None:
+                    continue
+                distance = None
+                coords = _poi_lat_lng(mapped)
+                if anchor_coords and coords:
+                    distance = _distance_meters(anchor_coords[0], anchor_coords[1], coords[0], coords[1])
+                results.append(
+                    _with_round_metadata(
+                        mapped,
+                        round_index=round_index,
+                        around_poi=around_poi,
+                        distance_to_anchor_m=distance,
+                    )
+                )
+        else:
+            source_meta["fallback_reason"] = key_error or ("missing_anchor_coordinate" if not anchor_coords else "missing_api_key")
+        if not results:
+            results.extend(_local_round_search(round_spec, context, around_poi=around_poi, round_index=round_index))
+
+    else:
+        source_meta["fallback_reason"] = f"unsupported_tool:{tool}"
+
+    deduped = merge_discovery_results([{"source": f"search_round_{round_index}", "pois": results}])["merged_pois"]
+    deduped = deduped[:max_results]
+    source_meta["result_count"] = len(deduped)
+    return {
+        "round_index": round_index,
+        "tool": tool,
+        "queries": queries,
+        "around_poi": around_poi,
+        "results": deduped,
+        "source_meta": source_meta,
+    }
+
+
 def _build_query_levels(
     query: str,
     strategies: List[str],
@@ -313,7 +509,11 @@ def _load_from_amap_web_search(
             area_scope = area_scope_info.get("areas") or []
 
     need_meal = bool(getattr(request_context, "need_meal", False))
-    extra_keywords = [str(x) for x in (context.get("demand_keywords") or []) if str(x)]
+    extra_keywords = [
+        str(x)
+        for x in list(context.get("planned_search_queries") or []) + list(context.get("demand_keywords") or [])
+        if str(x)
+    ]
     keyword_levels = _build_query_levels(str(query or ""), strategies, need_meal, extra_keywords=extra_keywords)
 
     if source_meta is not None:

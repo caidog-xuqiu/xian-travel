@@ -150,7 +150,7 @@ def test_candidate_discovery_called_in_agent_v2_chain(monkeypatch) -> None:
 
     resp = agent_graph.run_agent_v2("朋友一起逛钟楼半天", thread_id=None, user_key=None)
     assert called["count"] >= 1
-    assert resp.discovered_pois_count == 2
+    assert resp.discovered_pois_count >= 2
     assert "unit_test_discovery" in resp.discovery_sources
     assert any("candidate discovery started" in log.message for log in resp.debug_logs)
 

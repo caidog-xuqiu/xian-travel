@@ -3,7 +3,7 @@
 from itertools import combinations
 from typing import Any, Dict, List, Tuple
 
-from app.models.schemas import ItineraryResponse, PlanRequest, PlanSummary
+from app.models.schemas import ItineraryResponse, PlanRequest, PlanSummary, RouteItem
 from app.services.itinerary_renderer import render_itinerary_text
 from app.services.knowledge_layer import bundle_to_notes, bundle_to_tags, retrieve_place_knowledge
 from app.services.area_registry import map_place_to_area
@@ -51,6 +51,34 @@ def _poi_is_park(poi: Dict[str, Any]) -> bool:
     tags = [str(t) for t in (poi.get("tags") or [])]
     text = f"{name} {category} {' '.join(tags)}".lower()
     return any(k in text for k in _PARK_NAME_HINTS)
+
+
+def _prefers_park_scene(area_context: Dict[str, Any] | None, knowledge_bias: Dict[str, Any] | None) -> bool:
+    search_strategy = [str(x).strip().lower() for x in ((area_context or {}).get("search_strategy") or []) if str(x).strip()]
+    demand_tags = {str(x).strip().lower() for x in ((area_context or {}).get("demand_tags") or []) if str(x).strip()}
+    return _kb_flag(knowledge_bias, "prefer_park_scene") or ("park" in search_strategy) or ("park" in demand_tags)
+
+
+def _route_item_is_park(item: RouteItem) -> bool:
+    text = f"{item.name} {item.district_cluster} {item.reason}".lower()
+    return any(k in text for k in _PARK_NAME_HINTS)
+
+
+def _route_has_park(route: List[RouteItem]) -> bool:
+    return any(item.type == "sight" and _route_item_is_park(item) for item in route)
+
+
+def _route_item_from_park_poi(poi: Dict[str, Any], time_slot: str | None = None) -> RouteItem:
+    return RouteItem(
+        time_slot=time_slot or "14:00-15:00",
+        type="sight",
+        name=str(poi.get("name") or "公园"),
+        district_cluster=str(poi.get("district_cluster") or ""),
+        transport_from_prev="从起点前往（按公园诉求优先）",
+        reason="用户明确想逛公园，优先保留公园类景点",
+        estimated_distance_meters=None,
+        estimated_duration_minutes=None,
+    )
 
 
 def _unique_in_order(items: List[str]) -> List[str]:
@@ -461,9 +489,7 @@ def _variant_candidate_pois(
     prefer_lively_places = _kb_flag(knowledge_bias, "prefer_lively_places")
     prefer_single_cluster = _kb_flag(knowledge_bias, "prefer_single_cluster")
     prefer_night_view = _kb_flag(knowledge_bias, "prefer_night_view")
-    search_strategy = [str(x).strip().lower() for x in ((area_context or {}).get("search_strategy") or []) if str(x).strip()]
-    demand_tags = {str(x).strip().lower() for x in ((area_context or {}).get("demand_tags") or []) if str(x).strip()}
-    prefer_park_scene = _kb_flag(knowledge_bias, "prefer_park_scene") or ("park" in search_strategy) or ("park" in demand_tags)
+    prefer_park_scene = _prefers_park_scene(area_context, knowledge_bias)
 
     if prefer_low_walk:
         low_walk_items = [p for p in items if p.get("walking_level") != "high"]
@@ -712,6 +738,59 @@ def _apply_variant_route_constraints(
     return itinerary
 
 
+def _repair_park_route_if_needed(
+    request: PlanRequest,
+    plan_id: str,
+    itinerary: ItineraryResponse,
+    candidate_pois: List[Dict[str, Any]] | None,
+    area_context: Dict[str, Any] | None = None,
+    knowledge_bias: Dict[str, Any] | None = None,
+) -> ItineraryResponse:
+    """Park intent is explicit demand, so do not allow a restaurant-only route."""
+    if not _prefers_park_scene(area_context, knowledge_bias):
+        return itinerary
+
+    route = list(itinerary.route)
+    if _route_has_park(route):
+        return itinerary
+
+    park_candidates = [
+        _poi_with_area(p)
+        for p in (candidate_pois or [])
+        if str(p.get("kind") or "") == "sight" and _poi_is_park(p)
+    ]
+    if not park_candidates:
+        return itinerary
+
+    fallback_slot = route[0].time_slot if route else None
+    first_sight_idx = next((idx for idx, item in enumerate(route) if item.type == "sight"), None)
+    if first_sight_idx is not None:
+        park_item = _route_item_from_park_poi(park_candidates[0], route[first_sight_idx].time_slot)
+        route[first_sight_idx] = park_item
+    else:
+        park_item = _route_item_from_park_poi(park_candidates[0], fallback_slot)
+        if request.need_meal:
+            first_meal = next((item for item in route if item.type == "restaurant"), None)
+            route = [park_item] + ([first_meal] if first_meal is not None else route[:1])
+        else:
+            route = [park_item] + route
+
+    if plan_id == "relaxed_first":
+        first_park = next((item for item in route if item.type == "sight" and _route_item_is_park(item)), None)
+        first_meal = next((item for item in route if item.type == "restaurant"), None)
+        clipped: List[RouteItem] = []
+        if first_park is not None:
+            clipped.append(first_park)
+        if request.need_meal and first_meal is not None and first_meal not in clipped:
+            clipped.append(first_meal)
+        for item in route:
+            if item not in clipped and len(clipped) < 2:
+                clipped.append(item)
+        route = clipped[:2]
+
+    return itinerary.model_copy(update={"route": route})
+
+
 def _build_candidate_item(
     request: PlanRequest,
     plan_id: str,
@@ -741,6 +820,14 @@ def _build_candidate_item(
         plan_id,
         itinerary,
         intensity,
+        knowledge_bias=knowledge_bias,
+    )
+    itinerary = _repair_park_route_if_needed(
+        variant_request,
+        plan_id,
+        itinerary,
+        variant_pois or candidate_pois,
+        area_context=area_context,
         knowledge_bias=knowledge_bias,
     )
     summary = _summarize_plan(plan_id, itinerary, variant_request, note, area_context=area_context)

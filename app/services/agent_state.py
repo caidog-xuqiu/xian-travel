@@ -25,6 +25,26 @@ class AgentState(BaseModel):
     recalled_memory: Dict[str, Any] | None = None
     search_intent: Dict[str, Any] | None = None
     search_strategy: List[str] = Field(default_factory=list)
+    search_mode: str = "rule_based"
+    search_plan: Dict[str, Any] = Field(default_factory=dict)
+    search_plan_used: Dict[str, Any] = Field(default_factory=dict)
+    search_plan_summary: str | None = None
+    search_round_count: int = 0
+    search_rounds_debug: List[Dict[str, Any]] = Field(default_factory=list)
+    react_steps: List[Dict[str, Any]] = Field(default_factory=list)
+    react_fallback_reason: str | None = None
+    search_round_outputs: List[Dict[str, Any]] = Field(default_factory=list)
+    first_round_candidates: List[Dict[str, Any]] = Field(default_factory=list)
+    anchor_candidates: List[Dict[str, Any]] = Field(default_factory=list)
+    second_round_grouped_results: List[Dict[str, Any]] = Field(default_factory=list)
+    llm_search_planner_called: bool = False
+    llm_search_planner_success: bool = False
+    llm_search_planner_error_type: str | None = None
+    llm_search_planner_error_message: str | None = None
+    search_rerank_used: bool = False
+    final_search_queries: List[str] = Field(default_factory=list)
+    clarification_from_search_planner: bool = False
+    clarification_options: List[str] = Field(default_factory=list)
     primary_strategies: List[str] = Field(default_factory=list)
     secondary_strategies: List[str] = Field(default_factory=list)
     candidate_biases: List[str] = Field(default_factory=list)
@@ -80,6 +100,16 @@ class AgentState(BaseModel):
     retrieved_knowledge_count: int = 0
     knowledge_source_tags: List[str] = Field(default_factory=list)
     knowledge_usage_notes: List[str] = Field(default_factory=list)
+    retrieved_case_count: int = 0
+    retrieved_case_ids: List[int] = Field(default_factory=list)
+    retrieved_case_summaries: List[Dict[str, Any]] = Field(default_factory=list)
+    case_bias: Dict[str, Any] = Field(default_factory=dict)
+    case_memory_used: bool = False
+    total_score: float | None = None
+    score_breakdown: Dict[str, Any] = Field(default_factory=dict)
+    case_memory_id: int | None = None
+    stored_to_case_memory: bool = False
+    stored_reason: str | None = None
     readable_output: ReadableOutput | None = None
     memory_write_payload: Dict[str, Any] | None = None
     final_response: Dict[str, Any] | None = None
@@ -126,6 +156,26 @@ class AgentPlanResponse(BaseModel):
     parsed_request: PlanRequest | None = None
     search_intent: Dict[str, Any] | None = None
     search_strategy: List[str] = Field(default_factory=list)
+    search_mode: str = "rule_based"
+    search_plan: Dict[str, Any] = Field(default_factory=dict)
+    search_plan_used: Dict[str, Any] = Field(default_factory=dict)
+    search_plan_summary: str | None = None
+    search_round_count: int = 0
+    search_rounds_debug: List[Dict[str, Any]] = Field(default_factory=list)
+    react_steps: List[Dict[str, Any]] = Field(default_factory=list)
+    react_fallback_reason: str | None = None
+    search_round_outputs: List[Dict[str, Any]] = Field(default_factory=list)
+    first_round_candidates: List[Dict[str, Any]] = Field(default_factory=list)
+    anchor_candidates: List[Dict[str, Any]] = Field(default_factory=list)
+    second_round_grouped_results: List[Dict[str, Any]] = Field(default_factory=list)
+    llm_search_planner_called: bool = False
+    llm_search_planner_success: bool = False
+    llm_search_planner_error_type: str | None = None
+    llm_search_planner_error_message: str | None = None
+    search_rerank_used: bool = False
+    final_search_queries: List[str] = Field(default_factory=list)
+    clarification_from_search_planner: bool = False
+    clarification_options: List[str] = Field(default_factory=list)
     candidate_biases: List[str] = Field(default_factory=list)
     strategy_notes: List[str] = Field(default_factory=list)
     search_round: int = 0
@@ -167,6 +217,16 @@ class AgentPlanResponse(BaseModel):
     retrieved_knowledge_count: int = 0
     knowledge_source_tags: List[str] = Field(default_factory=list)
     knowledge_usage_notes: List[str] = Field(default_factory=list)
+    retrieved_case_count: int = 0
+    retrieved_case_ids: List[int] = Field(default_factory=list)
+    retrieved_case_summaries: List[Dict[str, Any]] = Field(default_factory=list)
+    case_bias: Dict[str, Any] = Field(default_factory=dict)
+    case_memory_used: bool = False
+    total_score: float | None = None
+    score_breakdown: Dict[str, Any] = Field(default_factory=dict)
+    case_memory_id: int | None = None
+    stored_to_case_memory: bool = False
+    stored_reason: str | None = None
     active_skill: str | None = None
     skill_trace: List[Dict[str, Any]] = Field(default_factory=list)
     last_skill_result_summary: str | None = None
@@ -174,3 +234,5 @@ class AgentPlanResponse(BaseModel):
     final_response: Dict[str, Any] | None = None
     errors: List[str] = Field(default_factory=list)
     debug_logs: List[DebugLog] = Field(default_factory=list)
+
+

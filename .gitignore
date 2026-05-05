@@ -10,3 +10,6 @@ scripts/playground.pids.json
 app/data/agent_state.db
 app/data/*.db-shm
 app/data/*.db-wal
+.python312/
+.rag312/
+.rag_cache/

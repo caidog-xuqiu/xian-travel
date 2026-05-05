@@ -1,4 +1,4 @@
-﻿from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 
 from app.models.schemas import (
     ItineraryResponse,
@@ -9,6 +9,10 @@ from app.models.schemas import (
     PlanRequest,
     PlanSelectionResponse,
     ReadableOutput,
+    RouteFeedbackRequest,
+    RouteFeedbackResponse,
+    RouteMemoryItem,
+    RouteMemoryResponse,
     TextPlanRequest,
 )
 from app.services.itinerary_renderer import render_itinerary_text
@@ -23,6 +27,9 @@ from app.services.agent_state import (
     AgentPlanV2Request,
     AgentPlanV3Request,
 )
+from app.services import sqlite_store
+from app.services.case_memory import save_high_quality_case
+from app.services.route_scoring import STORE_SCORE_THRESHOLD, score_route_case, score_with_user_feedback
 
 router = APIRouter()
 
@@ -135,3 +142,89 @@ def agent_plan_continue(payload: AgentPlanContinueRequest) -> AgentPlanResponse:
         message = str(exc)
         status_code = 404 if "thread_id" in message else 400
         raise HTTPException(status_code=status_code, detail=message) from exc
+
+
+@router.post("/route-feedback", response_model=RouteFeedbackResponse)
+def submit_route_feedback(payload: RouteFeedbackRequest) -> RouteFeedbackResponse:
+    if payload.system_score_breakdown:
+        score_result = score_with_user_feedback(payload.system_score_breakdown, payload.user_rating)
+        breakdown = score_result["score_breakdown"]
+        score_result["constraints_met"] = bool(
+            breakdown.get("constraints_met", float(breakdown.get("raw_constraint_score") or 0.0) >= 3.0)
+        )
+        score_result["serious_fallback"] = bool(breakdown.get("serious_fallback", False))
+        score_result["route_source"] = (payload.route_summary or {}).get("route_source")
+    else:
+        score_result = score_route_case(
+            request_context=payload.parsed_request or {},
+            selected_plan=payload.itinerary,
+            selected_plan_area_summary=payload.route_summary or {},
+            route_source=(payload.route_summary or {}).get("route_source"),
+            user_rating=payload.user_rating,
+        )
+
+    feedback_id = sqlite_store.save_route_feedback(
+        {
+            "case_memory_id": payload.case_memory_id,
+            "user_key": payload.user_key,
+            "user_query": payload.user_query,
+            "user_rating": payload.user_rating,
+            "feedback_text": payload.feedback_text,
+        }
+    )
+
+    case_memory_id = payload.case_memory_id
+    stored_to_case_memory = bool(case_memory_id)
+    stored_reason = "updated_existing_case_memory" if case_memory_id else None
+    if case_memory_id:
+        sqlite_store.update_route_case_feedback(
+            case_memory_id,
+            total_score=float(score_result.get("total_score") or 0.0),
+            user_feedback_score=float(score_result.get("user_feedback_score") or 0.0),
+            user_feedback_text=payload.feedback_text,
+        )
+    else:
+        stored = save_high_quality_case(
+            user_key=payload.user_key,
+            user_query=payload.user_query,
+            parsed_request=payload.parsed_request or {},
+            selected_plan=payload.selected_plan,
+            itinerary=payload.itinerary,
+            route_summary=payload.route_summary or {},
+            knowledge_ids=payload.knowledge_ids,
+            knowledge_bias=payload.knowledge_bias,
+            score_result=score_result,
+            user_feedback_text=payload.feedback_text,
+        )
+        stored_to_case_memory = bool(stored.get("stored_to_case_memory"))
+        case_memory_id = stored.get("case_memory_id")
+        stored_reason = stored.get("stored_reason")
+
+    return RouteFeedbackResponse(
+        final_total_score=float(score_result.get("total_score") or 0.0),
+        score_breakdown=score_result.get("score_breakdown") or {},
+        stored_to_case_memory=stored_to_case_memory,
+        case_memory_id=case_memory_id,
+        feedback_id=feedback_id,
+        stored_reason=stored_reason,
+    )
+
+
+@router.get("/route-memory", response_model=RouteMemoryResponse)
+def list_route_memory(
+    user_key: str | None = None,
+    limit: int = Query(default=5, ge=1, le=20),
+) -> RouteMemoryResponse:
+    cases = sqlite_store.list_recent_high_score_cases(user_key=user_key, limit=limit, min_score=STORE_SCORE_THRESHOLD)
+    return RouteMemoryResponse(
+        items=[
+            RouteMemoryItem(
+                case_id=int(item["id"]),
+                query=str(item.get("user_query") or "")[:60],
+                score=float(item.get("total_score") or 0.0),
+                selected_plan=item.get("selected_plan"),
+                created_at=item.get("created_at"),
+            )
+            for item in cases
+        ]
+    )

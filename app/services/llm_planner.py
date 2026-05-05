@@ -5,7 +5,7 @@ import os
 import re
 from pathlib import Path
 from typing import Any, Dict, List
-from urllib.request import Request, urlopen
+from urllib.request import Request, ProxyHandler, build_opener, urlopen
 
 from dotenv import load_dotenv
 
@@ -17,6 +17,8 @@ LLM_PROVIDER_ENV = "LLM_PROVIDER"
 LLM_API_KEY_ENV = "LLM_API_KEY"
 LLM_BASE_URL_ENV = "LLM_BASE_URL"
 LLM_MODEL_ENV = "LLM_MODEL"
+LLM_HTTP_PROXY_ENV = "LLM_HTTP_PROXY"
+LLM_HTTPS_PROXY_ENV = "LLM_HTTPS_PROXY"
 
 _DOTENV_LOADED = False
 _LAST_SELECTOR_DEBUG: Dict[str, Any] = {}
@@ -458,6 +460,8 @@ def _call_llm(prompt: str) -> str | None:
     api_key = str(os.getenv(LLM_API_KEY_ENV, "")).strip()
     base_url = str(os.getenv(LLM_BASE_URL_ENV, "")).strip()
     model = str(os.getenv(LLM_MODEL_ENV, "")).strip() or "default"
+    http_proxy = str(os.getenv(LLM_HTTP_PROXY_ENV, "") or os.getenv("HTTP_PROXY", "")).strip()
+    https_proxy = str(os.getenv(LLM_HTTPS_PROXY_ENV, "") or os.getenv("HTTPS_PROXY", "")).strip()
 
     if not provider or not api_key:
         return None
@@ -478,6 +482,15 @@ def _call_llm(prompt: str) -> str | None:
                 "Authorization": f"Bearer {api_key}",
             },
         )
+        if http_proxy or https_proxy:
+            proxy_map: Dict[str, str] = {}
+            if http_proxy:
+                proxy_map["http"] = http_proxy
+            if https_proxy:
+                proxy_map["https"] = https_proxy
+            opener = build_opener(ProxyHandler(proxy_map))
+            with opener.open(req, timeout=6) as resp:
+                return resp.read().decode("utf-8")
         with urlopen(req, timeout=6) as resp:
             return resp.read().decode("utf-8")
 

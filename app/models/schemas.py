@@ -1,5 +1,5 @@
 ﻿from enum import Enum
-from typing import List, Literal
+from typing import Any, Dict, List, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -262,3 +262,39 @@ class PlanFromTextSelectionResponse(BaseModel):
     reason_tags: List[str]
     selected_by: Literal["llm", "fallback_rule"]
     readable_output: ReadableOutput
+
+
+class RouteFeedbackRequest(BaseModel):
+    user_key: str | None = None
+    user_query: str = Field(..., min_length=1)
+    selected_plan: str | None = None
+    itinerary: Dict[str, Any] = Field(default_factory=dict)
+    system_score_breakdown: Dict[str, Any] = Field(default_factory=dict)
+    user_rating: int = Field(..., ge=1, le=10)
+    feedback_text: str | None = None
+    case_memory_id: int | None = None
+    parsed_request: Dict[str, Any] | None = None
+    route_summary: Dict[str, Any] | None = None
+    knowledge_ids: List[str] = Field(default_factory=list)
+    knowledge_bias: Dict[str, Any] = Field(default_factory=dict)
+
+
+class RouteFeedbackResponse(BaseModel):
+    final_total_score: float
+    score_breakdown: Dict[str, Any] = Field(default_factory=dict)
+    stored_to_case_memory: bool = False
+    case_memory_id: int | None = None
+    feedback_id: int | None = None
+    stored_reason: str | None = None
+
+
+class RouteMemoryItem(BaseModel):
+    case_id: int
+    query: str
+    score: float
+    selected_plan: str | None = None
+    created_at: str | None = None
+
+
+class RouteMemoryResponse(BaseModel):
+    items: List[RouteMemoryItem] = Field(default_factory=list)

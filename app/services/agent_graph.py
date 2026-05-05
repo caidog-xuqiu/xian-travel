@@ -13,7 +13,7 @@ from app.services.area_registry import resolve_area_scope_from_request
 from app.services.candidate_discovery import discover_candidates
 from app.services.data_quality import govern_candidate_pool
 from app.services.data_loader import load_pois
-from app.services.discovery_sources import SOURCE_AMAP_WEB
+from app.services.discovery_sources import SOURCE_AMAP_WEB, run_search_round
 from app.services.itinerary_renderer import render_itinerary_text
 from app.services.llm_planner import (
     enrich_selection_reason_with_knowledge,
@@ -36,6 +36,15 @@ from app.services.weather_service import get_weather_context
 from app.services.knowledge_base import retrieve_knowledge
 from app.services.knowledge_adapter import build_knowledge_bias
 from app.services.demand_intent import extract_demand_profile
+from app.services.case_memory import (
+    build_case_bias,
+    merge_knowledge_and_cases,
+    retrieve_high_score_cases,
+    save_high_quality_case,
+)
+from app.services.route_scoring import score_route_case
+from app.services import search_planner
+from app.services.react_search_executor import run_react_search
 
 MORNING_KEYWORDS = {"上午", "早上", "一早", "早晨"}
 MIDDAY_KEYWORDS = {"中午", "午饭前后", "中午前后", "午间"}
@@ -254,6 +263,7 @@ def _build_knowledge_request_context(state: AgentState) -> Dict[str, Any]:
         "available_hours": request.available_hours,
         "walking_tolerance": request.walking_tolerance.value,
         "budget_level": request.budget_level.value,
+        "origin": request.origin,
         "preferred_period": request.preferred_period,
         "preferred_trip_style": request.preferred_trip_style.value,
     }
@@ -282,6 +292,10 @@ def _apply_local_knowledge_enrichment(state: AgentState) -> None:
     context = _build_knowledge_request_context(state)
     snippets = retrieve_knowledge(context, top_k=4)
     knowledge_bias = build_knowledge_bias(snippets)
+    cases = retrieve_high_score_cases(context, top_k=3, user_key=state.user_key)
+    case_bias = build_case_bias(cases)
+    if case_bias.get("case_ids"):
+        knowledge_bias = merge_knowledge_and_cases(knowledge_bias, case_bias)
     knowledge_ids = list(knowledge_bias.get("knowledge_ids") or [])
     explanation_basis = list(knowledge_bias.get("explanation_basis") or [])
 
@@ -289,6 +303,11 @@ def _apply_local_knowledge_enrichment(state: AgentState) -> None:
     state.knowledge_ids = knowledge_ids
     state.knowledge_bias = {k: v for k, v in knowledge_bias.items() if k not in {"knowledge_ids", "explanation_basis"}}
     state.explanation_basis = explanation_basis[:4]
+    state.retrieved_case_count = len(cases)
+    state.retrieved_case_ids = list(case_bias.get("case_ids") or [])
+    state.retrieved_case_summaries = list(case_bias.get("case_summaries") or [])
+    state.case_bias = {k: v for k, v in case_bias.items() if k not in {"case_ids", "case_summaries"}}
+    state.case_memory_used = bool(state.retrieved_case_ids)
 
     if snippets:
         merged_notes = list(dict.fromkeys(state.knowledge_usage_notes + [s.get("title", "") for s in snippets if s.get("title")]))
@@ -312,6 +331,13 @@ def _apply_local_knowledge_enrichment(state: AgentState) -> None:
             status="fallback",
             summary="local_rag_miss",
         )
+    if cases:
+        state.knowledge_source_tags = list(dict.fromkeys(state.knowledge_source_tags + ["high_score_cases"]))[:10]
+        case_notes = [f"参考高分案例#{case_id}" for case_id in state.retrieved_case_ids[:3]]
+        state.explanation_basis = list(dict.fromkeys(state.explanation_basis + case_notes))[:6]
+        _log(state, f"high score cases retrieved count={len(cases)}, ids={state.retrieved_case_ids}")
+    else:
+        _log(state, "high score case memory miss for current request", "info")
 
     extra_biases = _knowledge_bias_to_candidate_biases(knowledge_bias)
     if extra_biases:
@@ -718,8 +744,134 @@ def analyze_search_intent(state: AgentState) -> AgentState:
     if state.knowledge_used_count > 0:
         _log(state, f"knowledge_bias={state.knowledge_bias}")
         _log(state, f"explanation_basis={state.explanation_basis[:2]}")
+    _apply_search_planner(state)
     save_checkpoint(state.thread_id or "", state.model_dump())
     return state
+
+
+def _merge_unique(existing: List[str], incoming: List[str], *, prepend: bool = False) -> List[str]:
+    values = (incoming + existing) if prepend else (existing + incoming)
+    merged: List[str] = []
+    for item in values:
+        text = str(item or "").strip()
+        if text and text not in merged:
+            merged.append(text)
+    return merged
+
+
+def _search_intent_to_strategy(intent: str) -> str | None:
+    mapping = {
+        "park": "park",
+        "bbq": "food",
+        "food": "food",
+        "night": "night",
+        "night_view": "night",
+        "photo": "night",
+        "museum": "museum",
+        "parents": "relaxed",
+        "family": "relaxed",
+        "couple": "night",
+        "rain": "indoor",
+        "low_walk": "relaxed",
+        "classic": "classic",
+    }
+    return mapping.get(str(intent or "").strip().lower())
+
+
+def _search_intent_to_bias(intent: str) -> str | None:
+    mapping = {
+        "park": "prefer_park_scene",
+        "bbq": "include_meal_stop",
+        "food": "include_meal_stop",
+        "night": "prioritize_night_view",
+        "night_view": "prioritize_night_view",
+        "photo": "prioritize_night_view",
+        "parents": "prioritize_relaxed_pacing",
+        "family": "prioritize_relaxed_pacing",
+        "couple": "prioritize_night_view",
+        "rain": "prioritize_indoor",
+        "low_walk": "prioritize_relaxed_pacing",
+        "budget": "prefer_budget_friendly",
+    }
+    return mapping.get(str(intent or "").strip().lower())
+
+
+def _apply_search_planner(state: AgentState) -> None:
+    request = state.parsed_request
+    if request is None:
+        return
+    context = request.model_dump() if hasattr(request, "model_dump") else {}
+    context.update(
+        {
+            "search_intent": state.search_intent or {},
+            "knowledge_bias": state.knowledge_bias,
+            "candidate_biases": state.candidate_biases,
+            "area_scope_used": state.area_scope_used,
+            "area_priority_order": state.area_priority_order,
+        }
+    )
+    try:
+        plan = search_planner.build_search_plan(
+            state.user_input or "",
+            context,
+            fast_mode=state.planning_max_steps <= 2,
+        )
+    except Exception as exc:
+        state.search_mode = "rule_based"
+        state.search_plan_used = {}
+        state.llm_search_planner_called = True
+        state.llm_search_planner_success = False
+        state.llm_search_planner_error_type = exc.__class__.__name__
+        state.llm_search_planner_error_message = str(exc)
+        _log(state, f"search_planner failed, fallback to rule_based: {exc}", "warn")
+        return
+
+    state.search_plan = dict(plan)
+    state.search_plan_used = dict(plan)
+    state.search_mode = "llm_planned" if plan.get("llm_search_planner_success") else "rule_based"
+    state.search_plan_summary = str(plan.get("search_plan_summary") or "")
+    state.search_rounds_debug = list(plan.get("search_rounds") or [])
+    state.search_round_count = len(state.search_rounds_debug)
+    state.llm_search_planner_called = bool(plan.get("llm_search_planner_called"))
+    state.llm_search_planner_success = bool(plan.get("llm_search_planner_success"))
+    state.llm_search_planner_error_type = plan.get("llm_search_planner_error_type")
+    state.llm_search_planner_error_message = plan.get("llm_search_planner_error_message")
+    state.final_search_queries = search_planner.flatten_search_queries(plan)
+
+    primary_intents = [str(x) for x in (plan.get("primary_intents") or []) if str(x)]
+    planned_strategies = [_search_intent_to_strategy(intent) for intent in primary_intents]
+    planned_strategies = [item for item in planned_strategies if item]
+    if planned_strategies:
+        state.primary_strategies = _merge_unique(state.primary_strategies, planned_strategies, prepend=True)
+        state.search_strategy = _merge_unique(state.search_strategy, planned_strategies, prepend=True)
+
+    planned_biases = [_search_intent_to_bias(intent) for intent in primary_intents]
+    planned_biases = [item for item in planned_biases if item]
+    if planned_biases:
+        state.candidate_biases = _merge_unique(state.candidate_biases, planned_biases)
+
+    if state.search_intent is None:
+        state.search_intent = {}
+    demand_keywords = list(state.search_intent.get("demand_keywords") or [])
+    state.search_intent["demand_keywords"] = _merge_unique(demand_keywords, state.final_search_queries)
+    state.search_intent["search_plan_primary_intents"] = primary_intents
+    state.search_intent["search_plan_summary"] = state.search_plan_summary
+
+    if plan.get("clarification_needed"):
+        state.clarification_needed = True
+        state.clarification_from_search_planner = True
+        state.clarification_question = str(plan.get("clarification_question") or "我还需要一个搜索偏好，才能更准地找地点。")
+        state.clarification_options = [str(x) for x in (plan.get("clarification_options") or []) if str(x)][:4]
+        _log(state, f"search_planner clarification: {state.clarification_question}")
+
+    _log(
+        state,
+        "search_planner: "
+        f"mode={state.search_mode}, success={state.llm_search_planner_success}, "
+        f"rounds={state.search_round_count}, queries={state.final_search_queries[:6]}",
+    )
+    if state.search_plan_summary:
+        _log(state, f"search_plan_summary={state.search_plan_summary}")
 
 
 def _discovery_quality_is_weak(state: AgentState) -> bool:
@@ -738,6 +890,280 @@ def _discovery_quality_is_weak(state: AgentState) -> bool:
 
     return False
 
+
+def _poi_public_payload(poi: Dict[str, Any]) -> Dict[str, Any]:
+    keys = [
+        "id",
+        "name",
+        "kind",
+        "district_cluster",
+        "area_name",
+        "category",
+        "latitude",
+        "longitude",
+        "anchor_poi_id",
+        "anchor_poi_name",
+        "distance_to_anchor_m",
+        "derived_round",
+    ]
+    return {key: poi.get(key) for key in keys if key in poi}
+
+
+def _coverage_from_round_results(pois: List[Dict[str, Any]], strategies: List[str]) -> Dict[str, Any]:
+    kind_counts: Dict[str, int] = {}
+    cluster_counts: Dict[str, int] = {}
+    area_counts: Dict[str, int] = {}
+    for poi in pois:
+        kind = str(poi.get("kind") or "unknown")
+        cluster = str(poi.get("district_cluster") or "unknown")
+        area = str(poi.get("area_name") or "unknown")
+        kind_counts[kind] = kind_counts.get(kind, 0) + 1
+        cluster_counts[cluster] = cluster_counts.get(cluster, 0) + 1
+        area_counts[area] = area_counts.get(area, 0) + 1
+    return {
+        "total_discovered": len(pois),
+        "kind_counts": kind_counts,
+        "cluster_counts": cluster_counts,
+        "strategies_applied": list(strategies),
+        "coverage_ok": int(kind_counts.get("sight", 0) or 0) >= 1 and int(kind_counts.get("restaurant", 0) or 0) >= 1,
+        "source_counts": {"search_plan_rounds": len(pois)},
+        "sources_called": ["search_plan_rounds"],
+        "area_priority_order": [],
+        "discovered_area_counts": area_counts,
+    }
+
+
+def _rank_combo_results(anchor_candidates: List[Dict[str, Any]], grouped_results: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    combos: List[Dict[str, Any]] = []
+    by_anchor = {str(group.get("anchor", {}).get("id") or ""): group for group in grouped_results}
+    for anchor in anchor_candidates:
+        anchor_id = str(anchor.get("id") or "")
+        group = by_anchor.get(anchor_id) or {}
+        results = [item for item in (group.get("results") or []) if isinstance(item, dict)]
+        best = sorted(
+            results,
+            key=lambda item: (
+                0 if str(item.get("kind") or "") == "restaurant" else 1,
+                int(item.get("distance_to_anchor_m") or 999999),
+                -float(item.get("_score") or 0),
+            ),
+        )[:1]
+        combo_items = [anchor] + best
+        score = 5
+        if any(str(item.get("kind") or "") == "sight" for item in combo_items):
+            score += 3
+        if any(str(item.get("kind") or "") == "restaurant" for item in combo_items):
+            score += 3
+        if best:
+            score -= min(3, int(best[0].get("distance_to_anchor_m") or 0) // 1000)
+        combos.append({"anchor": anchor, "results": best, "items": combo_items, "score": score})
+    combos.sort(key=lambda item: item.get("score", 0), reverse=True)
+    ordered: List[Dict[str, Any]] = []
+    for combo in combos[:1]:
+        ordered.extend(combo.get("items") or [])
+    for anchor in anchor_candidates:
+        if anchor not in ordered:
+            ordered.append(anchor)
+    for group in grouped_results:
+        for item in group.get("results") or []:
+            if item not in ordered:
+                ordered.append(item)
+    return _dedupe_by_id(ordered)
+
+
+def execute_search_plan(state: AgentState) -> AgentState:
+    state.current_step = "execute_search_plan"
+    state.current_node = "execute_search_plan"
+    request = state.parsed_request
+    plan = state.search_plan_used or state.search_plan
+    if not request or not plan:
+        return state
+    rounds = [item for item in (plan.get("search_rounds") or []) if isinstance(item, dict)]
+    if not rounds:
+        return state
+
+    base_pois = list(state.governed_pois) if state.governed_pois else load_pois(request_context=request)
+    context = {
+        "request_context": request,
+        "primary_strategies": state.primary_strategies,
+        "secondary_strategies": state.secondary_strategies,
+        "base_pois": base_pois,
+        "area_scope_info": (state.search_intent or {}).get("area_scope_info"),
+        "planned_search_queries": state.final_search_queries,
+        "demand_keywords": (state.search_intent or {}).get("demand_keywords") or [],
+    }
+
+    first_round = next((item for item in rounds if str(item.get("tool") or "") == "keyword_search"), rounds[0])
+    first_output = run_search_round(first_round, context, round_index=1)
+    first_results = list(first_output.get("results") or [])
+    ranked_first = search_planner.rerank_search_results(
+        first_results,
+        request.model_dump() if hasattr(request, "model_dump") else {},
+        plan,
+    )
+    second_rounds = [item for item in rounds if str(item.get("tool") or "") == "nearby_search"]
+    anchor_top_k = max(1, min(5, int((second_rounds[0] if second_rounds else {}).get("anchor_top_k") or 2)))
+    anchor_candidates = ranked_first[:anchor_top_k]
+    grouped_results: List[Dict[str, Any]] = []
+    round_outputs: List[Dict[str, Any]] = [first_output]
+
+    for round_spec in second_rounds[:2]:
+        for anchor in anchor_candidates:
+            output = run_search_round(
+                round_spec,
+                context,
+                around_poi=anchor,
+                round_index=int(round_spec.get("anchor_from_round") or 1) + 1,
+            )
+            round_outputs.append(output)
+            grouped_results.append(
+                {
+                    "anchor": _poi_public_payload(anchor),
+                    "results": [_poi_public_payload(item) for item in (output.get("results") or [])],
+                }
+            )
+
+    combined = _rank_combo_results(anchor_candidates, [{"anchor": g["anchor"], "results": g["results"]} for g in grouped_results])
+    if not combined:
+        combined = ranked_first
+
+    state.search_plan = dict(plan)
+    state.search_plan_used = dict(plan)
+    state.search_round_outputs = [
+        {
+            "round_index": output.get("round_index"),
+            "tool": output.get("tool"),
+            "queries": output.get("queries"),
+            "result_count": len(output.get("results") or []),
+            "source_meta": output.get("source_meta") or {},
+        }
+        for output in round_outputs
+    ]
+    state.first_round_candidates = [_poi_public_payload(item) for item in ranked_first[:8]]
+    state.anchor_candidates = [_poi_public_payload(item) for item in anchor_candidates]
+    state.second_round_grouped_results = grouped_results
+    state.discovered_pois = _dedupe_by_id(combined + list(state.discovered_pois))
+    state.discovered_pois_count = len(state.discovered_pois)
+    state.discovery_sources = _merge_unique(state.discovery_sources, ["search_plan_rounds"], prepend=True)
+    state.discovered_source_counts["search_plan_rounds"] = len(combined)
+    state.discovery_coverage_summary = _coverage_from_round_results(state.discovered_pois, state.search_strategy)
+    state.discovered_area_counts = dict(state.discovery_coverage_summary.get("discovered_area_counts") or state.discovered_area_counts)
+    state.search_rerank_used = bool(ranked_first)
+    _log(
+        state,
+        "execute_search_plan finished: "
+        f"first_round={len(ranked_first)}, anchors={len(anchor_candidates)}, "
+        f"nearby_groups={len(grouped_results)}, combined={len(combined)}",
+    )
+    save_checkpoint(state.thread_id or "", state.model_dump())
+    return state
+
+
+
+def run_react_search_if_enabled(state: AgentState) -> bool:
+    """Run ReAct search in v3 chain when ENABLE_REACT_SEARCH is on.
+
+    Returns True only when ReAct search finishes successfully and provides
+    usable discovered/search results for downstream candidate generation.
+    """
+    request = state.parsed_request
+    if request is None:
+        return False
+
+    react_result = run_react_search(
+        user_query=state.user_input or "",
+        request_context=request,
+        initial_search_plan=state.search_plan_used,
+        runtime_context={
+            "base_pois": list(state.governed_pois),
+            "search_strategy": list(state.search_strategy),
+            "anchor_candidates": list(state.anchor_candidates),
+            "discovered_pois": list(state.discovered_pois),
+        },
+        max_rounds=4,
+    )
+
+    if not react_result.get("enabled"):
+        if state.search_mode not in {"llm_planned", "fallback"}:
+            state.search_mode = "rule_based"
+        return False
+
+    state.llm_search_planner_called = bool(react_result.get("llm_search_planner_called"))
+    state.llm_search_planner_success = bool(react_result.get("llm_search_planner_success"))
+    state.llm_search_planner_error_type = react_result.get("llm_search_planner_error_type")
+    state.llm_search_planner_error_message = react_result.get("llm_search_planner_error_message")
+    state.react_steps = list(react_result.get("react_steps") or [])
+    state.react_fallback_reason = react_result.get("react_fallback_reason")
+
+    round_debug = list(react_result.get("search_rounds_debug") or [])
+    if round_debug:
+        state.search_rounds_debug = round_debug
+    state.search_round_count = len(state.search_rounds_debug)
+
+    merged_queries = _merge_unique(state.final_search_queries, list(react_result.get("final_search_queries") or []))
+    state.final_search_queries = merged_queries
+
+    if react_result.get("clarification_needed"):
+        state.search_mode = "llm_planned"
+        state.clarification_needed = True
+        state.clarification_from_search_planner = True
+        state.clarification_question = str(react_result.get("clarification_question") or "我还需要一个搜索偏好，才能更准地找地点。")
+        state.clarification_options = [str(x) for x in (react_result.get("clarification_options") or []) if str(x)][:4]
+        _log(state, f"react clarification: {state.clarification_question}")
+        return False
+
+    discovered = list(react_result.get("discovered_pois") or [])
+    if discovered:
+        state.discovered_pois = _dedupe_by_id(discovered + list(state.discovered_pois))
+        state.discovered_pois_count = len(state.discovered_pois)
+        state.search_results = _dedupe_by_id(state.discovered_pois)[:SEARCH_MAX_RESULTS]
+        state.search_results_count = len(state.search_results)
+        state.search_rerank_used = True
+
+    retrieved_cases = list(react_result.get("retrieved_cases") or [])
+    if retrieved_cases:
+        case_ids = [str(item.get("document_id") or item.get("id") or "") for item in retrieved_cases if str(item.get("document_id") or item.get("id") or "")]
+        numeric_case_ids: List[int] = []
+        for cid in case_ids:
+            try:
+                numeric_case_ids.append(int(cid))
+            except (TypeError, ValueError):
+                continue
+        state.retrieved_case_count = len(retrieved_cases)
+        if numeric_case_ids:
+            state.retrieved_case_ids = list(dict.fromkeys(state.retrieved_case_ids + numeric_case_ids))
+        state.retrieved_case_summaries = [
+            {
+                "case_id": item.get("document_id") or item.get("id"),
+                "score": item.get("score"),
+                "query": str(item.get("summary") or "")[:80],
+            }
+            for item in retrieved_cases[:5]
+        ]
+        state.case_memory_used = True
+        state.knowledge_source_tags = list(dict.fromkeys(state.knowledge_source_tags + ["pinecone_cases"]))[:10]
+        note = f"参考相似案例{', '.join(case_ids[:2])}" if case_ids else "参考相似案例"
+        state.explanation_basis = list(dict.fromkeys(state.explanation_basis + [note]))[:8]
+
+    weather_ctx = react_result.get("weather_context")
+    if isinstance(weather_ctx, dict) and weather_ctx:
+        state.weather_context = weather_ctx
+        state.weather_source = str(weather_ctx.get("source") or state.weather_source or "fallback_request")
+
+    if react_result.get("success"):
+        state.search_mode = "llm_planned"
+        _log(
+            state,
+            "react search success: "
+            f"rounds={state.search_round_count}, discovered={state.discovered_pois_count}, "
+            f"queries={state.final_search_queries[:6]}",
+        )
+        return True
+
+    state.search_mode = "fallback"
+    if state.react_fallback_reason:
+        _log(state, f"react fallback: {state.react_fallback_reason}", "warn")
+    return False
 
 def candidate_discovery(state: AgentState) -> AgentState:
     state.current_step = "candidate_discovery"
@@ -792,7 +1218,12 @@ def candidate_discovery(state: AgentState) -> AgentState:
                 "secondary_strategies": state.secondary_strategies,
                 "base_pois": all_pois,
                 "area_scope_info": (state.search_intent or {}).get("area_scope_info"),
-                "demand_keywords": (state.search_intent or {}).get("demand_keywords") or [],
+                "demand_keywords": _merge_unique(
+                    list((state.search_intent or {}).get("demand_keywords") or []),
+                    state.final_search_queries,
+                ),
+                "search_plan": state.search_plan_used,
+                "planned_search_queries": state.final_search_queries,
             },
             limits={"max_candidates": SEARCH_MAX_RESULTS},
             filters={},
@@ -808,6 +1239,17 @@ def candidate_discovery(state: AgentState) -> AgentState:
         state.area_coverage_summary = dict(getattr(discovery_result, "area_coverage_summary", {}) or {})
         state.discovery_notes = list(discovery_result.discovery_notes)
         state.discovery_coverage_summary = dict(discovery_result.coverage_summary)
+        if state.search_plan_used:
+            refined_plan = search_planner.refine_search_plan(
+                state.search_plan_used,
+                state.discovery_coverage_summary,
+                request.model_dump() if hasattr(request, "model_dump") else {},
+            )
+            state.search_plan_used = refined_plan
+            state.search_plan_summary = str(refined_plan.get("search_plan_summary") or state.search_plan_summary or "")
+            state.search_rounds_debug = list(refined_plan.get("search_rounds") or state.search_rounds_debug)
+            state.search_round_count = len(state.search_rounds_debug)
+            state.final_search_queries = search_planner.flatten_search_queries(refined_plan)
         state.amap_called = SOURCE_AMAP_WEB in state.discovered_source_counts
         state.amap_sources_used = [
             source
@@ -1069,6 +1511,17 @@ def refine_search_results(state: AgentState) -> AgentState:
         results = _dedupe_by_id(results)
         _log(state, "补足景点/餐饮最小数量。")
 
+    if state.search_plan_used:
+        reranked = search_planner.rerank_search_results(
+            results,
+            state.parsed_request.model_dump() if state.parsed_request and hasattr(state.parsed_request, "model_dump") else {},
+            state.search_plan_used,
+        )
+        if reranked:
+            results = reranked
+            state.search_rerank_used = True
+            _log(state, "search_planner rerank applied to search results")
+
     state.search_results = results[:SEARCH_MAX_RESULTS]
     state.search_results_count = len(state.search_results)
     _log(state, f"搜索结果精炼完成，候选数={state.search_results_count}。")
@@ -1157,6 +1610,8 @@ def generate_candidates(state: AgentState) -> AgentState:
             "origin_area": (state.search_intent or {}).get("area_origin"),
             "search_strategy": state.search_strategy,
             "demand_tags": (state.search_intent or {}).get("demand_tags") or [],
+            "search_plan": state.search_plan_used,
+            "final_search_queries": state.final_search_queries,
         }
         try:
             state.candidate_plans = generate_candidate_plans(
@@ -1392,6 +1847,7 @@ def select_plan(state: AgentState) -> AgentState:
             )
     if selected_summary is not None:
         state.selected_plan_area_summary = {
+            "plan_id": selected_candidate["plan_id"],
             "is_cross_area": bool(getattr(selected_summary, "is_cross_area", False)),
             "cross_area_count": int(getattr(selected_summary, "cross_area_count", 0) or 0),
             "area_transition_summary": str(getattr(selected_summary, "area_transition_summary", "")),
@@ -1423,6 +1879,18 @@ def render_output(state: AgentState) -> AgentState:
     state.current_step = "render_output"
     state.current_node = "render_output"
     if state.selected_plan and state.parsed_request:
+        score_result = score_route_case(
+            request_context=state.parsed_request,
+            selected_plan=state.selected_plan,
+            selected_plan_area_summary=state.selected_plan_area_summary,
+            route_source=state.route_source,
+            amap_fallback_reason=state.amap_fallback_reason,
+            amap_events=state.amap_events,
+            explanation_basis=state.explanation_basis,
+            selected_by=state.selected_by,
+        )
+        state.total_score = float(score_result.get("total_score") or 0.0)
+        state.score_breakdown = dict(score_result.get("score_breakdown") or {})
         readable = render_itinerary_text(
             itinerary=state.selected_plan,
             request=state.parsed_request,
@@ -1437,6 +1905,13 @@ def render_output(state: AgentState) -> AgentState:
             "knowledge_ids": state.knowledge_ids,
             "knowledge_bias": state.knowledge_bias,
             "explanation_basis": state.explanation_basis,
+            "retrieved_case_count": state.retrieved_case_count,
+            "retrieved_case_ids": state.retrieved_case_ids,
+            "retrieved_case_summaries": state.retrieved_case_summaries,
+            "case_bias": state.case_bias,
+            "case_memory_used": state.case_memory_used,
+            "total_score": state.total_score,
+            "score_breakdown": state.score_breakdown,
         }
         _log(state, "文案渲染完成。")
         if state.knowledge_usage_notes:
@@ -1552,6 +2027,31 @@ def finalize_memory(state: AgentState) -> AgentState:
         memory_key = state.user_key or state.thread_id or ""
         save_user_memory(memory_key, payload)
         _log(state, "已写回偏好记忆。")
+        if state.selected_plan and state.score_breakdown:
+            score_result = {
+                "total_score": state.total_score,
+                "constraint_score": state.score_breakdown.get("constraint_score"),
+                "plan_quality_score": state.score_breakdown.get("plan_quality_score"),
+                "user_feedback_score": state.score_breakdown.get("user_feedback_score"),
+                "constraints_met": state.score_breakdown.get("constraints_met"),
+                "serious_fallback": state.score_breakdown.get("serious_fallback"),
+                "route_source": state.route_source,
+            }
+            stored = save_high_quality_case(
+                user_key=state.user_key,
+                user_query=state.user_input or "",
+                parsed_request=state.parsed_request,
+                selected_plan=str(state.selected_plan_area_summary.get("plan_id") or state.selected_by),
+                itinerary=state.selected_plan,
+                route_summary=state.selected_plan_area_summary,
+                knowledge_ids=state.knowledge_ids,
+                knowledge_bias=state.knowledge_bias,
+                score_result=score_result,
+            )
+            state.stored_to_case_memory = bool(stored.get("stored_to_case_memory"))
+            state.case_memory_id = stored.get("case_memory_id")
+            state.stored_reason = stored.get("stored_reason")
+            _log(state, f"route case memory stored={state.stored_to_case_memory}, reason={state.stored_reason}")
     save_checkpoint(state.thread_id or "", state.model_dump())
     return state
 
@@ -1571,6 +2071,26 @@ def _response_from_state(
         parsed_request=state.parsed_request,
         search_intent=state.search_intent,
         search_strategy=state.search_strategy,
+        search_mode=state.search_mode,
+        search_plan=state.search_plan,
+        search_plan_used=state.search_plan_used,
+        search_plan_summary=state.search_plan_summary,
+        search_round_count=state.search_round_count,
+        search_rounds_debug=state.search_rounds_debug,
+        react_steps=state.react_steps,
+        react_fallback_reason=state.react_fallback_reason,
+        search_round_outputs=state.search_round_outputs,
+        first_round_candidates=state.first_round_candidates,
+        anchor_candidates=state.anchor_candidates,
+        second_round_grouped_results=state.second_round_grouped_results,
+        llm_search_planner_called=state.llm_search_planner_called,
+        llm_search_planner_success=state.llm_search_planner_success,
+        llm_search_planner_error_type=state.llm_search_planner_error_type,
+        llm_search_planner_error_message=state.llm_search_planner_error_message,
+        search_rerank_used=state.search_rerank_used,
+        final_search_queries=state.final_search_queries,
+        clarification_from_search_planner=state.clarification_from_search_planner,
+        clarification_options=state.clarification_options,
         candidate_biases=state.candidate_biases,
         strategy_notes=state.strategy_notes,
         search_round=state.search_round,
@@ -1612,6 +2132,16 @@ def _response_from_state(
         retrieved_knowledge_count=state.retrieved_knowledge_count,
         knowledge_source_tags=state.knowledge_source_tags,
         knowledge_usage_notes=state.knowledge_usage_notes,
+        retrieved_case_count=state.retrieved_case_count,
+        retrieved_case_ids=state.retrieved_case_ids,
+        retrieved_case_summaries=state.retrieved_case_summaries,
+        case_bias=state.case_bias,
+        case_memory_used=state.case_memory_used,
+        total_score=state.total_score,
+        score_breakdown=state.score_breakdown,
+        case_memory_id=state.case_memory_id,
+        stored_to_case_memory=state.stored_to_case_memory,
+        stored_reason=state.stored_reason,
         active_skill=state.active_skill,
         skill_trace=state.skill_trace,
         last_skill_result_summary=state.last_skill_result_summary,
@@ -1640,8 +2170,12 @@ def run_agent_v2(text: str, thread_id: str | None = None, user_key: str | None =
         return _response_from_state(state, clarification_needed=True, selected_by="unknown")
 
     analyze_search_intent(state)
+    if state.clarification_needed:
+        save_checkpoint(state.thread_id or "", state.model_dump())
+        return _response_from_state(state, clarification_needed=True, selected_by="unknown")
     data_quality(state)
     candidate_discovery(state)
+    execute_search_plan(state)
     dynamic_search(state)
     refine_search_results(state)
     gather_context(state)
@@ -1684,26 +2218,46 @@ def run_agent_v3(
         return _response_from_state(state, clarification_needed=True, selected_by="unknown")
 
     analyze_search_intent(state)
+    if state.clarification_needed:
+        save_checkpoint(state.thread_id or "", state.model_dump())
+        return _response_from_state(state, clarification_needed=True, selected_by="unknown")
+
     data_quality(state)
-    if fast_mode:
-        dynamic_search(state)
+    react_success = run_react_search_if_enabled(state)
+    if state.clarification_needed:
+        save_checkpoint(state.thread_id or "", state.model_dump())
+        return _response_from_state(state, clarification_needed=True, selected_by="unknown")
+
+    if react_success:
         refine_search_results(state)
-        generate_candidates(state)
-    else:
-        candidate_discovery(state)
-        run_planning_loop(
-            state,
-            dynamic_search_fn=dynamic_search,
-            refine_search_results_fn=refine_search_results,
-            generate_candidates_fn=generate_candidates,
-            logger=_log,
-        )
+        if not state.search_results:
+            _log(state, "react produced no search results; fallback to rule chain", "warn")
+            state.search_mode = "fallback"
+            react_success = False
+
+    if not react_success:
+        if fast_mode:
+            execute_search_plan(state)
+            dynamic_search(state)
+            refine_search_results(state)
+            generate_candidates(state)
+        else:
+            candidate_discovery(state)
+            execute_search_plan(state)
+            run_planning_loop(
+                state,
+                dynamic_search_fn=dynamic_search,
+                refine_search_results_fn=refine_search_results,
+                generate_candidates_fn=generate_candidates,
+                logger=_log,
+            )
 
     # Safety net: planning loop should never break the downstream chain.
     if not state.search_results:
         data_quality(state)
         if not fast_mode:
             candidate_discovery(state)
+        execute_search_plan(state)
         dynamic_search(state)
         refine_search_results(state)
     if not state.candidate_plans:
@@ -1717,7 +2271,6 @@ def run_agent_v3(
     finalize_memory(state)
 
     return _response_from_state(state)
-
 
 def run_agent_v4_current(text: str, thread_id: str | None = None, user_key: str | None = None) -> AgentPlanResponse:
     """Current v4 execution chain.
@@ -1750,8 +2303,12 @@ def run_agent_v4_current(text: str, thread_id: str | None = None, user_key: str 
         return _response_from_state(state, clarification_needed=True, selected_by="unknown")
 
     analyze_search_intent(state)
+    if state.clarification_needed:
+        save_checkpoint(state.thread_id or "", state.model_dump())
+        return _response_from_state(state, clarification_needed=True, selected_by="unknown")
     data_quality(state)
     candidate_discovery(state)
+    execute_search_plan(state)
 
     run_planning_loop(
         state,
@@ -1766,6 +2323,7 @@ def run_agent_v4_current(text: str, thread_id: str | None = None, user_key: str 
         _log(state, "v4_current fallback: refresh search context", "warn")
         data_quality(state)
         candidate_discovery(state)
+        execute_search_plan(state)
         dynamic_search(state)
         refine_search_results(state)
     if not state.candidate_plans:
@@ -1823,8 +2381,12 @@ def continue_agent(thread_id: str, clarification_answer: str) -> AgentPlanRespon
         return _response_from_state(state, clarification_needed=True, selected_by="unknown")
 
     analyze_search_intent(state)
+    if state.clarification_needed:
+        save_checkpoint(state.thread_id or "", state.model_dump())
+        return _response_from_state(state, clarification_needed=True, selected_by="unknown")
     data_quality(state)
     candidate_discovery(state)
+    execute_search_plan(state)
 
     if state.planning_loop_enabled:
         run_planning_loop(
@@ -1860,5 +2422,10 @@ def continue_agent_v2(thread_id: str, clarification_answer: str) -> AgentPlanRes
 
 def get_latest_thread_state(thread_id: str) -> Dict[str, Any] | None:
     return get_latest_state(thread_id)
+
+
+
+
+
 
 

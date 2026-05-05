@@ -510,3 +510,60 @@ def test_relaxed_variant_prefers_park_sights_when_demand_tag_present() -> None:
     sights = [item for item in biased if item.get("kind") == "sight"]
     assert sights
     assert any("公园" in str(item.get("name")) for item in sights)
+
+
+def test_park_demand_repairs_restaurant_only_route(monkeypatch) -> None:
+    request = _sample_request().model_copy(update={"purpose": "relax", "walking_tolerance": "low"})
+    candidate_pois = [
+        {
+            "id": "s_park",
+            "name": "曲江池公园",
+            "kind": "sight",
+            "district_cluster": "曲江夜游簇",
+            "area_name": "曲江夜游",
+            "category": "park",
+            "walking_level": "low",
+            "_score": 80,
+        },
+        {
+            "id": "r1",
+            "name": "文博蔬食面坊",
+            "kind": "restaurant",
+            "district_cluster": "小寨文博簇",
+            "area_name": "小寨文博",
+            "walking_level": "low",
+            "_score": 70,
+        },
+    ]
+
+    def _fake_generate(_: PlanRequest, candidate_pois=None) -> ItineraryResponse:
+        return ItineraryResponse(
+            summary="restaurant only",
+            route=[
+                RouteItem(
+                    time_slot="14:46-15:46",
+                    type="restaurant",
+                    name="文博蔬食面坊",
+                    district_cluster="小寨文博簇",
+                    transport_from_prev="地铁/打车 约46分钟",
+                    reason="位于顺路簇内，减少绕行",
+                )
+            ],
+            tips=[],
+        )
+
+    monkeypatch.setattr(plan_selector, "generate_itinerary", _fake_generate)
+
+    item = plan_selector._build_candidate_item(
+        request,
+        "relaxed_first",
+        "轻松优先",
+        candidate_pois,
+        area_context={"search_strategy": ["park", "relaxed"], "demand_tags": ["park"]},
+        knowledge_bias={"prefer_park_scene": True},
+    )
+
+    route = item["itinerary"].route
+    assert any(stop.type == "sight" and "公园" in stop.name for stop in route)
+    assert any(stop.type == "restaurant" for stop in route)
+    assert len(route) <= 2
